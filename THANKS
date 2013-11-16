@@ -1,0 +1,27 @@
+Thanks
+======
+
+I would like to thanks all the work from all the contributors on
+AlsaModularSynth, especially:
+
+ * Matthias Nagorni <mana@suse.de>
+ * Fons Adriaensen <adriaena@users.sourceforge.net>
+ * Karsten Wiese <fzu@users.sourceforge.net>
+ * Malte Steiner <steiner@block4.com>
+ * Guido Scholz <guido.scholz@bayernline.de>
+
+Without their work on AMS, these plugins wouldn't have existed.
+
+A great thanks as well to the authors of LV2, especially:
+
+ * David Robillard <d@drobilla.net>
+
+who guided me in this work.
+
+A great thanks to Harry van Haaren <harryhaaren@gmail.com> for Luppp as 
+I copied a great deal of his GUI creations:
+<https://github.com/harryhaaren/Luppp>
+
+Finally a great thanks to all the community and all the persons who answered
+my questions on the Linux Audio Developers mailing list:
+<http://lists.linuxaudio.org/listinfo/linux-audio-dev>

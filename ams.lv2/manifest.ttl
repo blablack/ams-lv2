@@ -1,0 +1,206 @@
+@prefix doap: 	<http://usefulinc.com/ns/doap#> .
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .
+@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix uiext: 	<http://lv2plug.in/ns/extensions/ui#> .
+
+<http://github.com/blablack/ams.lv2/>
+	a doap:Project ;
+	lv2:symbol "ams" ;
+	doap:name "AMS LV2" ;
+	doap:shortdesc "An LV2 port of the AMS internal modules." ;
+	doap:homepage <http://avwlv2.sourceforge.net/> ;
+	doap:license <http://opensource.org/licenses/isc> ;
+	doap:maintainer [
+		foaf:name "Aurélien Leblond" ;
+		foaf:mbox <mailto:blablack@gmail.com>
+	] .
+
+<http://github.com/blablack/ams.lv2/ad>
+	a lv2:Plugin ;
+	lv2:binary <ad.so>  ;
+	rdfs:seeAlso <ad.ttl> .
+
+<http://github.com/blablack/ams.lv2/amp>
+	a lv2:Plugin ;
+	lv2:binary <amp.so>  ;
+	rdfs:seeAlso <amp.ttl> .
+
+<http://github.com/blablack/ams.lv2/noise2_audio>
+	a lv2:Plugin ;
+	lv2:binary <noise2_audio.so>  ;
+	rdfs:seeAlso <noise2_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/noise2_cv>
+	a lv2:Plugin ;
+	lv2:binary <noise2_cv.so>  ;
+	rdfs:seeAlso <noise2_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/lfo_tempo>
+	a lv2:Plugin ;
+	lv2:binary <lfo_tempo.so>  ;
+	rdfs:seeAlso <lfo_tempo.ttl> .
+
+<http://github.com/blablack/ams.lv2/lfo_freq>
+	a lv2:Plugin ;
+	lv2:binary <lfo_freq.so>  ;
+	rdfs:seeAlso <lfo_freq.ttl> .
+
+<http://github.com/blablack/ams.lv2/vco2_audio>
+	a lv2:Plugin ;
+	lv2:binary <vco2_audio.so>  ;
+	rdfs:seeAlso <vco2_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/vco2_cv>
+	a lv2:Plugin ;
+	lv2:binary <vco2_cv.so>  ;
+	rdfs:seeAlso <vco2_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcf>
+	a lv2:Plugin ;
+	lv2:binary <vcf.so>  ;
+	rdfs:seeAlso <vcf.ttl> .
+
+<http://github.com/blablack/ams.lv2/hztovc>
+	a lv2:Plugin ;
+	lv2:binary <hztovc.so>  ;
+	rdfs:seeAlso <hztovc.ttl> .
+
+<http://github.com/blablack/ams.lv2/vctohz>
+	a lv2:Plugin ;
+	lv2:binary <vctohz.so>  ;
+	rdfs:seeAlso <vctohz.ttl> .
+
+<http://github.com/blablack/ams.lv2/env>
+	a lv2:Plugin ;
+	lv2:binary <env.so>  ;
+	rdfs:seeAlso <env.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcalin_audio>
+	a lv2:Plugin ;
+	lv2:binary <vcalin_audio.so>  ;
+	rdfs:seeAlso <vcalin_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcalin_cv>
+	a lv2:Plugin ;
+	lv2:binary <vcalin_cv.so>  ;
+	rdfs:seeAlso <vcalin_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcaexp_audio>
+	a lv2:Plugin ;
+	lv2:binary <vcaexp_audio.so>  ;
+	rdfs:seeAlso <vcaexp_audio.ttl> .
+
+
+<http://github.com/blablack/ams.lv2/vcaexp_cv>
+	a lv2:Plugin ;
+	lv2:binary <vcaexp_cv.so>  ;
+	rdfs:seeAlso <vcaexp_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/mixer_4ch_audio>
+	a lv2:Plugin ;
+	lv2:binary <mixer_4ch_audio.so>  ;
+	rdfs:seeAlso <mixer_4ch_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/mixer_4ch_cv>
+	a lv2:Plugin ;
+	lv2:binary <mixer_4ch_cv.so>  ;
+	rdfs:seeAlso <mixer_4ch_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/mixer_2ch_audio>
+	a lv2:Plugin ;
+	lv2:binary <mixer_2ch_audio.so>  ;
+	rdfs:seeAlso <mixer_2ch_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/mixer_2ch_cv>
+	a lv2:Plugin ;
+	lv2:binary <mixer_2ch_cv.so>  ;
+	rdfs:seeAlso <mixer_2ch_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/slew>
+	a lv2:Plugin ;
+	lv2:binary <slew.so>  ;
+	rdfs:seeAlso <slew.ttl> .
+
+<http://github.com/blablack/ams.lv2/advenv>
+	a lv2:Plugin ;
+	lv2:binary <advenv.so>  ;
+	rdfs:seeAlso <advenv.ttl> .
+
+<http://github.com/blablack/ams.lv2/cvs>
+	a lv2:Plugin ;
+	lv2:binary <cvs.so>  ;
+	rdfs:seeAlso <cvs.ttl> .
+
+<http://github.com/blablack/ams.lv2/delay>
+	a lv2:Plugin ;
+	lv2:binary <delay.so>  ;
+	rdfs:seeAlso <delay.ttl> .
+
+<http://github.com/blablack/ams.lv2/absolute>
+	a lv2:Plugin ;
+	lv2:binary <absolute.so>  ;
+	rdfs:seeAlso <absolute.ttl> .
+
+<http://github.com/blablack/ams.lv2/inv>
+	a lv2:Plugin ;
+	lv2:binary <inv.so>  ;
+	rdfs:seeAlso <inv.ttl> .
+
+<http://github.com/blablack/ams.lv2/ringmodulator_audio>
+	a lv2:Plugin ;
+	lv2:binary <ringmodulator_audio.so>  ;
+	rdfs:seeAlso <ringmodulator_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/ringmodulator_cv>
+	a lv2:Plugin ;
+	lv2:binary <ringmodulator_cv.so>  ;
+	rdfs:seeAlso <ringmodulator_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/percussiveenv>
+	a lv2:Plugin ;
+	lv2:binary <percussiveenv.so>  ;
+	rdfs:seeAlso <percussiveenv.ttl> .
+
+<http://github.com/blablack/ams.lv2/samplehold>
+	a lv2:Plugin ;
+	lv2:binary <samplehold.so>  ;
+	rdfs:seeAlso <samplehold.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcpanning>
+	a lv2:Plugin ;
+	lv2:binary <vcpanning.so>  ;
+	rdfs:seeAlso <vcpanning.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcswitch_audio>
+	a lv2:Plugin ;
+	lv2:binary <vcswitch_audio.so>  ;
+	rdfs:seeAlso <vcswitch_audio.ttl> .
+
+<http://github.com/blablack/ams.lv2/vcswitch_cv>
+	a lv2:Plugin ;
+	lv2:binary <vcswitch_cv.so>  ;
+	rdfs:seeAlso <vcswitch_cv.ttl> .
+
+<http://github.com/blablack/ams.lv2/mooglpf>
+	a lv2:Plugin ;
+	lv2:binary <mooglpf.so>  ;
+	rdfs:seeAlso <mooglpf.ttl> .
+
+<http://github.com/blablack/ams.lv2/amplitude>
+	a lv2:Plugin ;
+	lv2:binary <amplitude.so>  ;
+	rdfs:seeAlso <amplitude.ttl> .
+
+<http://github.com/blablack/ams.lv2/cvtocontrol>
+	a lv2:Plugin ;
+	lv2:binary <cvtocontrol.so>  ;
+	rdfs:seeAlso <cvtocontrol.ttl> .
+
+<http://github.com/blablack/ams.lv2/controltocv>
+	a lv2:Plugin ;
+	lv2:binary <controltocv.so>  ;
+	rdfs:seeAlso <controltocv.ttl> .
+
+
+

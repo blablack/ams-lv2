@@ -7,7 +7,7 @@ from waflib.extras import autowaf as autowaf
 
 # Variables for 'waf dist'
 APPNAME = 'ams.lv2'
-VERSION = '0.1.0'
+VERSION = '1.0.0'
 
 # Mandatory variables
 top = '.'

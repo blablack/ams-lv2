@@ -9,7 +9,7 @@
 	lv2:symbol "ams" ;
 	doap:name "AMS LV2" ;
 	doap:shortdesc "An LV2 port of the AMS internal modules." ;
-	doap:homepage <http://avwlv2.sourceforge.net/> ;
+	doap:homepage <http://objectivewave.wordpress.com/ams-lv2> ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	doap:maintainer [
 		foaf:name "Aurélien Leblond" ;

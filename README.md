@@ -1,4 +1,4 @@
-ams.lv2
+ams-lv2
 =======
 
 This set of LV2 plugins is a port of the internal modules found in Alsa Modular Synth [http://alsamodular.sourceforge.net/](http://alsamodular.sourceforge.net/).
@@ -37,7 +37,7 @@ More information about Ingen here: [http://drobilla.net/software/ingen/](http://
 BUG REPORTING
 -------------
 Please use the issue tracker on github to report bugs:
-[http://github.com/blablack/ams.lv2/issues](http://github.com/blablack/ams.lv2/issues)
+[http://github.com/blablack/ams-lv2/issues](http://github.com/blablack/ams-lv2/issues)
 
 
 

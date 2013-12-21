@@ -137,4 +137,4 @@ void LfoTempo::run(uint32_t nframes)
 	} while(len);
 }
 
-static int _ = LfoTempo::register_class("http://github.com/blablack/ams.lv2/lfo_tempo");
+static int _ = LfoTempo::register_class("http://github.com/blablack/ams-lv2/lfo_tempo");

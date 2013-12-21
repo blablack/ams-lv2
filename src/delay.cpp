@@ -51,5 +51,5 @@ void Delay::run(uint32_t nframes)
 	}
 }
 
-static int _ = Delay::register_class("http://github.com/blablack/ams.lv2/delay");
+static int _ = Delay::register_class("http://github.com/blablack/ams-lv2/delay");
 

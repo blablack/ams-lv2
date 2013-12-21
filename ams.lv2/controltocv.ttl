@@ -5,9 +5,9 @@
 @prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 
-<http://github.com/blablack/ams.lv2/controltocv>
+<http://github.com/blablack/ams-lv2/controltocv>
 	a lv2:Plugin, lv2:ConverterPlugin ;
-	lv2:project <http://github.com/blablack/ams.lv2/> ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "Control to CV" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;

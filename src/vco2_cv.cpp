@@ -291,5 +291,5 @@ void Vco2CV::run(uint32_t nframes)
 	}
 }
 
-static int _ = Vco2CV::register_class("http://github.com/blablack/ams.lv2/vco2_cv");
+static int _ = Vco2CV::register_class("http://github.com/blablack/ams-lv2/vco2_cv");
 

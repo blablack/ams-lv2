@@ -38,4 +38,4 @@ void Cvs::run(uint32_t nframes)
 	}
 }
 
-static int _ = Cvs::register_class("http://github.com/blablack/ams.lv2/cvs");
+static int _ = Cvs::register_class("http://github.com/blablack/ams-lv2/cvs");

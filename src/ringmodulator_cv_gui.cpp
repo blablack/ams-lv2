@@ -36,4 +36,4 @@ void RindModulatorCVGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_
 	}
 }
 
-static int _ = RindModulatorCVGUI::register_class("http://github.com/blablack/ams.lv2/ringmodulator_cv/gui");
+static int _ = RindModulatorCVGUI::register_class("http://github.com/blablack/ams-lv2/ringmodulator_cv/gui");

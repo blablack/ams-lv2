@@ -54,5 +54,5 @@ void Slew::run(uint32_t nframes)
 	}
 }
 
-static int _ = Slew::register_class("http://github.com/blablack/ams.lv2/slew");
+static int _ = Slew::register_class("http://github.com/blablack/ams-lv2/slew");
 

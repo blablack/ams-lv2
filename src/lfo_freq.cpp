@@ -137,4 +137,4 @@ void LfoFreq::run(uint32_t nframes)
 	} while(len);
 }
 
-static int _ = LfoFreq::register_class("http://github.com/blablack/ams.lv2/lfo_freq");
+static int _ = LfoFreq::register_class("http://github.com/blablack/ams-lv2/lfo_freq");

@@ -6,17 +6,17 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://github.com/blablack/ams.lv2/lfo_tempo/gui>
+<http://github.com/blablack/ams-lv2/lfo_tempo/gui>
   a guiext:GtkUI ;
   guiext:binary <lfo_tempo_gui.so> .
 
-<http://github.com/blablack/ams.lv2/lfo_tempo>
+<http://github.com/blablack/ams-lv2/lfo_tempo>
 	a lv2:Plugin, lv2:OscillatorPlugin ;
-	lv2:project <http://github.com/blablack/ams.lv2/> ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "AMS LFO - Tempo" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams.lv2/lfo_tempo/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/lfo_tempo/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port [
 		a lv2:InputPort, lv2:CVPort ;

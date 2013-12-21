@@ -97,4 +97,4 @@ void AdGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, con
 	}
 }
 
-static int _ = AdGUI::register_class("http://github.com/blablack/ams.lv2/ad/gui");
+static int _ = AdGUI::register_class("http://github.com/blablack/ams-lv2/ad/gui");

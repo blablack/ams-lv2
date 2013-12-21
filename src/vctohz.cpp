@@ -46,5 +46,5 @@ void VcToHz::run(uint32_t nframes)
 	}
 }
 
-static int _ = VcToHz::register_class("http://github.com/blablack/ams.lv2/vctohz");
+static int _ = VcToHz::register_class("http://github.com/blablack/ams-lv2/vctohz");
 

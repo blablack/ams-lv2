@@ -1,7 +1,7 @@
 # Files
 .lock-waf_linux2_build
-ams.lv2.cbp
-ams.lv2.layout
+ams-lv2.cbp
+ams-lv2.layout
 debug_ingen.sh
 debug_jalv.sh
 

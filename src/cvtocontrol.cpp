@@ -25,5 +25,5 @@ void CVToControl::run(uint32_t nframes)
 	*p(p_output) = p_total/nframes;
 }
 
-static int _ = CVToControl::register_class("http://github.com/blablack/ams.lv2/cvtocontrol");
+static int _ = CVToControl::register_class("http://github.com/blablack/ams-lv2/cvtocontrol");
 

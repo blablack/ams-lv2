@@ -83,5 +83,5 @@ void VCPanning::run(uint32_t nframes)
 
 }
 
-static int _ = VCPanning::register_class("http://github.com/blablack/ams.lv2/vcpanning");
+static int _ = VCPanning::register_class("http://github.com/blablack/ams-lv2/vcpanning");
 

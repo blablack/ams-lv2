@@ -124,4 +124,4 @@ void PercussiveEnvGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t 
 	}
 }
 
-static int _ = PercussiveEnvGUI::register_class("http://github.com/blablack/ams.lv2/percussiveenv/gui");
+static int _ = PercussiveEnvGUI::register_class("http://github.com/blablack/ams-lv2/percussiveenv/gui");

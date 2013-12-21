@@ -88,4 +88,4 @@ void LfoTempoGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t forma
 	}
 }
 
-static int _ = LfoTempoGUI::register_class("http://github.com/blablack/ams.lv2/lfo_tempo/gui");
+static int _ = LfoTempoGUI::register_class("http://github.com/blablack/ams-lv2/lfo_tempo/gui");

@@ -72,5 +72,5 @@ void Noise2CV::run(uint32_t nframes)
 	}
 }
 
-static int _ = Noise2CV::register_class("http://github.com/blablack/ams.lv2/noise2_cv");
+static int _ = Noise2CV::register_class("http://github.com/blablack/ams-lv2/noise2_cv");
 

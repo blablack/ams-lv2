@@ -133,4 +133,4 @@ void VcfGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, co
 	}
 }
 
-static int _ = VcfGUI::register_class("http://github.com/blablack/ams.lv2/vcf/gui");
+static int _ = VcfGUI::register_class("http://github.com/blablack/ams-lv2/vcf/gui");

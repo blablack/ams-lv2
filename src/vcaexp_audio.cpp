@@ -25,4 +25,4 @@ void VcaExpAudio::run(uint32_t nframes)
 	}
 }
 
-static int _ = VcaExpAudio::register_class("http://github.com/blablack/ams.lv2/vcaexp_audio");
+static int _ = VcaExpAudio::register_class("http://github.com/blablack/ams-lv2/vcaexp_audio");

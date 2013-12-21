@@ -153,4 +153,4 @@ void CVSGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, co
 	}
 }
 
-static int _ = CVSGUI::register_class("http://github.com/blablack/ams.lv2/cvs/gui");
+static int _ = CVSGUI::register_class("http://github.com/blablack/ams-lv2/cvs/gui");

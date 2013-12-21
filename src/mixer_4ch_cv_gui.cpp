@@ -90,4 +90,4 @@ void Mixer4ChCVGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t for
 	}
 }
 
-static int _ = Mixer4ChCVGUI::register_class("http://github.com/blablack/ams.lv2/mixer_4ch_cv/gui");
+static int _ = Mixer4ChCVGUI::register_class("http://github.com/blablack/ams-lv2/mixer_4ch_cv/gui");

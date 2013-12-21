@@ -196,4 +196,4 @@ void Vco2AudioGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t form
 	}
 }
 
-static int _ = Vco2AudioGUI::register_class("http://github.com/blablack/ams.lv2/vco2_audio/gui");
+static int _ = Vco2AudioGUI::register_class("http://github.com/blablack/ams-lv2/vco2_audio/gui");

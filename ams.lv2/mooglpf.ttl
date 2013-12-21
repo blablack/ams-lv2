@@ -6,17 +6,17 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://github.com/blablack/ams.lv2/mooglpf/gui>
+<http://github.com/blablack/ams-lv2/mooglpf/gui>
   a guiext:GtkUI ;
   guiext:binary <mooglpf_gui.so> .
 
-<http://github.com/blablack/ams.lv2/mooglpf>
+<http://github.com/blablack/ams-lv2/mooglpf>
 	a lv2:Plugin, lv2:FilterPlugin ;
-	lv2:project <http://github.com/blablack/ams.lv2/> ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "Moog LPF" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams.lv2/mooglpf/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/mooglpf/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port
 	[

@@ -14,9 +14,9 @@ typedef struct {
 } peg_data_t;
 #endif
 
-/* <http://github.com/blablack/ams.lv2/mixer_2ch_audio> */
+/* <http://github.com/blablack/ams-lv2/mixer_2ch_audio> */
 
-static const char p_uri[] = "http://github.com/blablack/ams.lv2/mixer_2ch_audio";
+static const char p_uri[] = "http://github.com/blablack/ams-lv2/mixer_2ch_audio";
 
 enum p_port_enum {
   p_in1,

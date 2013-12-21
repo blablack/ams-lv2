@@ -60,4 +60,4 @@ void VCToHZGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format,
 	}
 }
 
-static int _ = VCToHZGUI::register_class("http://github.com/blablack/ams.lv2/vctohz/gui");
+static int _ = VCToHZGUI::register_class("http://github.com/blablack/ams-lv2/vctohz/gui");

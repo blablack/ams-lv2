@@ -291,5 +291,5 @@ void Vco2Audio::run(uint32_t nframes)
 	}
 }
 
-static int _ = Vco2Audio::register_class("http://github.com/blablack/ams.lv2/vco2_audio");
+static int _ = Vco2Audio::register_class("http://github.com/blablack/ams-lv2/vco2_audio");
 

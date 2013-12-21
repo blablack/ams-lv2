@@ -6,7 +6,7 @@ from waflib import Logs
 from waflib.extras import autowaf as autowaf
 
 # Variables for 'waf dist'
-APPNAME = 'ams.lv2'
+APPNAME = 'ams-lv2'
 VERSION = '1.0.0'
 
 # Mandatory variables
@@ -17,14 +17,14 @@ out = 'build'
 def options(opt):
     autowaf.set_options(opt)
     opt.load('compiler_cxx')
-    
-    
+
+
 def configure(conf):
     autowaf.configure(conf)
-    autowaf.display_header('ams.lv2 Configuration')
-    
+    autowaf.display_header('ams-lv2 Configuration')
+
     conf.load('compiler_cxx')
-    
+
     autowaf.check_pkg(conf, 'gtkmm-2.4',  uselib_store='GTKMM',atleast_version='2.24.0')
     autowaf.check_pkg(conf, 'gtk+-2.0', uselib_store='GTK2', atleast_version='2.24.0')
     autowaf.check_pkg(conf, 'cairo', uselib_store='CAIRO', atleast_version='1.0.0')
@@ -48,7 +48,7 @@ def configure(conf):
                                  '  return 0;\n'+
                                  '}',
                    mandatory   = False)
-    
+
     # Set env['pluginlib_PATTERN']
     pat = conf.env['cxxshlib_PATTERN']
     if pat[0:3] == 'lib':
@@ -100,7 +100,7 @@ def build(bld):
         src = task.inputs[0].abspath()
         tgt = task.outputs[0].abspath()
         return shutil.copy(src, tgt)
-    
+
     for i in bld.path.ant_glob('ams.lv2/*.ttl'):
         bld(rule   = do_copy,
             source = i,
@@ -148,7 +148,7 @@ def build(bld):
         build_plugin(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
                      ['-DPLUGIN_CLASS=%s' % i,
                       '-std=c++11',
-                      '-DURI_PREFIX=\"http://github.com/blablack/ams.lv2/\"',
+                      '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="%s"' % i,
                       '-DPLUGIN_HEADER="src/%s.hpp"' % i],
                      ['LV2', 'LVTK_PLUGIN'],
@@ -170,12 +170,12 @@ def build(bld):
         build_plugin(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
                      ['-DPLUGIN_CLASS=%s' % i,
                       '-std=c++11',
-                      '-DURI_PREFIX=\"http://github.com/blablack/ams.lv2/\"',
+                      '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="%s"' % i,
                       '-DPLUGIN_HEADER="src/%s.hpp"' % i],
                       ['LV2', 'LVTK_PLUGIN'],
                       ['src/synthdata.cpp'])
-      
+
 
 
 
@@ -215,45 +215,45 @@ def build(bld):
        build_plugin_gui(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
                         ['-DPLUGIN_CLASS=%s' % i,
                          '-std=c++11',
-                         '-DURI_PREFIX=\"http://github.com/blablack/ams.lv2/\"',
+                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                          '-DPLUGIN_URI_SUFFIX="%s"' % i,
                          '-DPLUGIN_HEADER="src/%s.hpp"' % i],
-                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'], 
+                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp'])
 
 
-  
+
 
     build_plugin_gui(bld, 'ams.lv2', 'env_gui', ['src/env_gui.cpp'],
                      ['-DPLUGIN_CLASS=env_gui',
                       '-std=c++11',
-                      '-DURI_PREFIX=\"http://github.com/blablack/ams.lv2/\"',
+                      '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="env_gui"',
                       '-DPLUGIN_HEADER="src/env_gui.hpp"'],
-                     ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'], 
+                     ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/env_gui_scope.cpp'])
-      
+
 
 
 
     build_plugin_gui(bld, 'ams.lv2', 'percussiveenv_gui', ['src/percussiveenv_gui.cpp'],
                      ['-DPLUGIN_CLASS=percussiveenv_gui',
                       '-std=c++11',
-                      '-DURI_PREFIX=\"http://github.com/blablack/ams.lv2/\"',
+                      '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="percussiveenv_gui"',
                       '-DPLUGIN_HEADER="src/percussiveenv_gui.hpp"'],
-                     ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'], 
+                     ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/percussiveenv_gui_scope.cpp'])
-            
+
 
 
 
     build_plugin_gui(bld, 'ams.lv2', 'advenv_gui', ['src/advenv_gui.cpp'],
                      ['-DPLUGIN_CLASS=advenv_gui',
                       '-std=c++11',
-                      '-DURI_PREFIX=\"http://github.com/blablack/ams.lv2/\"',
+                      '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="advenv_gui"',
                       '-DPLUGIN_HEADER="src/advenv_gui.hpp"'],
-                     ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'], 
+                     ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp'])
 

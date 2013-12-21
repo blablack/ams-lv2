@@ -99,4 +99,4 @@ void VCALinCVGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t forma
 	}
 }
 
-static int _ = VCALinCVGUI::register_class("http://github.com/blablack/ams.lv2/vcalin_cv/gui");
+static int _ = VCALinCVGUI::register_class("http://github.com/blablack/ams-lv2/vcalin_cv/gui");

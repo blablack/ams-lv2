@@ -22,5 +22,5 @@ void Amp::run(uint32_t nframes)
 	}
 }
 
-static int _ = Amp::register_class("http://github.com/blablack/ams.lv2/amp");
+static int _ = Amp::register_class("http://github.com/blablack/ams-lv2/amp");
 

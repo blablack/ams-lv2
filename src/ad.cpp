@@ -96,5 +96,5 @@ void Ad::run(uint32_t nframes)
 	}
 }
 
-static int _ = Ad::register_class("http://github.com/blablack/ams.lv2/ad");
+static int _ = Ad::register_class("http://github.com/blablack/ams-lv2/ad");
 

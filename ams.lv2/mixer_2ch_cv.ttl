@@ -6,17 +6,17 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://github.com/blablack/ams.lv2/mixer_2ch_cv/gui>
+<http://github.com/blablack/ams-lv2/mixer_2ch_cv/gui>
   	a guiext:GtkUI ;
   	guiext:binary <mixer_2ch_cv_gui.so> .
 
-<http://github.com/blablack/ams.lv2/mixer_2ch_cv>
+<http://github.com/blablack/ams-lv2/mixer_2ch_cv>
 	a lv2:Plugin, lv2:UtilityPlugin ;
-	lv2:project <http://github.com/blablack/ams.lv2/> ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "AMS Mixer 2 channels - CV" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams.lv2/mixer_2ch_cv/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/mixer_2ch_cv/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port [
 		a lv2:InputPort, lv2:CVPort ;

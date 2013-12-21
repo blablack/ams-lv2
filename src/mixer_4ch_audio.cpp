@@ -25,5 +25,5 @@ void Mixer4ChAudio::run(uint32_t nframes)
 	}
 }
 
-static int _ = Mixer4ChAudio::register_class("http://github.com/blablack/ams.lv2/mixer_4ch_audio");
+static int _ = Mixer4ChAudio::register_class("http://github.com/blablack/ams-lv2/mixer_4ch_audio");
 

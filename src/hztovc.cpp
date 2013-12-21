@@ -31,5 +31,5 @@ void HzToVc::run(uint32_t nframes)
 	}
 }
 
-static int _ = HzToVc::register_class("http://github.com/blablack/ams.lv2/hztovc");
+static int _ = HzToVc::register_class("http://github.com/blablack/ams-lv2/hztovc");
 

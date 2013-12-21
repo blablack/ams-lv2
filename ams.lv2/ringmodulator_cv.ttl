@@ -6,17 +6,17 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://github.com/blablack/ams.lv2/ringmodulator_cv/gui>
+<http://github.com/blablack/ams-lv2/ringmodulator_cv/gui>
   a guiext:GtkUI ;
   guiext:binary <ringmodulator_cv_gui.so> .
 
-<http://github.com/blablack/ams.lv2/ringmodulator_cv>
+<http://github.com/blablack/ams-lv2/ringmodulator_cv>
 	a lv2:Plugin, lv2:FilterPlugin ;
-	lv2:project <http://github.com/blablack/ams.lv2/> ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "AMS Ring Modulator - CV" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams.lv2/ringmodulator_cv/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/ringmodulator_cv/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port [
 		a lv2:InputPort, lv2:ControlPort ;

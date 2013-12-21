@@ -25,5 +25,5 @@ void RingModulatorCV::run(uint32_t nframes)
 	}
 }
 
-static int _ = RingModulatorCV::register_class("http://github.com/blablack/ams.lv2/ringmodulator_cv");
+static int _ = RingModulatorCV::register_class("http://github.com/blablack/ams-lv2/ringmodulator_cv");
 

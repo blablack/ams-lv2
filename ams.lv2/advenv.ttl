@@ -6,17 +6,17 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://github.com/blablack/ams.lv2/advenv/gui>
+<http://github.com/blablack/ams-lv2/advenv/gui>
   	a guiext:GtkUI ;
   	guiext:binary <advenv_gui.so> .
 
-<http://github.com/blablack/ams.lv2/advenv>
+<http://github.com/blablack/ams-lv2/advenv>
 	a lv2:Plugin, lv2:EnvelopePlugin ;
-	lv2:project <http://github.com/blablack/ams.lv2/> ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "AMS Advanced Envelope" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams.lv2/advenv/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/advenv/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port [
 		a lv2:InputPort, lv2:CVPort ;

@@ -14,9 +14,9 @@ typedef struct {
 } peg_data_t;
 #endif
 
-/* <http://github.com/blablack/ams.lv2/lfo_tempo> */
+/* <http://github.com/blablack/ams-lv2/lfo_tempo> */
 
-static const char p_uri[] = "http://github.com/blablack/ams.lv2/lfo_tempo";
+static const char p_uri[] = "http://github.com/blablack/ams-lv2/lfo_tempo";
 
 enum p_port_enum {
   p_reset,

@@ -25,4 +25,4 @@ void VcaExpCV::run(uint32_t nframes)
 	}
 }
 
-static int _ = VcaExpCV::register_class("http://github.com/blablack/ams.lv2/vcaexp_cv");
+static int _ = VcaExpCV::register_class("http://github.com/blablack/ams-lv2/vcaexp_cv");

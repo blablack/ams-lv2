@@ -48,4 +48,4 @@ void SlewGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, c
 	}
 }
 
-static int _ = SlewGUI::register_class("http://github.com/blablack/ams.lv2/slew/gui");
+static int _ = SlewGUI::register_class("http://github.com/blablack/ams-lv2/slew/gui");

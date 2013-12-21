@@ -45,5 +45,5 @@ void VCSwitchAudio::run(uint32_t nframes)
 	}
 }
 
-static int _ = VCSwitchAudio::register_class("http://github.com/blablack/ams.lv2/vcswitch_audio");
+static int _ = VCSwitchAudio::register_class("http://github.com/blablack/ams-lv2/vcswitch_audio");
 

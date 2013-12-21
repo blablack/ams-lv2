@@ -99,4 +99,4 @@ void VCAExpCVGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t forma
 	}
 }
 
-static int _ = VCAExpCVGUI::register_class("http://github.com/blablack/ams.lv2/vcaexp_cv/gui");
+static int _ = VCAExpCVGUI::register_class("http://github.com/blablack/ams-lv2/vcaexp_cv/gui");

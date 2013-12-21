@@ -31,5 +31,5 @@ void Amplitude::run(uint32_t nframes)
 	}
 }
 
-static int _ = Amplitude::register_class("http://github.com/blablack/ams.lv2/amplitude");
+static int _ = Amplitude::register_class("http://github.com/blablack/ams-lv2/amplitude");
 

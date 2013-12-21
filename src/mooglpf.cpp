@@ -126,5 +126,5 @@ void MoogLPF::run(uint32_t nframes)
 	_r = r;
 }
 
-static int _ = MoogLPF::register_class("http://github.com/blablack/ams.lv2/mooglpf");
+static int _ = MoogLPF::register_class("http://github.com/blablack/ams-lv2/mooglpf");
 

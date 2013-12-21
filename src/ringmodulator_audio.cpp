@@ -25,5 +25,5 @@ void RingModulatorAudio::run(uint32_t nframes)
 	}
 }
 
-static int _ = RingModulatorAudio::register_class("http://github.com/blablack/ams.lv2/ringmodulator_audio");
+static int _ = RingModulatorAudio::register_class("http://github.com/blablack/ams-lv2/ringmodulator_audio");
 

@@ -23,5 +23,5 @@ void Mixer2ChAudio::run(uint32_t nframes)
 	}
 }
 
-static int _ = Mixer2ChAudio::register_class("http://github.com/blablack/ams.lv2/mixer_2ch_audio");
+static int _ = Mixer2ChAudio::register_class("http://github.com/blablack/ams-lv2/mixer_2ch_audio");
 

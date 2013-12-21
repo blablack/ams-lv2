@@ -45,5 +45,5 @@ void VCSwitchCV::run(uint32_t nframes)
 	}
 }
 
-static int _ = VCSwitchCV::register_class("http://github.com/blablack/ams.lv2/vcswitch_cv");
+static int _ = VCSwitchCV::register_class("http://github.com/blablack/ams-lv2/vcswitch_cv");
 

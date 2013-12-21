@@ -25,5 +25,5 @@ void Mixer4ChCV::run(uint32_t nframes)
 	}
 }
 
-static int _ = Mixer4ChCV::register_class("http://github.com/blablack/ams.lv2/mixer_4ch_cv");
+static int _ = Mixer4ChCV::register_class("http://github.com/blablack/ams-lv2/mixer_4ch_cv");
 

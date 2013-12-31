@@ -29,15 +29,18 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 	HBox *p_scaleWidget = manage (new HBox(false));
 
 	slot<void> p_slotTimeScale = compose(bind<0>(mem_fun(*this, &AdvEnvGUI::write_control), p_timeScale), mem_fun(*this, &AdvEnvGUI::get_timeScale));
-	m_scaleTimeScale = new LabeledDial("Time Scale", p_slotTimeScale, p_timeScale, 0.1, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0.1, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale->signal_value_changed().connect(p_slotTimeScale);
 	p_scaleWidget->pack_start(*m_scaleTimeScale);
 
 	slot<void> p_slotSustain = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_sustain), mem_fun(*this, &AdvEnvGUI::get_sustain));
-	m_scaleSustain = new LabeledDial("Sustain", p_slotSustain, p_sustain, 0, 1, NORMAL, 0.01, 2);
+	m_scaleSustain = new LabeledDial("Sustain", p_sustain, 0, 1, NORMAL, 0.01, 2);
+	m_scaleSustain->signal_value_changed().connect(p_slotSustain);
 	p_scaleWidget->pack_start(*m_scaleSustain);
 
 	slot<void> p_slotDelay = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_delay), mem_fun(*this, &AdvEnvGUI::get_delay));
-	m_scaleDelay = new LabeledDial("Delay", p_slotDelay, p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay->signal_value_changed().connect(p_slotDelay);
 	p_scaleWidget->pack_start(*m_scaleDelay);
 
 	p_scaleFrame->add(*p_scaleWidget);
@@ -54,19 +57,23 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 	HBox *p_attackTimeWidget = manage (new HBox(false));
 
 	slot<void> p_slotAttackTime1 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime1), mem_fun(*this, &AdvEnvGUI::get_attackTime1));
-	m_scaleAttackTime1 = new LabeledDial("Attack Time 1", p_slotAttackTime1, p_attackTime1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime1 = new LabeledDial("Attack Time 1", p_attackTime1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime1->signal_value_changed().connect(p_slotAttackTime1);
 	p_attackTimeWidget->pack_start(*m_scaleAttackTime1);
 
 	slot<void> p_slotAttackTime2 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime2), mem_fun(*this, &AdvEnvGUI::get_attackTime2));
-	m_scaleAttackTime2 = new LabeledDial("Attack Time 2", p_slotAttackTime2, p_attackTime2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime2 = new LabeledDial("Attack Time 2", p_attackTime2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime2->signal_value_changed().connect(p_slotAttackTime2);
 	p_attackTimeWidget->pack_start(*m_scaleAttackTime2);
 
 	slot<void> p_slotAttackTime3 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime3), mem_fun(*this, &AdvEnvGUI::get_attackTime3));
-	m_scaleAttackTime3 = new LabeledDial("Attack Time 3", p_slotAttackTime3, p_attackTime3, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime3 = new LabeledDial("Attack Time 3", p_attackTime3, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime3->signal_value_changed().connect(p_slotAttackTime3);
 	p_attackTimeWidget->pack_start(*m_scaleAttackTime3);
 
 	slot<void> p_slotAttackTime4 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime4), mem_fun(*this, &AdvEnvGUI::get_attackTime4));
-	m_scaleAttackTime4 = new LabeledDial("Attack Time 4", p_slotAttackTime4, p_attackTime4, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime4 = new LabeledDial("Attack Time 4", p_attackTime4, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackTime4->signal_value_changed().connect(p_slotAttackTime4);
 	p_attackTimeWidget->pack_start(*m_scaleAttackTime4);
 
 	p_attackTimeFrame->add(*p_attackTimeWidget);
@@ -83,15 +90,18 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 	HBox *p_attackLevelWidget = manage (new HBox(false));
 
 	slot<void> p_slotAttackLevel1 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackLevel1), mem_fun(*this, &AdvEnvGUI::get_attackLevel1));
-	m_scaleAttackLevel1 = new LabeledDial("Attack Level 1", p_slotAttackLevel1, p_attackLevel1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackLevel1 = new LabeledDial("Attack Level 1", p_attackLevel1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackLevel1->signal_value_changed().connect(p_slotAttackLevel1);
 	p_attackLevelWidget->pack_start(*m_scaleAttackLevel1);
 
 	slot<void> p_slotAttackLevel2 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackLevel2), mem_fun(*this, &AdvEnvGUI::get_attackLevel2));
-	m_scaleAttackLevel2 = new LabeledDial("Attack Level 2", p_slotAttackLevel2, p_attackLevel2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackLevel2 = new LabeledDial("Attack Level 2", p_attackLevel2, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackLevel2->signal_value_changed().connect(p_slotAttackLevel2);
 	p_attackLevelWidget->pack_start(*m_scaleAttackLevel2);
 
 	slot<void> p_slotAttackLevel3 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackLevel3), mem_fun(*this, &AdvEnvGUI::get_attackLevel3));
-	m_scaleAttackLevel3 = new LabeledDial("Attack Level 3", p_slotAttackLevel3, p_attackLevel3, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackLevel3 = new LabeledDial("Attack Level 3", p_attackLevel3, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttackLevel3->signal_value_changed().connect(p_slotAttackLevel3);
 	p_attackLevelWidget->pack_start(*m_scaleAttackLevel3);
 
 	p_attackLevelFrame->add(*p_attackLevelWidget);
@@ -107,15 +117,18 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 	HBox *p_releaseTimeWidget = manage (new HBox(false));
 
 	slot<void> p_slotReleaseTime1 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseTime1), mem_fun(*this, &AdvEnvGUI::get_releaseTime1));
-	m_scaleReleaseTime1 = new LabeledDial("Release Time 1", p_slotReleaseTime1, p_releaseTime1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseTime1 = new LabeledDial("Release Time 1", p_releaseTime1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseTime1->signal_value_changed().connect(p_slotReleaseTime1);
 	p_releaseTimeWidget->pack_start(*m_scaleReleaseTime1);
 
 	slot<void> p_slotReleaseTime2 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseTime2), mem_fun(*this, &AdvEnvGUI::get_releaseTime2));
-	m_scaleReleaseTime2 = new LabeledDial("Release Time 2", p_slotReleaseTime2, p_releaseTime2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseTime2 = new LabeledDial("Release Time 2", p_releaseTime2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseTime2->signal_value_changed().connect(p_slotReleaseTime2);
 	p_releaseTimeWidget->pack_start(*m_scaleReleaseTime2);
 
 	slot<void> p_slotReleaseTime3 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseTime3), mem_fun(*this, &AdvEnvGUI::get_releaseTime3));
-	m_scaleReleaseTime3 = new LabeledDial("Release Time 3", p_slotReleaseTime3, p_releaseTime3, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseTime3 = new LabeledDial("Release Time 3", p_releaseTime3, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseTime3->signal_value_changed().connect(p_slotReleaseTime3);
 	p_releaseTimeWidget->pack_start(*m_scaleReleaseTime3);
 
 	p_releaseTimeFrame->add(*p_releaseTimeWidget);
@@ -131,11 +144,13 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 	HBox *p_releaseLevelWidget = manage (new HBox(false));
 
 	slot<void> p_slotReleaseLevel1 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseLevel1), mem_fun(*this, &AdvEnvGUI::get_releaseLevel1));
-	m_scaleReleaseLevel1 = new LabeledDial("Release Level 1", p_slotReleaseLevel1, p_releaseLevel1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseLevel1 = new LabeledDial("Release Level 1", p_releaseLevel1, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseLevel1->signal_value_changed().connect(p_slotReleaseLevel1);
 	p_releaseLevelWidget->pack_start(*m_scaleReleaseLevel1);
 
 	slot<void> p_slotReleaseLevel2 = compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseLevel2), mem_fun(*this, &AdvEnvGUI::get_releaseLevel2));
-	m_scaleReleaseLevel2 = new LabeledDial("Release Level 2", p_slotReleaseLevel2, p_releaseLevel2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseLevel2 = new LabeledDial("Release Level 2", p_releaseLevel2, 0, 1, NORMAL, 0.01, 2);
+	m_scaleReleaseLevel2->signal_value_changed().connect(p_slotReleaseLevel2);
 	p_releaseLevelWidget->pack_start(*m_scaleReleaseLevel2);
 
 	p_releaseLevelFrame->add(*p_releaseLevelWidget);

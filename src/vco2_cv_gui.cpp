@@ -43,15 +43,18 @@ Vco2CVGUI::Vco2CVGUI(const char* plugin_uri)
 	HBox *p_freqBox = manage(new HBox(true));
 
 	slot<void> p_slotOctave = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_octave), mem_fun(*this,  &Vco2CVGUI::get_octave));
-	m_scaleOctave = new LabeledDial("Octave", p_slotOctave, p_octave, 0, 6, NORMAL, 1, 0);
+	m_scaleOctave = new LabeledDial("Octave", p_octave, 0, 6, NORMAL, 1, 0);
+	m_scaleOctave->signal_value_changed().connect(p_slotOctave);
 	p_freqBox->pack_start(*m_scaleOctave);
 
 	slot<void> p_slotTune = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_tune), mem_fun(*this,  &Vco2CVGUI::get_tune));
-	m_scaleTune = new LabeledDial("Tune", p_slotTune, p_tune, 0, 1, LOG, 0.0001, 4);
+	m_scaleTune = new LabeledDial("Tune", p_tune, 0, 1, LOG, 0.0001, 4);
+	m_scaleTune->signal_value_changed().connect(p_slotTune);
 	p_freqBox->pack_start(*m_scaleTune);
 
 	slot<void> p_slotSubharmonic = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_semitone), mem_fun(*this,  &Vco2CVGUI::get_semitone));
-	m_scaleSemitone = new LabeledDial("Semitone", p_slotSubharmonic, p_semitone, 0, 12, NORMAL, 1, 0);
+	m_scaleSemitone = new LabeledDial("Semitone", p_semitone, 0, 12, NORMAL, 1, 0);
+	m_scaleSemitone->signal_value_changed().connect(p_slotSubharmonic);
 	p_freqBox->pack_start(*m_scaleSemitone);
 
 	p_freqFrame->add(*p_freqBox);
@@ -64,19 +67,23 @@ Vco2CVGUI::Vco2CVGUI(const char* plugin_uri)
 	HBox *p_pwpBox = manage(new HBox(true));
 
 	slot<void> p_slotPw0 = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_pw0), mem_fun(*this,  &Vco2CVGUI::get_pw));
-	m_scalePW = new LabeledDial("PW", p_slotPw0, p_pw0, 0.1, 0.9, NORMAL, 0.001, 3);
+	m_scalePW = new LabeledDial("PW", p_pw0, 0.1, 0.9, NORMAL, 0.001, 3);
+	m_scalePW->signal_value_changed().connect(p_slotPw0);
 	p_pwpBox->pack_start(*m_scalePW);
 
 	slot<void> p_slotPwGain = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_pwGain), mem_fun(*this,  &Vco2CVGUI::get_pwGain));
-	m_scalePWGain = new LabeledDial("PW Gain", p_slotPwGain, p_pwGain, 0, 1, LOG, 0.0001, 4);
+	m_scalePWGain = new LabeledDial("PW Gain", p_pwGain, 0, 1, LOG, 0.0001, 4);
+	m_scalePWGain->signal_value_changed().connect(p_slotPwGain);
 	p_pwpBox->pack_start(*m_scalePWGain);
 
 	slot<void> p_slotEdge = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_edge), mem_fun(*this,  &Vco2CVGUI::get_edge));
-	m_scaleEdge = new LabeledDial("Edge", p_slotEdge, p_edge, 1, 10, NORMAL, 0.05, 2);
+	m_scaleEdge = new LabeledDial("Edge", p_edge, 1, 10, NORMAL, 0.05, 2);
+	m_scaleEdge->signal_value_changed().connect(p_slotEdge);
 	p_pwpBox->pack_start(*m_scaleEdge);
 
 	slot<void> p_slotPhi0 = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_phi0), mem_fun(*this,  &Vco2CVGUI::get_phi0));
-	m_scalePhi0 = new LabeledDial("Phi0", p_slotPhi0, p_phi0, 0, 6.28, LOG, 0.0001, 4);
+	m_scalePhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, LOG, 0.0001, 4);
+	m_scalePhi0->signal_value_changed().connect(p_slotPhi0);
 	p_pwpBox->pack_start(*m_scalePhi0);
 
 	p_pwpFrame->add(*p_pwpBox);
@@ -89,11 +96,13 @@ Vco2CVGUI::Vco2CVGUI(const char* plugin_uri)
 	HBox *p_modulationBox = manage(new HBox(true));
 
 	slot<void> p_slotExpFMGain = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_expFMGain), mem_fun(*this,  &Vco2CVGUI::get_expFMGain));
-	m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_slotExpFMGain, p_expFMGain, 0, 10, LOG, 0.001, 3);
+	m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.001, 3);
+	m_scaleExpFMGain->signal_value_changed().connect(p_slotExpFMGain);
 	p_modulationBox->pack_start(*m_scaleExpFMGain);
 
 	slot<void> p_slotLinFMGain = compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_linFMGain), mem_fun(*this,  &Vco2CVGUI::get_linFMGain));
-	m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_slotLinFMGain, p_linFMGain, 0, 10, LOG, 0.001, 3);
+	m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_linFMGain, 0, 10, LOG, 0.001, 3);
+	m_scaleLinFMGain->signal_value_changed().connect(p_slotLinFMGain);
 	p_modulationBox->pack_start(*m_scaleLinFMGain);
 
 	p_modulationFrame->add(*p_modulationBox);

@@ -20,15 +20,18 @@ AdGUI::AdGUI(const std::string& URI)
 	VBox *p_detuneBox = manage(new VBox(false));
 
 	slot<void> p_slotDetuneAmplitude = compose(bind<0>(mem_fun(*this, &AdGUI::write_control), p_detuneAmplitude), mem_fun(*this,  &AdGUI::get_detuneAmplitude));
-	m_dialDetuneAmplitude = new LabeledDial("Amplitude", p_slotDetuneAmplitude, p_detuneAmplitude, 0, 0.084, LOG, 0.00001, 5);
+	m_dialDetuneAmplitude = new LabeledDial("Amplitude", p_detuneAmplitude, 0, 0.084, LOG, 0.00001, 5);
+	m_dialDetuneAmplitude->signal_value_changed().connect(p_slotDetuneAmplitude);
 	p_detuneBox->pack_start(*m_dialDetuneAmplitude);
 
 	slot<void> p_slotDetuneModulation = compose(bind<0>(mem_fun(*this, &AdGUI::write_control), p_detuneModulation), mem_fun(*this,  &AdGUI::get_detuneModulation));
-	m_dialDetuneModulation = new LabeledDial("Modulation", p_slotDetuneModulation, p_detuneModulation, 0.01, 1, LOG, 0.0001, 4);
+	m_dialDetuneModulation = new LabeledDial("Modulation", p_detuneModulation, 0.01, 1, LOG, 0.0001, 4);
+	m_dialDetuneModulation->signal_value_changed().connect(p_slotDetuneModulation);
 	p_detuneBox->pack_start(*m_dialDetuneModulation);
 
 	slot<void> p_slotDetuneRate = compose(bind<0>(mem_fun(*this, &AdGUI::write_control), p_detuneRate), mem_fun(*this,  &AdGUI::get_detuneRate));
-	m_dialDetuneRate = new LabeledDial("Rate", p_slotDetuneRate, p_detuneRate, 0.01, 10, LOG, 0.0001, 4);
+	m_dialDetuneRate = new LabeledDial("Rate", p_detuneRate, 0.01, 10, LOG, 0.0001, 4);
+	m_dialDetuneRate->signal_value_changed().connect(p_slotDetuneRate);
 	p_detuneBox->pack_start(*m_dialDetuneRate);
 
 	p_detuneFrame->add(*p_detuneBox);
@@ -40,15 +43,18 @@ AdGUI::AdGUI(const std::string& URI)
 	VBox *p_driftBox = manage(new VBox(false));
 
 	slot<void> p_slotDriftAmplitude = compose(bind<0>(mem_fun(*this, &AdGUI::write_control), p_driftAmplitude), mem_fun(*this,  &AdGUI::get_driftAmplitude));
-	m_dialDriftAmplitude = new LabeledDial("Amplitude", p_slotDriftAmplitude, p_driftAmplitude, 0, 0.084, LOG, 0.00001, 5);
+	m_dialDriftAmplitude = new LabeledDial("Amplitude", p_driftAmplitude, 0, 0.084, LOG, 0.00001, 5);
+	m_dialDriftAmplitude->signal_value_changed().connect(p_slotDriftAmplitude);
 	p_driftBox->pack_start(*m_dialDriftAmplitude);
 
 	slot<void> p_slotDriftModulation = compose(bind<0>(mem_fun(*this, &AdGUI::write_control), p_driftModulation), mem_fun(*this,  &AdGUI::get_driftModulation));
-	m_dialDriftModulation = new LabeledDial("Modulation", p_slotDriftModulation, p_driftModulation, 0.01, 1, LOG, 0.0001, 4);
+	m_dialDriftModulation = new LabeledDial("Modulation", p_driftModulation, 0.01, 1, LOG, 0.0001, 4);
+	m_dialDriftModulation->signal_value_changed().connect(p_slotDriftModulation);
 	p_driftBox->pack_start(*m_dialDriftModulation);
 
 	slot<void> p_slotDriftRate = compose(bind<0>(mem_fun(*this, &AdGUI::write_control), p_driftRate), mem_fun(*this,  &AdGUI::get_driftRate));
-	m_dialDriftRate = new LabeledDial("Rate", p_slotDriftRate, p_driftRate, 0.01, 10, LOG, 0.0001, 4);
+	m_dialDriftRate = new LabeledDial("Rate", p_driftRate, 0.01, 10, LOG, 0.0001, 4);
+	m_dialDriftRate->signal_value_changed().connect(p_slotDriftRate);
 	p_driftBox->pack_start(*m_dialDriftRate);
 
 	p_driftFrame->add(*p_driftBox);

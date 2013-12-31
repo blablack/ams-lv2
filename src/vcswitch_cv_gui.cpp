@@ -16,7 +16,8 @@ VCSwitchCVGUI::VCSwitchCVGUI(const std::string& URI)
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
 	slot<void> p_slotSwitchLevel = compose(bind<0>(mem_fun(*this, &VCSwitchCVGUI::write_control), p_switchlevel), mem_fun(*this,  &VCSwitchCVGUI::get_switchLevel));
-	m_dialSwitchLevel = new LabeledDial("Switch Level", p_slotSwitchLevel, p_switchlevel, 0, 10, LOG, 0.0001, 4);
+	m_dialSwitchLevel = new LabeledDial("Switch Level", p_switchlevel, 0, 10, LOG, 0.0001, 4);
+	m_dialSwitchLevel->signal_value_changed().connect(p_slotSwitchLevel);
 	p_background->add(*m_dialSwitchLevel);
 
 	p_background->set_size_request(100, 80);

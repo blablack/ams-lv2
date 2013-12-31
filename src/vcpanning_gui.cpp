@@ -34,11 +34,13 @@ VcPanningGUI::VcPanningGUI(const std::string& URI)
 	HBox *p_dials = manage (new HBox(true));
 
 	slot<void> p_slotOffset = compose(bind<0>(mem_fun(*this, &VcPanningGUI::write_control), p_panOffset), mem_fun(*this,  &VcPanningGUI::get_panOffset));
-	m_scalePanOffset = new LabeledDial("Pan Offset", p_slotOffset, p_panOffset, -1, 1, NORMAL, 0.01, 2);
+	m_scalePanOffset = new LabeledDial("Pan Offset", p_panOffset, -1, 1, NORMAL, 0.01, 2);
+	m_scalePanOffset->signal_value_changed().connect(p_slotOffset);
 	p_dials->pack_start(*m_scalePanOffset);
 
 	slot<void> p_slotGain = compose(bind<0>(mem_fun(*this, &VcPanningGUI::write_control), p_panGain), mem_fun(*this, &VcPanningGUI::get_panGain));
-	m_scalePanGain = new LabeledDial("Pain Gain", p_slotGain, p_panGain, 0, 2, LOG, 0.0001, 4);
+	m_scalePanGain = new LabeledDial("Pain Gain", p_panGain, 0, 2, LOG, 0.0001, 4);
+	m_scalePanGain->signal_value_changed().connect(p_slotGain);
 	p_dials->pack_start(*m_scalePanGain);
 
 	p_mainWidget->pack_start(*p_dials);

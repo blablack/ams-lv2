@@ -16,7 +16,8 @@ AmpGUI::AmpGUI(const std::string& URI)
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
 	slot<void> p_slotGain = compose(bind<0>(mem_fun(*this, &AmpGUI::write_control), p_gain), mem_fun(*this,  &AmpGUI::get_gain));
-	m_dialGain = new LabeledDial("Gain", p_slotGain, p_gain, -10, 10, NORMAL, 0.05, 2);
+	m_dialGain = new LabeledDial("Gain", p_gain, -10, 10, NORMAL, 0.05, 2);
+	m_dialGain->signal_value_changed().connect(p_slotGain);
 	p_background->add(*m_dialGain);
 
 	p_background->set_size_request(100, 80);

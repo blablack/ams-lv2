@@ -15,7 +15,7 @@ using namespace Gtk;
 class LabeledDial: public Gtk::EventBox
 {
 	public:
-		LabeledDial(const std::string TextLabel, const sigc::slot<void> toggle_slot, double Value, double Min, double Max, DialType Type, double Step, int NbDigit);
+		LabeledDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step, int NbDigit);
 		virtual ~LabeledDial();
 		bool Redraw();
 
@@ -24,6 +24,7 @@ class LabeledDial: public Gtk::EventBox
 		void set_value(float value);
 		void disable();
 		void enable();
+		Glib::SignalProxy0<void> signal_value_changed();
 
 	private:
 		Glib::ustring float_to_fraction(float value);

@@ -25,11 +25,13 @@ CVSGUI::CVSGUI(const std::string& URI)
 	HBox *p_cv1Box = manage(new HBox(false));
 
 	slot<void> p_slotCV1 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv1), mem_fun(*this,  &CVSGUI::get_cv1));
-	m_dialCV1 = new LabeledDial("CV", p_slotCV1, p_cv1, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV1 = new LabeledDial("CV", p_cv1, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV1->signal_value_changed().connect(p_slotCV1);
 	p_cv1Box->pack_start(*m_dialCV1);
 
 	slot<void> p_slotCVFine1 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine1), mem_fun(*this,  &CVSGUI::get_cvFine1));
-	m_dialCVFine1 = new LabeledDial("Fine", p_slotCVFine1, p_cvFine1, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine1 = new LabeledDial("Fine", p_cvFine1, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine1->signal_value_changed().connect(p_slotCVFine1);
 	p_cv1Box->pack_start(*m_dialCVFine1);
 
 	p_cv1Frame->add(*p_cv1Box);
@@ -46,11 +48,13 @@ CVSGUI::CVSGUI(const std::string& URI)
 	HBox *p_cv2Box = manage(new HBox(false));
 
 	slot<void> p_slotCV2 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv2), mem_fun(*this,  &CVSGUI::get_cv2));
-	m_dialCV2 = new LabeledDial("CV", p_slotCV2, p_cv2, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV2 = new LabeledDial("CV", p_cv2, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV2->signal_value_changed().connect(p_slotCV2);
 	p_cv2Box->pack_start(*m_dialCV2);
 
 	slot<void> p_slotCVFine2 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine2), mem_fun(*this,  &CVSGUI::get_cvFine2));
-	m_dialCVFine2 = new LabeledDial("Fine", p_slotCVFine2, p_cvFine2, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine2 = new LabeledDial("Fine", p_cvFine2, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine2->signal_value_changed().connect(p_slotCVFine2);
 	p_cv2Box->pack_start(*m_dialCVFine2);
 
 	p_cv2Frame->add(*p_cv2Box);
@@ -67,11 +71,13 @@ CVSGUI::CVSGUI(const std::string& URI)
 	HBox *p_cv3Box = manage(new HBox(false));
 
 	slot<void> p_slotCV3 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv3), mem_fun(*this,  &CVSGUI::get_cv3));
-	m_dialCV3 = new LabeledDial("CV", p_slotCV3, p_cv3, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV3 = new LabeledDial("CV", p_cv3, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV3->signal_value_changed().connect(p_slotCV3);
 	p_cv3Box->pack_start(*m_dialCV3);
 
 	slot<void> p_slotCVFine3 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine3), mem_fun(*this,  &CVSGUI::get_cvFine3));
-	m_dialCVFine3 = new LabeledDial("Fine", p_slotCVFine3, p_cvFine3, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine3 = new LabeledDial("Fine", p_cvFine3, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine3->signal_value_changed().connect(p_slotCVFine3);
 	p_cv3Box->pack_start(*m_dialCVFine3);
 
 	p_cv3Frame->add(*p_cv3Box);
@@ -88,11 +94,13 @@ CVSGUI::CVSGUI(const std::string& URI)
 	HBox *p_cv4Box = manage(new HBox(false));
 
 	slot<void> p_slotCV4 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv4), mem_fun(*this,  &CVSGUI::get_cv4));
-	m_dialCV4 = new LabeledDial("CV", p_slotCV4, p_cv4, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV4 = new LabeledDial("CV", p_cv4, 0, 5, NORMAL, 0.01, 2);
+	m_dialCV4->signal_value_changed().connect(p_slotCV4);
 	p_cv4Box->pack_start(*m_dialCV4);
 
 	slot<void> p_slotCVFine4 = compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine4), mem_fun(*this,  &CVSGUI::get_cvFine4));
-	m_dialCVFine4 = new LabeledDial("Fine", p_slotCVFine4, p_cvFine4, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine4 = new LabeledDial("Fine", p_cvFine4, -0.5, 0.5, NORMAL, 0.001, 3);
+	m_dialCVFine4->signal_value_changed().connect(p_slotCVFine4);
 	p_cv4Box->pack_start(*m_dialCVFine4);
 
 	p_cv4Frame->add(*p_cv4Box);

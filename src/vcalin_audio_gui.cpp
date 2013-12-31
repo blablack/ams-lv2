@@ -25,11 +25,13 @@ VCALinAudioGUI::VCALinAudioGUI(const std::string& URI)
 	HBox *p_gainBox = manage(new HBox(true));
 
 	slot<void> p_slotGain1 = compose(bind<0>(mem_fun(*this, &VCALinAudioGUI::write_control), p_gain1), mem_fun(*this,  &VCALinAudioGUI::get_gain1));
-	m_dialGain1 = new LabeledDial("Gain Offset", p_slotGain1, p_gain1, 0, 1, NORMAL, 0.01, 2);
+	m_dialGain1 = new LabeledDial("Gain Offset", p_gain1, 0, 1, NORMAL, 0.01, 2);
+	m_dialGain1->signal_value_changed().connect(p_slotGain1);
 	p_gainBox->pack_start(*m_dialGain1);
 
 	slot<void> p_slotGain2 = compose(bind<0>(mem_fun(*this, &VCALinAudioGUI::write_control), p_gain2), mem_fun(*this,  &VCALinAudioGUI::get_gain2));
-	m_dialGain2 = new LabeledDial("2nd Gain Boost", p_slotGain2, p_gain2, 0, 1, NORMAL, 0.01, 2);
+	m_dialGain2 = new LabeledDial("2nd Gain Boost", p_gain2, 0, 1, NORMAL, 0.01, 2);
+	m_dialGain2->signal_value_changed().connect(p_slotGain2);
 	p_gainBox->pack_start(*m_dialGain2);
 
 	p_gainFrame->add(*p_gainBox);
@@ -42,11 +44,13 @@ VCALinAudioGUI::VCALinAudioGUI(const std::string& URI)
 	HBox *p_volumeBox = manage(new HBox(true));
 
 	slot<void> p_slotIn1 = compose(bind<0>(mem_fun(*this, &VCALinAudioGUI::write_control), p_in1), mem_fun(*this,  &VCALinAudioGUI::get_in1));
-	m_dialIn1 = new LabeledDial("In 1", p_slotIn1, p_in1, 0, 2, NORMAL, 0.01, 2);
+	m_dialIn1 = new LabeledDial("In 1", p_in1, 0, 2, NORMAL, 0.01, 2);
+	m_dialIn1->signal_value_changed().connect(p_slotIn1);
 	p_volumeBox->pack_start(*m_dialIn1);
 
 	slot<void> p_slotIn2 = compose(bind<0>(mem_fun(*this, &VCALinAudioGUI::write_control), p_in2), mem_fun(*this,  &VCALinAudioGUI::get_in2));
-	m_dialIn2 = new LabeledDial("In 2", p_slotIn2, p_in2, 0, 2, NORMAL, 0.01, 2);
+	m_dialIn2 = new LabeledDial("In 2", p_in2, 0, 2, NORMAL, 0.01, 2);
+	m_dialIn2->signal_value_changed().connect(p_slotIn2);
 	p_volumeBox->pack_start(*m_dialIn2);
 
 	p_inFrame->add(*p_volumeBox);
@@ -55,7 +59,8 @@ VCALinAudioGUI::VCALinAudioGUI(const std::string& URI)
 
 
 	slot<void> p_slotOutputLevel = compose(bind<0>(mem_fun(*this, &VCALinAudioGUI::write_control), p_outputLevel), mem_fun(*this,  &VCALinAudioGUI::get_outputLevel));
-	m_dialOutputLevel = new LabeledDial("Output Level", p_slotOutputLevel, p_outputLevel, 0, 2, NORMAL, 0.01, 2);
+	m_dialOutputLevel = new LabeledDial("Output Level", p_outputLevel, 0, 2, NORMAL, 0.01, 2);
+	m_dialOutputLevel->signal_value_changed().connect(p_slotOutputLevel);
 	p_mainWidget->pack_start(*m_dialOutputLevel);
 
 

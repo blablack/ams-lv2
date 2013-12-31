@@ -13,7 +13,7 @@ enum DialType { NORMAL, LOG, DIVIDER };
 class Dial: public Gtk::DrawingArea
 {
 	public:
-		Dial(const sigc::slot<void> toggle_slot, double Value, double Min, double Max, DialType Type, double Step, int NbDigit);
+		Dial(double Value, double Min, double Max, DialType Type, double Step, int NbDigit);
 		virtual ~Dial();
 		bool Redraw();
 
@@ -22,6 +22,7 @@ class Dial: public Gtk::DrawingArea
 		void set_value(float value);
 		void disable();
 		void enable();
+		Glib::SignalProxy0<void> signal_value_changed();
 
 	protected:
 		virtual bool on_expose_event(GdkEventExpose* event);

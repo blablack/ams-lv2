@@ -21,7 +21,8 @@ Mixer4ChCVGUI::Mixer4ChCVGUI(const std::string& URI)
 
 
 	slot<void> p_slotGain = compose(bind<0>(mem_fun(*this, &Mixer4ChCVGUI::write_control), p_gain), mem_fun(*this,  &Mixer4ChCVGUI::get_gain));
-	m_dialGain = new LabeledDial("Gain", p_slotGain, p_gain, 0, 2, NORMAL, 0.01, 2);
+	m_dialGain = new LabeledDial("Gain", p_gain, 0, 2, NORMAL, 0.01, 2);
+	m_dialGain->signal_value_changed().connect(p_slotGain);
 	p_mainWidget->pack_start(*m_dialGain);
 
 
@@ -31,19 +32,23 @@ Mixer4ChCVGUI::Mixer4ChCVGUI(const std::string& URI)
 	Table *p_volumesBox = manage(new Table(2, 2, true));
 
 	slot<void> p_slotVolume1 = compose(bind<0>(mem_fun(*this, &Mixer4ChCVGUI::write_control), p_volume1), mem_fun(*this,  &Mixer4ChCVGUI::get_volume1));
-	m_dialVolume1 = new LabeledDial("Volume 1", p_slotVolume1, p_volume1, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume1 = new LabeledDial("Volume 1", p_volume1, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume1->signal_value_changed().connect(p_slotVolume1);
 	p_volumesBox->attach(*m_dialVolume1, 0, 1, 0, 1);
 
 	slot<void> p_slotVolume2 = compose(bind<0>(mem_fun(*this, &Mixer4ChCVGUI::write_control), p_volume2), mem_fun(*this,  &Mixer4ChCVGUI::get_volume2));
-	m_dialVolume2 = new LabeledDial("Volume 2", p_slotVolume2, p_volume2, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume2 = new LabeledDial("Volume 2", p_volume2, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume2->signal_value_changed().connect(p_slotVolume2);
 	p_volumesBox->attach(*m_dialVolume2, 1, 2, 0, 1);
 
 	slot<void> p_slotVolume3 = compose(bind<0>(mem_fun(*this, &Mixer4ChCVGUI::write_control), p_volume3), mem_fun(*this,  &Mixer4ChCVGUI::get_volume3));
-	m_dialVolume3 = new LabeledDial("Volume 3", p_slotVolume3, p_volume3, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume3 = new LabeledDial("Volume 3", p_volume3, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume3->signal_value_changed().connect(p_slotVolume3);
 	p_volumesBox->attach(*m_dialVolume3, 0, 1, 1, 2);
 
 	slot<void> p_slotVolume4 = compose(bind<0>(mem_fun(*this, &Mixer4ChCVGUI::write_control), p_volume4), mem_fun(*this,  &Mixer4ChCVGUI::get_volume4));
-	m_dialVolume4 = new LabeledDial("Volume 4", p_slotVolume4, p_volume4, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume4 = new LabeledDial("Volume 4", p_volume4, 0, 2, NORMAL, 0.01, 2);
+	m_dialVolume4->signal_value_changed().connect(p_slotVolume4);
 	p_volumesBox->attach(*m_dialVolume4, 1, 2, 1, 2);
 
 	p_volumesFrame->add(*p_volumesBox);

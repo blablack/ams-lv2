@@ -38,14 +38,16 @@ LfoFreqGUI::LfoFreqGUI(const std::string& URI)
 	HBox *p_freqBox = manage(new HBox(true));
 
 	slot<void> p_slotTempo = compose(bind<0>(mem_fun(*this, &LfoFreqGUI::write_control), p_freq), mem_fun(*this, &LfoFreqGUI::get_tempo));
-	m_dialTempo = new LabeledDial("Freq", p_slotTempo, p_freq, 0.0001, 100, LOG, 0.001, 4);
+	m_dialTempo = new LabeledDial("Freq", p_freq, 0.0001, 100, LOG, 0.001, 4);
+	m_dialTempo->signal_value_changed().connect(p_slotTempo);
 	p_freqBox->pack_start(*m_dialTempo);
 
 	p_freqFrame->add(*p_freqBox);
 	p_mainWidget->pack_start(*p_freqFrame);
 
 	slot<void> p_slotPhi0 = compose(bind<0> (mem_fun(*this, &LfoFreqGUI::write_control), p_phi0), mem_fun(*this, &LfoFreqGUI::get_phi0));
-	m_dialPhi0 = new LabeledDial("Phi0", p_slotPhi0, p_phi0, 0, 6.28, NORMAL, 0.01, 2);
+	m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01, 2);
+	m_dialPhi0->signal_value_changed().connect(p_slotPhi0);
 	p_mainWidget->pack_start(*m_dialPhi0);
 
 	p_mainWidget->set_size_request(160, 260);

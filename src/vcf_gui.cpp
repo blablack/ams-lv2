@@ -39,7 +39,8 @@ VcfGUI::VcfGUI(const std::string& URI)
 
 
 	slot<void> p_slotGain = compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_inputGain), mem_fun(*this,  &VcfGUI::get_inputGain));
-	m_scaleInputGain = new LabeledDial("Input Gain", p_slotGain, p_inputGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleInputGain = new LabeledDial("Input Gain", p_inputGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleInputGain->signal_value_changed().connect(p_slotGain);
 	p_mainWidget->pack_start(*m_scaleInputGain);
 
 
@@ -49,15 +50,18 @@ VcfGUI::VcfGUI(const std::string& URI)
 	HBox *p_freqBox = manage(new HBox(true));
 
 	slot<void> p_slotFrequency = compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_freq), mem_fun(*this,  &VcfGUI::get_frequency));
-	m_scaleFrequency = new LabeledDial("Frequency", p_slotFrequency, p_freq, 0, 10, LOG, 0.0001, 4);
+	m_scaleFrequency = new LabeledDial("Frequency", p_freq, 0, 10, LOG, 0.0001, 4);
+	m_scaleFrequency->signal_value_changed().connect(p_slotFrequency);
 	p_freqBox->pack_start(*m_scaleFrequency);
 
 	slot<void> p_slotExpFMGain = compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_expFMGain), mem_fun(*this,  &VcfGUI::get_expFMGain));
-	m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_slotExpFMGain, p_expFMGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleExpFMGain->signal_value_changed().connect(p_slotExpFMGain);
 	p_freqBox->pack_start(*m_scaleExpFMGain);
 
 	slot<void> p_slotLinFMGain = compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_linFMGain), mem_fun(*this,  &VcfGUI::get_linFMGain));
-	m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_slotLinFMGain, p_linFMGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_linFMGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleLinFMGain->signal_value_changed().connect(p_slotLinFMGain);
 	p_freqBox->pack_start(*m_scaleLinFMGain);
 
 	p_freqFrame->add(*p_freqBox);
@@ -70,11 +74,13 @@ VcfGUI::VcfGUI(const std::string& URI)
 	HBox *p_resBox = manage(new HBox(true));
 
 	slot<void> p_slotResonance = compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_resonance), mem_fun(*this,  &VcfGUI::get_resonance));
-	m_scaleResonance = new LabeledDial("Resonance", p_slotResonance, p_resonance, 0.01, 1, LOG, 0.0001, 4);
+	m_scaleResonance = new LabeledDial("Resonance", p_resonance, 0.01, 1, LOG, 0.0001, 4);
+	m_scaleResonance->signal_value_changed().connect(p_slotResonance);
 	p_resBox->pack_start(*m_scaleResonance);
 
 	slot<void> p_slotResonanceGain = compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_resonanceGain), mem_fun(*this,  &VcfGUI::get_resonanceGain));
-	m_scaleResonanceGain = new LabeledDial("Resonance Gain", p_slotResonanceGain, p_resonanceGain, 0, 1, LOG, 0.0001, 4);
+	m_scaleResonanceGain = new LabeledDial("Resonance Gain", p_resonanceGain, 0, 1, LOG, 0.0001, 4);
+	m_scaleResonanceGain->signal_value_changed().connect(p_slotResonanceGain);
 	p_resBox->pack_start(*m_scaleResonanceGain);
 
 	p_resFrame->add(*p_resBox);

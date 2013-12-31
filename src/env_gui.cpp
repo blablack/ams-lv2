@@ -28,19 +28,23 @@ EnvGUI::EnvGUI(const std::string& URI)
 	HBox *p_adsrWidget = manage (new HBox(false));
 
 	slot<void> p_slotAttack = compose(bind<0>(mem_fun(*this, &EnvGUI::write_control), p_attack), mem_fun(*this, &EnvGUI::get_attack));
-	m_scaleAttack = new LabeledDial("Attack", p_slotAttack, p_attack, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttack = new LabeledDial("Attack", p_attack, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttack->signal_value_changed().connect(p_slotAttack);
 	p_adsrWidget->pack_start(*m_scaleAttack);
 
 	slot<void> p_slotDecay = compose(bind<0> (mem_fun(*this, &EnvGUI::write_control), p_decay), mem_fun(*this, &EnvGUI::get_decay));
-	m_scaleDecay = new LabeledDial("Decay", p_slotDecay, p_decay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDecay = new LabeledDial("Decay", p_decay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDecay->signal_value_changed().connect(p_slotDecay);
 	p_adsrWidget->pack_start(*m_scaleDecay);
 
 	slot<void> p_slotSustain = compose(bind<0> (mem_fun(*this, &EnvGUI::write_control), p_sustain), mem_fun(*this, &EnvGUI::get_sustain));
-	m_scaleSustain = new LabeledDial("Sustain", p_slotSustain, p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleSustain = new LabeledDial("Sustain", p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleSustain->signal_value_changed().connect(p_slotSustain);
 	p_adsrWidget->pack_start(*m_scaleSustain);
 
 	slot<void> p_slotRelease = compose(bind<0> (mem_fun(*this, &EnvGUI::write_control), p_release), mem_fun(*this, &EnvGUI::get_release));
-	m_scaleRelease = new LabeledDial("Release", p_slotRelease, p_release, 0, 1, NORMAL, 0.01, 2);
+	m_scaleRelease = new LabeledDial("Release", p_release, 0, 1, NORMAL, 0.01, 2);
+	m_scaleRelease->signal_value_changed().connect(p_slotRelease);
 	p_adsrWidget->pack_start(*m_scaleRelease);
 
 	p_adsrFrame->add(*p_adsrWidget);
@@ -57,15 +61,18 @@ EnvGUI::EnvGUI(const std::string& URI)
 	HBox *p_dhtWidget = manage (new HBox(false));
 
 	slot<void> p_slotDelay = compose(bind<0>(mem_fun(*this, &EnvGUI::write_control), p_delay), mem_fun(*this, &EnvGUI::get_delay));
-	m_scaleDelay = new LabeledDial("Delay", p_slotDelay, p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay->signal_value_changed().connect(p_slotDelay);
 	p_dhtWidget->pack_start(*m_scaleDelay);
 
 	slot<void> p_slotHold = compose(bind<0> (mem_fun(*this, &EnvGUI::write_control), p_hold), mem_fun(*this, &EnvGUI::get_hold));
-	m_scaleHold = new LabeledDial("Hold", p_slotHold, p_hold, 0, 1, NORMAL, 0.01, 2);
+	m_scaleHold = new LabeledDial("Hold", p_hold, 0, 1, NORMAL, 0.01, 2);
+	m_scaleHold->signal_value_changed().connect(p_slotHold);
 	p_dhtWidget->pack_start(*m_scaleHold);
 
 	slot<void> p_slotTimescale = compose(bind<0> (mem_fun(*this, &EnvGUI::write_control), p_timeScale), mem_fun(*this, &EnvGUI::get_timescale));
-	m_scaleTimeScale = new LabeledDial("Time Scale", p_slotTimescale, p_timeScale, 0, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale->signal_value_changed().connect(p_slotTimescale);
 	p_dhtWidget->pack_start(*m_scaleTimeScale);
 
 	p_dhtFrame->add(*p_dhtWidget);

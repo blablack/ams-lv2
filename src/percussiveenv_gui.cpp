@@ -28,11 +28,13 @@ PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 	HBox *p_adsrWidget = manage (new HBox(false));
 
 	slot<void> p_slotAttack = compose(bind<0>(mem_fun(*this, &PercussiveEnvGUI::write_control), p_attack), mem_fun(*this, &PercussiveEnvGUI::get_attack));
-	m_scaleAttack = new LabeledDial("Attack", p_slotAttack, p_attack, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttack = new LabeledDial("Attack", p_attack, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttack->signal_value_changed().connect(p_slotAttack);
 	p_adsrWidget->pack_start(*m_scaleAttack);
 
 	slot<void> p_slotDecay = compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_decay), mem_fun(*this, &PercussiveEnvGUI::get_decay));
-	m_scaleDecay = new LabeledDial("Decay", p_slotDecay, p_decay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDecay = new LabeledDial("Decay", p_decay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDecay->signal_value_changed().connect(p_slotDecay);
 	p_adsrWidget->pack_start(*m_scaleDecay);
 
 	p_adsrFrame->add(*p_adsrWidget);
@@ -46,18 +48,21 @@ PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 
 	Frame *p_dhtFrame = manage (new Frame("Delay / Hold / Time Scale"));
 	p_dhtFrame->set_shadow_type(Gtk::SHADOW_NONE);
-		HBox *p_dhtWidget = manage (new HBox(false));
+	HBox *p_dhtWidget = manage (new HBox(false));
 
 	slot<void> p_slotDelay = compose(bind<0>(mem_fun(*this, &PercussiveEnvGUI::write_control), p_delay), mem_fun(*this, &PercussiveEnvGUI::get_delay));
-	m_scaleDelay = new LabeledDial("Delay", p_slotDelay, p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay->signal_value_changed().connect(p_slotDelay);
 	p_dhtWidget->pack_start(*m_scaleDelay);
 
 	slot<void> p_slotHold = compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_hold), mem_fun(*this, &PercussiveEnvGUI::get_hold));
-	m_scaleHold = new LabeledDial("Hold", p_slotHold, p_hold, 0, 1, NORMAL, 0.01, 2);
+	m_scaleHold = new LabeledDial("Hold", p_hold, 0, 1, NORMAL, 0.01, 2);
+	m_scaleHold->signal_value_changed().connect(p_slotHold);
 	p_dhtWidget->pack_start(*m_scaleHold);
 
 	slot<void> p_slotTimescale = compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_timeScale), mem_fun(*this, &PercussiveEnvGUI::get_timescale));
-	m_scaleTimeScale = new LabeledDial("Time Scale", p_slotTimescale, p_timeScale, 0, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale->signal_value_changed().connect(p_slotTimescale);
 	p_dhtWidget->pack_start(*m_scaleTimeScale);
 
 	p_dhtFrame->add(*p_dhtWidget);

@@ -31,7 +31,8 @@ VCToHZGUI::VCToHZGUI(const std::string& URI)
 	p_mainWidget->pack_start(*m_comboConversionMode);
 
 	slot<void> p_slotOctOffset = compose(bind<0>(mem_fun(*this, &VCToHZGUI::write_control), p_octaveOffset), mem_fun(*this, &VCToHZGUI::get_octaveOffset));
-	m_dialOctaveOffset = new LabeledDial("Octave Offset", p_slotOctOffset, p_octaveOffset, -3, 3, NORMAL, 0.01, 2);
+	m_dialOctaveOffset = new LabeledDial("Octave Offset", p_octaveOffset, -3, 3, NORMAL, 0.01, 2);
+	m_dialOctaveOffset->signal_value_changed().connect(p_slotOctOffset);
 	p_mainWidget->pack_start(*m_dialOctaveOffset);
 
 	p_mainWidget->set_size_request(180, 130);

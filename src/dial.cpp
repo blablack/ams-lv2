@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Dial::Dial(const sigc::slot<void> toggle_slot, double Value, double Min, double Max, DialType Type, double Step, int NbDigit)
+Dial::Dial(double Value, double Min, double Max, DialType Type, double Step, int NbDigit)
 {
 	m_enabled = true;
 	m_type = Type;
@@ -22,7 +22,7 @@ Dial::Dial(const sigc::slot<void> toggle_slot, double Value, double Min, double 
 	set_size_request(48, 48);
 
 	m_adj->signal_value_changed().connect(mem_fun(*this, &Dial::value_changed));
-	m_adj->signal_value_changed().connect(toggle_slot);
+	//m_adj->signal_value_changed().connect(toggle_slot);
 
 	m_rounder = 1;
 	for(int i = 0 ; i<NbDigit ; i++)
@@ -33,6 +33,11 @@ Dial::Dial(const sigc::slot<void> toggle_slot, double Value, double Min, double 
 
 Dial::~Dial()
 {
+}
+
+Glib::SignalProxy0<void> Dial::signal_value_changed()
+{
+    return m_adj->signal_value_changed();
 }
 
 void Dial::enable()

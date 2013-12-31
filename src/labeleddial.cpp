@@ -5,7 +5,7 @@
 
 using namespace std;
 
-LabeledDial::LabeledDial(const std::string TextLabel, const sigc::slot<void> toggle_slot, double Value, double Min, double Max, DialType Type, double Step, int NbDigit)
+LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step, int NbDigit)
 {
 	m_type = Type;
 	Gdk::Color* color = new  Gdk::Color();
@@ -17,7 +17,9 @@ LabeledDial::LabeledDial(const std::string TextLabel, const sigc::slot<void> tog
 	Label *p_label = manage (new Label(TextLabel));
 	p_mainWidget->pack_start(*p_label);
 
-	m_dial = new Dial(toggle_slot, Value, Min, Max, Type, Step, NbDigit);
+	m_dial = new Dial(Value, Min, Max, Type, Step, NbDigit);
+
+	m_dial->signal_value_changed().connect(mem_fun(*this, &LabeledDial::value_changed));
 
 	p_mainWidget->pack_start(*m_dial);
 
@@ -36,6 +38,11 @@ LabeledDial::LabeledDial(const std::string TextLabel, const sigc::slot<void> tog
 
 LabeledDial::~LabeledDial()
 {
+}
+
+Glib::SignalProxy0<void> LabeledDial::signal_value_changed()
+{
+    return m_dial->signal_value_changed();
 }
 
 bool LabeledDial::Redraw()

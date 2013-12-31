@@ -20,9 +20,6 @@ class Noise2CVGUI: public UI<Noise2CVGUI, GtkUI<true>>
 		Gtk::ComboBoxText* m_comboNoiseForm;
 		LabeledDial* m_dialRandomRate;
 		LabeledDial* m_dialRandomLevel;
-
-		float get_randomRate();
-		float get_randomLevel();
 };
 
 #endif

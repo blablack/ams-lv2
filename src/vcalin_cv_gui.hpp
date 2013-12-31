@@ -22,13 +22,6 @@ class VCALinCVGUI: public UI<VCALinCVGUI, GtkUI<true>>
 		LabeledDial* m_dialIn1;
 		LabeledDial* m_dialIn2;
 		LabeledDial* m_dialOutputLevel;
-
-
-		float get_gain1();
-		float get_gain2();
-		float get_in1();
-		float get_in2();
-		float get_outputLevel();
 };
 
 #endif

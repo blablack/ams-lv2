@@ -29,16 +29,7 @@ protected:
 	LabeledDial* m_scaleExpFMGain;
 	LabeledDial* m_scaleLinFMGain;
 
-	int get_waveform();
-	float get_octave();
-	float get_tune();
-	float get_semitone();
-	float get_pw();
-	float get_pwGain();
-	float get_edge();
-	float get_phi0();
-	float get_expFMGain();
-	float get_linFMGain();
+	void get_waveform();
 };
 
 #endif

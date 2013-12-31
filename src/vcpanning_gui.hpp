@@ -21,9 +21,6 @@ class VcPanningGUI: public UI<VcPanningGUI, GtkUI<true>>
 
 		LabeledDial* m_scalePanOffset;
 		LabeledDial* m_scalePanGain;
-
-		float get_panOffset();
-		float get_panGain();
 };
 
 #endif

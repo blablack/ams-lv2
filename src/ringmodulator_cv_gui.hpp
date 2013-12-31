@@ -18,8 +18,6 @@ class RindModulatorCVGUI: public UI<RindModulatorCVGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialGain;
-
-		float get_gain();
 };
 
 #endif

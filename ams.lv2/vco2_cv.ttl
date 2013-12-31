@@ -123,7 +123,7 @@
 		lv2:symbol "tune" ;
 		lv2:name "Tune" ;
 		lv2:default 0 ;
-		lv2:minimum 0 ;
+		lv2:minimum -1 ;
 		lv2:maximum 1 ;
 		pg:group <http://github.com/blablack/ams-lv2/vco2_cv#group_frequency> ;
 	] , [

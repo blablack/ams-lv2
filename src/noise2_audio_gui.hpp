@@ -20,9 +20,6 @@ class Noise2AudioGUI: public UI<Noise2AudioGUI, GtkUI<true>>
 		Gtk::ComboBoxText* m_comboNoiseForm;
 		LabeledDial* m_dialRandomRate;
 		LabeledDial* m_dialRandomLevel;
-
-		float get_randomRate();
-		float get_randomLevel();
 };
 
 #endif

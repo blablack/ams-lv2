@@ -18,8 +18,6 @@ class RindModulatorAudioGUI: public UI<RindModulatorAudioGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialGain;
-
-		float get_gain();
 };
 
 #endif

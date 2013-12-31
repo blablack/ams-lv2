@@ -23,13 +23,6 @@ class AdGUI: public UI<AdGUI, GtkUI<true>>
 		LabeledDial* m_dialDriftAmplitude;
 		LabeledDial* m_dialDriftModulation;
 		LabeledDial* m_dialDriftRate;
-
-		float get_detuneAmplitude();
-		float get_detuneModulation();
-		float get_detuneRate();
-		float get_driftAmplitude();
-		float get_driftModulation();
-		float get_driftRate();
 };
 
 #endif

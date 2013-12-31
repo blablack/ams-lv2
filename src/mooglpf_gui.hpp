@@ -23,13 +23,6 @@ class MoogLPFGUI: public UI<MoogLPFGUI, GtkUI<true>>
 		LabeledDial* m_dialExpFMGain;
 		LabeledDial* m_dialResonance;
 		LabeledDial* m_dialResonanceGain;
-
-		float get_inputGain();
-		float get_outputGain();
-		float get_frequency();
-		float get_expFMGain();
-		float get_resonance();
-		float get_resonanceGain();
 };
 
 #endif

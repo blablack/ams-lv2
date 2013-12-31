@@ -10,55 +10,52 @@
 
 VCToHZGUI::VCToHZGUI(const std::string& URI)
 {
-	EventBox *p_background = manage (new EventBox());
-	Gdk::Color* color = new  Gdk::Color();
-	color->set_rgb(7710, 8738, 9252);
-	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
+    EventBox *p_background = manage (new EventBox());
+    Gdk::Color* color = new  Gdk::Color();
+    color->set_rgb(7710, 8738, 9252);
+    p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-	VBox *p_mainWidget = manage (new VBox(false, 5));
+    VBox *p_mainWidget = manage (new VBox(false, 5));
 
-	Label *p_labelWaveForm = manage (new Label("Conversion Mode"));
-	p_mainWidget->pack_start(*p_labelWaveForm);
+    Label *p_labelWaveForm = manage (new Label("Conversion Mode"));
+    p_mainWidget->pack_start(*p_labelWaveForm);
 
-	m_comboConversionMode = manage (new ComboBoxText());
-	m_comboConversionMode->append_text("V/Octave --> Hz");
-	m_comboConversionMode->append_text("V/Octave --> 0..1, 1=rate/2");
-	m_comboConversionMode->append_text("V/Octave --> 0..1, 1=20000 Hz");
+    m_comboConversionMode = manage (new ComboBoxText());
+    m_comboConversionMode->append_text("V/Octave --> Hz");
+    m_comboConversionMode->append_text("V/Octave --> 0..1, 1=rate/2");
+    m_comboConversionMode->append_text("V/Octave --> 0..1, 1=20000 Hz");
 
-	slot<void> p_slotConversionMode = compose(bind<0> (mem_fun(*this, &VCToHZGUI::write_control), p_conversionMode), mem_fun(*m_comboConversionMode, &ComboBoxText::get_active_row_number));
-	m_comboConversionMode->signal_changed().connect(p_slotConversionMode);
+    m_comboConversionMode->signal_changed().connect(compose(bind<0> (mem_fun(*this, &VCToHZGUI::write_control), p_conversionMode), mem_fun(*m_comboConversionMode, &ComboBoxText::get_active_row_number)));
 
-	p_mainWidget->pack_start(*m_comboConversionMode);
+    p_mainWidget->pack_start(*m_comboConversionMode);
 
-	slot<void> p_slotOctOffset = compose(bind<0>(mem_fun(*this, &VCToHZGUI::write_control), p_octaveOffset), mem_fun(*this, &VCToHZGUI::get_octaveOffset));
-	m_dialOctaveOffset = new LabeledDial("Octave Offset", p_octaveOffset, -3, 3, NORMAL, 0.01, 2);
-	m_dialOctaveOffset->signal_value_changed().connect(p_slotOctOffset);
-	p_mainWidget->pack_start(*m_dialOctaveOffset);
+    m_dialOctaveOffset = new LabeledDial("Octave Offset", p_octaveOffset, -3, 3, NORMAL, 0.01, 2);
+    m_dialOctaveOffset->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCToHZGUI::write_control), p_octaveOffset), mem_fun(*m_dialOctaveOffset, &LabeledDial::get_value)));
+    p_mainWidget->pack_start(*m_dialOctaveOffset);
 
-	p_mainWidget->set_size_request(180, 130);
+    p_mainWidget->set_size_request(180, 130);
 
-	p_background->add(*p_mainWidget);
-	add(*p_background);
+    p_background->add(*p_mainWidget);
+    add(*p_background);
 
-	Gtk::manage(p_mainWidget);
+    Gtk::manage(p_mainWidget);
 }
-
-float VCToHZGUI::get_octaveOffset() { return m_dialOctaveOffset->get_value(); }
 
 void VCToHZGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
-	if (port == p_conversionMode)
-	{
-		int p_conversionValue = (int) (*static_cast<const float*> (buffer));
-		if (p_conversionValue >= 0 && p_conversionValue <= 2)
-		{
-			m_comboConversionMode->set_active((int) p_conversionValue);
-		}
-	}
-	else if (port == p_octaveOffset)
-	{
-		m_dialOctaveOffset->set_value(*static_cast<const float*> (buffer));
-	}
+    int p_conversionValue;
+
+    switch(port)
+    {
+    case p_conversionMode:
+        p_conversionValue = (int) (*static_cast<const float*> (buffer));
+        if (p_conversionValue >= 0 && p_conversionValue <= 2)
+            m_comboConversionMode->set_active((int) p_conversionValue);
+        break;
+    case p_octaveOffset:
+        m_dialOctaveOffset->set_value(*static_cast<const float*> (buffer));
+        break;
+    }
 }
 
 static int _ = VCToHZGUI::register_class("http://github.com/blablack/ams-lv2/vctohz/gui");

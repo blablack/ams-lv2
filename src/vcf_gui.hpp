@@ -25,13 +25,6 @@ protected:
 	LabeledDial* m_scaleLinFMGain;
 	LabeledDial* m_scaleResonance;
 	LabeledDial* m_scaleResonanceGain;
-
-	float get_inputGain();
-	float get_frequency();
-	float get_expFMGain();
-	float get_linFMGain();
-	float get_resonance();
-	float get_resonanceGain();
 };
 
 #endif

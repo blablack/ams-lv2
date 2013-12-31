@@ -19,9 +19,6 @@ class SlewGUI: public UI<SlewGUI, GtkUI<true>>
 	protected:
 		LabeledDial* m_dialTimeUp;
 		LabeledDial* m_dialTimeDown;
-
-		float get_timeUp();
-		float get_timeDown();
 };
 
 #endif

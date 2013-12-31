@@ -20,8 +20,6 @@ class VCToHZGUI: public UI<VCToHZGUI, GtkUI<true>>
 		Gtk::ComboBoxText* m_comboConversionMode;
 
 		LabeledDial* m_dialOctaveOffset;
-
-		float get_octaveOffset();
 };
 
 #endif

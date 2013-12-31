@@ -25,16 +25,6 @@ class CVSGUI: public UI<CVSGUI, GtkUI<true>>
 		LabeledDial* m_dialCVFine3;
 		LabeledDial* m_dialCV4;
 		LabeledDial* m_dialCVFine4;
-
-
-		float get_cv1();
-		float get_cvFine1();
-		float get_cv2();
-		float get_cvFine2();
-		float get_cv3();
-		float get_cvFine3();
-		float get_cv4();
-		float get_cvFine4();
 };
 
 #endif

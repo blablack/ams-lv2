@@ -27,12 +27,6 @@ class PercussiveEnvGUI: public UI<PercussiveEnvGUI, GtkUI<true>>
 		LabeledDial* m_scaleDelay;
 		LabeledDial* m_scaleHold;
 		LabeledDial* m_scaleTimeScale;
-
-		float get_attack();
-		float get_decay();
-		float get_delay();
-		float get_hold();
-		float get_timescale();
 };
 
 #endif

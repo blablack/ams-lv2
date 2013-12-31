@@ -15,9 +15,8 @@ AmpGUI::AmpGUI(const std::string& URI)
 	color->set_rgb(7710, 8738, 9252);
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-	slot<void> p_slotGain = compose(bind<0>(mem_fun(*this, &AmpGUI::write_control), p_gain), mem_fun(*this,  &AmpGUI::get_gain));
 	m_dialGain = new LabeledDial("Gain", p_gain, -10, 10, NORMAL, 0.05, 2);
-	m_dialGain->signal_value_changed().connect(p_slotGain);
+	m_dialGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &AmpGUI::write_control), p_gain), mem_fun(*m_dialGain,  &LabeledDial::get_value)));
 	p_background->add(*m_dialGain);
 
 	p_background->set_size_request(100, 80);
@@ -27,14 +26,10 @@ AmpGUI::AmpGUI(const std::string& URI)
 	Gtk::manage(p_background);
 }
 
-float AmpGUI::get_gain() { return m_dialGain->get_value(); }
-
 void AmpGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
 	if (port == p_gain)
-	{
 		m_dialGain->set_value(*static_cast<const float*> (buffer));
-	}
 }
 
 static int _ = AmpGUI::register_class("http://github.com/blablack/ams-lv2/amp/gui");

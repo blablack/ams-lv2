@@ -18,8 +18,6 @@ class AmpGUI: public UI<AmpGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialGain;
-
-		float get_gain();
 };
 
 #endif

@@ -18,8 +18,6 @@ class DelayGUI: public UI<DelayGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialDelay;
-
-		float get_delay();
 };
 
 #endif

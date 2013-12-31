@@ -60,26 +60,6 @@ class AdvEnvGUI: public UI<AdvEnvGUI, GtkUI<true>>
 
 		LabeledDial* m_scaleReleaseLevel1;
 		LabeledDial* m_scaleReleaseLevel2;
-
-		float get_timeScale();
-		float get_sustain();
-		float get_delay();
-
-		float get_attackTime1();
-		float get_attackTime2();
-		float get_attackTime3();
-		float get_attackTime4();
-
-		float get_attackLevel1();
-		float get_attackLevel2();
-		float get_attackLevel3();
-
-		float get_releaseTime1();
-		float get_releaseTime2();
-		float get_releaseTime3();
-
-		float get_releaseLevel1();
-		float get_releaseLevel2();
 };
 
 #endif

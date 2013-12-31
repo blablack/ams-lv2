@@ -22,12 +22,6 @@ class Mixer4ChCVGUI: public UI<Mixer4ChCVGUI, GtkUI<true>>
 		LabeledDial* m_dialVolume2;
 		LabeledDial* m_dialVolume3;
 		LabeledDial* m_dialVolume4;
-
-		float get_gain();
-		float get_volume1();
-		float get_volume2();
-		float get_volume3();
-		float get_volume4();
 };
 
 #endif

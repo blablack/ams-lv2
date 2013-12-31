@@ -18,8 +18,6 @@ class VCSwitchCVGUI: public UI<VCSwitchCVGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialSwitchLevel;
-
-		float get_switchLevel();
 };
 
 #endif

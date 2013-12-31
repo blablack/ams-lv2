@@ -18,8 +18,6 @@ class SampleHoldGUI: public UI<SampleHoldGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialTriggerLevel;
-
-		float get_triggerLevel();
 };
 
 #endif

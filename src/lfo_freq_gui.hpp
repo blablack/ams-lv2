@@ -20,10 +20,6 @@ class LfoFreqGUI: public UI<LfoFreqGUI, GtkUI<true>>
 		Gtk::ComboBoxText* m_comboWaveForm;
 		LabeledDial* m_dialTempo;
 		LabeledDial* m_dialPhi0;
-
-		float get_tempo();
-		float get_tempoMultiplier();
-		float get_phi0();
 };
 
 #endif

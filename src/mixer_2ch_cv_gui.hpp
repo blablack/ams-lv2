@@ -20,10 +20,6 @@ class Mixer2ChCVGUI: public UI<Mixer2ChCVGUI, GtkUI<true>>
 		LabeledDial* m_dialGain;
 		LabeledDial* m_dialVolume1;
 		LabeledDial* m_dialVolume2;
-
-		float get_gain();
-		float get_volume1();
-		float get_volume2();
 };
 
 #endif

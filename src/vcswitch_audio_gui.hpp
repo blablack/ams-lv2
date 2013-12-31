@@ -18,8 +18,6 @@ class VCSwitchAudioGUI: public UI<VCSwitchAudioGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialSwitchLevel;
-
-		float get_switchLevel();
 };
 
 #endif

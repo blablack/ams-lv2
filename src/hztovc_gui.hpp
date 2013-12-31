@@ -18,8 +18,6 @@ class HzToVCGUI: public UI<HzToVCGUI, GtkUI<true>>
 
 	protected:
 		LabeledDial* m_dialOctaveOffset;
-
-		float get_octaveOffset();
 };
 
 #endif

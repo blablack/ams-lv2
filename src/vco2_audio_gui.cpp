@@ -112,16 +112,19 @@ Vco2AudioGUI::Vco2AudioGUI(const char* plugin_uri)
 void Vco2AudioGUI::get_waveform()
 {
     if(m_comboWaveForm->get_active_row_number() == 2 || m_comboWaveForm->get_active_row_number() == 3)
+        m_scaleEdge->enable();
+    else
+        m_scaleEdge->disable();
+
+    if(m_comboWaveForm->get_active_row_number() == 3)
     {
         m_scalePW->enable();
         m_scalePWGain->enable();
-        m_scaleEdge->enable();
     }
     else
     {
         m_scalePW->disable();
         m_scalePWGain->disable();
-        m_scaleEdge->disable();
     }
 }
 
@@ -136,18 +139,7 @@ void Vco2AudioGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t form
         if (p_waveFormValue >= 0 && p_waveFormValue <= 6)
         {
             m_comboWaveForm->set_active((int) p_waveFormValue);
-            if(p_waveFormValue == 2 || p_waveFormValue == 3)
-            {
-                m_scalePW->enable();
-                m_scalePWGain->enable();
-                m_scaleEdge->enable();
-            }
-            else
-            {
-                m_scalePW->disable();
-                m_scalePWGain->disable();
-                m_scaleEdge->disable();
-            }
+            get_waveform();
         }
         break;
     case p_octave:

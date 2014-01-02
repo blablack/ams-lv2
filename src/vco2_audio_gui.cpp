@@ -46,7 +46,7 @@ Vco2AudioGUI::Vco2AudioGUI(const char* plugin_uri)
     m_scaleOctave->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2AudioGUI::write_control), p_octave), mem_fun(*m_scaleOctave,  &LabeledDial::get_value)));
     p_freqBox->pack_start(*m_scaleOctave);
 
-    m_scaleTune = new LabeledDial("Tune", p_tune, 0, 1, LOG, 0.0001, 4);
+    m_scaleTune = new LabeledDial("Tune", p_tune, -1, 1, NORMAL, 0.001, 3);
     m_scaleTune->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2AudioGUI::write_control), p_tune), mem_fun(*m_scaleTune,  &LabeledDial::get_value)));
     p_freqBox->pack_start(*m_scaleTune);
 

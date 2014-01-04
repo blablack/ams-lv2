@@ -31,6 +31,7 @@ LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, 
 
     set_value(Value);
 
+    this->set_border_width(1);
     this->add(*p_mainWidget);
 }
 

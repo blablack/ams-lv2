@@ -90,7 +90,7 @@
 		  		rdfs:label "24 dB Lowpass II" ;
 				rdf:value 7 ;
 		]
-	] , 	[
+	] , [
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 6 ;
 		lv2:symbol "inputGain" ;
@@ -98,9 +98,17 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 10 ;
-	] ,	[
+	] , [
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 7 ;
+		lv2:symbol "outputGain" ;
+		lv2:name "Output Gain" ;
+		lv2:default 1 ;
+		lv2:minimum 0 ;
+		lv2:maximum 10 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 8 ;
 		lv2:symbol "freq" ;
 		lv2:name "Frequency" ;
 		lv2:default 5 ;
@@ -108,7 +116,7 @@
 		lv2:maximum 10 ;
 	] , [
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 8 ;
+		lv2:index 9 ;
 		lv2:symbol "expFMGain" ;
 		lv2:name "Exp. FM Gain" ;
 		lv2:default 0 ;
@@ -116,7 +124,7 @@
 		lv2:maximum 10 ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 9 ;
+		lv2:index 10 ;
 		lv2:symbol "linFMGain" ;
 		lv2:name "Lin. FM Gain" ;
 		lv2:default 0 ;
@@ -124,7 +132,7 @@
 		lv2:maximum 10 ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 10 ;
+		lv2:index 11 ;
 		lv2:symbol "resonance" ;
 		lv2:name "Resonance" ;
 		lv2:default 0.8 ;
@@ -132,7 +140,7 @@
 		lv2:maximum 1.0 ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 11 ;
+		lv2:index 12 ;
 		lv2:symbol "resonanceGain" ;
 		lv2:name "Resonance Gain" ;
 		lv2:default 0 ;
@@ -140,7 +148,7 @@
 		lv2:maximum 1 ;
 	] ,	[
 		a lv2:OutputPort, lv2:AudioPort ;
-		lv2:index 12 ;
+		lv2:index 13 ;
 		lv2:symbol "out" ;
 		lv2:name "Out" ;
 	] .

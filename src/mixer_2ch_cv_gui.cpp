@@ -15,9 +15,7 @@ Mixer2ChCVGUI::Mixer2ChCVGUI(const std::string& URI)
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
 
-
-    VBox *p_mainWidget = manage(new VBox(false, 5));
-
+    VBox *p_mainWidget = manage(new VBox(false));
 
 
     m_dialGain = new LabeledDial("Gain", p_gain, 0, 2, NORMAL, 0.01, 2);
@@ -25,25 +23,18 @@ Mixer2ChCVGUI::Mixer2ChCVGUI(const std::string& URI)
     p_mainWidget->pack_start(*m_dialGain);
 
 
-
-    Frame *p_volumesFrame = manage(new Frame("Volumes"));
-    p_volumesFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_volumesBox = manage(new HBox(true));
+    HBox *p_volumesFrame = manage(new HBox(true));
 
     m_dialVolume1 = new LabeledDial("Volume 1", p_volume1, 0, 2, NORMAL, 0.01, 2);
     m_dialVolume1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Mixer2ChCVGUI::write_control), p_volume1), mem_fun(*m_dialVolume1,  &LabeledDial::get_value)));
-    p_volumesBox->pack_start(*m_dialVolume1);
+    p_volumesFrame->pack_start(*m_dialVolume1);
 
     m_dialVolume2 = new LabeledDial("Volume 2", p_volume2, 0, 2, NORMAL, 0.01, 2);
     m_dialVolume2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Mixer2ChCVGUI::write_control), p_volume2), mem_fun(*m_dialVolume2,  &LabeledDial::get_value)));
-    p_volumesBox->pack_start(*m_dialVolume2);
+    p_volumesFrame->pack_start(*m_dialVolume2);
 
-    p_volumesFrame->add(*p_volumesBox);
     p_mainWidget->pack_start(*p_volumesFrame);
 
-
-
-    p_mainWidget->set_size_request(150, 200);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

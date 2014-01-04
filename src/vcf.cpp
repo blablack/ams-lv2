@@ -102,7 +102,7 @@ void Vcf::run(uint32_t nframes)
 
 				buf_lr[0] = fa * buf_lr[0] + f * (*p(p_inputGain) * p(p_in)[l2] + fb * (buf_lr[0] - buf_lr[1]) + 0.00001 * b_noiseout);
 				buf_lr[1] = fa * buf_lr[1] + f * buf_lr[0];
-				p(p_out)[l2] = buf_lr[1];
+				p(p_out)[l2] = buf_lr[1] * *p(p_outputGain);
 			}
 			break;
 		}
@@ -130,7 +130,7 @@ void Vcf::run(uint32_t nframes)
 				a1 = -2.0 * iv_cos;
 				a2 = 1.0 - iv_alpha;
 				temp = 1.0 / a0 * (b0 * *p(p_inputGain) * p(p_in)[l2] + b1 * buf_lpf[0] + b2 * buf_lpf[1] - a1 * buf_lpf[2] - a2 * buf_lpf[3]);
-				p(p_out)[l2]=temp;
+				p(p_out)[l2]=temp * *p(p_outputGain);
 				buf_lpf[1] = buf_lpf[0];
 				buf_lpf[0] = *p(p_inputGain) * p(p_in)[l2];
 				buf_lpf[3] = buf_lpf[2];
@@ -162,7 +162,7 @@ void Vcf::run(uint32_t nframes)
 				a1 = -2.0 * iv_cos;
 				a2 = 1.0 - iv_alpha;
 				temp = 1.0 / a0 * (*p(p_inputGain) * b0 * p(p_in)[l2] + b1 * buf_hpf[0] + b2 * buf_hpf[1] - a1 * buf_hpf[2] - a2 * buf_hpf[3]);
-				p(p_out)[l2]=temp;
+				p(p_out)[l2]=temp * *p(p_outputGain);
 				buf_hpf[1] = buf_hpf[0];
 				buf_hpf[0] = *p(p_inputGain) * p(p_in)[l2];
 				buf_hpf[3] = buf_hpf[2];
@@ -195,7 +195,7 @@ void Vcf::run(uint32_t nframes)
 				a2 = 1.0 - iv_alpha;
 
 				temp = 1.0 / a0 * (*p(p_inputGain) * b0 * p(p_in)[l2] + b1 * buf_bpf_i[0] + b2 * buf_bpf_i[1] - a1 * buf_bpf_i[2] - a2 * buf_bpf_i[3]);
-				p(p_out)[l2]=temp;
+				p(p_out)[l2]=temp * *p(p_outputGain);
 				buf_bpf_i[1] = buf_bpf_i[0];
 				buf_bpf_i[0] = *p(p_inputGain) * p(p_in)[l2];
 				buf_bpf_i[3] = buf_bpf_i[2];
@@ -226,7 +226,7 @@ void Vcf::run(uint32_t nframes)
 				a1 = -2.0 * iv_cos;
 				a2 = 1.0 - iv_alpha;
 				temp = 1.0 / a0 * (*p(p_inputGain) * b0 * p(p_in)[l2] + b1 * buf_bpf_ii[0] + b2 * buf_bpf_ii[1] - a1 * buf_bpf_ii[2] - a2 * buf_bpf_ii[3]);
-				p(p_out)[l2] = temp;
+				p(p_out)[l2] = temp * *p(p_outputGain);
 				buf_bpf_ii[1] = buf_bpf_ii[0];
 				buf_bpf_ii[0] = *p(p_inputGain) * p(p_in)[l2];
 				buf_bpf_ii[3] = buf_bpf_ii[2];
@@ -259,7 +259,7 @@ void Vcf::run(uint32_t nframes)
 				a2 = 1.0 - iv_alpha;
 
 				temp = 1.0 / a0 * (*p(p_inputGain) * b0 * p(p_in)[l2] + b1 * buf_nf[0] + b2 * buf_nf[1] - a1 * buf_nf[2] - a2 * buf_nf[3]);
-				p(p_out)[l2] = temp;// conversion
+				p(p_out)[l2] = temp * *p(p_outputGain);// conversion
 				buf_nf[1] = buf_nf[0];
 				buf_nf[0] = *p(p_inputGain) * p(p_in)[l2];
 				buf_nf[3] = buf_nf[2];
@@ -306,7 +306,7 @@ void Vcf::run(uint32_t nframes)
 				in_moog1[3] = buf_moog1[2];
 				buf_moog1[4] = buf_moog1[3] + 0.3 * in_moog1[4] + revMoog * buf_moog1[4];
 				in_moog1[4] = buf_moog1[3];
-				p(p_out)[l2] = buf_moog1[4];
+				p(p_out)[l2] = buf_moog1[4] * *p(p_outputGain);
 			}
 			break;
 		}
@@ -352,7 +352,7 @@ void Vcf::run(uint32_t nframes)
 				buf_moog2[4] = (buf_moog2[3] + t1) * pbis - buf_moog2[4] * fa;
 				buf_moog2[4] -= buf_moog2[4] * buf_moog2[4] * buf_moog2[4] * 0.166667;
 				buf_moog2[0] = in_moog2[0];
-				p(p_out)[l2] = buf_moog2[4];
+				p(p_out)[l2] = buf_moog2[4] * *p(p_outputGain);
 			}
 			break;
 		}

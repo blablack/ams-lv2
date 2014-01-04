@@ -10,6 +10,15 @@ Dial::Dial(double Value, double Min, double Max, DialType Type, double Step, int
     m_enabled = true;
     m_type = Type;
     m_adj = new Gtk::Adjustment(Value, Min, Max, Step, Step);
+
+    m_scrollStep = 1;
+    if((Max-Min)/Step>100)
+        m_scrollStep = 5;
+    else if((Max-Min)/Step>250)
+        m_scrollStep = 10;
+    else if((Max-Min)/Step>500)
+        m_scrollStep = 15;
+
     this->m_mouseDelta = 0;
     this->m_mouseDown = false;
 
@@ -19,7 +28,7 @@ Dial::Dial(double Value, double Min, double Max, DialType Type, double Step, int
     signal_motion_notify_event().connect(sigc::mem_fun( *this, &Dial::onMouseMove) );
     signal_scroll_event().connect(sigc::mem_fun( *this, &Dial::onMouseScroll) );
 
-    set_size_request(48, 48);
+    set_size_request(38, 32);
 
     m_adj->signal_value_changed().connect(mem_fun(*this, &Dial::value_changed));
 
@@ -89,7 +98,7 @@ bool Dial::on_expose_event(GdkEventExpose* event)
         cr->clip();
 
         int xc = event->area.width/2;
-        int yc = event->area.height/2;
+        int yc = event->area.height/2 + 3;
 
         float radius = 14;
 
@@ -110,28 +119,76 @@ bool Dial::on_expose_event(GdkEventExpose* event)
         cr->stroke();
 
         cr->set_line_width(2.8);
-        float angle = 2.46 + (4.54 * ((m_adj->get_value()-m_adj->get_lower()) / (m_adj->get_upper()-m_adj->get_lower())));
+        float angle;
+        if(m_type != MULTIPLIER)
+        {
+            angle = 2.46 + (4.54 * ((m_adj->get_value()-m_adj->get_lower()) / (m_adj->get_upper()-m_adj->get_lower())));
+        }
+        else
+        {
+            if(m_adj->get_value() <= 0.0078125)
+                angle = 2.46 + 4.54 * 0 / 14;
+            else if(m_adj->get_value() <= 0.015625)
+                angle = 2.46 + 4.54 * 1 / 14;
+            else if(m_adj->get_value() <= 0.03125)
+                angle = 2.46 + 4.54 * 2 / 14;
+            else if(m_adj->get_value() <= 0.0625)
+                angle = 2.46 + 4.54 * 3 / 14;
+            else if(m_adj->get_value() <= 0.125)
+                angle = 2.46 + 4.54 * 4 / 14;
+            else if(m_adj->get_value() <= 0.25)
+                angle = 2.46 + 4.54 * 5 / 14;
+            else if(m_adj->get_value() <= 0.5)
+                angle = 2.46 + 4.54 * 6 / 14;
+            else if(m_adj->get_value() <= 1)
+                angle = 2.46 + 4.54 * 7 / 14;
+            else if(m_adj->get_value() <= 2)
+                angle = 2.46 + 4.54 * 8 / 14;
+            else if(m_adj->get_value() <= 4)
+                angle = 2.46 + 4.54 * 9 / 14;
+            else if(m_adj->get_value() <= 8)
+                angle = 2.46 + 4.54 * 10 / 14;
+            else if(m_adj->get_value() <= 16)
+                angle = 2.46 + 4.54 * 11 / 14;
+            else if(m_adj->get_value() <= 32)
+                angle = 2.46 + 4.54 * 12 / 14;
+            else if(m_adj->get_value() <= 64)
+                angle = 2.46 + 4.54 * 13 / 14;
+            else if(m_adj->get_value() > 64)
+                angle = 2.46 + 4.54 * 14 / 14;
+        }
 
         if(m_enabled)
             cr->set_source_rgba( 255 / 255.f, 104 / 255.f , 0 / 255.f , 1.f );
         else
             cr->set_source_rgba( 66 / 255.f, 66 / 255.f , 66 / 255.f , 1.f );
 
+        float zero_angle;
         cr->set_line_width(1.7);
-        if(m_adj->get_lower()>=0)
-            cr->arc(xc, yc, 13, 2.46, angle );
-        else if(m_adj->get_value()>=0)
-            cr->arc(xc, yc, 13, 4.71, angle );
+        if(!(m_adj->get_lower() < 0.0 && m_adj->get_upper() > 0.0))
+        {
+            cr->arc(xc, yc, 13, 2.46, angle);
+        }
         else
-            cr->arc_negative(xc, yc, 13, 4.71, angle );
+        {
+            if(angle >= 4.73)
+                cr->arc(xc, yc, 13, 4.73, angle);
+            else
+                cr->arc_negative(xc, yc, 13, 4.73, angle);
+        }
         cr->line_to(xc, yc);
         cr->stroke();
-        if(m_adj->get_lower()>=0)
-            cr->arc(xc, yc, 17, 2.46, angle );
-        else if(m_adj->get_value()>=0)
-            cr->arc(xc, yc, 17, 4.71, angle);
+        if(!(m_adj->get_lower() < 0.0 && m_adj->get_upper() > 0.0))
+        {
+            cr->arc(xc, yc, 17, 2.46, angle);
+        }
         else
-            cr->arc_negative(xc, yc, 17, 4.71, angle);
+        {
+            if(angle >= 4.73)
+                cr->arc(xc, yc, 17, 4.73, angle);
+            else
+                cr->arc_negative(xc, yc, 17, 4.73, angle);
+        }
         cr->line_to(xc,yc);
         cr->stroke();
     }
@@ -152,9 +209,6 @@ bool Dial::Redraw()
 double Dial::CalculateLogStep()
 {
     double p_perc = (m_adj->get_value() - m_adj->get_lower()) / (m_adj->get_upper() - m_adj->get_lower()) * 1000;
-
-    // std::cout << "Perc " << p_perc << "\t Step " << m_adj->get_step_increment(nt) + (m_adj->get_step_increment() * p_perc) <<  std::endl;
-
     return m_adj->get_step_increment() + (m_adj->get_step_increment() * p_perc);
 }
 
@@ -168,23 +222,17 @@ bool Dial::onMouseScroll(GdkEventScroll * e)
     if(m_enabled)
     {
         if (e->direction == GDK_SCROLL_UP)
-        {
-            ChangeValueUp();
-            if(m_type != DIVIDER)
-            {
-                for(int i = 0 ; i<4 ; i++)
+            if(m_type != MULTIPLIER)
+                for(int i = 0 ; i<m_scrollStep ; i++)
                     ChangeValueUp();
-            }
-        }
+            else
+                ChangeValueUp();
         else if (e->direction == GDK_SCROLL_DOWN)
-        {
-            ChangeValueDown();
-            if(m_type != DIVIDER)
-            {
-                for(int i = 0 ; i<4 ; i++)
+            if(m_type != MULTIPLIER)
+                for(int i = 0 ; i<m_scrollStep ; i++)
                     ChangeValueDown();
-            }
-        }
+            else
+                ChangeValueDown();
 
         return true;
     }
@@ -226,7 +274,7 @@ void Dial::ChangeValueUp()
     case LOG:
         set_value(RoundValue(m_adj->get_value()+CalculateLogStep()));
         break;
-    case DIVIDER:
+    case MULTIPLIER:
         set_value(RoundValue(m_adj->get_value()*2));
         break;
     }
@@ -241,7 +289,7 @@ void Dial::ChangeValueDown()
     case LOG:
         set_value(RoundValue(m_adj->get_value()-CalculateLogStep()));
         break;
-    case DIVIDER:
+    case MULTIPLIER:
         set_value(RoundValue(m_adj->get_value()/2));
         break;
     }
@@ -249,11 +297,10 @@ void Dial::ChangeValueDown()
 
 bool Dial::on_button_press_event(GdkEventButton* event)
 {
-    if( event->type == GDK_BUTTON_PRESS  ) // && event->button == 3
+    if( event->type == GDK_BUTTON_PRESS ) // && event->button == 3
     {
         m_mouseDown = true; // for pointer motion "drag" operations
         m_mouseDelta = event->y;
-
         return true;
     }
     else
@@ -267,7 +314,6 @@ bool Dial::on_button_release_event(GdkEventButton* event)
     if( event->type == GDK_BUTTON_RELEASE  ) // && event->button == 3
     {
         m_mouseDown = false;
-
         return true; //It's been handled.
     }
     else

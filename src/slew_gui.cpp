@@ -25,7 +25,6 @@ SlewGUI::SlewGUI(const std::string& URI)
     m_dialTimeDown->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &SlewGUI::write_control), p_timeDown), mem_fun(*m_dialTimeDown, &LabeledDial::get_value)));
     p_mainWidget->pack_start(*m_dialTimeDown);
 
-    p_mainWidget->set_size_request(256, 320);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

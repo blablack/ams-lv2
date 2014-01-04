@@ -3,7 +3,7 @@
 
 PercussiveEnvGUIScope::PercussiveEnvGUIScope()
 {
-	set_size_request(100, 80);
+	set_size_request(40, 80);
 }
 
 PercussiveEnvGUIScope::~PercussiveEnvGUIScope()

@@ -8,7 +8,7 @@
 
 using namespace Gtk;
 
-enum DialType { NORMAL, LOG, DIVIDER };
+enum DialType { NORMAL, LOG, MULTIPLIER };
 
 class Dial: public Gtk::DrawingArea
 {
@@ -41,6 +41,7 @@ class Dial: public Gtk::DrawingArea
 
 		DialType m_type;
 		int m_rounder;
+        int m_scrollStep;
 
 		double CalculateLogStep();
 		double RoundValue(double Value);

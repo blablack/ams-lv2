@@ -8,6 +8,7 @@
 #include "advenv_gui_scope.hpp"
 #include "advenv.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 {
@@ -16,7 +17,7 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
+    VBox *p_mainWidget = manage (new VBox(false));
 
     m_envScope = new AdvEnvGUIScope();
     p_mainWidget->pack_start(*m_envScope);
@@ -24,121 +25,88 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 
 
 
-    Frame *p_scaleFrame = manage (new Frame("Time Scale / Sustain / Delay"));
-    p_scaleFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_scaleWidget = manage (new HBox(false));
+    MyBox *p_scaleFrame = manage (new MyBox("Time Scale / Sustain / Delay", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0.1, 10, NORMAL, 0.01, 2);
     m_scaleTimeScale->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &AdvEnvGUI::write_control), p_timeScale), mem_fun(*m_scaleTimeScale, &LabeledDial::get_value)));
-    p_scaleWidget->pack_start(*m_scaleTimeScale);
+    p_scaleFrame->pack_start(*m_scaleTimeScale);
 
     m_scaleSustain = new LabeledDial("Sustain", p_sustain, 0, 1, NORMAL, 0.01, 2);
     m_scaleSustain->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_sustain), mem_fun(*m_scaleSustain, &LabeledDial::get_value)));
-    p_scaleWidget->pack_start(*m_scaleSustain);
+    p_scaleFrame->pack_start(*m_scaleSustain);
 
     m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01, 2);
     m_scaleDelay->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_delay), mem_fun(*m_scaleDelay, &LabeledDial::get_value)));
-    p_scaleWidget->pack_start(*m_scaleDelay);
+    p_scaleFrame->pack_start(*m_scaleDelay);
 
-    p_scaleFrame->add(*p_scaleWidget);
     p_mainWidget->pack_start(*p_scaleFrame);
 
 
+    MyBox *p_attackTimeFrame = manage (new MyBox("Attack Time", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    p_mainWidget->pack_start(*(new HSeparator()));
-
-
-
-    Frame *p_attackTimeFrame = manage (new Frame("Attack Time"));
-    p_attackTimeFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_attackTimeWidget = manage (new HBox(false));
-
-    m_scaleAttackTime1 = new LabeledDial("Attack Time 1", p_attackTime1, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackTime1 = new LabeledDial("Time 1", p_attackTime1, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackTime1->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime1), mem_fun(*m_scaleAttackTime1, &LabeledDial::get_value)));
-    p_attackTimeWidget->pack_start(*m_scaleAttackTime1);
+    p_attackTimeFrame->pack_start(*m_scaleAttackTime1);
 
-    m_scaleAttackTime2 = new LabeledDial("Attack Time 2", p_attackTime2, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackTime2 = new LabeledDial("Time 2", p_attackTime2, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackTime2->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime2), mem_fun(*m_scaleAttackTime2, &LabeledDial::get_value)));
-    p_attackTimeWidget->pack_start(*m_scaleAttackTime2);
+    p_attackTimeFrame->pack_start(*m_scaleAttackTime2);
 
-    m_scaleAttackTime3 = new LabeledDial("Attack Time 3", p_attackTime3, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackTime3 = new LabeledDial("Time 3", p_attackTime3, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackTime3->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime3), mem_fun(*m_scaleAttackTime3, &LabeledDial::get_value)));
-    p_attackTimeWidget->pack_start(*m_scaleAttackTime3);
+    p_attackTimeFrame->pack_start(*m_scaleAttackTime3);
 
-    m_scaleAttackTime4 = new LabeledDial("Attack Time 4", p_attackTime4, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackTime4 = new LabeledDial("Time 4", p_attackTime4, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackTime4->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackTime4), mem_fun(*m_scaleAttackTime4, &LabeledDial::get_value)));
-    p_attackTimeWidget->pack_start(*m_scaleAttackTime4);
+    p_attackTimeFrame->pack_start(*m_scaleAttackTime4);
 
-    p_attackTimeFrame->add(*p_attackTimeWidget);
     p_mainWidget->pack_start(*p_attackTimeFrame);
 
 
+    MyBox *p_attackLevelFrame = manage (new MyBox("Attack Level", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    p_mainWidget->pack_start(*(new HSeparator()));
-
-
-
-    Frame *p_attackLevelFrame = manage (new Frame("Attack Level"));
-    p_attackLevelFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_attackLevelWidget = manage (new HBox(false));
-
-    m_scaleAttackLevel1 = new LabeledDial("Attack Level 1", p_attackLevel1, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackLevel1 = new LabeledDial("Level 1", p_attackLevel1, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackLevel1->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackLevel1), mem_fun(*m_scaleAttackLevel1, &LabeledDial::get_value)));
-    p_attackLevelWidget->pack_start(*m_scaleAttackLevel1);
+    p_attackLevelFrame->pack_start(*m_scaleAttackLevel1);
 
-    m_scaleAttackLevel2 = new LabeledDial("Attack Level 2", p_attackLevel2, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackLevel2 = new LabeledDial("Level 2", p_attackLevel2, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackLevel2->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackLevel2), mem_fun(*m_scaleAttackLevel2, &LabeledDial::get_value)));
-    p_attackLevelWidget->pack_start(*m_scaleAttackLevel2);
+    p_attackLevelFrame->pack_start(*m_scaleAttackLevel2);
 
-    m_scaleAttackLevel3 = new LabeledDial("Attack Level 3", p_attackLevel3, 0, 1, NORMAL, 0.01, 2);
+    m_scaleAttackLevel3 = new LabeledDial("Level 3", p_attackLevel3, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttackLevel3->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_attackLevel3), mem_fun(*m_scaleAttackLevel3, &LabeledDial::get_value)));
-    p_attackLevelWidget->pack_start(*m_scaleAttackLevel3);
+    p_attackLevelFrame->pack_start(*m_scaleAttackLevel3);
 
-    p_attackLevelFrame->add(*p_attackLevelWidget);
     p_mainWidget->pack_start(*p_attackLevelFrame);
 
 
-    p_mainWidget->pack_start(*(new HSeparator()));
+    MyBox *p_releaseTimeFrame = manage (new MyBox("Release Time", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-
-
-    Frame *p_releaseTimeFrame = manage (new Frame("Release Time"));
-    p_releaseTimeFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_releaseTimeWidget = manage (new HBox(false));
-
-    m_scaleReleaseTime1 = new LabeledDial("Release Time 1", p_releaseTime1, 0, 1, NORMAL, 0.01, 2);
+    m_scaleReleaseTime1 = new LabeledDial("Time 1", p_releaseTime1, 0, 1, NORMAL, 0.01, 2);
     m_scaleReleaseTime1->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseTime1), mem_fun(*m_scaleReleaseTime1, &LabeledDial::get_value)));
-    p_releaseTimeWidget->pack_start(*m_scaleReleaseTime1);
+    p_releaseTimeFrame->pack_start(*m_scaleReleaseTime1);
 
-    m_scaleReleaseTime2 = new LabeledDial("Release Time 2", p_releaseTime2, 0, 1, NORMAL, 0.01, 2);
+    m_scaleReleaseTime2 = new LabeledDial("Time 2", p_releaseTime2, 0, 1, NORMAL, 0.01, 2);
     m_scaleReleaseTime2->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseTime2), mem_fun(*m_scaleReleaseTime2, &LabeledDial::get_value)));
-    p_releaseTimeWidget->pack_start(*m_scaleReleaseTime2);
+    p_releaseTimeFrame->pack_start(*m_scaleReleaseTime2);
 
-    m_scaleReleaseTime3 = new LabeledDial("Release Time 3", p_releaseTime3, 0, 1, NORMAL, 0.01, 2);
+    m_scaleReleaseTime3 = new LabeledDial("Time 3", p_releaseTime3, 0, 1, NORMAL, 0.01, 2);
     m_scaleReleaseTime3->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseTime3), mem_fun(*m_scaleReleaseTime3, &LabeledDial::get_value)));
-    p_releaseTimeWidget->pack_start(*m_scaleReleaseTime3);
+    p_releaseTimeFrame->pack_start(*m_scaleReleaseTime3);
 
-    p_releaseTimeFrame->add(*p_releaseTimeWidget);
     p_mainWidget->pack_start(*p_releaseTimeFrame);
 
 
-    p_mainWidget->pack_start(*(new HSeparator()));
+    MyBox *p_releaseLevelFrame = manage (new MyBox("Release Level", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-
-
-    Frame *p_releaseLevelFrame = manage (new Frame("Release Level"));
-    p_releaseLevelFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_releaseLevelWidget = manage (new HBox(false));
-
-    m_scaleReleaseLevel1 = new LabeledDial("Release Level 1", p_releaseLevel1, 0, 1, NORMAL, 0.01, 2);
+    m_scaleReleaseLevel1 = new LabeledDial("Level 1", p_releaseLevel1, 0, 1, NORMAL, 0.01, 2);
     m_scaleReleaseLevel1->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseLevel1), mem_fun(*m_scaleReleaseLevel1, &LabeledDial::get_value)));
-    p_releaseLevelWidget->pack_start(*m_scaleReleaseLevel1);
+    p_releaseLevelFrame->pack_start(*m_scaleReleaseLevel1);
 
-    m_scaleReleaseLevel2 = new LabeledDial("Release Level 2", p_releaseLevel2, 0, 1, NORMAL, 0.01, 2);
+    m_scaleReleaseLevel2 = new LabeledDial("Level 2", p_releaseLevel2, 0, 1, NORMAL, 0.01, 2);
     m_scaleReleaseLevel2->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &AdvEnvGUI::write_control), p_releaseLevel2), mem_fun(*m_scaleReleaseLevel2, &LabeledDial::get_value)));
-    p_releaseLevelWidget->pack_start(*m_scaleReleaseLevel2);
+    p_releaseLevelFrame->pack_start(*m_scaleReleaseLevel2);
 
-    p_releaseLevelFrame->add(*p_releaseLevelWidget);
     p_mainWidget->pack_start(*p_releaseLevelFrame);
 
 
@@ -165,10 +133,6 @@ AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 
     m_envScope->Redraw();
 
-
-
-
-    p_mainWidget->set_size_request(350, 620);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

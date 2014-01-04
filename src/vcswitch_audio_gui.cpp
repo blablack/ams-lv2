@@ -17,11 +17,12 @@ VCSwitchAudioGUI::VCSwitchAudioGUI(const std::string& URI)
 
 	m_dialSwitchLevel = new LabeledDial("Switch Level", p_switchlevel, 0, 10, LOG, 0.0001, 4);
 	m_dialSwitchLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCSwitchAudioGUI::write_control), p_switchlevel), mem_fun(*m_dialSwitchLevel,  &LabeledDial::get_value)));
-	p_background->add(*m_dialSwitchLevel);
 
-	p_background->set_size_request(100, 80);
+    Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
 
-	add(*p_background);
+    p_align->add(*m_dialSwitchLevel);
+	p_background->add(*p_align);
+    add(*p_background);
 
 	Gtk::manage(p_background);
 }

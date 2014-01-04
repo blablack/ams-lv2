@@ -17,10 +17,11 @@ HzToVCGUI::HzToVCGUI(const std::string& URI)
 
 	m_dialOctaveOffset = new LabeledDial("Octave Offset", p_octaveOffset, -3, 3, NORMAL, 0.01, 2);
 	m_dialOctaveOffset->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &HzToVCGUI::write_control), p_octaveOffset), mem_fun(*m_dialOctaveOffset,  &LabeledDial::get_value)));
-	p_background->add(*m_dialOctaveOffset);
 
-	p_background->set_size_request(100, 80);
+	Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
 
+    p_align->add(*m_dialOctaveOffset);
+	p_background->add(*p_align);
 	add(*p_background);
 
 	Gtk::manage(p_background);

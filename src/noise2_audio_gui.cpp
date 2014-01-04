@@ -7,6 +7,7 @@
 #include "noise2_audio_gui.hpp"
 #include "noise2_audio.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 Noise2AudioGUI::Noise2AudioGUI(const std::string& URI)
 {
@@ -15,29 +16,32 @@ Noise2AudioGUI::Noise2AudioGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
+    VBox *p_mainWidget = manage (new VBox(false));
 
-    Label *p_labelWaveForm = manage (new Label("Noise Type"));
-    p_mainWidget->pack_start(*p_labelWaveForm);
+    MyBox *p_noiseTypeBox = manage (new MyBox("Noise Type", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_comboNoiseForm = manage (new ComboBoxText());
     m_comboNoiseForm->append_text("White");
     m_comboNoiseForm->append_text("Random");
     m_comboNoiseForm->append_text("Pink");
-
     m_comboNoiseForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Noise2AudioGUI::write_control), p_noiseType), mem_fun(*m_comboNoiseForm, &ComboBoxText::get_active_row_number)));
+    p_noiseTypeBox->pack_start(*m_comboNoiseForm);
 
-    p_mainWidget->pack_start(*m_comboNoiseForm);
+    p_mainWidget->pack_start(*p_noiseTypeBox);
 
-    m_dialRandomRate = new LabeledDial("Random Rate", p_rate, 0, 10, NORMAL, 0.01, 2);
+
+    MyBox *p_randomBox = manage(new MyBox("Random", Gtk::Orientation::ORIENTATION_HORIZONTAL));
+
+    m_dialRandomRate = new LabeledDial("Rate", p_rate, 0, 10, NORMAL, 0.01, 2);
     m_dialRandomRate->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Noise2AudioGUI::write_control), p_rate), mem_fun(*m_dialRandomRate,  &LabeledDial::get_value)));
-    p_mainWidget->pack_start(*m_dialRandomRate);
+    p_randomBox->pack_start(*m_dialRandomRate);
 
-    m_dialRandomLevel = new LabeledDial("Random Level", p_level, 0, 1, LOG, 0.0001, 4);
+    m_dialRandomLevel = new LabeledDial("Level", p_level, 0, 1, LOG, 0.0001, 4);
     m_dialRandomLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Noise2AudioGUI::write_control), p_level), mem_fun(*m_dialRandomLevel, &LabeledDial::get_value)));
-    p_mainWidget->pack_start(*m_dialRandomLevel);
+    p_randomBox->pack_start(*m_dialRandomLevel);
 
-    p_mainWidget->set_size_request(150, 200);
+    p_mainWidget->pack_start(*p_randomBox);
+
 
     p_background->add(*p_mainWidget);
     add(*p_background);

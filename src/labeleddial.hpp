@@ -27,7 +27,6 @@ class LabeledDial: public Gtk::EventBox
 		Glib::SignalProxy0<void> signal_value_changed();
 
 	private:
-		Glib::ustring float_to_fraction(float value);
 		Dial *m_dial;
 		Gtk::Label *m_label;
 		DialType m_type;

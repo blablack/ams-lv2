@@ -6,6 +6,7 @@
 #include "vco2_cv_gui.hpp"
 #include "vco2_cv.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 Vco2CVGUI::Vco2CVGUI(const char* plugin_uri)
 {
@@ -15,13 +16,10 @@ Vco2CVGUI::Vco2CVGUI(const char* plugin_uri)
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
 
-
-    VBox *p_mainWidget = manage(new VBox(false, 5));
-
+    VBox *p_mainWidget = manage(new VBox(false));
 
 
-    Label *p_labeWaveForm = manage (new Label("Wave Form"));
-    p_mainWidget->pack_start(*p_labeWaveForm);
+    MyBox *p_waveFormFrame = manage (new MyBox("Wave Form", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_comboWaveForm = manage (new ComboBoxText());
     m_comboWaveForm->append_text("Sine");
@@ -31,79 +29,63 @@ Vco2CVGUI::Vco2CVGUI(const char* plugin_uri)
     m_comboWaveForm->append_text("Aux Saw 1");
     m_comboWaveForm->append_text("Aux Saw 2");
     m_comboWaveForm->append_text("Aux Saw 3");
-
     m_comboWaveForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Vco2CVGUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number)));
     m_comboWaveForm->signal_changed().connect(mem_fun(*this, &Vco2CVGUI::get_waveform));
-    p_mainWidget->pack_start(*m_comboWaveForm);
+
+    p_waveFormFrame->pack_start(*m_comboWaveForm);
+    p_mainWidget->pack_start(*p_waveFormFrame);
 
 
-
-    Frame *p_freqFrame = manage(new Frame("Frequency"));
-    //p_gainFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_freqBox = manage(new HBox(true));
+    MyBox *p_freqFrame = manage(new MyBox("Frequency", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scaleOctave = new LabeledDial("Octave", p_octave, 0, 6, NORMAL, 1, 0);
     m_scaleOctave->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_octave), mem_fun(*m_scaleOctave,  &LabeledDial::get_value)));
-    p_freqBox->pack_start(*m_scaleOctave);
+    p_freqFrame->pack_start(*m_scaleOctave);
 
     m_scaleTune = new LabeledDial("Tune", p_tune, -1, 1, NORMAL, 0.001, 3);
     m_scaleTune->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_tune), mem_fun(*m_scaleTune,  &LabeledDial::get_value)));
-    p_freqBox->pack_start(*m_scaleTune);
+    p_freqFrame->pack_start(*m_scaleTune);
 
     m_scaleSemitone = new LabeledDial("Semitone", p_semitone, 0, 12, NORMAL, 1, 0);
     m_scaleSemitone->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_semitone), mem_fun(*m_scaleSemitone,  &LabeledDial::get_value)));
-    p_freqBox->pack_start(*m_scaleSemitone);
+    p_freqFrame->pack_start(*m_scaleSemitone);
 
-    p_freqFrame->add(*p_freqBox);
     p_mainWidget->pack_start(*p_freqFrame);
 
 
-
-    Frame *p_pwpFrame = manage(new Frame("Pulse Width / Phase"));
-    //p_gainFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_pwpBox = manage(new HBox(true));
+    MyBox *p_pwpFrame = manage(new MyBox("Pulse Width / Phase", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scalePW = new LabeledDial("PW", p_pw0, 0.1, 0.9, NORMAL, 0.001, 3);
     m_scalePW->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_pw0), mem_fun(*m_scalePW,  &LabeledDial::get_value)));
-    p_pwpBox->pack_start(*m_scalePW);
+    p_pwpFrame->pack_start(*m_scalePW);
 
     m_scalePWGain = new LabeledDial("PW Gain", p_pwGain, 0, 1, LOG, 0.0001, 4);
     m_scalePWGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_pwGain), mem_fun(*m_scalePWGain,  &LabeledDial::get_value)));
-    p_pwpBox->pack_start(*m_scalePWGain);
+    p_pwpFrame->pack_start(*m_scalePWGain);
 
     m_scaleEdge = new LabeledDial("Edge", p_edge, 1, 10, NORMAL, 0.05, 2);
     m_scaleEdge->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_edge), mem_fun(*m_scaleEdge,  &LabeledDial::get_value)));
-    p_pwpBox->pack_start(*m_scaleEdge);
+    p_pwpFrame->pack_start(*m_scaleEdge);
 
     m_scalePhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, LOG, 0.0001, 4);
     m_scalePhi0->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_phi0), mem_fun(*m_scalePhi0,  &LabeledDial::get_value)));
-    p_pwpBox->pack_start(*m_scalePhi0);
+    p_pwpFrame->pack_start(*m_scalePhi0);
 
-    p_pwpFrame->add(*p_pwpBox);
     p_mainWidget->pack_start(*p_pwpFrame);
 
 
-
-    Frame *p_modulationFrame = manage(new Frame("Modulation"));
-    //p_gainFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_modulationBox = manage(new HBox(true));
+    MyBox *p_modulationFrame = manage(new MyBox("Modulation", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.001, 3);
     m_scaleExpFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_expFMGain), mem_fun(*m_scaleExpFMGain,  &LabeledDial::get_value)));
-    p_modulationBox->pack_start(*m_scaleExpFMGain);
+    p_modulationFrame->pack_start(*m_scaleExpFMGain);
 
     m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_linFMGain, 0, 10, LOG, 0.001, 3);
     m_scaleLinFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2CVGUI::write_control), p_linFMGain), mem_fun(*m_scaleLinFMGain,  &LabeledDial::get_value)));
-    p_modulationBox->pack_start(*m_scaleLinFMGain);
+    p_modulationFrame->pack_start(*m_scaleLinFMGain);
 
-    p_modulationFrame->add(*p_modulationBox);
     p_mainWidget->pack_start(*p_modulationFrame);
 
-
-
-
-
-    p_mainWidget->set_size_request(260, 360);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

@@ -7,6 +7,7 @@
 #include "lfo_freq_gui.hpp"
 #include "lfo_freq.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 LfoFreqGUI::LfoFreqGUI(const std::string& URI)
 {
@@ -15,10 +16,9 @@ LfoFreqGUI::LfoFreqGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
+    VBox *p_mainWidget = manage (new VBox(false));
 
-    Label *p_labelWaveForm = manage (new Label("Wave Form"));
-    p_mainWidget->pack_start(*p_labelWaveForm);
+    MyBox *p_labelWaveForm = manage (new MyBox("Wave Form", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_comboWaveForm = manage (new ComboBoxText());
     m_comboWaveForm->append_text("Sine");
@@ -27,27 +27,24 @@ LfoFreqGUI::LfoFreqGUI(const std::string& URI)
     m_comboWaveForm->append_text("Sawtooth Down");
     m_comboWaveForm->append_text("Rectangle");
     m_comboWaveForm->append_text("S & H");
-
     m_comboWaveForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &LfoFreqGUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number)));
+    p_labelWaveForm->pack_start(*m_comboWaveForm);
 
-    p_mainWidget->pack_start(*m_comboWaveForm);
+    p_mainWidget->pack_start(*p_labelWaveForm);
 
-    Frame *p_freqFrame = manage(new Frame("Freq"));
 
-    HBox *p_freqBox = manage(new HBox(true));
+    MyBox *p_freqFrame = manage(new MyBox("Wave", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialTempo = new LabeledDial("Freq", p_freq, 0.0001, 100, LOG, 0.001, 4);
     m_dialTempo->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &LfoFreqGUI::write_control), p_freq), mem_fun(*m_dialTempo, &LabeledDial::get_value)));
-    p_freqBox->pack_start(*m_dialTempo);
-
-    p_freqFrame->add(*p_freqBox);
-    p_mainWidget->pack_start(*p_freqFrame);
+    p_freqFrame->pack_start(*m_dialTempo);
 
     m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01, 2);
     m_dialPhi0->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &LfoFreqGUI::write_control), p_phi0), mem_fun(*m_dialPhi0, &LabeledDial::get_value)));
-    p_mainWidget->pack_start(*m_dialPhi0);
+    p_freqFrame->pack_start(*m_dialPhi0);
 
-    p_mainWidget->set_size_request(160, 260);
+    p_mainWidget->pack_start(*p_freqFrame);
+
 
     p_background->add(*p_mainWidget);
     add(*p_background);

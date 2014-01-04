@@ -6,6 +6,7 @@
 #include "cvs_gui.hpp"
 #include "cvs.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 CVSGUI::CVSGUI(const std::string& URI)
 {
@@ -16,91 +17,61 @@ CVSGUI::CVSGUI(const std::string& URI)
 
 
 
-    VBox *p_mainWidget = manage(new VBox(false, 5));
+    VBox *p_mainWidget = manage(new VBox(true));
 
 
 
-    Frame *p_cv1Frame = manage(new Frame("1"));
-    p_cv1Frame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_cv1Box = manage(new HBox(false));
+    MyBox *p_cv1Frame = manage(new MyBox("CV Source 1", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialCV1 = new LabeledDial("CV", p_cv1, 0, 5, NORMAL, 0.01, 2);
     m_dialCV1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv1), mem_fun(*m_dialCV1,  &LabeledDial::get_value)));
-    p_cv1Box->pack_start(*m_dialCV1);
+    p_cv1Frame->pack_start(*m_dialCV1);
 
     m_dialCVFine1 = new LabeledDial("Fine", p_cvFine1, -0.5, 0.5, NORMAL, 0.001, 3);
     m_dialCVFine1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine1), mem_fun(*m_dialCVFine1,  &LabeledDial::get_value)));
-    p_cv1Box->pack_start(*m_dialCVFine1);
+    p_cv1Frame->pack_start(*m_dialCVFine1);
 
-    p_cv1Frame->add(*p_cv1Box);
     p_mainWidget->pack_start(*p_cv1Frame);
 
 
-
-    p_mainWidget->pack_start(*(new HSeparator()));
-
-
-
-    Frame *p_cv2Frame = manage(new Frame("2"));
-    p_cv2Frame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_cv2Box = manage(new HBox(false));
+    MyBox *p_cv2Frame = manage(new MyBox("CV Source 2", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialCV2 = new LabeledDial("CV", p_cv2, 0, 5, NORMAL, 0.01, 2);
     m_dialCV2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv2), mem_fun(*m_dialCV2,  &LabeledDial::get_value)));
-    p_cv2Box->pack_start(*m_dialCV2);
+    p_cv2Frame->pack_start(*m_dialCV2);
 
     m_dialCVFine2 = new LabeledDial("Fine", p_cvFine2, -0.5, 0.5, NORMAL, 0.001, 3);
     m_dialCVFine2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine2), mem_fun(*m_dialCVFine2,  &LabeledDial::get_value)));
-    p_cv2Box->pack_start(*m_dialCVFine2);
+    p_cv2Frame->pack_start(*m_dialCVFine2);
 
-    p_cv2Frame->add(*p_cv2Box);
     p_mainWidget->pack_start(*p_cv2Frame);
 
 
-
-    p_mainWidget->pack_start(*(new HSeparator()));
-
-
-
-    Frame *p_cv3Frame = manage(new Frame("3"));
-    p_cv3Frame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_cv3Box = manage(new HBox(false));
+    MyBox *p_cv3Frame = manage(new MyBox("CV Source 3", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialCV3 = new LabeledDial("CV", p_cv3, 0, 5, NORMAL, 0.01, 2);
     m_dialCV3->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv3), mem_fun(*m_dialCV3,  &LabeledDial::get_value)));
-    p_cv3Box->pack_start(*m_dialCV3);
+    p_cv3Frame->pack_start(*m_dialCV3);
 
     m_dialCVFine3 = new LabeledDial("Fine", p_cvFine3, -0.5, 0.5, NORMAL, 0.001, 3);
     m_dialCVFine3->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine3), mem_fun(*m_dialCVFine3,  &LabeledDial::get_value)));
-    p_cv3Box->pack_start(*m_dialCVFine3);
+    p_cv3Frame->pack_start(*m_dialCVFine3);
 
-    p_cv3Frame->add(*p_cv3Box);
     p_mainWidget->pack_start(*p_cv3Frame);
 
 
-
-    p_mainWidget->pack_start(*(new HSeparator()));
-
-
-
-    Frame *p_cv4Frame = manage(new Frame("4"));
-    p_cv4Frame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_cv4Box = manage(new HBox(false));
+    MyBox *p_cv4Frame = manage(new MyBox("CV Source 4", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialCV4 = new LabeledDial("CV", p_cv4, 0, 5, NORMAL, 0.01, 2);
     m_dialCV4->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cv4), mem_fun(*m_dialCV4,  &LabeledDial::get_value)));
-    p_cv4Box->pack_start(*m_dialCV4);
+    p_cv4Frame->pack_start(*m_dialCV4);
 
     m_dialCVFine4 = new LabeledDial("Fine", p_cvFine4, -0.5, 0.5, NORMAL, 0.001, 3);
     m_dialCVFine4->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &CVSGUI::write_control), p_cvFine4), mem_fun(*m_dialCVFine4,  &LabeledDial::get_value)));
-    p_cv4Box->pack_start(*m_dialCVFine4);
+    p_cv4Frame->pack_start(*m_dialCVFine4);
 
-    p_cv4Frame->add(*p_cv4Box);
     p_mainWidget->pack_start(*p_cv4Frame);
 
-
-
-    p_mainWidget->set_size_request(150, 360);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

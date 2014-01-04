@@ -8,6 +8,7 @@
 #include "percussiveenv_gui_scope.hpp"
 #include "percussiveenv.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 {
@@ -16,51 +17,40 @@ PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
+    VBox *p_mainWidget = manage (new VBox(false));
 
     m_envScope = new PercussiveEnvGUIScope();
     p_mainWidget->pack_start(*m_envScope);
 
 
 
-    Frame *p_adsrFrame = manage (new Frame("AD"));
-    p_adsrFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_adsrWidget = manage (new HBox(false));
+    MyBox *p_adsrFrame = manage (new MyBox("Attack / Delay", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scaleAttack = new LabeledDial("Attack", p_attack, 0, 1, NORMAL, 0.01, 2);
     m_scaleAttack->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &PercussiveEnvGUI::write_control), p_attack), mem_fun(*m_scaleAttack, &LabeledDial::get_value)));
-    p_adsrWidget->pack_start(*m_scaleAttack);
+    p_adsrFrame->pack_start(*m_scaleAttack);
 
     m_scaleDecay = new LabeledDial("Decay", p_decay, 0, 1, NORMAL, 0.01, 2);
     m_scaleDecay->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_decay), mem_fun(*m_scaleDecay, &LabeledDial::get_value)));
-    p_adsrWidget->pack_start(*m_scaleDecay);
+    p_adsrFrame->pack_start(*m_scaleDecay);
 
-    p_adsrFrame->add(*p_adsrWidget);
     p_mainWidget->pack_start(*p_adsrFrame);
 
 
-
-    p_mainWidget->pack_start(*(new HSeparator()));
-
-
-
-    Frame *p_dhtFrame = manage (new Frame("Delay / Hold / Time Scale"));
-    p_dhtFrame->set_shadow_type(Gtk::SHADOW_NONE);
-    HBox *p_dhtWidget = manage (new HBox(false));
+    MyBox *p_dhtFrame = manage (new MyBox("Delay / Hold / Time Scale", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01, 2);
     m_scaleDelay->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &PercussiveEnvGUI::write_control), p_delay), mem_fun(*m_scaleDelay, &LabeledDial::get_value)));
-    p_dhtWidget->pack_start(*m_scaleDelay);
+    p_dhtFrame->pack_start(*m_scaleDelay);
 
     m_scaleHold = new LabeledDial("Hold", p_hold, 0, 1, NORMAL, 0.01, 2);
     m_scaleHold->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_hold), mem_fun(*m_scaleHold, &LabeledDial::get_value)));
-    p_dhtWidget->pack_start(*m_scaleHold);
+    p_dhtFrame->pack_start(*m_scaleHold);
 
     m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0, 10, NORMAL, 0.01, 2);
     m_scaleTimeScale->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_timeScale), mem_fun(*m_scaleTimeScale, &LabeledDial::get_value)));
-    p_dhtWidget->pack_start(*m_scaleTimeScale);
+    p_dhtFrame->pack_start(*m_scaleTimeScale);
 
-    p_dhtFrame->add(*p_dhtWidget);
     p_mainWidget->pack_start(*p_dhtFrame);
 
 
@@ -72,9 +62,6 @@ PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 
     m_envScope->Redraw();
 
-
-
-    p_mainWidget->set_size_request(200, 320);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

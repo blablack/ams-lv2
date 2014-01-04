@@ -17,10 +17,11 @@ SampleHoldGUI::SampleHoldGUI(const std::string& URI)
 
 	m_dialTriggerLevel = new LabeledDial("Trigger Level", p_triggerlevel, 0, 10, LOG, 0.0001, 4);
 	m_dialTriggerLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &SampleHoldGUI::write_control), p_triggerlevel), mem_fun(*m_dialTriggerLevel,  &LabeledDial::get_value)));
-	p_background->add(*m_dialTriggerLevel);
 
-	p_background->set_size_request(100, 80);
+    Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
 
+    p_align->add(*m_dialTriggerLevel);
+	p_background->add(*p_align);
 	add(*p_background);
 
 	Gtk::manage(p_background);

@@ -7,6 +7,7 @@
 #include "lfo_tempo_gui.hpp"
 #include "lfo_tempo.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 LfoTempoGUI::LfoTempoGUI(const std::string& URI)
 {
@@ -15,10 +16,9 @@ LfoTempoGUI::LfoTempoGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
+    VBox *p_mainWidget = manage (new VBox(false));
 
-    Label *p_labelWaveForm = manage (new Label("Wave Form"));
-    p_mainWidget->pack_start(*p_labelWaveForm);
+    MyBox *p_labelWaveForm = manage (new MyBox("Wave Form", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_comboWaveForm = manage (new ComboBoxText());
     m_comboWaveForm->append_text("Sine");
@@ -27,32 +27,28 @@ LfoTempoGUI::LfoTempoGUI(const std::string& URI)
     m_comboWaveForm->append_text("Sawtooth Down");
     m_comboWaveForm->append_text("Rectangle");
     m_comboWaveForm->append_text("S & H");
+    m_comboWaveForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &LfoTempoGUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number)));
+    p_labelWaveForm->pack_start(*m_comboWaveForm);
 
-    slot<void> p_slotWaveForm = compose(bind<0> (mem_fun(*this, &LfoTempoGUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number));
-    m_comboWaveForm->signal_changed().connect(p_slotWaveForm);
+    p_mainWidget->pack_start(*p_labelWaveForm);
 
-    p_mainWidget->pack_start(*m_comboWaveForm);
 
-    Frame *p_freqFrame = manage(new Frame("Tempo"));
-
-    HBox *p_freqBox = manage(new HBox(true));
+    MyBox *p_freqFrame = manage(new MyBox("Wave", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialTempo = new LabeledDial("Tempo", p_tempo, 1, 320, NORMAL, 1, 0);
     m_dialTempo->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &LfoTempoGUI::write_control), p_tempo), mem_fun(*m_dialTempo, &LabeledDial::get_value)));
-    p_freqBox->pack_start(*m_dialTempo);
+    p_freqFrame->pack_start(*m_dialTempo);
 
-    m_dialTempoMultiplier = new LabeledDial("Tempo Multiplier", p_tempoMultiplier, 0.0078125, 32, DIVIDER, 1, 7);
+    m_dialTempoMultiplier = new LabeledDial("Multiplier", p_tempoMultiplier, 0.0078125, 128, MULTIPLIER, 0.0078125, 7);
     m_dialTempoMultiplier->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &LfoTempoGUI::write_control), p_tempoMultiplier), mem_fun(*m_dialTempoMultiplier, &LabeledDial::get_value)));
-    p_freqBox->pack_start(*m_dialTempoMultiplier);
-
-    p_freqFrame->add(*p_freqBox);
-    p_mainWidget->pack_start(*p_freqFrame);
+    p_freqFrame->pack_start(*m_dialTempoMultiplier);
 
     m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01, 2);
     m_dialPhi0->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &LfoTempoGUI::write_control), p_phi0), mem_fun(*m_dialPhi0, &LabeledDial::get_value)));
-    p_mainWidget->pack_start(*m_dialPhi0);
+    p_freqFrame->pack_start(*m_dialPhi0);
 
-    p_mainWidget->set_size_request(160, 260);
+    p_mainWidget->pack_start(*p_freqFrame);
+
 
     p_background->add(*p_mainWidget);
     add(*p_background);
@@ -63,6 +59,8 @@ LfoTempoGUI::LfoTempoGUI(const std::string& URI)
 void LfoTempoGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
     int p_waveFormValue;
+    float p_multiplierValue;
+
     switch(port)
     {
     case p_waveForm:
@@ -74,7 +72,37 @@ void LfoTempoGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t forma
         m_dialTempo->set_value(*static_cast<const float*> (buffer));
         break;
     case p_tempoMultiplier:
-        m_dialTempoMultiplier->set_value(*static_cast<const float*> (buffer));
+        p_multiplierValue = (float) (*static_cast<const float*> (buffer));
+        if(p_multiplierValue <= 0.0078125)
+            m_dialTempoMultiplier->set_value(1/128);
+        else if(p_multiplierValue <= 0.015625)
+            m_dialTempoMultiplier->set_value(1/64);
+        else if(p_multiplierValue <= 0.03125)
+            m_dialTempoMultiplier->set_value(1/32);
+        else if(p_multiplierValue <= 0.0625)
+            m_dialTempoMultiplier->set_value(1/16);
+        else if(p_multiplierValue <= 0.125)
+            m_dialTempoMultiplier->set_value(1/8);
+        else if(p_multiplierValue <= 0.25)
+            m_dialTempoMultiplier->set_value(1/4);
+        else if(p_multiplierValue <= 0.5)
+            m_dialTempoMultiplier->set_value(1/2);
+        else if(p_multiplierValue <= 1)
+            m_dialTempoMultiplier->set_value(1);
+        else if(p_multiplierValue <= 2)
+            m_dialTempoMultiplier->set_value(2);
+        else if(p_multiplierValue <= 4)
+            m_dialTempoMultiplier->set_value(4);
+        else if(p_multiplierValue <= 8)
+            m_dialTempoMultiplier->set_value(8);
+        else if(p_multiplierValue <= 16)
+            m_dialTempoMultiplier->set_value(16);
+        else if(p_multiplierValue <= 32)
+            m_dialTempoMultiplier->set_value(32);
+        else if(p_multiplierValue <= 64)
+            m_dialTempoMultiplier->set_value(64);
+        else if(p_multiplierValue > 64)
+            m_dialTempoMultiplier->set_value(128);
         break;
     case p_phi0:
         m_dialPhi0->set_value(*static_cast<const float*> (buffer));

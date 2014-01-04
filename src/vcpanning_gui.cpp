@@ -6,6 +6,7 @@
 #include "vcpanning_gui.hpp"
 #include "vcpanning.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 VcPanningGUI::VcPanningGUI(const std::string& URI)
 {
@@ -14,10 +15,11 @@ VcPanningGUI::VcPanningGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
 
-    Label *p_labelPanningMode = manage (new Label("Panning Mode"));
-    p_mainWidget->pack_start(*p_labelPanningMode);
+    VBox *p_mainWidget = manage (new VBox(false));
+
+
+    MyBox *p_modeFrame = manage (new MyBox("Panning Mode", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_comboPanningMode = manage (new ComboBoxText());
     m_comboPanningMode->append_text("VC Control");
@@ -25,24 +27,24 @@ VcPanningGUI::VcPanningGUI(const std::string& URI)
     m_comboPanningMode->append_text("Fixed Alternating Panorama - Half Width");
     m_comboPanningMode->append_text("Fixed Alternating Panorama - Quarter Width");
     m_comboPanningMode->append_text("Mono");
-
     m_comboPanningMode->signal_changed().connect(compose(bind<0> (mem_fun(*this, &VcPanningGUI::write_control), p_panningMode), mem_fun(*m_comboPanningMode, &ComboBoxText::get_active_row_number)));
 
-    p_mainWidget->pack_start(*m_comboPanningMode);
+    p_modeFrame->pack_start(*m_comboPanningMode);
+    p_mainWidget->pack_start(*p_modeFrame);
 
-    HBox *p_dials = manage (new HBox(true));
+
+    MyBox *p_panFrame = manage (new MyBox("Panning", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_scalePanOffset = new LabeledDial("Pan Offset", p_panOffset, -1, 1, NORMAL, 0.01, 2);
     m_scalePanOffset->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcPanningGUI::write_control), p_panOffset), mem_fun(*m_scalePanOffset,  &LabeledDial::get_value)));
-    p_dials->pack_start(*m_scalePanOffset);
+    p_panFrame->pack_start(*m_scalePanOffset);
 
-    m_scalePanGain = new LabeledDial("Pain Gain", p_panGain, 0, 2, LOG, 0.0001, 4);
+    m_scalePanGain = new LabeledDial("Pan Gain", p_panGain, 0, 2, LOG, 0.0001, 4);
     m_scalePanGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcPanningGUI::write_control), p_panGain), mem_fun(*m_scalePanGain, &LabeledDial::get_value)));
-    p_dials->pack_start(*m_scalePanGain);
+    p_panFrame->pack_start(*m_scalePanGain);
 
-    p_mainWidget->pack_start(*p_dials);
+    p_mainWidget->pack_start(*p_panFrame);
 
-    p_mainWidget->set_size_request(256, 160);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

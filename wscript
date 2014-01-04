@@ -219,7 +219,7 @@ def build(bld):
                          '-DPLUGIN_URI_SUFFIX="%s"' % i,
                          '-DPLUGIN_HEADER="src/%s.hpp"' % i],
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-                        ['src/dial.cpp', 'src/labeleddial.cpp'])
+                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
 
 
 
@@ -231,7 +231,7 @@ def build(bld):
                       '-DPLUGIN_URI_SUFFIX="env_gui"',
                       '-DPLUGIN_HEADER="src/env_gui.hpp"'],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-                     ['src/dial.cpp', 'src/labeleddial.cpp', 'src/env_gui_scope.cpp'])
+                     ['src/dial.cpp', 'src/labeleddial.cpp', 'src/env_gui_scope.cpp', 'src/my_box.cpp'])
 
 
 
@@ -243,7 +243,7 @@ def build(bld):
                       '-DPLUGIN_URI_SUFFIX="percussiveenv_gui"',
                       '-DPLUGIN_HEADER="src/percussiveenv_gui.hpp"'],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-                     ['src/dial.cpp', 'src/labeleddial.cpp', 'src/percussiveenv_gui_scope.cpp'])
+                     ['src/dial.cpp', 'src/labeleddial.cpp', 'src/percussiveenv_gui_scope.cpp', 'src/my_box.cpp'])
 
 
 
@@ -255,5 +255,5 @@ def build(bld):
                       '-DPLUGIN_URI_SUFFIX="advenv_gui"',
                       '-DPLUGIN_HEADER="src/advenv_gui.hpp"'],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-                     ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp'])
+                     ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp', 'src/my_box.cpp'])
 

@@ -7,6 +7,7 @@
 #include "vctohz_gui.hpp"
 #include "vctohz.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 VCToHZGUI::VCToHZGUI(const std::string& URI)
 {
@@ -15,25 +16,26 @@ VCToHZGUI::VCToHZGUI(const std::string& URI)
     color->set_rgb(7710, 8738, 9252);
     p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-    VBox *p_mainWidget = manage (new VBox(false, 5));
 
-    Label *p_labelWaveForm = manage (new Label("Conversion Mode"));
-    p_mainWidget->pack_start(*p_labelWaveForm);
+    VBox *p_mainWidget = manage (new VBox(false));
+
+
+    MyBox *p_convFrame = manage (new MyBox("Conversion Mode", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_comboConversionMode = manage (new ComboBoxText());
     m_comboConversionMode->append_text("V/Octave --> Hz");
     m_comboConversionMode->append_text("V/Octave --> 0..1, 1=rate/2");
     m_comboConversionMode->append_text("V/Octave --> 0..1, 1=20000 Hz");
-
     m_comboConversionMode->signal_changed().connect(compose(bind<0> (mem_fun(*this, &VCToHZGUI::write_control), p_conversionMode), mem_fun(*m_comboConversionMode, &ComboBoxText::get_active_row_number)));
 
-    p_mainWidget->pack_start(*m_comboConversionMode);
+    p_convFrame->pack_start(*m_comboConversionMode);
+    p_mainWidget->pack_start(*p_convFrame);
+
 
     m_dialOctaveOffset = new LabeledDial("Octave Offset", p_octaveOffset, -3, 3, NORMAL, 0.01, 2);
     m_dialOctaveOffset->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCToHZGUI::write_control), p_octaveOffset), mem_fun(*m_dialOctaveOffset, &LabeledDial::get_value)));
     p_mainWidget->pack_start(*m_dialOctaveOffset);
 
-    p_mainWidget->set_size_request(180, 130);
 
     p_background->add(*p_mainWidget);
     add(*p_background);

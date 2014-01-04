@@ -3,7 +3,7 @@
 
 AdvEnvGUIScope::AdvEnvGUIScope()
 {
-	set_size_request(100, 160);
+	set_size_request(80, 80);
 }
 
 AdvEnvGUIScope::~AdvEnvGUIScope()

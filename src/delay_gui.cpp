@@ -17,10 +17,11 @@ DelayGUI::DelayGUI(const std::string& URI)
 
 	m_dialDelay = new LabeledDial("Delay", p_delay, 0, 10, LOG, 0.001, 3);
 	m_dialDelay->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &DelayGUI::write_control), p_delay), mem_fun(*m_dialDelay,  &LabeledDial::get_value)));
-	p_background->add(*m_dialDelay);
 
-	p_background->set_size_request(100, 80);
+    Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
 
+    p_align->add(*m_dialDelay);
+	p_background->add(*p_align);
 	add(*p_background);
 
 	Gtk::manage(p_background);

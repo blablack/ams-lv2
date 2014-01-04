@@ -20,6 +20,7 @@ protected:
 	Gtk::ComboBoxText* m_comboVCFType;
 
 	LabeledDial* m_scaleInputGain;
+	LabeledDial* m_scaleOutputGain;
 	LabeledDial* m_scaleFrequency;
 	LabeledDial* m_scaleExpFMGain;
 	LabeledDial* m_scaleLinFMGain;

@@ -6,6 +6,7 @@
 #include "vcaexp_cv_gui.hpp"
 #include "vcaexp_cv.hpp"
 #include "dial.hpp"
+#include "my_box.hpp"
 
 VCAExpCVGUI::VCAExpCVGUI(const std::string& URI)
 {
@@ -15,52 +16,39 @@ VCAExpCVGUI::VCAExpCVGUI(const std::string& URI)
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
 
-
-	VBox *p_mainWidget = manage(new VBox(false, 5));
-
+	VBox *p_mainWidget = manage(new VBox(false));
 
 
-	Frame *p_gainFrame = manage(new Frame("Gain"));
-	//p_gainFrame->set_shadow_type(Gtk::SHADOW_NONE);
-	HBox *p_gainBox = manage(new HBox(true));
+    MyBox *p_gainFrame = manage (new MyBox("Gain", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
 	m_dialGain1 = new LabeledDial("Gain Offset", p_gain1, 0, 1, NORMAL, 0.01, 2);
 	m_dialGain1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCAExpCVGUI::write_control), p_gain1), mem_fun(*m_dialGain1,  &LabeledDial::get_value)));
-	p_gainBox->pack_start(*m_dialGain1);
+	p_gainFrame->pack_start(*m_dialGain1);
 
 	m_dialGain2 = new LabeledDial("2nd Gain Boost", p_gain2, 0, 1, NORMAL, 0.01, 2);
 	m_dialGain2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCAExpCVGUI::write_control), p_gain2), mem_fun(*m_dialGain2,  &LabeledDial::get_value)));
-	p_gainBox->pack_start(*m_dialGain2);
+	p_gainFrame->pack_start(*m_dialGain2);
 
-	p_gainFrame->add(*p_gainBox);
 	p_mainWidget->pack_start(*p_gainFrame);
 
 
-
-	Frame *p_inFrame = manage(new Frame("In"));
-	//p_gainFrame->set_shadow_type(Gtk::SHADOW_NONE);
-	HBox *p_volumeBox = manage(new HBox(true));
+    MyBox *p_inFrame = manage(new MyBox("In", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
 	m_dialIn1 = new LabeledDial("In 1", p_in1, 0, 2, NORMAL, 0.01, 2);
 	m_dialIn1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCAExpCVGUI::write_control), p_in1), mem_fun(*m_dialIn1,  &LabeledDial::get_value)));
-	p_volumeBox->pack_start(*m_dialIn1);
+	p_inFrame->pack_start(*m_dialIn1);
 
 	m_dialIn2 = new LabeledDial("In 2", p_in2, 0, 2, NORMAL, 0.01, 2);
 	m_dialIn2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCAExpCVGUI::write_control), p_in2), mem_fun(*m_dialIn2,  &LabeledDial::get_value)));
-	p_volumeBox->pack_start(*m_dialIn2);
+	p_inFrame->pack_start(*m_dialIn2);
 
-	p_inFrame->add(*p_volumeBox);
 	p_mainWidget->pack_start(*p_inFrame);
-
 
 
 	m_dialOutputLevel = new LabeledDial("Output Level", p_outputLevel, 0, 2, NORMAL, 0.01, 2);
 	m_dialOutputLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCAExpCVGUI::write_control), p_outputLevel), mem_fun(*m_dialOutputLevel,  &LabeledDial::get_value)));
 	p_mainWidget->pack_start(*m_dialOutputLevel);
 
-
-
-	p_mainWidget->set_size_request(150, 300);
 
 	p_background->add(*p_mainWidget);
 	add(*p_background);

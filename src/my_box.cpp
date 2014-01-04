@@ -15,7 +15,7 @@ MyBox::MyBox(const Glib::ustring& label, Gtk::Orientation orientation)
     {
     case Gtk::Orientation::ORIENTATION_VERTICAL:
         p_child = manage(new VBox());
-        p_child->set_homogeneous(true);
+        p_child->set_homogeneous(false);
         this->add(*p_child);
         break;
     case Gtk::Orientation::ORIENTATION_HORIZONTAL:

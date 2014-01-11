@@ -21,7 +21,8 @@ protected:
 
 	LabeledDial* m_scaleOctave;
 	LabeledDial* m_scaleTune;
-	LabeledDial* m_scaleSemitone;
+	LabeledDial* m_scaleHarmonic;
+    LabeledDial* m_scaleSubharmonic;
 	LabeledDial* m_scalePW;
 	LabeledDial* m_scalePWGain;
 	LabeledDial* m_scaleEdge;

@@ -35,10 +35,9 @@ void Vco2::run(uint32_t nframes)
 
 	waveForm = floor(*p(p_waveForm));
 	octave = floor(*p(p_octave));
-	semitone = floor(*p(p_semitone));
 
-	freq_const = wave_period / (float) m_rate;
-	freq_tune = 4.0313842f + octave + *p(p_tune) + (float) semitone / 12.0f;
+	freq_const = wave_period / (float) m_rate * (float)*p(p_harmonic) / (float)*p(p_subharmonic);
+	freq_tune = 4.0313842f + octave + *p(p_tune);
 	gain_linfm = 1000.0f * *p(p_linFMGain);
 	phi_const = *p(p_phi0) * PKonst;
 

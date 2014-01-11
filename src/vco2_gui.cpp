@@ -46,9 +46,13 @@ Vco2GUI::Vco2GUI(const char* plugin_uri)
     m_scaleTune->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2GUI::write_control), p_tune), mem_fun(*m_scaleTune,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_scaleTune);
 
-    m_scaleSemitone = new LabeledDial("Semitone", p_semitone, 0, 12, NORMAL, 1, 0);
-    m_scaleSemitone->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2GUI::write_control), p_semitone), mem_fun(*m_scaleSemitone,  &LabeledDial::get_value)));
-    p_freqFrame->pack_start(*m_scaleSemitone);
+    m_scaleHarmonic = new LabeledDial("Harmonic", p_harmonic, 1, 16, NORMAL, 1, 0);
+    m_scaleHarmonic->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2GUI::write_control), p_harmonic), mem_fun(*m_scaleHarmonic,  &LabeledDial::get_value)));
+    p_freqFrame->pack_start(*m_scaleHarmonic);
+
+    m_scaleSubharmonic = new LabeledDial("Subharmonic", p_subharmonic, 1, 16, NORMAL, 1, 0);
+    m_scaleSubharmonic->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Vco2GUI::write_control), p_subharmonic), mem_fun(*m_scaleSubharmonic,  &LabeledDial::get_value)));
+    p_freqFrame->pack_start(*m_scaleSubharmonic);
 
     p_mainWidget->pack_start(*p_freqFrame);
 
@@ -132,8 +136,11 @@ void Vco2GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, c
     case p_tune:
         m_scaleTune->set_value(*static_cast<const float*> (buffer));
         break;
-    case p_semitone:
-        m_scaleSemitone->set_value(*static_cast<const float*> (buffer));
+    case p_harmonic:
+        m_scaleHarmonic->set_value(*static_cast<const float*> (buffer));
+        break;
+    case p_subharmonic:
+        m_scaleSubharmonic->set_value(*static_cast<const float*> (buffer));
         break;
     case p_pw0:
         m_scalePW->set_value(*static_cast<const float*> (buffer));

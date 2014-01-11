@@ -23,7 +23,12 @@ enum p_port_enum {
   p_waveForm,
   p_freq,
   p_phi0,
-  p_output,
+  p_out_sine,
+  p_out_triangle,
+  p_out_saw_up,
+  p_out_saw_down,
+  p_out_rectangle,
+  p_out_sample_hold,
   p_n_ports
 };
 
@@ -32,6 +37,11 @@ static const peg_data_t p_ports[] = {
   { 0, 5, 0, 0, 0, 0 }, 
   { 0.0001, 100, 5, 0, 0, 0 }, 
   { 0, 6.28, 0, 0, 0, 0 }, 
+  { -1, 1, 0, 0, 0, 0 }, 
+  { -1, 1, 0, 0, 0, 0 }, 
+  { -1, 1, 0, 0, 0, 0 }, 
+  { -1, 1, 0, 0, 0, 0 }, 
+  { -1, 1, 0, 0, 0, 0 }, 
   { -1, 1, 0, 0, 0, 0 }, 
 };
 

@@ -7,7 +7,7 @@ from waflib.extras import autowaf as autowaf
 
 # Variables for 'waf dist'
 APPNAME = 'ams-lv2'
-VERSION = '1.0.1'
+VERSION = '1.0.2'
 
 # Mandatory variables
 top = '.'
@@ -111,37 +111,32 @@ def build(bld):
 
 
     plugins = '''
+    absolute
     advenv
     amp
+    amplitude
+    controltocv
+    cvs
+    cvtocontrol
+    delay
     env
     hztovc
-    lfo_tempo
-    lfo_freq
-    mixer_4ch_audio
-    mixer_4ch_cv
-    mixer_2ch_audio
-    mixer_2ch_cv
-    noise2_audio
-    noise2_cv
-    slew
-    vcalin_audio
-    vcalin_cv
-    vctohz
-    cvs
-    delay
-    absolute
     inv
-    ringmodulator_audio
-    ringmodulator_cv
-    percussiveenv
-    samplehold
-    vcpanning
-    vcswitch_audio
-    vcswitch_cv
+    lfo2_tempo
+    lfo2_freq
+    lfo
+    mixer_4ch
+    mixer_2ch
     mooglpf
-    controltocv
-    cvtocontrol
-    amplitude
+    noise2
+    percussiveenv
+    ringmodulator
+    samplehold
+    slew
+    vcalin
+    vcpanning
+    vcswitch
+    vctohz
     '''.split()
 
     for i in plugins:
@@ -158,12 +153,11 @@ def build(bld):
 
 
     plugins = '''
-    vco2_audio
-    vco2_cv
     ad
+    vcaexp
     vcf
-    vcaexp_audio
-    vcaexp_cv
+    vco2
+    vco3
     '''.split()
 
     for i in plugins:
@@ -180,34 +174,28 @@ def build(bld):
 
 
     plugins_gui = '''
-    samplehold_gui
-    vco2_audio_gui
-    vco2_cv_gui
     ad_gui
-    vcf_gui
-    vcpanning_gui
-    lfo_freq_gui
-    lfo_tempo_gui
-    slew_gui
     amp_gui
     cvs_gui
     delay_gui
     hztovc_gui
-    mixer_2ch_audio_gui
-    mixer_2ch_cv_gui
-    mixer_4ch_audio_gui
-    mixer_4ch_cv_gui
+    lfo2_freq_gui
+    lfo2_tempo_gui
+    lfo_gui
+    mixer_2ch_gui
+    mixer_4ch_gui
     mooglpf_gui
-    noise2_audio_gui
-    noise2_cv_gui
-    ringmodulator_audio_gui
-    ringmodulator_cv_gui
-    vcaexp_audio_gui
-    vcaexp_cv_gui
-    vcalin_audio_gui
-    vcalin_cv_gui
-    vcswitch_audio_gui
-    vcswitch_cv_gui
+    noise2_gui
+    ringmodulator_gui
+    samplehold_gui
+    slew_gui
+    vcaexp_gui
+    vcalin_gui
+    vcf_gui
+    vco2_gui
+    vco3_gui
+    vcpanning_gui
+    vcswitch_gui
     vctohz_gui
     '''.split()
 

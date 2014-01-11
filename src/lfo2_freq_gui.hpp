@@ -1,5 +1,5 @@
-#ifndef SLEW_GUI_H
-#define SLEW_GUI_H
+#ifndef LFO2_FREQ_GUI_H
+#define LFO2_FREQ_GUI_H
 
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
@@ -10,16 +10,16 @@ using namespace lvtk;
 using namespace sigc;
 using namespace Gtk;
 
-class SlewGUI: public UI<SlewGUI, GtkUI<true>>
+class Lfo2FreqGUI: public UI<Lfo2FreqGUI, GtkUI<true>>
 {
 	public:
-		SlewGUI(const std::string& URI);
+		Lfo2FreqGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
 	protected:
-		LabeledDial* m_dialTimeUp;
-		LabeledDial* m_dialTimeDown;
-}
-;
+		Gtk::ComboBoxText* m_comboWaveForm;
+		LabeledDial* m_dialTempo;
+		LabeledDial* m_dialPhi0;
+};
 
 #endif

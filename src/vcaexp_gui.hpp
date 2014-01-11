@@ -1,5 +1,5 @@
-#ifndef SLEW_GUI_H
-#define SLEW_GUI_H
+#ifndef VCAEXP_GUI_H
+#define VCAEXP_GUI_H
 
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
@@ -10,16 +10,18 @@ using namespace lvtk;
 using namespace sigc;
 using namespace Gtk;
 
-class SlewGUI: public UI<SlewGUI, GtkUI<true>>
+class VcaExpGUI: public UI<VcaExpGUI, GtkUI<true>>
 {
 	public:
-		SlewGUI(const std::string& URI);
+		VcaExpGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
 	protected:
-		LabeledDial* m_dialTimeUp;
-		LabeledDial* m_dialTimeDown;
-}
-;
+		LabeledDial* m_dialGain1;
+		LabeledDial* m_dialGain2;
+		LabeledDial* m_dialIn1;
+		LabeledDial* m_dialIn2;
+		LabeledDial* m_dialOutputLevel;
+};
 
 #endif

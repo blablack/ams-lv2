@@ -46,10 +46,10 @@ void Ad::run(uint32_t nframes)
 			switch (l3)
 			{
 				case 0:
-					p(p_cvout0)[l2] = p(p_cvin)[l2] + dta * detune_a + dra * drift_a[l3];
+					p(p_cvOut0)[l2] = p(p_cvIn)[l2] + dta * detune_a + dra * drift_a[l3];
 					break;
 				case 1:
-					p(p_cvout1)[l2] = p(p_cvin)[l2] + dta * detune_a + dra * drift_a[l3];
+					p(p_cvOut1)[l2] = p(p_cvIn)[l2] + dta * detune_a + dra * drift_a[l3];
 					break;
 			}
 

@@ -19,13 +19,13 @@ typedef struct {
 static const char p_uri[] = "http://github.com/blablack/ams-lv2/vcswitch";
 
 enum p_port_enum {
-  p_switchlevel,
+  p_switchLevel,
   p_cv,
   p_in1,
   p_in2,
   p_out1,
   p_out2,
-  p_outmix,
+  p_outMix,
   p_n_ports
 };
 

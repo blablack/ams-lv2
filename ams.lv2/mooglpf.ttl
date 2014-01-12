@@ -38,7 +38,7 @@
 	],	[
 		a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 2 ;
-		lv2:symbol "expfmgain" ;
+		lv2:symbol "expFMGain" ;
 		lv2:name "Exp FM Gain" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
@@ -70,12 +70,12 @@
 	],	[
 		a lv2:InputPort, lv2:AudioPort;
 		lv2:index 6 ;
-		lv2:symbol "portinput" ;
+		lv2:symbol "portInput" ;
 		lv2:name "Port Input" ;
 	],	[
 		a lv2:InputPort, lv2:CVPort;
 		lv2:index 7 ;
-		lv2:symbol "portfrequency" ;
+		lv2:symbol "portFrequency" ;
 		lv2:name "Port Frequency" ;
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
@@ -83,7 +83,7 @@
 	],	[
 		a lv2:InputPort, lv2:CVPort ;
 		lv2:index 8 ;
-		lv2:symbol "portexpfm" ;
+		lv2:symbol "portExpFM" ;
 		lv2:name "Port Exp FM" ;
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
@@ -91,7 +91,7 @@
 	],	[
 		a lv2:InputPort, lv2:CVPort ;
 		lv2:index 9 ;
-		lv2:symbol "portresonance" ;
+		lv2:symbol "portResonance" ;
 		lv2:name "Port Resonance" ;
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;

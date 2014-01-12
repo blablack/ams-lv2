@@ -21,7 +21,7 @@
 	lv2:port [
 		a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 0 ;
-		lv2:symbol "triggerlevel" ;
+		lv2:symbol "triggerLevel" ;
 		lv2:name "Trigger Level" ;
 		lv2:default 0.5 ;
 		lv2:minimum 0 ;

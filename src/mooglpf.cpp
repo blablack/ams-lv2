@@ -34,11 +34,11 @@ void MoogLPF::run(uint32_t nframes)
 	float c1, c2, c3, c4, c5;
 	float g0, g1, r, dr, w, dw, x, t, d;
 
-	p0 = p(p_portinput);
+	p0 = p(p_portInput);
 	p1 = p(p_output);
-	p2 = p(p_portfrequency) - 1;
-	p3 = p(p_portexpfm) - 1;
-	p4 = p(p_portresonance) - 1;
+	p2 = p(p_portFrequency) - 1;
+	p3 = p(p_portExpFM) - 1;
+	p4 = p(p_portResonance) - 1;
 	g0 = exp2ap(0.1661 * *p(p_inputGain)) / 2;
 	g1 = exp2ap(0.1661 * *p(p_outputGain)) * 2;
 
@@ -58,7 +58,7 @@ void MoogLPF::run(uint32_t nframes)
 		p4 += k;
 		len -= k;
 
-		t = exp2ap(*p(p_expfmgain) * *p3 + *p(p_frequency) + *p2 + 9.70) / m_rate;
+		t = exp2ap(*p(p_expFMGain) * *p3 + *p(p_frequency) + *p2 + 9.70) / m_rate;
 		if (t < 0.75)
 			t *= 1.005 - t * (0.624 - t * (0.65 - t * 0.54));
 		else

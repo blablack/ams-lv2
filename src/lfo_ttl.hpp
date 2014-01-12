@@ -23,12 +23,12 @@ enum p_port_enum {
   p_waveForm,
   p_freq,
   p_phi0,
-  p_out_sine,
-  p_out_triangle,
-  p_out_saw_up,
-  p_out_saw_down,
-  p_out_rectangle,
-  p_out_sample_hold,
+  p_outSine,
+  p_outTriangle,
+  p_outSawUp,
+  p_outSawDown,
+  p_outRectangle,
+  p_outSampleHold,
   p_n_ports
 };
 

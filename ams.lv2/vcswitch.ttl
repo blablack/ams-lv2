@@ -21,7 +21,7 @@
 	lv2:port [
 		a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 0 ;
-		lv2:symbol "switchlevel" ;
+		lv2:symbol "switchLevel" ;
 		lv2:name "Switch Level" ;
 		lv2:default 0.5 ;
 		lv2:minimum 0.0 ;
@@ -57,6 +57,6 @@
 	] ,	[
 		a lv2:OutputPort, lv2:AudioPort ;
 		lv2:index 6 ;
-		lv2:symbol "outmix" ;
+		lv2:symbol "outMix" ;
 		lv2:name "Out Mix" ;
 	].

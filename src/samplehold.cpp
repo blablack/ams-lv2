@@ -20,7 +20,7 @@ void SampleHold::run(uint32_t nframes)
 {
 	unsigned int l2;
 
-	triggerLevel = *p(p_triggerlevel);
+	triggerLevel = *p(p_triggerLevel);
 
 	for (l2 = 0; l2 < nframes; l2++)
 	{

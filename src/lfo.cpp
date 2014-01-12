@@ -110,12 +110,12 @@ void Lfo::run(uint32_t nframes)
             old_t += ldt;
             old_r += ldr;
 
-            p(p_out_sine)[l2_out] = old_si;
-            p(p_out_triangle)[l2_out] = old_t;
-            p(p_out_saw_up)[l2_out] = old_sa;
-            p(p_out_saw_down)[l2_out] = -old_sa;
-            p(p_out_rectangle)[l2_out] = -old_r;
-            p(p_out_sample_hold)[l2_out] = old_sh;
+            p(p_outSine)[l2_out] = old_si;
+            p(p_outTriangle)[l2_out] = old_t;
+            p(p_outSawUp)[l2_out] = old_sa;
+            p(p_outSawDown)[l2_out] = -old_sa;
+            p(p_outRectangle)[l2_out] = -old_r;
+            p(p_outSampleHold)[l2_out] = old_sh;
 
             l2_out++;
         }

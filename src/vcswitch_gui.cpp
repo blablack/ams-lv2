@@ -15,8 +15,8 @@ VCSwitchGUI::VCSwitchGUI(const std::string& URI)
 	color->set_rgb(7710, 8738, 9252);
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-	m_dialSwitchLevel = new LabeledDial("Switch Level", p_switchlevel, 0, 10, LOG, 0.0001, 4);
-	m_dialSwitchLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCSwitchGUI::write_control), p_switchlevel), mem_fun(*m_dialSwitchLevel,  &LabeledDial::get_value)));
+	m_dialSwitchLevel = new LabeledDial("Switch Level", p_switchLevel, 0, 10, LOG, 0.0001, 4);
+	m_dialSwitchLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VCSwitchGUI::write_control), p_switchLevel), mem_fun(*m_dialSwitchLevel,  &LabeledDial::get_value)));
 
     Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
 
@@ -29,7 +29,7 @@ VCSwitchGUI::VCSwitchGUI(const std::string& URI)
 
 void VCSwitchGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
-	if (port == p_switchlevel)
+	if (port == p_switchLevel)
 		m_dialSwitchLevel->set_value(*static_cast<const float*> (buffer));
 }
 

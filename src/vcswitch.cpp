@@ -20,7 +20,7 @@ void VCSwitch::run(uint32_t nframes)
 	unsigned int l2;
 	float mix1, mix2;
 
-	switchlevel = *p(p_switchlevel);
+	switchlevel = *p(p_switchLevel);
 
 	for (l2 = 0; l2 < nframes; l2++)
 	{
@@ -41,7 +41,7 @@ void VCSwitch::run(uint32_t nframes)
 			mix2 = 0;
 			mix1 = 2.0 * switchlevel;
 		}
-		p(p_outmix)[l2] = (mix1 * p(p_in1)[l2] + mix2 * p(p_in2)[l2]) / (mix1 + mix2);
+		p(p_outMix)[l2] = (mix1 * p(p_in1)[l2] + mix2 * p(p_in2)[l2]) / (mix1 + mix2);
 	}
 }
 

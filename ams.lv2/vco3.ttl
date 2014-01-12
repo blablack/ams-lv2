@@ -15,22 +15,22 @@
 <http://github.com/blablack/ams-lv2/vco3#group_frequency>
     a param:OscillatorControls ;
     lv2:name "Frequency" ;
-    lv2:symbol "grp_frequency" .
+    lv2:symbol "grpFrequency" .
 
 <http://github.com/blablack/ams-lv2/vco3#group_pw_phase>
     a param:OscillatorControls ;
     lv2:name "Pulse Width - Phase" ;
-    lv2:symbol "grp_pw_phase" .
+    lv2:symbol "grpPWPhase" .
 
 <http://github.com/blablack/ams-lv2/vco3#group_modulation>
     a param:OscillatorControls ;
     lv2:name "Modulation" ;
-    lv2:symbol "grp_modulation" .
+    lv2:symbol "grpModulation" .
 
 <http://github.com/blablack/ams-lv2/vco3#group_input>
     a param:OscillatorControls, pg:InputGroup ;
     lv2:name "Input" ;
-    lv2:symbol "grp_input" .
+    lv2:symbol "grpInput" .
 
 <http://github.com/blablack/ams-lv2/vco3>
 	a lv2:Plugin ,
@@ -49,7 +49,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
         lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_input> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupInput> ;
 	] ,	[
 		a lv2:CVPort, lv2:InputPort ;
 		lv2:index 1 ;
@@ -58,7 +58,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
         lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_input> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupInput> ;
 	] ,	[
 		a lv2:CVPort, lv2:InputPort ;
 		lv2:index 2 ;
@@ -67,7 +67,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
         lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_input> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupInput> ;
 	] ,	[
 	  	a lv2:CVPort, lv2:InputPort ;
 		lv2:index 3 ;
@@ -76,7 +76,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
         lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_input> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupInput> ;
 	] , [
 		a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 4 ;
@@ -117,7 +117,7 @@
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_frequency> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupFrequency> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 6 ;
@@ -126,7 +126,7 @@
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_frequency> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupFrequency> ;
 	] , [
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 7 ;
@@ -135,7 +135,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 12 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_frequency> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupFrequency> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 8 ;
@@ -144,7 +144,7 @@
 		lv2:default 0.5 ;
 		lv2:minimum 0.1 ;
 		lv2:maximum 0.9 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_pw_phase> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupPWPhase> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 9 ;
@@ -153,7 +153,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_pw_phase> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupPWPhase> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 10 ;
@@ -162,7 +162,7 @@
 		lv2:default 1 ;
 		lv2:minimum 1 ;
 		lv2:maximum 10 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_pw_phase> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupPWPhase> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 11 ;
@@ -171,7 +171,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_pw_phase> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupPWPhase> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 12 ;
@@ -180,7 +180,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 10 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_modulation> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupModulation> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 13 ;
@@ -189,7 +189,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 10 ;
-		pg:group <http://github.com/blablack/ams-lv2/vco3#group_modulation> ;
+		pg:group <http://github.com/blablack/ams-lv2/vco3#groupModulation> ;
 	] ,	[
 		a lv2:AudioPort , lv2:OutputPort ;
 		lv2:index 14 ;

@@ -19,7 +19,7 @@ typedef struct {
 static const char p_uri[] = "http://github.com/blablack/ams-lv2/samplehold";
 
 enum p_port_enum {
-  p_triggerlevel,
+  p_triggerLevel,
   p_input,
   p_trigger,
   p_output,

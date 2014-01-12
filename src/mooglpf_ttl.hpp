@@ -21,14 +21,14 @@ static const char p_uri[] = "http://github.com/blablack/ams-lv2/mooglpf";
 enum p_port_enum {
   p_inputGain,
   p_frequency,
-  p_expfmgain,
+  p_expFMGain,
   p_resonance,
   p_resonanceGain,
   p_outputGain,
-  p_portinput,
-  p_portfrequency,
-  p_portexpfm,
-  p_portresonance,
+  p_portInput,
+  p_portFrequency,
+  p_portExpFM,
+  p_portResonance,
   p_output,
   p_n_ports
 };

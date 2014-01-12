@@ -38,8 +38,8 @@ MoogLPFGUI::MoogLPFGUI(const std::string& URI)
     m_dialFrequency->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_frequency), mem_fun(*m_dialFrequency,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialFrequency);
 
-    m_dialExpFMGain = new LabeledDial("Exp FM Gain", p_expfmgain, 0, 10, LOG, 0.001, 3);
-    m_dialExpFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_expfmgain), mem_fun(*m_dialExpFMGain,  &LabeledDial::get_value)));
+    m_dialExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.001, 3);
+    m_dialExpFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_expFMGain), mem_fun(*m_dialExpFMGain,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialExpFMGain);
 
     p_mainWidget->pack_start(*p_freqFrame);
@@ -77,7 +77,7 @@ void MoogLPFGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format
     case p_frequency:
         m_dialFrequency->set_value(*static_cast<const float*> (buffer));
         break;
-    case p_expfmgain:
+    case p_expFMGain:
         m_dialExpFMGain->set_value(*static_cast<const float*> (buffer));
         break;
     case p_resonance:

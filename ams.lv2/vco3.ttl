@@ -6,6 +6,7 @@
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 @prefix pg:     <http://lv2plug.in/ns/ext/port-groups#> .
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
+@prefix param:  <http://lv2plug.in/ns/ext/parameters#> .
 
 <http://github.com/blablack/ams-lv2/vco3/gui>
   a guiext:GtkUI ;

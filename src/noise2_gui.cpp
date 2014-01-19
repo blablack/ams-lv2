@@ -24,7 +24,8 @@ Noise2GUI::Noise2GUI(const std::string& URI)
     m_comboNoiseForm->append_text("White");
     m_comboNoiseForm->append_text("Random");
     m_comboNoiseForm->append_text("Pink");
-    m_comboNoiseForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Noise2GUI::write_control), p_noiseType), mem_fun(*m_comboNoiseForm, &ComboBoxText::get_active_row_number)));
+    //m_comboNoiseForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Noise2GUI::write_control), p_noiseType), mem_fun(*m_comboNoiseForm, &ComboBoxText::get_active_row_number)));
+    m_comboNoiseForm->signal_changed().connect(mem_fun(*this, &Noise2GUI::get_waveform));
     p_noiseTypeBox->pack_start(*m_comboNoiseForm);
 
     p_mainWidget->pack_start(*p_noiseTypeBox);
@@ -49,6 +50,27 @@ Noise2GUI::Noise2GUI(const std::string& URI)
     Gtk::manage(p_mainWidget);
 }
 
+void Noise2GUI::deactive_gui_parts()
+{
+    if(m_comboNoiseForm->get_active_row_number() == 0 || m_comboNoiseForm->get_active_row_number() == 2)
+    {
+        m_dialRandomRate->disable();
+        m_dialRandomLevel->disable();
+    }
+    else
+    {
+        m_dialRandomRate->enable();
+        m_dialRandomLevel->enable();
+    }
+}
+
+void Noise2GUI::get_waveform()
+{
+    deactive_gui_parts();
+    this->write_control(p_noiseType, m_comboNoiseForm->get_active_row_number());
+}
+
+
 void Noise2GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
     int p_noiseFormValue;
@@ -58,7 +80,10 @@ void Noise2GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format,
     case p_noiseType:
         p_noiseFormValue = (int) (*static_cast<const float*> (buffer));
         if (p_noiseFormValue >= 0 && p_noiseFormValue <= 2)
+        {
             m_comboNoiseForm->set_active((int) p_noiseFormValue);
+            deactive_gui_parts();
+        }
         break;
     case p_rate:
         m_dialRandomRate->set_value(*static_cast<const float*> (buffer));

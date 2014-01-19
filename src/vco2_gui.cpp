@@ -29,7 +29,7 @@ Vco2GUI::Vco2GUI(const char* plugin_uri)
     m_comboWaveForm->append_text("Aux Saw 1");
     m_comboWaveForm->append_text("Aux Saw 2");
     m_comboWaveForm->append_text("Aux Saw 3");
-    m_comboWaveForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Vco2GUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number)));
+    //m_comboWaveForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Vco2GUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number)));
     m_comboWaveForm->signal_changed().connect(mem_fun(*this, &Vco2GUI::get_waveform));
 
     p_waveFormFrame->pack_start(*m_comboWaveForm);
@@ -97,7 +97,7 @@ Vco2GUI::Vco2GUI(const char* plugin_uri)
     Gtk::manage(p_mainWidget);
 }
 
-void Vco2GUI::get_waveform()
+void Vco2GUI::deactive_gui_parts()
 {
     if(m_comboWaveForm->get_active_row_number() == 2 || m_comboWaveForm->get_active_row_number() == 3)
         m_scaleEdge->enable();
@@ -116,6 +116,12 @@ void Vco2GUI::get_waveform()
     }
 }
 
+void Vco2GUI::get_waveform()
+{
+    deactive_gui_parts();
+    this->write_control(p_waveForm, m_comboWaveForm->get_active_row_number());
+}
+
 void Vco2GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
     int p_waveFormValue;
@@ -127,7 +133,7 @@ void Vco2GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, c
         if (p_waveFormValue >= 0 && p_waveFormValue <= 6)
         {
             m_comboWaveForm->set_active((int) p_waveFormValue);
-            get_waveform();
+            deactive_gui_parts();
         }
         break;
     case p_octave:

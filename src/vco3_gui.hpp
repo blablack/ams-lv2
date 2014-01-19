@@ -29,7 +29,9 @@ protected:
 	LabeledDial* m_scaleExpFMGain;
 	LabeledDial* m_scaleLinFMGain;
 
+private:
 	void get_waveform();
+	void deactive_gui_parts();
 };
 
 #endif

@@ -20,6 +20,10 @@ class Noise2GUI: public UI<Noise2GUI, GtkUI<true>>
 		Gtk::ComboBoxText* m_comboNoiseForm;
 		LabeledDial* m_dialRandomRate;
 		LabeledDial* m_dialRandomLevel;
+
+	private:
+        void get_waveform();
+		void deactive_gui_parts();
 };
 
 #endif

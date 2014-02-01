@@ -46,19 +46,19 @@ void Lfo2Tempo::run(uint32_t nframes)
     double p_multiplierValue = *p(p_tempoMultiplier);
 
     if(p_multiplierValue <= 0.0078125)
-        p_multiplierValue = (1/128);
+        p_multiplierValue = (0.0078125);
     else if(p_multiplierValue <= 0.015625)
-        p_multiplierValue = (1/64);
+        p_multiplierValue = (0.015625);
     else if(p_multiplierValue <= 0.03125)
-        p_multiplierValue = (1/32);
+        p_multiplierValue = (0.03125);
     else if(p_multiplierValue <= 0.0625)
-        p_multiplierValue = (1/16);
+        p_multiplierValue = (0.0625);
     else if(p_multiplierValue <= 0.125)
-        p_multiplierValue = (1/8);
+        p_multiplierValue = (0.125);
     else if(p_multiplierValue <= 0.25)
-        p_multiplierValue = (1/4);
+        p_multiplierValue = (0.25);
     else if(p_multiplierValue <= 0.5)
-        p_multiplierValue = (1/2);
+        p_multiplierValue = (0.5);
     else if(p_multiplierValue <= 1)
         p_multiplierValue = (1);
     else if(p_multiplierValue <= 2)

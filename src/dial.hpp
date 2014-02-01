@@ -45,6 +45,7 @@ class Dial: public Gtk::DrawingArea
 
 		double CalculateLogStep();
 		double RoundValue(double Value);
+		double MultValue(double Value);
 		void ChangeValueUp();
 		void ChangeValueDown();
 };

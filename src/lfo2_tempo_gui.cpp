@@ -74,19 +74,19 @@ void Lfo2TempoGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t form
     case p_tempoMultiplier:
         p_multiplierValue = (float) (*static_cast<const float*> (buffer));
         if(p_multiplierValue <= 0.0078125)
-            m_dialTempoMultiplier->set_value(1/128);
+            m_dialTempoMultiplier->set_value(0.0078125);
         else if(p_multiplierValue <= 0.015625)
-            m_dialTempoMultiplier->set_value(1/64);
+            m_dialTempoMultiplier->set_value(0.015625);
         else if(p_multiplierValue <= 0.03125)
-            m_dialTempoMultiplier->set_value(1/32);
+            m_dialTempoMultiplier->set_value(0.03125);
         else if(p_multiplierValue <= 0.0625)
-            m_dialTempoMultiplier->set_value(1/16);
+            m_dialTempoMultiplier->set_value(0.0625);
         else if(p_multiplierValue <= 0.125)
-            m_dialTempoMultiplier->set_value(1/8);
+            m_dialTempoMultiplier->set_value(0.125);
         else if(p_multiplierValue <= 0.25)
-            m_dialTempoMultiplier->set_value(1/4);
+            m_dialTempoMultiplier->set_value(0.25);
         else if(p_multiplierValue <= 0.5)
-            m_dialTempoMultiplier->set_value(1/2);
+            m_dialTempoMultiplier->set_value(0.5);
         else if(p_multiplierValue <= 1)
             m_dialTempoMultiplier->set_value(1);
         else if(p_multiplierValue <= 2)

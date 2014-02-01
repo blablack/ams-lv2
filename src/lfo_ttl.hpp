@@ -20,7 +20,6 @@ static const char p_uri[] = "http://github.com/blablack/ams-lv2/lfo";
 
 enum p_port_enum {
   p_reset,
-  p_waveForm,
   p_freq,
   p_phi0,
   p_outSine,
@@ -34,7 +33,6 @@ enum p_port_enum {
 
 static const peg_data_t p_ports[] = {
   { -1, 1, 0, 0, 0, 0 }, 
-  { 0, 5, 0, 0, 0, 0 }, 
   { 0.0001, 100, 5, 0, 0, 0 }, 
   { 0, 6.28, 0, 0, 0, 0 }, 
   { -1, 1, 0, 0, 0, 0 }, 

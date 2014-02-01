@@ -30,8 +30,6 @@ Lfo::Lfo(double rate)
     state = 0;
     dt = 4.0 / wave_period;
 
-    waveForm = SINUS;
-
     tm = time(NULL) % 1000000;
     srand(abs(tm - 10000 * (tm % 100)));
 }
@@ -40,8 +38,6 @@ void Lfo::run(uint32_t nframes)
 {
     int l2, k, len, phi0i, l2_out;
     double ldsi, ldsa, ldt, ldr, ldsh, dt0, dsa;
-
-    waveForm = floor(*p(p_waveForm));
 
     wave_period = m_rate / (16.0 * *p(p_freq));
     dsa = 2.0 / wave_period;

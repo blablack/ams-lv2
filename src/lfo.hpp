@@ -7,11 +7,6 @@
 
 using namespace lvtk;
 
-enum WaveFormType
-{
-	SINUS, TRIANGLE, SAWTOOTHUP, SAWTOOTHDOWN, RECTANGLE, SAMPLEANDHOLD
-};
-
 class Lfo: public Plugin<Lfo>
 {
 	private:
@@ -23,8 +18,6 @@ class Lfo: public Plugin<Lfo>
 		int state;
 		double dt, wave_period;
 		bool trigger;
-
-		int waveForm;
 
 		double m_rate;
 

@@ -18,21 +18,6 @@ LfoGUI::LfoGUI(const std::string& URI)
 
     VBox *p_mainWidget = manage (new VBox(false));
 
-    MyBox *p_labelWaveForm = manage (new MyBox("Wave Form", Gtk::Orientation::ORIENTATION_HORIZONTAL));
-
-    m_comboWaveForm = manage (new ComboBoxText());
-    m_comboWaveForm->append_text("Sine");
-    m_comboWaveForm->append_text("Triangle");
-    m_comboWaveForm->append_text("Sawtooth Up");
-    m_comboWaveForm->append_text("Sawtooth Down");
-    m_comboWaveForm->append_text("Rectangle");
-    m_comboWaveForm->append_text("S & H");
-    m_comboWaveForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &LfoGUI::write_control), p_waveForm), mem_fun(*m_comboWaveForm, &ComboBoxText::get_active_row_number)));
-    p_labelWaveForm->pack_start(*m_comboWaveForm);
-
-    p_mainWidget->pack_start(*p_labelWaveForm);
-
-
     MyBox *p_freqFrame = manage(new MyBox("Wave", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialTempo = new LabeledDial("Freq", p_freq, 0.0001, 100, LOG, 0.001, 4);
@@ -54,14 +39,8 @@ LfoGUI::LfoGUI(const std::string& URI)
 
 void LfoGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
-    int p_waveFormValue;
     switch(port)
     {
-    case p_waveForm:
-        p_waveFormValue = (int) (*static_cast<const float*> (buffer));
-        if (p_waveFormValue >= 0 && p_waveFormValue <= 5)
-            m_comboWaveForm->set_active((int) p_waveFormValue);
-        break;
     case p_freq:
         m_dialTempo->set_value(*static_cast<const float*> (buffer));
         break;

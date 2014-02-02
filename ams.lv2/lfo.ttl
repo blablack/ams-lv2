@@ -54,7 +54,7 @@
 		a lv2:OutputPort, lv2:CVPort ;
 		lv2:index 4 ;
 		lv2:symbol "outTriangle" ;
-		lv2:name "triangle" ;
+		lv2:name "Triangle" ;
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
 	        lv2:maximum 1.0 ;

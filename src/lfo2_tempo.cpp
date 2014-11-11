@@ -38,7 +38,7 @@ Lfo2Tempo::Lfo2Tempo(double rate)
 
 void Lfo2Tempo::run(uint32_t nframes)
 {
-    int l2, k, len, phi0i, l2_out;
+    int l2, k, len, l2_out;
     double ldsi, ldsa, ldt, ldr, ldsh, dt0, dsa;
 
     waveForm = floor(*p(p_waveForm));
@@ -76,11 +76,6 @@ void Lfo2Tempo::run(uint32_t nframes)
     else if(p_multiplierValue > 64)
         p_multiplierValue = (128);
 
-    wave_period = m_rate / (16.0 * *p(p_tempo) / 60 * p_multiplierValue);
-    dsa = 2.0 / wave_period;
-    dt0 = 4.0 / wave_period;
-    phi0i = (int)(*p(p_phi0) / 6.283 * wave_period);
-
     len = nframes;
     l2 = -1;
     l2_out = 0;
@@ -88,6 +83,11 @@ void Lfo2Tempo::run(uint32_t nframes)
     {
         k = (len > 24) ? 16 : len;
         l2 += k;
+
+        wave_period = m_rate / (16.0 * *p(p_tempo) / 60 * p_multiplierValue);
+        dsa = 2.0 / wave_period;
+        dt0 = 4.0 / wave_period;
+
         if (!trigger && (p(p_reset)[l2] > 0.5))
         {
             trigger = true;
@@ -96,6 +96,7 @@ void Lfo2Tempo::run(uint32_t nframes)
             dt = dt0;
             r = -1;
             si = 0;
+            sa = 0;
         }
         if (trigger && (p(p_reset)[l2] < 0.5))
         {
@@ -129,6 +130,12 @@ void Lfo2Tempo::run(uint32_t nframes)
         si = (state < 2) ? t * (2.0 - t) : t * (2.0 + t);
         sa += dsa;
         t += dt;
+
+        if (state == 1 || state == 2)
+            dt = -dt0;
+        else
+            dt = dt0;
+
         len -= k;
         ldsi = (si - old_si) / (double)k;
         ldsa = (sa - old_sa) / (double)k;

@@ -57,9 +57,10 @@ void Noise2::run(uint32_t nframes)
 		break;
 		case PINK:
 		{
+            float white_noise;
 			for (unsigned int l2 = 0; l2 < nframes; ++l2)
 			{
-				float white_noise = rand() * randmax - 1.0f;
+				white_noise = rand() * randmax - 1.0f;
 
 				buf[0] = 0.99765f * buf[0] + white_noise * 0.099046f;
 				buf[1] = 0.963f * buf[1] + white_noise * 0.2965164f;
@@ -67,6 +68,19 @@ void Noise2::run(uint32_t nframes)
 
 				p(p_out)[l2] = buf[0] + buf[1] + buf[2] + white_noise * 0.1848f;
 			}
+		}
+		break;
+		case PULSETRAIN:
+		{
+            float white_noise;
+            float px = 1.00 - (1.0 / pow (10, ((100-(double)*p(p_rate))/20)));
+            for (unsigned int l2 = 0; l2 < nframes; ++l2)
+            {
+                white_noise = (2 * rand() / ((float)RAND_MAX));
+                p(p_out)[l2] = -*p(p_level);
+                    if (white_noise > px)
+                        p(p_out)[l2] = *p(p_level);
+            }
 		}
 		break;
 	}

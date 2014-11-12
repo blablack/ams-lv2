@@ -9,7 +9,7 @@ using namespace lvtk;
 
 enum Noises
 {
-	WHITE, RAND, PINK
+	WHITE, RAND, PINK, PULSETRAIN
 };
 
 class Noise2: public Plugin<Noise2>

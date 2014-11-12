@@ -24,6 +24,7 @@ Noise2GUI::Noise2GUI(const std::string& URI)
     m_comboNoiseForm->append_text("White");
     m_comboNoiseForm->append_text("Random");
     m_comboNoiseForm->append_text("Pink");
+    m_comboNoiseForm->append_text("Pulsetrain");
     //m_comboNoiseForm->signal_changed().connect(compose(bind<0> (mem_fun(*this, &Noise2GUI::write_control), p_noiseType), mem_fun(*m_comboNoiseForm, &ComboBoxText::get_active_row_number)));
     m_comboNoiseForm->signal_changed().connect(mem_fun(*this, &Noise2GUI::get_waveform));
     p_noiseTypeBox->pack_start(*m_comboNoiseForm);
@@ -79,7 +80,7 @@ void Noise2GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format,
     {
     case p_noiseType:
         p_noiseFormValue = (int) (*static_cast<const float*> (buffer));
-        if (p_noiseFormValue >= 0 && p_noiseFormValue <= 2)
+        if (p_noiseFormValue >= 0 && p_noiseFormValue <= 3)
         {
             m_comboNoiseForm->set_active((int) p_noiseFormValue);
             deactive_gui_parts();

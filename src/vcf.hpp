@@ -18,6 +18,8 @@ enum vcfTypeEnum { VCF_LR, VCF_LPF, VCF_HPF, VCF_BPF_I, VCF_BPF_II, VCF_NF, VCF_
 class Vcf : public Plugin<Vcf>
 {
 	private:
+        int vcfTypeUsed;
+
 		float dBgain;
 		float freq_const;
 		float fInvertRandMax ;

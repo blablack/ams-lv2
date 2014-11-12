@@ -26,45 +26,29 @@ Plugin<Vcf>(p_n_ports)
 void Vcf::initBuf()
 {
 	//enum vcfTypeEnum { VCF_LR, VCF_LPF, VCF_HPF, VCF_BPF_I, VCF_BPF_II, VCF_NF, VCF_MOOG1, VCF_MOOG2 };
-	int l2;
-
-	for (l2 = 0; l2 < 5; ++l2)
+	for (int l2 = 0; l2 < 5; ++l2)
 	{
 		buf_lr[l2] = 0;
 		in_lr[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_lpf[l2] = 0;
 		in_lpf[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_hpf[l2] = 0;
 		in_hpf[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_bpf_i[l2] = 0;
 		in_bpf_i[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_bpf_ii[l2] = 0;
 		in_bpf_ii[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_nf[l2] = 0;
 		in_nf[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_moog1[l2] = 0;
 		in_moog1[l2] = 0;
-	}
-	for (l2 = 0; l2 < 5; ++l2)
-	{
+
 		buf_moog2[l2] = 0;
 		in_moog2[l2] = 0;
 	}
@@ -74,7 +58,13 @@ void Vcf::run(uint32_t nframes)
 {
 	double t1, t2, fa, fb, f, q, pbis, iv_sin, iv_cos, iv_alpha, a0, a1, a2, b0, b1, b2;
 
-	switch ((int)floor(*p(p_vcfType)))
+    if (vcfTypeUsed != (int)floor(*p(p_vcfType)))
+    {
+      initBuf();
+      vcfTypeUsed = (int)floor(*p(p_vcfType));
+    }
+
+	switch (vcfTypeUsed)
 	{
 		case VCF_LR:
 		{

@@ -97,8 +97,12 @@ bool Dial::on_expose_event(GdkEventExpose* event)
         cr->rectangle((double)event->area.x, (double)event->area.y, (double)event->area.width, (double)event->area.height);
         cr->clip();
 
-        int xc = event->area.width/2;
-        int yc = event->area.height/2 + 3;
+        Gtk::Allocation allocation = get_allocation();
+        const int width = allocation.get_width();
+        const int height = allocation.get_height();
+
+        int xc = width/2;
+        int yc = height/2 + 3;
 
         float radius = 14;
 

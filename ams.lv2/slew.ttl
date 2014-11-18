@@ -11,7 +11,7 @@
   guiext:binary <slew_gui.so> .
 
 <http://github.com/blablack/ams-lv2/slew>
-	a lv2:Plugin ;
+	a lv2:Plugin, lv2:DelayPlugin  ;
 	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "AMS Slew Limiter" ;
 	doap:license <http://opensource.org/licenses/isc> ;

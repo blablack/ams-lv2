@@ -11,7 +11,7 @@
   guiext:binary <mooglpf_gui.so> .
 
 <http://github.com/blablack/ams-lv2/mooglpf>
-	a lv2:Plugin, lv2:FilterPlugin ;
+	a lv2:Plugin, lv2:SpectralPlugin ;
 	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "Moog LPF" ;
 	doap:license <http://opensource.org/licenses/isc> ;

@@ -11,7 +11,7 @@
   guiext:binary <ringmodulator_gui.so> .
 
 <http://github.com/blablack/ams-lv2/ringmodulator>
-	a lv2:Plugin, lv2:FilterPlugin ;
+	a lv2:Plugin, lv2:AmplifierPlugin ;
 	lv2:project <http://github.com/blablack/ams-lv2/> ;
 	doap:name "AMS Ring Modulator" ;
 	doap:license <http://opensource.org/licenses/isc> ;

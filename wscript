@@ -125,6 +125,7 @@ def build(bld):
     lfo2_tempo
     lfo2_freq
     lfo
+    mixer_8ch
     mixer_4ch
     mixer_2ch
     mooglpf
@@ -184,6 +185,7 @@ def build(bld):
     lfo_gui
     mixer_2ch_gui
     mixer_4ch_gui
+    mixer_8ch_gui
     mooglpf_gui
     noise2_gui
     ringmodulator_gui

@@ -134,6 +134,9 @@ def build(bld):
     ringmodulator
     samplehold
     slew
+    stereomixer_2ch
+    stereomixer_4ch
+    stereomixer_8ch
     vcalin
     vcpanning
     vcswitch

@@ -101,6 +101,11 @@
 	lv2:binary <mixer_4ch.so>  ;
 	rdfs:seeAlso <mixer_4ch.ttl> .
 
+<http://github.com/blablack/ams-lv2/mixer_8ch>
+	a lv2:Plugin ;
+	lv2:binary <mixer_8ch.so>  ;
+	rdfs:seeAlso <mixer_8ch.ttl> .
+
 <http://github.com/blablack/ams-lv2/mooglpf>
 	a lv2:Plugin ;
 	lv2:binary <mooglpf.so>  ;
@@ -175,4 +180,19 @@
 	a lv2:Plugin ;
 	lv2:binary <vctohz.so>  ;
 	rdfs:seeAlso <vctohz.ttl> .
+
+<http://github.com/blablack/ams-lv2/stereomixer_2ch>
+	a lv2:Plugin ;
+	lv2:binary <stereomixer_2ch.so>  ;
+	rdfs:seeAlso <stereomixer_2ch.ttl> .
+
+<http://github.com/blablack/ams-lv2/stereomixer_4ch>
+	a lv2:Plugin ;
+	lv2:binary <stereomixer_4ch.so>  ;
+	rdfs:seeAlso <stereomixer_4ch.ttl> .
+
+<http://github.com/blablack/ams-lv2/stereomixer_8ch>
+	a lv2:Plugin ;
+	lv2:binary <stereomixer_8ch.so>  ;
+	rdfs:seeAlso <stereomixer_8ch.ttl> .
 

@@ -18,7 +18,6 @@ VcaExpGUI::VcaExpGUI(const std::string& URI)
 
     VBox *p_mainWidget = manage(new VBox(false));
 
-
     MyBox *p_gainFrame = manage (new MyBox("Gain", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
     m_dialGain1 = new LabeledDial("Gain Offset", p_gain1, 0, 1, NORMAL, 0.01, 2);

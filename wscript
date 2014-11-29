@@ -194,6 +194,9 @@ def build(bld):
     ringmodulator_gui
     samplehold_gui
     slew_gui
+	stereomixer_2ch_gui
+	stereomixer_4ch_gui
+	stereomixer_8ch_gui
     vcaexp_gui
     vcalin_gui
     vcf_gui

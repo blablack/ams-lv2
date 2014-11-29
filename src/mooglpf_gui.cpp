@@ -21,11 +21,11 @@ MoogLPFGUI::MoogLPFGUI(const std::string& URI)
 
     MyBox *p_gainFrame = manage(new MyBox("Gain", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialInputGain = new LabeledDial("Input", p_inputGain, -15, 15, NORMAL, 0.01, 2);
+	m_dialInputGain = new LabeledDial("Input", p_inputGain, -15, 15, NORMAL, 0.01);
     m_dialInputGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_inputGain), mem_fun(*m_dialInputGain,  &LabeledDial::get_value)));
     p_gainFrame->pack_start(*m_dialInputGain);
 
-    m_dialOutputGain = new LabeledDial("Output", p_outputGain, -15, 15, NORMAL, 0.01, 2);
+	m_dialOutputGain = new LabeledDial("Output", p_outputGain, -15, 15, NORMAL, 0.01);
     m_dialOutputGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_outputGain), mem_fun(*m_dialOutputGain,  &LabeledDial::get_value)));
     p_gainFrame->pack_start(*m_dialOutputGain);
 
@@ -34,11 +34,11 @@ MoogLPFGUI::MoogLPFGUI(const std::string& URI)
 
     MyBox *p_freqFrame = manage(new MyBox("Frequency", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialFrequency = new LabeledDial("Frequency", p_frequency, -6, 6, NORMAL, 0.01, 2);
+	m_dialFrequency = new LabeledDial("Frequency", p_frequency, -6, 6, NORMAL, 0.01);
     m_dialFrequency->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_frequency), mem_fun(*m_dialFrequency,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialFrequency);
 
-    m_dialExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.001, 3);
+	m_dialExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.001);
     m_dialExpFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_expFMGain), mem_fun(*m_dialExpFMGain,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialExpFMGain);
 
@@ -47,11 +47,11 @@ MoogLPFGUI::MoogLPFGUI(const std::string& URI)
 
     MyBox *p_resonanceFrame = manage(new MyBox("Resonance", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialResonance = new LabeledDial("Resonance", p_resonance, 0, 1, NORMAL, 0.01, 2);
+	m_dialResonance = new LabeledDial("Resonance", p_resonance, 0, 1, NORMAL, 0.01);
     m_dialResonance->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_resonance), mem_fun(*m_dialResonance,  &LabeledDial::get_value)));
     p_resonanceFrame->pack_start(*m_dialResonance);
 
-    m_dialResonanceGain = new LabeledDial("Gain", p_resonanceGain, 0, 1, NORMAL, 0.01, 2);
+	m_dialResonanceGain = new LabeledDial("Gain", p_resonanceGain, 0, 1, NORMAL, 0.01);
     m_dialResonanceGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &MoogLPFGUI::write_control), p_resonanceGain), mem_fun(*m_dialResonanceGain,  &LabeledDial::get_value)));
     p_resonanceFrame->pack_start(*m_dialResonanceGain);
 

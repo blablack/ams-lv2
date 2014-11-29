@@ -35,15 +35,15 @@ Lfo2TempoGUI::Lfo2TempoGUI(const std::string& URI)
 
     MyBox *p_freqFrame = manage(new MyBox("Wave", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialTempo = new LabeledDial("Tempo", p_tempo, 1, 320, NORMAL, 1, 0);
+	m_dialTempo = new LabeledDial("Tempo", p_tempo, 1, 320, NORMAL, 1);
     m_dialTempo->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Lfo2TempoGUI::write_control), p_tempo), mem_fun(*m_dialTempo, &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialTempo);
 
-    m_dialTempoMultiplier = new LabeledDial("Multiplier", p_tempoMultiplier, 0.0078125, 128, MULTIPLIER, 0.0078125, 7);
+	m_dialTempoMultiplier = new LabeledDial("Multiplier", p_tempoMultiplier, 0.0078125, 128, MULTIPLIER, 0.0078125);
     m_dialTempoMultiplier->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Lfo2TempoGUI::write_control), p_tempoMultiplier), mem_fun(*m_dialTempoMultiplier, &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialTempoMultiplier);
 
-    m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01, 2);
+	m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01);
     m_dialPhi0->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &Lfo2TempoGUI::write_control), p_phi0), mem_fun(*m_dialPhi0, &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialPhi0);
 

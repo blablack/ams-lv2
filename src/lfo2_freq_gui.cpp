@@ -35,11 +35,11 @@ Lfo2FreqGUI::Lfo2FreqGUI(const std::string& URI)
 
     MyBox *p_freqFrame = manage(new MyBox("Wave", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialTempo = new LabeledDial("Freq", p_freq, 0.0001, 100, LOG, 0.001, 4);
+	m_dialTempo = new LabeledDial("Freq", p_freq, 0.0001, 100, LOG, 0.001);
     m_dialTempo->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Lfo2FreqGUI::write_control), p_freq), mem_fun(*m_dialTempo, &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialTempo);
 
-    m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01, 2);
+	m_dialPhi0 = new LabeledDial("Phi0", p_phi0, 0, 6.28, NORMAL, 0.01);
     m_dialPhi0->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &Lfo2FreqGUI::write_control), p_phi0), mem_fun(*m_dialPhi0, &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_dialPhi0);
 

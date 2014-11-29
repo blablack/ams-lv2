@@ -38,11 +38,11 @@ VcfGUI::VcfGUI(const std::string& URI)
 
     MyBox *p_gainFrame = manage (new MyBox("Gain", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_scaleInputGain = new LabeledDial("Input", p_inputGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleInputGain = new LabeledDial("Input", p_inputGain, 0, 10, LOG, 0.0001);
     m_scaleInputGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_inputGain), mem_fun(*m_scaleInputGain,  &LabeledDial::get_value)));
     p_gainFrame->pack_start(*m_scaleInputGain);
 
-    m_scaleOutputGain = new LabeledDial("Output", p_outputGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleOutputGain = new LabeledDial("Output", p_outputGain, 0, 10, LOG, 0.0001);
     m_scaleOutputGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_outputGain), mem_fun(*m_scaleOutputGain,  &LabeledDial::get_value)));
     p_gainFrame->pack_start(*m_scaleOutputGain);
 
@@ -51,15 +51,15 @@ VcfGUI::VcfGUI(const std::string& URI)
 
     MyBox *p_freqFrame = manage(new MyBox("Frequency", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_scaleFrequency = new LabeledDial("Frequency", p_freq, 0, 10, LOG, 0.0001, 4);
+	m_scaleFrequency = new LabeledDial("Frequency", p_freq, 0, 10, LOG, 0.0001);
     m_scaleFrequency->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_freq), mem_fun(*m_scaleFrequency,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_scaleFrequency);
 
-    m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleExpFMGain = new LabeledDial("Exp FM Gain", p_expFMGain, 0, 10, LOG, 0.0001);
     m_scaleExpFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_expFMGain), mem_fun(*m_scaleExpFMGain,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_scaleExpFMGain);
 
-    m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_linFMGain, 0, 10, LOG, 0.0001, 4);
+	m_scaleLinFMGain = new LabeledDial("Lin FM Gain", p_linFMGain, 0, 10, LOG, 0.0001);
     m_scaleLinFMGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_linFMGain), mem_fun(*m_scaleLinFMGain,  &LabeledDial::get_value)));
     p_freqFrame->pack_start(*m_scaleLinFMGain);
 
@@ -68,11 +68,11 @@ VcfGUI::VcfGUI(const std::string& URI)
 
     MyBox *p_resFrame = manage(new MyBox("Resonance", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_scaleResonance = new LabeledDial("Resonance", p_resonance, 0.01, 1, LOG, 0.0001, 4);
+	m_scaleResonance = new LabeledDial("Resonance", p_resonance, 0.01, 1, LOG, 0.0001);
     m_scaleResonance->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_resonance), mem_fun(*m_scaleResonance,  &LabeledDial::get_value)));
     p_resFrame->pack_start(*m_scaleResonance);
 
-    m_scaleResonanceGain = new LabeledDial("Resonance Gain", p_resonanceGain, 0, 1, LOG, 0.0001, 4);
+	m_scaleResonanceGain = new LabeledDial("Resonance Gain", p_resonanceGain, 0, 1, LOG, 0.0001);
     m_scaleResonanceGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_resonanceGain), mem_fun(*m_scaleResonanceGain,  &LabeledDial::get_value)));
     p_resFrame->pack_start(*m_scaleResonanceGain);
 

@@ -26,11 +26,11 @@ PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 
     MyBox *p_adsrFrame = manage (new MyBox("Attack / Delay", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_scaleAttack = new LabeledDial("Attack", p_attack, 0, 1, NORMAL, 0.01, 2);
+	m_scaleAttack = new LabeledDial("Attack", p_attack, 0, 1, NORMAL, 0.01);
     m_scaleAttack->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &PercussiveEnvGUI::write_control), p_attack), mem_fun(*m_scaleAttack, &LabeledDial::get_value)));
     p_adsrFrame->pack_start(*m_scaleAttack);
 
-    m_scaleDecay = new LabeledDial("Decay", p_decay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDecay = new LabeledDial("Decay", p_decay, 0, 1, NORMAL, 0.01);
     m_scaleDecay->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_decay), mem_fun(*m_scaleDecay, &LabeledDial::get_value)));
     p_adsrFrame->pack_start(*m_scaleDecay);
 
@@ -39,15 +39,15 @@ PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 
     MyBox *p_dhtFrame = manage (new MyBox("Delay / Hold / Time Scale", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01, 2);
+	m_scaleDelay = new LabeledDial("Delay", p_delay, 0, 1, NORMAL, 0.01);
     m_scaleDelay->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &PercussiveEnvGUI::write_control), p_delay), mem_fun(*m_scaleDelay, &LabeledDial::get_value)));
     p_dhtFrame->pack_start(*m_scaleDelay);
 
-    m_scaleHold = new LabeledDial("Hold", p_hold, 0, 1, NORMAL, 0.01, 2);
+	m_scaleHold = new LabeledDial("Hold", p_hold, 0, 1, NORMAL, 0.01);
     m_scaleHold->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_hold), mem_fun(*m_scaleHold, &LabeledDial::get_value)));
     p_dhtFrame->pack_start(*m_scaleHold);
 
-    m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0, 10, NORMAL, 0.01, 2);
+	m_scaleTimeScale = new LabeledDial("Time Scale", p_timeScale, 0, 10, NORMAL, 0.01);
     m_scaleTimeScale->signal_value_changed().connect(compose(bind<0> (mem_fun(*this, &PercussiveEnvGUI::write_control), p_timeScale), mem_fun(*m_scaleTimeScale, &LabeledDial::get_value)));
     p_dhtFrame->pack_start(*m_scaleTimeScale);
 

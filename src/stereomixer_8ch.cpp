@@ -5,7 +5,6 @@
 #include <time.h>
 
 #include "stereomixer_8ch.hpp"
-#include "stereomixer_8ch_ttl.hpp"
 
 using namespace lvtk;
 

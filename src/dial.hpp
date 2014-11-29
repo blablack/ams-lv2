@@ -13,13 +13,14 @@ enum DialType { NORMAL, LOG, MULTIPLIER };
 class Dial: public Gtk::DrawingArea
 {
 	public:
-		Dial(double Value, double Min, double Max, DialType Type, double Step, int NbDigit);
+		Dial(double Value, double Min, double Max, DialType Type, double Step);
 		virtual ~Dial();
 		bool Redraw();
 
 		void value_changed();
 		float get_value();
 		void set_value(float value);
+		int getNbDigit();
 		void disable();
 		void enable();
 		Glib::SignalProxy0<void> signal_value_changed();
@@ -41,6 +42,7 @@ class Dial: public Gtk::DrawingArea
 
 		DialType m_type;
 		int m_rounder;
+		int m_nbDigit;
         int m_scrollStep;
 
 		double CalculateLogStep();

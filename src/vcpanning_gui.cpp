@@ -35,11 +35,11 @@ VcPanningGUI::VcPanningGUI(const std::string& URI)
 
     MyBox *p_panFrame = manage (new MyBox("Panning", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_scalePanOffset = new LabeledDial("Pan Offset", p_panOffset, -1, 1, NORMAL, 0.01, 2);
+	m_scalePanOffset = new LabeledDial("Pan Offset", p_panOffset, -1, 1, NORMAL, 0.01);
     m_scalePanOffset->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcPanningGUI::write_control), p_panOffset), mem_fun(*m_scalePanOffset,  &LabeledDial::get_value)));
     p_panFrame->pack_start(*m_scalePanOffset);
 
-    m_scalePanGain = new LabeledDial("Pan Gain", p_panGain, 0, 2, LOG, 0.0001, 4);
+	m_scalePanGain = new LabeledDial("Pan Gain", p_panGain, 0, 2, LOG, 0.0001);
     m_scalePanGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcPanningGUI::write_control), p_panGain), mem_fun(*m_scalePanGain, &LabeledDial::get_value)));
     p_panFrame->pack_start(*m_scalePanGain);
 

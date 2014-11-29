@@ -21,11 +21,11 @@ VcaLinGUI::VcaLinGUI(const std::string& URI)
 
     MyBox *p_gainFrame = manage (new MyBox("Gain", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialGain1 = new LabeledDial("Gain Offset", p_gain1, 0, 1, NORMAL, 0.01, 2);
+	m_dialGain1 = new LabeledDial("Gain Offset", p_gain1, 0, 1, NORMAL, 0.01);
     m_dialGain1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcaLinGUI::write_control), p_gain1), mem_fun(*m_dialGain1,  &LabeledDial::get_value)));
     p_gainFrame->pack_start(*m_dialGain1);
 
-    m_dialGain2 = new LabeledDial("2nd Gain Boost", p_gain2, 0, 1, NORMAL, 0.01, 2);
+	m_dialGain2 = new LabeledDial("2nd Gain Boost", p_gain2, 0, 1, NORMAL, 0.01);
     m_dialGain2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcaLinGUI::write_control), p_gain2), mem_fun(*m_dialGain2,  &LabeledDial::get_value)));
     p_gainFrame->pack_start(*m_dialGain2);
 
@@ -34,18 +34,18 @@ VcaLinGUI::VcaLinGUI(const std::string& URI)
 
     MyBox *p_inFrame = manage(new MyBox("In", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-    m_dialIn1 = new LabeledDial("In 1", p_in1, 0, 2, NORMAL, 0.01, 2);
+	m_dialIn1 = new LabeledDial("In 1", p_in1, 0, 2, NORMAL, 0.01);
     m_dialIn1->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcaLinGUI::write_control), p_in1), mem_fun(*m_dialIn1,  &LabeledDial::get_value)));
     p_inFrame->pack_start(*m_dialIn1);
 
-    m_dialIn2 = new LabeledDial("In 2", p_in2, 0, 2, NORMAL, 0.01, 2);
+	m_dialIn2 = new LabeledDial("In 2", p_in2, 0, 2, NORMAL, 0.01);
     m_dialIn2->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcaLinGUI::write_control), p_in2), mem_fun(*m_dialIn2,  &LabeledDial::get_value)));
     p_inFrame->pack_start(*m_dialIn2);
 
     p_mainWidget->pack_start(*p_inFrame);
 
 
-    m_dialOutputLevel = new LabeledDial("Output Level", p_outputLevel, 0, 2, NORMAL, 0.01, 2);
+	m_dialOutputLevel = new LabeledDial("Output Level", p_outputLevel, 0, 2, NORMAL, 0.01);
     m_dialOutputLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcaLinGUI::write_control), p_outputLevel), mem_fun(*m_dialOutputLevel,  &LabeledDial::get_value)));
     p_mainWidget->pack_start(*m_dialOutputLevel);
 

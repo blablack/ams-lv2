@@ -1,11 +1,12 @@
 #include <cairomm/context.h>
 #include <cmath>
+#include <iomanip>
 
 #include "labeleddial.hpp"
 
 using namespace std;
 
-LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step, int NbDigit)
+LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step)
 {
     m_type = Type;
     Gdk::Color* color = new  Gdk::Color();
@@ -17,7 +18,7 @@ LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, 
     Label *p_label = manage (new Label(" " + TextLabel + " "));
     p_mainWidget->pack_start(*p_label, Gtk::PACK_SHRINK, 0, 0);
 
-    m_dial = new Dial(Value, Min, Max, Type, Step, NbDigit);
+	m_dial = new Dial(Value, Min, Max, Type, Step);
     m_dial->signal_value_changed().connect(mem_fun(*this, &LabeledDial::value_changed));
 
     p_mainWidget->pack_start(*m_dial, Gtk::PACK_SHRINK, 0, 0);
@@ -65,8 +66,8 @@ void LabeledDial::value_changed()
 
     if(m_type != MULTIPLIER)
     {
-        std::stringstream out;
-        out << m_dial->get_value();
+		std::stringstream out;
+		out << std::fixed << std::setprecision(m_dial->getNbDigit()) << m_dial->get_value();
         m_label->set_text(out.str());
     }
     else
@@ -81,7 +82,7 @@ void LabeledDial::value_changed()
             m_label->set_text("1/16");
         else if(m_dial->get_value() <= 0.125)
             m_label->set_text("1/8");
-        else if(m_dial->get_value() <= 0.25)
+		else if(m_dial->get_value() <= 0.25)
             m_label->set_text("1/4");
         else if(m_dial->get_value() <= 0.5)
             m_label->set_text("1/2");

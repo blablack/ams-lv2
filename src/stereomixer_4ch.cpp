@@ -5,7 +5,6 @@
 #include <time.h>
 
 #include "stereomixer_4ch.hpp"
-#include "stereomixer_4ch_ttl.hpp"
 
 using namespace lvtk;
 

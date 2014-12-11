@@ -98,7 +98,7 @@ StereoMixer4ChGUI::StereoMixer4ChGUI(const std::string& URI)
 
 LabeledDial* StereoMixer4ChGUI::CreateDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step)
 {
-	LabeledDial* p_tempDial = new LabeledDial(TextLabel, Value, Min, Max, Type, Step);
+	LabeledDial* p_tempDial = new LabeledDial(TextLabel, Min, Max, Type, Step);
 	p_tempDial->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &StereoMixer4ChGUI::write_control), Value), mem_fun(*p_tempDial, &LabeledDial::get_value)));
 
 	return p_tempDial;

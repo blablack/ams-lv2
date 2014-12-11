@@ -158,6 +158,7 @@ def build(bld):
 
     plugins = '''
     ad
+	dynamicwaves_4
     vcaexp
     vcf
     vco2
@@ -194,9 +195,9 @@ def build(bld):
     ringmodulator_gui
     samplehold_gui
     slew_gui
-	stereomixer_2ch_gui
-	stereomixer_4ch_gui
-	stereomixer_8ch_gui
+    stereomixer_2ch_gui
+    stereomixer_4ch_gui
+    stereomixer_8ch_gui
     vcaexp_gui
     vcalin_gui
     vcf_gui
@@ -252,4 +253,20 @@ def build(bld):
                       '-DPLUGIN_HEADER="src/advenv_gui.hpp"'],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp', 'src/my_box.cpp'])
+
+
+
+    plugins_gui = '''
+    dynamicwaves_4_gui
+    '''.split()
+
+    for i in plugins_gui:
+       build_plugin_gui(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
+                        ['-DPLUGIN_CLASS=%s' % i,
+                         '-std=c++11',
+                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                         '-DPLUGIN_URI_SUFFIX="%s"' % i,
+                         '-DPLUGIN_HEADER="src/%s.hpp"' % i],
+                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
+                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp', 'src/dynamicwaves_scope.cpp'])
 

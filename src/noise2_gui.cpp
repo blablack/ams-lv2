@@ -34,11 +34,11 @@ Noise2GUI::Noise2GUI(const std::string& URI)
 
     MyBox *p_randomBox = manage(new MyBox("Random", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-	m_dialRandomRate = new LabeledDial("Rate", p_rate, 0, 10, NORMAL, 0.01);
+	m_dialRandomRate = new LabeledDial("Rate", 0, 10, NORMAL, 0.01);
     m_dialRandomRate->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Noise2GUI::write_control), p_rate), mem_fun(*m_dialRandomRate,  &LabeledDial::get_value)));
     p_randomBox->pack_start(*m_dialRandomRate);
 
-	m_dialRandomLevel = new LabeledDial("Level", p_level, 0, 1, LOG, 0.0001);
+	m_dialRandomLevel = new LabeledDial("Level", 0, 1, LOG, 0.0001);
     m_dialRandomLevel->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &Noise2GUI::write_control), p_level), mem_fun(*m_dialRandomLevel, &LabeledDial::get_value)));
     p_randomBox->pack_start(*m_dialRandomLevel);
 

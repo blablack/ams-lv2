@@ -41,6 +41,11 @@
 	lv2:binary <amp.so>  ;
 	rdfs:seeAlso <amp.ttl> .
 
+<http://github.com/blablack/ams-lv2/dynamicwaves_4>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves_4.so>  ;
+	rdfs:seeAlso <dynamicwaves_4.ttl> .
+
 <http://github.com/blablack/ams-lv2/controltocv>
 	a lv2:Plugin ;
 	lv2:binary <controltocv.so>  ;
@@ -141,6 +146,21 @@
 	lv2:binary <slew.so>  ;
 	rdfs:seeAlso <slew.ttl> .
 
+<http://github.com/blablack/ams-lv2/stereomixer_2ch>
+	a lv2:Plugin ;
+	lv2:binary <stereomixer_2ch.so>  ;
+	rdfs:seeAlso <stereomixer_2ch.ttl> .
+
+<http://github.com/blablack/ams-lv2/stereomixer_4ch>
+	a lv2:Plugin ;
+	lv2:binary <stereomixer_4ch.so>  ;
+	rdfs:seeAlso <stereomixer_4ch.ttl> .
+
+<http://github.com/blablack/ams-lv2/stereomixer_8ch>
+	a lv2:Plugin ;
+	lv2:binary <stereomixer_8ch.so>  ;
+	rdfs:seeAlso <stereomixer_8ch.ttl> .
+
 <http://github.com/blablack/ams-lv2/vcaexp>
 	a lv2:Plugin ;
 	lv2:binary <vcaexp.so>  ;
@@ -181,18 +201,4 @@
 	lv2:binary <vctohz.so>  ;
 	rdfs:seeAlso <vctohz.ttl> .
 
-<http://github.com/blablack/ams-lv2/stereomixer_2ch>
-	a lv2:Plugin ;
-	lv2:binary <stereomixer_2ch.so>  ;
-	rdfs:seeAlso <stereomixer_2ch.ttl> .
-
-<http://github.com/blablack/ams-lv2/stereomixer_4ch>
-	a lv2:Plugin ;
-	lv2:binary <stereomixer_4ch.so>  ;
-	rdfs:seeAlso <stereomixer_4ch.ttl> .
-
-<http://github.com/blablack/ams-lv2/stereomixer_8ch>
-	a lv2:Plugin ;
-	lv2:binary <stereomixer_8ch.so>  ;
-	rdfs:seeAlso <stereomixer_8ch.ttl> .
 

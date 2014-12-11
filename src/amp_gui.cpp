@@ -15,7 +15,7 @@ AmpGUI::AmpGUI(const std::string& URI)
 	color->set_rgb(7710, 8738, 9252);
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-	m_dialGain = new LabeledDial("Gain", p_gain, -10, 10, NORMAL, 0.05);
+	m_dialGain = new LabeledDial("Gain", -10, 10, NORMAL, 0.05);
 	m_dialGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &AmpGUI::write_control), p_gain), mem_fun(*m_dialGain,  &LabeledDial::get_value)));
 
     Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);

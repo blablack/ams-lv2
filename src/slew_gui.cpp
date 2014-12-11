@@ -17,11 +17,11 @@ SlewGUI::SlewGUI(const std::string& URI)
 
     VBox *p_mainWidget = manage (new VBox(false));
 
-	m_dialTimeUp = new LabeledDial("Time Up", p_timeUp, 0, 10, NORMAL, 0.1);
+	m_dialTimeUp = new LabeledDial("Time Up", 0, 10, NORMAL, 0.1);
     m_dialTimeUp->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &SlewGUI::write_control), p_timeUp), mem_fun(*m_dialTimeUp,  &LabeledDial::get_value)));
     p_mainWidget->pack_start(*m_dialTimeUp);
 
-	m_dialTimeDown = new LabeledDial("Time Down", p_timeDown,0, 10, NORMAL, 0.1);
+	m_dialTimeDown = new LabeledDial("Time Down", 0, 10, NORMAL, 0.1);
     m_dialTimeDown->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &SlewGUI::write_control), p_timeDown), mem_fun(*m_dialTimeDown, &LabeledDial::get_value)));
     p_mainWidget->pack_start(*m_dialTimeDown);
 

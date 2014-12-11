@@ -13,7 +13,7 @@ enum DialType { NORMAL, LOG, MULTIPLIER };
 class Dial: public Gtk::DrawingArea
 {
 	public:
-		Dial(double Value, double Min, double Max, DialType Type, double Step);
+		Dial(double Min, double Max, DialType Type, double Step);
 		virtual ~Dial();
 		bool Redraw();
 

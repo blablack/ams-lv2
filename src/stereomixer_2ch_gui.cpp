@@ -25,7 +25,7 @@ StereoMixer2ChGUI::StereoMixer2ChGUI(const std::string& URI)
 
 	MyBox *p_inBox1 = manage(new MyBox("In 1", Gtk::Orientation::ORIENTATION_HORIZONTAL));
 
-	m_checkMute1 = CreateCheck("Mute", p_mute1	);
+	m_checkMute1 = CreateCheck("Mute", p_mute1);
 	p_inBox1->pack_start(*m_checkMute1);
 
 	m_checkSolo1 = CreateCheck("Solo", p_solo1);
@@ -65,7 +65,7 @@ StereoMixer2ChGUI::StereoMixer2ChGUI(const std::string& URI)
 
 LabeledDial* StereoMixer2ChGUI::CreateDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step)
 {
-	LabeledDial* p_tempDial = new LabeledDial(TextLabel, Value, Min, Max, Type, Step);
+	LabeledDial* p_tempDial = new LabeledDial(TextLabel, Min, Max, Type, Step);
 	p_tempDial->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &StereoMixer2ChGUI::write_control), Value), mem_fun(*p_tempDial, &LabeledDial::get_value)));
 
 	return p_tempDial;

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step)
+LabeledDial::LabeledDial(const std::string TextLabel, double Min, double Max, DialType Type, double Step)
 {
     m_type = Type;
     Gdk::Color* color = new  Gdk::Color();
@@ -18,19 +18,16 @@ LabeledDial::LabeledDial(const std::string TextLabel, double Value, double Min, 
     Label *p_label = manage (new Label(" " + TextLabel + " "));
     p_mainWidget->pack_start(*p_label, Gtk::PACK_SHRINK, 0, 0);
 
-	m_dial = new Dial(Value, Min, Max, Type, Step);
+	m_dial = new Dial(Min, Max, Type, Step);
     m_dial->signal_value_changed().connect(mem_fun(*this, &LabeledDial::value_changed));
 
     p_mainWidget->pack_start(*m_dial, Gtk::PACK_SHRINK, 0, 0);
 
-    std::stringstream out;
-    out << Value;
-
     m_label = new Gtk::Label();
-    m_label->set_text(out.str());
+	std::stringstream out;
+	out << std::fixed << std::setprecision(m_dial->getNbDigit()) << m_dial->get_value();
+	m_label->set_text(out.str());
     p_mainWidget->pack_start(*m_label, Gtk::PACK_SHRINK, 0, 0);
-
-    set_value(Value);
 
     this->set_border_width(1);
     this->add(*p_mainWidget);

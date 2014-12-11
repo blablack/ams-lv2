@@ -5,11 +5,11 @@
 
 using namespace std;
 
-Dial::Dial(double Value, double Min, double Max, DialType Type, double Step)
+Dial::Dial(double Min, double Max, DialType Type, double Step)
 {
 	m_enabled = true;
 	m_type = Type;
-	m_adj = new Gtk::Adjustment(Value, Min, Max, Step, Step);
+	m_adj = new Gtk::Adjustment(Min, Min, Max, Step, Step);
 
 	m_scrollStep = 1;
 	if((Max-Min)/Step>100)

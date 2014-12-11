@@ -15,7 +15,7 @@ DelayGUI::DelayGUI(const std::string& URI)
 	color->set_rgb(7710, 8738, 9252);
 	p_background->modify_bg(Gtk::STATE_NORMAL, *color);
 
-	m_dialDelay = new LabeledDial("Delay", p_delay, 0, 10, LOG, 0.001);
+	m_dialDelay = new LabeledDial("Delay", 0, 10, LOG, 0.001);
 	m_dialDelay->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &DelayGUI::write_control), p_delay), mem_fun(*m_dialDelay,  &LabeledDial::get_value)));
 
     Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);

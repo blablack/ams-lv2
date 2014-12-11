@@ -59,7 +59,7 @@ def configure(conf):
     print('')
 
 
-def build_plugin(bld, bundle, name, source, cxxflags=[], libs=[], add_source=[]):
+def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], add_source=[]):
     penv = bld.env.derive()
     penv['cxxshlib_PATTERN'] = bld.env['pluginlib_PATTERN']
     obj              = bld(features = 'cxx cxxshlib')
@@ -70,6 +70,8 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], libs=[], add_source=[])
     obj.target       = os.path.join(bundle, name)
     if cxxflags != []:
         obj.cxxflags = cxxflags
+    if cppflags != []:
+        obj.cppflags = cppflags
     if libs != []:
         obj.uselib = libs
     obj.install_path = '${LV2DIR}/' + bundle
@@ -79,7 +81,7 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], libs=[], add_source=[])
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
 
 
-def build_plugin_gui(bld, bundle, name, source, cxxflags=[], libs=[], add_source=[]):
+def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], add_source=[]):
     penv = bld.env.derive()
     penv['cxxshlib_PATTERN'] = bld.env['pluginlib_PATTERN']
     obj              = bld(features = 'cxx cxxshlib')
@@ -90,6 +92,8 @@ def build_plugin_gui(bld, bundle, name, source, cxxflags=[], libs=[], add_source
     obj.target       = os.path.join(bundle, name)
     if cxxflags != []:
         obj.cxxflags = cxxflags
+    if cppflags != []:
+        obj.cppflags = cppflags
     if libs != []:
         obj.uselib = libs
     obj.install_path = '${LV2DIR}/' + bundle
@@ -150,6 +154,7 @@ def build(bld):
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="%s"' % i,
                       '-DPLUGIN_HEADER="src/%s.hpp"' % i],
+                     [],
                      ['LV2', 'LVTK_PLUGIN'],
                      [])
 
@@ -158,7 +163,6 @@ def build(bld):
 
     plugins = '''
     ad
-	dynamicwaves_4
     vcaexp
     vcf
     vco2
@@ -172,8 +176,9 @@ def build(bld):
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="%s"' % i,
                       '-DPLUGIN_HEADER="src/%s.hpp"' % i],
-                      ['LV2', 'LVTK_PLUGIN'],
-                      ['src/synthdata.cpp'])
+                     [],
+                     ['LV2', 'LVTK_PLUGIN'],
+                     ['src/synthdata.cpp'])
 
 
 
@@ -215,6 +220,7 @@ def build(bld):
                          '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                          '-DPLUGIN_URI_SUFFIX="%s"' % i,
                          '-DPLUGIN_HEADER="src/%s.hpp"' % i],
+                        [],
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
 
@@ -227,6 +233,7 @@ def build(bld):
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="env_gui"',
                       '-DPLUGIN_HEADER="src/env_gui.hpp"'],
+                     [],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/env_gui_scope.cpp', 'src/my_box.cpp'])
 
@@ -239,6 +246,7 @@ def build(bld):
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="percussiveenv_gui"',
                       '-DPLUGIN_HEADER="src/percussiveenv_gui.hpp"'],
+                     [],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/percussiveenv_gui_scope.cpp', 'src/my_box.cpp'])
 
@@ -251,22 +259,34 @@ def build(bld):
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                       '-DPLUGIN_URI_SUFFIX="advenv_gui"',
                       '-DPLUGIN_HEADER="src/advenv_gui.hpp"'],
+                     [],
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp', 'src/my_box.cpp'])
 
 
-
-    plugins_gui = '''
-    dynamicwaves_4_gui
+    plugins = '''
+    4
+    6
     '''.split()
 
-    for i in plugins_gui:
-       build_plugin_gui(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
-                        ['-DPLUGIN_CLASS=%s' % i,
+    for i in plugins:
+       build_plugin(bld, 'ams.lv2', 'dynamicwaves_%s' % i, ['src/dynamicwaves.cpp'],
+                    ['-DPLUGIN_CLASS=dynamicwaves_%s' % i,
+                     '-std=c++11',
+                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                     '-DPLUGIN_URI_SUFFIX="dynamicwaves_%s"' % i,
+                     '-DPLUGIN_HEADER="src/dynamicwaves.hpp"'],
+                    ['-DOSC_COUNT=%s' % i],
+                    ['LV2', 'LVTK_PLUGIN'],
+                    ['src/synthdata.cpp'])
+
+       build_plugin_gui(bld, 'ams.lv2', 'dynamicwaves_%s_gui' % i, ['src/dynamicwaves_gui.cpp'],
+                        ['-DPLUGIN_CLASS=dynamicwaves_%s_gui' % i,
                          '-std=c++11',
                          '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-                         '-DPLUGIN_URI_SUFFIX="%s"' % i,
-                         '-DPLUGIN_HEADER="src/%s.hpp"' % i],
+                         '-DPLUGIN_URI_SUFFIX="dynamicwaves_%s_gui"' % i,
+                         '-DPLUGIN_HEADER="src/dynamicwaves_gui.hpp"'],
+                        ['-DOSC_COUNT=%s' % i],
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp', 'src/dynamicwaves_scope.cpp'])
 

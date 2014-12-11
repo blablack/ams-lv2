@@ -4,12 +4,12 @@
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "dynamicwaves_4_gui.hpp"
+#include "dynamicwaves_gui.hpp"
 #include "dynamicwaves_scope.hpp"
 #include "dial.hpp"
 #include "my_box.hpp"
 
-DynamicWaves4GUI::DynamicWaves4GUI(const std::string& URI)
+DynamicWavesGUI::DynamicWavesGUI(const std::string& URI)
 {
 	EventBox *p_background = manage (new EventBox());
 	Gdk::Color* color = new  Gdk::Color();
@@ -58,7 +58,7 @@ DynamicWaves4GUI::DynamicWaves4GUI(const std::string& URI)
 		m_comboWaveForm[i]->append_text("Triangle");
 		m_comboWaveForm[i]->append_text("Rectangle");
 		m_comboWaveForm[i]->append_text("Saw 2");
-		m_comboWaveForm[i]->signal_changed().connect(mem_fun(*this, &DynamicWaves4GUI::get_waveform));
+		m_comboWaveForm[i]->signal_changed().connect(mem_fun(*this, &DynamicWavesGUI::get_waveform));
 		p_waveFormFrame->pack_start(*m_comboWaveForm[i]);
 
 		p_vcoPage->pack_start(*p_waveFormFrame);
@@ -137,7 +137,7 @@ DynamicWaves4GUI::DynamicWaves4GUI(const std::string& URI)
 	Gtk::manage(p_tabs);
 }
 
-void DynamicWaves4GUI::get_waveform()
+void DynamicWavesGUI::get_waveform()
 {
 	for( int i = 0; i < MODULE_DYNAMICWAVES_OSC; i++ )
 	{
@@ -145,16 +145,16 @@ void DynamicWaves4GUI::get_waveform()
 	}
 }
 
-LabeledDial* DynamicWaves4GUI::CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step)
+LabeledDial* DynamicWavesGUI::CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step)
 {
 	peg_data_t p_portData = p_ports[PortIndex];
 	LabeledDial* p_tempDial = new LabeledDial(TextLabel, p_portData.min, p_portData.max, Type, Step);
-	p_tempDial->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &DynamicWaves4GUI::write_control), PortIndex), mem_fun(*p_tempDial, &LabeledDial::get_value)));
+	p_tempDial->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &DynamicWavesGUI::write_control), PortIndex), mem_fun(*p_tempDial, &LabeledDial::get_value)));
 
 	return p_tempDial;
 }
 
-void DynamicWaves4GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
+void DynamicWavesGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer)
 {
 	switch( port )
 	{
@@ -326,4 +326,10 @@ void DynamicWaves4GUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t 
 	}
 }
 
-static int _ = DynamicWaves4GUI::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_4/gui");
+#if OSC_COUNT == 4
+	static int _ = DynamicWavesGUI::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_4/gui");
+#elif OSC_COUNT == 6
+	static int _ = DynamicWavesGUI::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_6/gui");
+#endif
+
+

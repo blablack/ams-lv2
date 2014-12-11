@@ -1,12 +1,20 @@
-#ifndef DYNAMICWAVES_4_H
-#define DYNAMICWAVES_4_H
+#ifndef DYNAMICWAVES_H
+#define DYNAMICWAVES_H
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "synthdata.hpp"
-#include "dynamicwaves_4_ttl.hpp"
 
-#define MODULE_DYNAMICWAVES_OSC				4
+#if OSC_COUNT == 4
+	#include "dynamicwaves_4_ttl.hpp"
+	#undef MODULE_DYNAMICWAVES_OSC
+	#define MODULE_DYNAMICWAVES_OSC	4
+#elif OSC_COUNT == 6
+	#include "dynamicwaves_6_ttl.hpp"
+	#undef MODULE_DYNAMICWAVES_OSC
+	#define MODULE_DYNAMICWAVES_OSC	6
+#endif
+
 #define DYNAMICWAVES_ENVELOPE_RESPONSE		256
 
 using namespace lvtk;
@@ -20,7 +28,7 @@ enum dynamicWaveFormType
 	DYNAMICWAVE_SAW2
 };
 
-class DynamicWaves4: public Plugin<DynamicWaves4>
+class DynamicWaves: public Plugin<DynamicWaves>
 {
 	private:
 		double m_rate;
@@ -42,7 +50,7 @@ class DynamicWaves4: public Plugin<DynamicWaves4>
 		SynthData *synthdata;
 
 	public:
-		DynamicWaves4(double rate);
+		DynamicWaves(double rate);
 		void run(uint32_t nframes);
 };
 

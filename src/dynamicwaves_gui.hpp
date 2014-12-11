@@ -1,5 +1,5 @@
-#ifndef DYNAMICWAVES_4_GUI_H
-#define DYNAMICWAVES_4_GUI_H
+#ifndef DYNAMICWAVES_GUI_H
+#define DYNAMICWAVES_GUI_H
 
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
@@ -8,16 +8,23 @@ using namespace lvtk;
 using namespace sigc;
 using namespace Gtk;
 
-#define MODULE_DYNAMICWAVES_OSC				4
+#if OSC_COUNT == 4
+	#undef MODULE_DYNAMICWAVES_OSC
+	#define MODULE_DYNAMICWAVES_OSC	4
+#elif OSC_COUNT == 6
+	#undef MODULE_DYNAMICWAVES_OSC
+	#define MODULE_DYNAMICWAVES_OSC	6
+#endif
 
-#include "dynamicwaves_4.hpp"
+
+#include "dynamicwaves.hpp"
 #include "dynamicwaves_scope.hpp"
 #include "labeleddial.hpp"
 
-class DynamicWaves4GUI: public UI<DynamicWaves4GUI, GtkUI<true>>
+class DynamicWavesGUI: public UI<DynamicWavesGUI, GtkUI<true>>
 {
 	public:
-		DynamicWaves4GUI(const std::string& URI);
+		DynamicWavesGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
 	private:
@@ -42,6 +49,7 @@ class DynamicWaves4GUI: public UI<DynamicWaves4GUI, GtkUI<true>>
 		float m_valueReleaseLevel1[MODULE_DYNAMICWAVES_OSC];
 		float m_valueReleaseLevel2[MODULE_DYNAMICWAVES_OSC];
 
+#if OSC_COUNT == 4
 		p_port_enum osc_octave[MODULE_DYNAMICWAVES_OSC] = {p_vco1_octave, p_vco2_octave, p_vco3_octave, p_vco4_octave};
 		p_port_enum osc_tune[MODULE_DYNAMICWAVES_OSC] = {p_vco1_tune, p_vco2_tune, p_vco3_tune, p_vco4_tune};
 		p_port_enum harmonic[MODULE_DYNAMICWAVES_OSC] = {p_vco1_harmonic, p_vco2_harmonic, p_vco3_harmonic, p_vco4_harmonic};
@@ -73,6 +81,39 @@ class DynamicWaves4GUI: public UI<DynamicWaves4GUI, GtkUI<true>>
 		};
 
 		p_port_enum volume[MODULE_DYNAMICWAVES_OSC] = {p_volume1, p_volume2, p_volume3, p_volume4};
+#elif OSC_COUNT == 6
+		p_port_enum osc_octave[MODULE_DYNAMICWAVES_OSC] = {p_vco1_octave, p_vco2_octave, p_vco3_octave, p_vco4_octave, p_vco5_octave, p_vco6_octave};
+		p_port_enum osc_tune[MODULE_DYNAMICWAVES_OSC] = {p_vco1_tune, p_vco2_tune, p_vco3_tune, p_vco4_tune, p_vco5_tune, p_vco6_tune};
+		p_port_enum harmonic[MODULE_DYNAMICWAVES_OSC] = {p_vco1_harmonic, p_vco2_harmonic, p_vco3_harmonic, p_vco4_harmonic, p_vco5_harmonic, p_vco6_harmonic};
+		p_port_enum subharmonic[MODULE_DYNAMICWAVES_OSC] = {p_vco1_subharmonic, p_vco2_subharmonic, p_vco3_subharmonic, p_vco4_subharmonic, p_vco5_subharmonic, p_vco6_subharmonic};
+		p_port_enum phi0[MODULE_DYNAMICWAVES_OSC] = {p_vco1_phi0, p_vco2_phi0, p_vco3_phi0, p_vco4_phi0, p_vco5_phi0, p_vco6_phi0};
+		p_port_enum waveForm[MODULE_DYNAMICWAVES_OSC] = {p_vco1_waveForm, p_vco2_waveForm, p_vco3_waveForm, p_vco4_waveForm, p_vco5_waveForm, p_vco6_waveForm};
+
+		p_port_enum attack[8][MODULE_DYNAMICWAVES_OSC] =
+		{
+			{p_env1_delay, p_env2_delay, p_env3_delay, p_env4_delay, p_env5_delay, p_env6_delay},
+			{p_env1_attackTime1, p_env2_attackTime1, p_env3_attackTime1, p_env4_attackTime1, p_env5_attackTime1, p_env6_attackTime1},
+			{p_env1_attackLevel1, p_env2_attackLevel1, p_env3_attackLevel1, p_env4_attackLevel1, p_env5_attackLevel1, p_env6_attackLevel1},
+			{p_env1_attackTime2, p_env2_attackTime2, p_env3_attackTime2, p_env4_attackTime2, p_env5_attackTime2, p_env6_attackTime2},
+			{p_env1_attackLevel2, p_env2_attackLevel2, p_env3_attackLevel2, p_env4_attackLevel2, p_env5_attackLevel2, p_env6_attackLevel2},
+			{p_env1_attackTime3, p_env2_attackTime3, p_env3_attackTime3, p_env4_attackTime3, p_env5_attackTime3, p_env6_attackTime3},
+			{p_env1_attackLevel3, p_env2_attackLevel3, p_env3_attackLevel3, p_env4_attackLevel3, p_env5_attackLevel3, p_env6_attackLevel3},
+			{p_env1_attackTime4, p_env2_attackTime4, p_env3_attackTime4, p_env4_attackTime4, p_env5_attackTime4, p_env6_attackTime4}
+		};
+
+		p_port_enum sustain[MODULE_DYNAMICWAVES_OSC] = {p_env1_sustain, p_env2_sustain, p_env3_sustain, p_env4_sustain, p_env5_sustain, p_env6_sustain};
+
+		p_port_enum release[5][MODULE_DYNAMICWAVES_OSC] =
+		{
+			{p_env1_releaseTime1, p_env2_releaseTime1, p_env3_releaseTime1, p_env4_releaseTime1, p_env5_releaseTime1, p_env6_releaseTime1},
+			{p_env1_releaseLevel1, p_env2_releaseLevel1, p_env3_releaseLevel1, p_env4_releaseLevel1, p_env5_releaseLevel1, p_env6_releaseLevel1},
+			{p_env1_releaseTime2, p_env2_releaseTime2, p_env3_releaseTime2, p_env4_releaseTime2, p_env5_releaseTime2, p_env6_releaseTime2},
+			{p_env1_releaseLevel2, p_env2_releaseLevel2, p_env3_releaseLevel2, p_env4_releaseLevel2, p_env5_releaseLevel2, p_env6_releaseLevel2},
+			{p_env1_releaseTime3, p_env2_releaseTime3, p_env3_releaseTime3, p_env4_releaseTime3, p_env5_releaseTime3, p_env6_releaseTime3}
+		};
+
+		p_port_enum volume[MODULE_DYNAMICWAVES_OSC] = {p_volume1, p_volume2, p_volume3, p_volume4, p_volume5, p_volume6};
+#endif
 
 		DynamicWavesScope* m_envScope[MODULE_DYNAMICWAVES_OSC+1];
 

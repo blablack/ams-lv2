@@ -44,7 +44,7 @@
 
 <http://github.com/blablack/ams-lv2/dynamicwaves_4#group_env4>
     a param:EnvelopeControls ;
-    lv2:name "Envelope 3" ;
+    lv2:name "Envelope 4" ;
     lv2:symbol "grpEnv4" .
 
 <http://github.com/blablack/ams-lv2/dynamicwaves_4#group_vco1>
@@ -223,7 +223,7 @@
 		lv2:name "VCO 1 - Wave Form" ;
 		lv2:default 0;
 		lv2:minimum 0;
-		lv2:maximum 6;
+		lv2:maximum 4;
 		lv2:portProperty lv2:enumeration ;
 		lv2:scalePoint
 				[
@@ -299,7 +299,7 @@
 		lv2:name "VCO 2 - Wave Form" ;
 		lv2:default 0;
 		lv2:minimum 0;
-		lv2:maximum 6;
+		lv2:maximum 4;
 		lv2:portProperty lv2:enumeration ;
 		lv2:scalePoint
 				[
@@ -375,7 +375,7 @@
 		lv2:name "VCO 3 - Wave Form" ;
 		lv2:default 0;
 		lv2:minimum 0;
-		lv2:maximum 6;
+		lv2:maximum 4;
 		lv2:portProperty lv2:enumeration ;
 		lv2:scalePoint
 				[
@@ -451,7 +451,7 @@
 		lv2:name "VCO 4 - Wave Form" ;
 		lv2:default 0;
 		lv2:minimum 0;
-		lv2:maximum 6;
+		lv2:maximum 4;
 		lv2:portProperty lv2:enumeration ;
 		lv2:scalePoint
 				[

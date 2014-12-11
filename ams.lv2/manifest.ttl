@@ -41,11 +41,6 @@
 	lv2:binary <amp.so>  ;
 	rdfs:seeAlso <amp.ttl> .
 
-<http://github.com/blablack/ams-lv2/dynamicwaves_4>
-	a lv2:Plugin ;
-	lv2:binary <dynamicwaves_4.so>  ;
-	rdfs:seeAlso <dynamicwaves_4.ttl> .
-
 <http://github.com/blablack/ams-lv2/controltocv>
 	a lv2:Plugin ;
 	lv2:binary <controltocv.so>  ;
@@ -65,6 +60,21 @@
 	a lv2:Plugin ;
 	lv2:binary <delay.so>  ;
 	rdfs:seeAlso <delay.ttl> .
+
+<http://github.com/blablack/ams-lv2/dynamicwaves_4>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves_4.so>  ;
+	rdfs:seeAlso <dynamicwaves_4.ttl> .
+
+<http://github.com/blablack/ams-lv2/dynamicwaves_6>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves_6.so>  ;
+	rdfs:seeAlso <dynamicwaves_6.ttl> .
+
+<http://github.com/blablack/ams-lv2/dynamicwaves_8>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves_8.so>  ;
+	rdfs:seeAlso <dynamicwaves_8.ttl> .
 
 <http://github.com/blablack/ams-lv2/env>
 	a lv2:Plugin ;

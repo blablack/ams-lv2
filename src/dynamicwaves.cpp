@@ -328,7 +328,7 @@ void DynamicWaves::run(uint32_t nframes)
 #elif OSC_COUNT == 6
 	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_6");
 #elif OSC_COUNT == 8
-	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_6");
+	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_8");
 #endif
 
 

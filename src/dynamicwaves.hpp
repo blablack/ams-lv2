@@ -13,6 +13,10 @@
 	#include "dynamicwaves_6_ttl.hpp"
 	#undef MODULE_DYNAMICWAVES_OSC
 	#define MODULE_DYNAMICWAVES_OSC	6
+#elif OSC_COUNT == 8
+	#include "dynamicwaves_8_ttl.hpp"
+	#undef MODULE_DYNAMICWAVES_OSC
+	#define MODULE_DYNAMICWAVES_OSC	8
 #endif
 
 #define DYNAMICWAVES_ENVELOPE_RESPONSE		256

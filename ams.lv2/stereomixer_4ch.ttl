@@ -1,195 +1,195 @@
-@prefix doap: 	<http://usefulinc.com/ns/doap#> .
-@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .
-@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .
-@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
-@prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
-@prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
-
-<http://github.com/blablack/ams-lv2/stereomixer_4ch/gui>
-  	a guiext:GtkUI ;
-	guiext:binary <stereomixer_4ch_gui.so> .
-
-<http://github.com/blablack/ams-lv2/stereomixer_4ch>
-	a lv2:Plugin, lv2:UtilityPlugin ;
-	lv2:project <http://github.com/blablack/ams-lv2/> ;
-	doap:name "AMS Stereo Mixer 4 channels" ;
-	doap:license <http://opensource.org/licenses/isc> ;
-	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams-lv2/stereomixer_4ch/gui> ;
-	lv2:optionalFeature lv2:hardRTCapable ;
-	lv2:port [
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 0 ;
-		lv2:symbol "masterVolume" ;
-		lv2:name "Master Volume" ;
-		lv2:default 1 ;
-		lv2:minimum 0 ;
-		lv2:maximum 10 ;
-	] , 	[
-		a lv2:InputPort, lv2:AudioPort ;
-		lv2:index 1 ;
-		lv2:symbol "in1" ;
-		lv2:name "In 1" ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 2 ;
-		lv2:symbol "mute1" ;
-		lv2:name "Mute 1" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] , 	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 3 ;
-		lv2:symbol "solo1" ;
-		lv2:name "Solo 1" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 4 ;
-		lv2:symbol "volume1" ;
-		lv2:name "Volume 1" ;
-		lv2:default 1 ;
-		lv2:minimum 0 ;
-		lv2:maximum 2 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 5 ;
-		lv2:symbol "pan1" ;
-		lv2:name "Pan 1" ;
-		lv2:default 0 ;
-		lv2:minimum -1 ;
-		lv2:maximum 1 ;
-	] , 	[
-		a lv2:InputPort, lv2:AudioPort ;
-		lv2:index 6 ;
-		lv2:symbol "in2" ;
-		lv2:name "In 2" ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 7 ;
-		lv2:symbol "mute2" ;
-		lv2:name "Mute 2" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] , 	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 8 ;
-		lv2:symbol "solo2" ;
-		lv2:name "Solo 2" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 9 ;
-		lv2:symbol "volume2" ;
-		lv2:name "Volume 2" ;
-		lv2:default 1 ;
-		lv2:minimum 0 ;
-		lv2:maximum 2 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 10 ;
-		lv2:symbol "pan2" ;
-		lv2:name "Pan 2" ;
-		lv2:default 0 ;
-		lv2:minimum -1 ;
-		lv2:maximum 1 ;
-	] , 	[
-		a lv2:InputPort, lv2:AudioPort ;
-		lv2:index 11 ;
-		lv2:symbol "in3" ;
-		lv2:name "In 3" ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 12 ;
-		lv2:symbol "mute3" ;
-		lv2:name "Mute 3" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] , 	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 13 ;
-		lv2:symbol "solo3" ;
-		lv2:name "Solo 3" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 14 ;
-		lv2:symbol "volume3" ;
-		lv2:name "Volume 3" ;
-		lv2:default 1 ;
-		lv2:minimum 0 ;
-		lv2:maximum 2 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 15 ;
-		lv2:symbol "pan3" ;
-		lv2:name "Pan 3" ;
-		lv2:default 0 ;
-		lv2:minimum -1 ;
-		lv2:maximum 1 ;
-	] , 	[
-		a lv2:InputPort, lv2:AudioPort ;
-		lv2:index 16 ;
-		lv2:symbol "in4" ;
-		lv2:name "In 4" ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 17 ;
-		lv2:symbol "mute4" ;
-		lv2:name "Mute 4" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] , 	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 18 ;
-		lv2:symbol "solo4" ;
-		lv2:name "Solo 4" ;
-		lv2:portProperty lv2:toggled ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	       	lv2:maximum 1.0 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 19 ;
-		lv2:symbol "volume4" ;
-		lv2:name "Volume 4" ;
-		lv2:default 1 ;
-		lv2:minimum 0 ;
-		lv2:maximum 2 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 20 ;
-		lv2:symbol "pan4" ;
-		lv2:name "Pan 4" ;
-		lv2:default 0 ;
-		lv2:minimum -1 ;
-		lv2:maximum 1 ;
-	] ,	[
-		a lv2:OutputPort, lv2:AudioPort ;
-		lv2:index 21 ;
-		lv2:symbol "outL" ;
-		lv2:name "Out Left" ;
-	] ,	[
-		a lv2:OutputPort, lv2:AudioPort ;
-		lv2:index 22 ;
-		lv2:symbol "outR" ;
-		lv2:name "Out Right" ;
+@prefix doap: 	<http://usefulinc.com/ns/doap#> .  
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .  
+@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .  
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .  
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .  
+@prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .  
+@prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .  
+  
+<http://github.com/blablack/ams-lv2/stereomixer_4ch/gui>  
+  	a guiext:GtkUI ;  
+	guiext:binary <stereomixer_4ch_gui.so> .  
+  
+<http://github.com/blablack/ams-lv2/stereomixer_4ch>  
+	a lv2:Plugin, lv2:UtilityPlugin ;  
+	lv2:project <http://github.com/blablack/ams-lv2/> ;  
+	doap:name "AMS Stereo Mixer 4 channels" ;  
+	doap:license <http://opensource.org/licenses/isc> ;  
+	ll:pegName "p" ;  
+	guiext:ui <http://github.com/blablack/ams-lv2/stereomixer_4ch/gui> ;  
+	lv2:optionalFeature lv2:hardRTCapable ;  
+	lv2:port [  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 0 ; 
+		lv2:symbol "masterVolume" ;  
+		lv2:name "Master Volume" ;  
+		lv2:default 1 ;  
+		lv2:minimum 0 ;  
+		lv2:maximum 10 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:AudioPort ;  
+		lv2:index 1 ; 
+		lv2:symbol "in1" ;  
+		lv2:name "In 1" ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 2 ; 
+		lv2:symbol "mute1" ;  
+		lv2:name "Mute 1" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 3 ; 
+		lv2:symbol "solo1" ;  
+		lv2:name "Solo 1" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 4 ; 
+		lv2:symbol "volume1" ;  
+		lv2:name "Volume 1" ;  
+		lv2:default 1 ;  
+		lv2:minimum 0 ;  
+		lv2:maximum 2 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 5 ; 
+		lv2:symbol "pan1" ;  
+		lv2:name "Pan 1" ;  
+		lv2:default 0 ;  
+		lv2:minimum -1 ;  
+		lv2:maximum 1 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:AudioPort ;  
+		lv2:index 6 ; 
+		lv2:symbol "in2" ;  
+		lv2:name "In 2" ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 7 ; 
+		lv2:symbol "mute2" ;  
+		lv2:name "Mute 2" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 8 ; 
+		lv2:symbol "solo2" ;  
+		lv2:name "Solo 2" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 9 ; 
+		lv2:symbol "volume2" ;  
+		lv2:name "Volume 2" ;  
+		lv2:default 1 ;  
+		lv2:minimum 0 ;  
+		lv2:maximum 2 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 10 ; 
+		lv2:symbol "pan2" ;  
+		lv2:name "Pan 2" ;  
+		lv2:default 0 ;  
+		lv2:minimum -1 ;  
+		lv2:maximum 1 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:AudioPort ;  
+		lv2:index 11 ; 
+		lv2:symbol "in3" ;  
+		lv2:name "In 3" ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 12 ; 
+		lv2:symbol "mute3" ;  
+		lv2:name "Mute 3" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 13 ; 
+		lv2:symbol "solo3" ;  
+		lv2:name "Solo 3" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 14 ; 
+		lv2:symbol "volume3" ;  
+		lv2:name "Volume 3" ;  
+		lv2:default 1 ;  
+		lv2:minimum 0 ;  
+		lv2:maximum 2 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 15 ; 
+		lv2:symbol "pan3" ;  
+		lv2:name "Pan 3" ;  
+		lv2:default 0 ;  
+		lv2:minimum -1 ;  
+		lv2:maximum 1 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:AudioPort ;  
+		lv2:index 16 ; 
+		lv2:symbol "in4" ;  
+		lv2:name "In 4" ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 17 ; 
+		lv2:symbol "mute4" ;  
+		lv2:name "Mute 4" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] , 	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 18 ; 
+		lv2:symbol "solo4" ;  
+		lv2:name "Solo 4" ;  
+		lv2:portProperty lv2:toggled ;  
+		lv2:default 0.0 ;  
+		lv2:minimum 0.0 ;  
+	       	lv2:maximum 1.0 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 19 ; 
+		lv2:symbol "volume4" ;  
+		lv2:name "Volume 4" ;  
+		lv2:default 1 ;  
+		lv2:minimum 0 ;  
+		lv2:maximum 2 ;  
+	] ,	[  
+		a lv2:InputPort, lv2:ControlPort ;  
+		lv2:index 20 ; 
+		lv2:symbol "pan4" ;  
+		lv2:name "Pan 4" ;  
+		lv2:default 0 ;  
+		lv2:minimum -1 ;  
+		lv2:maximum 1 ;  
+	] ,	[  
+		a lv2:OutputPort, lv2:AudioPort ;  
+		lv2:index 21 ; 
+		lv2:symbol "outL" ;  
+		lv2:name "Out Left" ;  
+	] ,	[  
+		a lv2:OutputPort, lv2:AudioPort ;  
+		lv2:index 22 ; 
+		lv2:symbol "outR" ;  
+		lv2:name "Out Right" ;  
 	] .

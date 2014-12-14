@@ -330,6 +330,8 @@ void DynamicWavesGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t f
 	static int _ = DynamicWavesGUI::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_4/gui");
 #elif OSC_COUNT == 6
 	static int _ = DynamicWavesGUI::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_6/gui");
+#elif OSC_COUNT == 8
+	static int _ = DynamicWavesGUI::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_8/gui");
 #endif
 
 

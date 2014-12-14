@@ -267,6 +267,7 @@ def build(bld):
     plugins = '''
     4
     6
+    8
     '''.split()
 
     for i in plugins:

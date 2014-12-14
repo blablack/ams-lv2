@@ -120,7 +120,38 @@ void DynamicWaves::run(uint32_t nframes)
 	};
 
 	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)floor(*p(p_vco1_waveForm)), (int)floor(*p(p_vco2_waveForm)), (int)floor(*p(p_vco3_waveForm)), (int)floor(*p(p_vco4_waveForm)), (int)floor(*p(p_vco5_waveForm)), (int)floor(*p(p_vco6_waveForm))};
+#elif OSC_COUNT == 8
+	float gain[MODULE_DYNAMICWAVES_OSC] = {*p(p_volume1), *p(p_volume2), *p(p_volume3), *p(p_volume4), *p(p_volume5), *p(p_volume6), *p(p_volume7), *p(p_volume8)};
+	float osc_octave[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_octave), *p(p_vco2_octave), *p(p_vco3_octave), *p(p_vco4_octave), *p(p_vco5_octave), *p(p_vco6_octave), *p(p_vco7_octave), *p(p_vco8_octave)};
+	float osc_tune[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_tune), *p(p_vco2_tune), *p(p_vco3_tune), *p(p_vco4_tune), *p(p_vco5_tune), *p(p_vco6_tune), *p(p_vco7_tune), *p(p_vco8_tune)};
+	float harmonic[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_harmonic), *p(p_vco2_harmonic), *p(p_vco3_harmonic), *p(p_vco4_harmonic), *p(p_vco5_harmonic), *p(p_vco6_harmonic), *p(p_vco7_harmonic), *p(p_vco8_harmonic)};
+	float subharmonic[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_subharmonic), *p(p_vco2_subharmonic), *p(p_vco3_subharmonic), *p(p_vco4_subharmonic), *p(p_vco5_subharmonic), *p(p_vco6_subharmonic), *p(p_vco7_subharmonic), *p(p_vco8_subharmonic)};
+	float phi0[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_phi0), *p(p_vco2_phi0), *p(p_vco3_phi0), *p(p_vco4_phi0), *p(p_vco5_phi0), *p(p_vco6_phi0), *p(p_vco7_phi0), *p(p_vco8_phi0)};
 
+	float attack[8][MODULE_DYNAMICWAVES_OSC] =
+	{
+		{*p(p_env1_delay), *p(p_env2_delay), *p(p_env3_delay), *p(p_env4_delay), *p(p_env5_delay), *p(p_env6_delay), *p(p_env7_delay), *p(p_env8_delay)},
+		{*p(p_env1_attackTime1), *p(p_env2_attackTime1), *p(p_env3_attackTime1), *p(p_env4_attackTime1), *p(p_env5_attackTime1), *p(p_env6_attackTime1), *p(p_env7_attackTime1), *p(p_env8_attackTime1)},
+		{*p(p_env1_attackLevel1), *p(p_env2_attackLevel1), *p(p_env3_attackLevel1), *p(p_env4_attackLevel1), *p(p_env5_attackLevel1), *p(p_env6_attackLevel1), *p(p_env7_attackLevel1), *p(p_env8_attackLevel1)},
+		{*p(p_env1_attackTime2), *p(p_env2_attackTime2), *p(p_env3_attackTime2), *p(p_env4_attackTime2), *p(p_env5_attackTime2), *p(p_env6_attackTime2), *p(p_env7_attackTime2), *p(p_env8_attackTime2)},
+		{*p(p_env1_attackLevel2), *p(p_env2_attackLevel2), *p(p_env3_attackLevel2), *p(p_env4_attackLevel2), *p(p_env5_attackLevel2), *p(p_env6_attackLevel2), *p(p_env7_attackLevel2), *p(p_env8_attackLevel2)},
+		{*p(p_env1_attackTime3), *p(p_env2_attackTime3), *p(p_env3_attackTime3), *p(p_env4_attackTime3), *p(p_env5_attackTime3), *p(p_env6_attackTime3), *p(p_env7_attackTime3), *p(p_env8_attackTime3)},
+		{*p(p_env1_attackLevel3), *p(p_env2_attackLevel3), *p(p_env3_attackLevel3), *p(p_env4_attackLevel3), *p(p_env5_attackLevel3), *p(p_env6_attackLevel3), *p(p_env7_attackLevel3), *p(p_env8_attackLevel3)},
+		{*p(p_env1_attackTime4), *p(p_env2_attackTime4), *p(p_env3_attackTime4), *p(p_env4_attackTime4), *p(p_env5_attackTime4), *p(p_env6_attackTime4), *p(p_env7_attackTime4), *p(p_env8_attackTime4)}
+	};
+
+	float sustain[MODULE_DYNAMICWAVES_OSC] = {*p(p_env1_sustain), *p(p_env2_sustain), *p(p_env3_sustain), *p(p_env4_sustain), *p(p_env5_sustain), *p(p_env6_sustain), *p(p_env7_sustain), *p(p_env8_sustain)};
+
+	float release[5][MODULE_DYNAMICWAVES_OSC] =
+	{
+		{*p(p_env1_releaseTime1), *p(p_env2_releaseTime1), *p(p_env3_releaseTime1), *p(p_env4_releaseTime1), *p(p_env5_releaseTime1), *p(p_env6_releaseTime1), *p(p_env7_releaseTime1), *p(p_env8_releaseTime1)},
+		{*p(p_env1_releaseLevel1), *p(p_env2_releaseLevel1), *p(p_env3_releaseLevel1), *p(p_env4_releaseLevel1), *p(p_env5_releaseLevel1), *p(p_env6_releaseLevel1), *p(p_env7_releaseLevel1), *p(p_env8_releaseLevel1)},
+		{*p(p_env1_releaseTime2), *p(p_env2_releaseTime2), *p(p_env3_releaseTime2), *p(p_env4_releaseTime2), *p(p_env5_releaseTime2), *p(p_env6_releaseTime2), *p(p_env7_releaseTime2), *p(p_env8_releaseTime2)},
+		{*p(p_env1_releaseLevel2), *p(p_env2_releaseLevel2), *p(p_env3_releaseLevel2), *p(p_env4_releaseLevel2), *p(p_env5_releaseLevel2), *p(p_env6_releaseLevel2), *p(p_env7_releaseLevel2), *p(p_env8_releaseLevel2)},
+		{*p(p_env1_releaseTime3), *p(p_env2_releaseTime3), *p(p_env3_releaseTime3), *p(p_env4_releaseTime3), *p(p_env5_releaseTime3), *p(p_env6_releaseTime3), *p(p_env7_releaseTime3), *p(p_env8_releaseTime3)}
+	};
+
+	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)floor(*p(p_vco1_waveForm)), (int)floor(*p(p_vco2_waveForm)), (int)floor(*p(p_vco3_waveForm)), (int)floor(*p(p_vco4_waveForm)), (int)floor(*p(p_vco5_waveForm)), (int)floor(*p(p_vco6_waveForm)), (int)floor(*p(p_vco7_waveForm)), (int)floor(*p(p_vco8_waveForm))};
 #endif
 
 
@@ -295,6 +326,8 @@ void DynamicWaves::run(uint32_t nframes)
 #if OSC_COUNT == 4
 	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_4");
 #elif OSC_COUNT == 6
+	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_6");
+#elif OSC_COUNT == 8
 	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_6");
 #endif
 

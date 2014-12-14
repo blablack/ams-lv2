@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 for i in ams.lv2/*.ttl 
@@ -12,10 +11,10 @@ do
 			newFile="$newFile\t\tlv2:index $indexCount ; \n"
 			indexCount=$((indexCount + 1))
 		else
-			newFile="$newFile$line \n"
+			newFile="$newFile$line\n"
 		fi
 	done < $i
-	echo -e "${newFile::-3}" > $i
+	echo -e "${newFile::-2}" > $i
 done
 
 for i in ams.lv2/*.ttl 

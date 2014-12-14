@@ -1,5 +1,5 @@
-#ifndef ams_lv__ad_ttl_hpp
-#define ams_lv__ad_ttl_hpp
+#ifndef ams_lv__ad___ttl_hpp
+#define ams_lv__ad___ttl_hpp
 
 
 #ifndef PEG_STRUCT
@@ -14,9 +14,9 @@ typedef struct {
 } peg_data_t;
 #endif
 
-/* <http://github.com/blablack/ams-lv2/ad> */
+/* <http://github.com/blablack/ams-lv2/ad_2> */
 
-static const char p_uri[] = "http://github.com/blablack/ams-lv2/ad";
+static const char p_uri[] = "http://github.com/blablack/ams-lv2/ad_2";
 
 enum p_port_enum {
   p_cvIn,
@@ -26,8 +26,8 @@ enum p_port_enum {
   p_driftAmplitude,
   p_driftModulation,
   p_driftRate,
-  p_cvOut0,
   p_cvOut1,
+  p_cvOut2,
   p_n_ports
 };
 
@@ -44,4 +44,4 @@ static const peg_data_t p_ports[] = {
 };
 
 
-#endif /* ams_lv__ad_ttl_hpp */
+#endif /* ams_lv__ad___ttl_hpp */

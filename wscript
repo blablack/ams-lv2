@@ -162,7 +162,6 @@ def build(bld):
 
 
     plugins = '''
-    ad
     vcaexp
     vcf
     vco2
@@ -184,7 +183,6 @@ def build(bld):
 
 
     plugins_gui = '''
-    ad_gui
     amp_gui
     cvs_gui
     delay_gui
@@ -264,6 +262,38 @@ def build(bld):
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp', 'src/my_box.cpp'])
 
 
+
+
+    plugins = '''
+    2
+    4
+    6
+    '''.split()
+
+    for i in plugins:
+       build_plugin(bld, 'ams.lv2', "ad_%s" % i, ['src/ad.cpp'],
+                    ['-DPLUGIN_CLASS=ad_%s' % i,
+                     '-std=c++11',
+                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                     '-DPLUGIN_URI_SUFFIX="ad_%s"' % i,
+                     '-DPLUGIN_HEADER="src/ad.hpp"'],
+                    ['-DOUT_COUNT=%s' % i],
+                    ['LV2', 'LVTK_PLUGIN'],
+                    ['src/synthdata.cpp'])
+
+       build_plugin_gui(bld, 'ams.lv2', "ad_%s_gui" % i, ['src/ad_gui.cpp'],
+                        ['-DPLUGIN_CLASS=ad_%s_gui' % i,
+                         '-std=c++11',
+                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                         '-DPLUGIN_URI_SUFFIX="ad_%s_gui"' % i,
+                         '-DPLUGIN_HEADER="src/ad_gui.hpp"'],
+                        ['-DOUT_COUNT=%s' % i],
+                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
+                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
+
+
+
+
     plugins = '''
     4
     6
@@ -290,4 +320,5 @@ def build(bld):
                         ['-DOSC_COUNT=%s' % i],
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp', 'src/dynamicwaves_scope.cpp'])
+
 

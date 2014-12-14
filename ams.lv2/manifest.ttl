@@ -21,10 +21,20 @@
 	lv2:binary <absolute.so>  ;
 	rdfs:seeAlso <absolute.ttl> .
 
-<http://github.com/blablack/ams-lv2/ad>
+<http://github.com/blablack/ams-lv2/ad_2>
 	a lv2:Plugin ;
-	lv2:binary <ad.so>  ;
-	rdfs:seeAlso <ad.ttl> .
+	lv2:binary <ad_2.so>  ;
+	rdfs:seeAlso <ad_2.ttl> .
+
+<http://github.com/blablack/ams-lv2/ad_4>
+	a lv2:Plugin ;
+	lv2:binary <ad_4.so>  ;
+	rdfs:seeAlso <ad_4.ttl> .
+
+<http://github.com/blablack/ams-lv2/ad_6>
+	a lv2:Plugin ;
+	lv2:binary <ad_6.so>  ;
+	rdfs:seeAlso <ad_6.ttl> .
 
 <http://github.com/blablack/ams-lv2/advenv>
 	a lv2:Plugin ;

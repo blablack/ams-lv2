@@ -9,7 +9,6 @@
 //#define WAVE_PERIOD             65536
 #define WAVE_PERIOD             262144
 #define EXP_TABLE_LEN           32768
-#define MAX_ANALOGUE_DRIVER_OUT     6
 
 class SynthData
 {

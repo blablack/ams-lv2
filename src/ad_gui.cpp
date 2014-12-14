@@ -82,4 +82,13 @@ void AdGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, con
     }
 }
 
-static int _ = AdGUI::register_class("http://github.com/blablack/ams-lv2/ad/gui");
+#if OUT_COUNT == 2
+static int _ = AdGUI::register_class("http://github.com/blablack/ams-lv2/ad_2/gui");
+#elif OUT_COUNT == 4
+static int _ = AdGUI::register_class("http://github.com/blablack/ams-lv2/ad_4/gui");
+#elif OUT_COUNT == 6
+static int _ = AdGUI::register_class("http://github.com/blablack/ams-lv2/ad_6/gui");
+#endif
+
+
+

@@ -157,7 +157,7 @@ void DynamicWaves::run(uint32_t nframes)
 
 	for (l3 = 0; l3 < MODULE_DYNAMICWAVES_OSC; l3++) {
 		gain_const[l3] = gain[l3] / (float)MODULE_DYNAMICWAVES_OSC;
-		freq_tune[l3] = 4.0313842 + *p(p_octave) + *p(p_tune)+ osc_octave[l3] + osc_tune[l3];
+		freq_tune[l3] = 4.0313842 + *p(p_octave) + *p(p_tune) + osc_octave[l3] + osc_tune[l3];
 		freq_const[l3] = wave_period / (float)m_rate * (float)harmonic[l3] / (float)subharmonic[l3];
 		phi_const[l3] = phi0[l3] * wave_period / (2.0 * M_PI);
 		de_a[0][l3] = (attack[1][l3] > 0) ? attack[2][l3] / (tscale * attack[1][l3]) : 0;

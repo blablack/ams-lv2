@@ -111,8 +111,7 @@ def build(bld):
             target = bld.path.get_bld().make_node('ams.lv2/%s' % i),
             install_path = '${LV2DIR}/ams.lv2')
 
-
-
+########################################################################
 
     plugins = '''
     absolute
@@ -158,8 +157,7 @@ def build(bld):
                      ['LV2', 'LVTK_PLUGIN'],
                      [])
 
-
-
+########################################################################
 
     plugins = '''
     vcaexp
@@ -179,8 +177,7 @@ def build(bld):
                      ['LV2', 'LVTK_PLUGIN'],
                      ['src/synthdata.cpp'])
 
-
-
+########################################################################
 
     plugins_gui = '''
     amp_gui
@@ -222,8 +219,7 @@ def build(bld):
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
 
-
-
+########################################################################
 
     build_plugin_gui(bld, 'ams.lv2', 'env_gui', ['src/env_gui.cpp'],
                      ['-DPLUGIN_CLASS=env_gui',
@@ -235,8 +231,7 @@ def build(bld):
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/env_gui_scope.cpp', 'src/my_box.cpp'])
 
-
-
+########################################################################
 
     build_plugin_gui(bld, 'ams.lv2', 'percussiveenv_gui', ['src/percussiveenv_gui.cpp'],
                      ['-DPLUGIN_CLASS=percussiveenv_gui',
@@ -248,8 +243,7 @@ def build(bld):
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/percussiveenv_gui_scope.cpp', 'src/my_box.cpp'])
 
-
-
+########################################################################
 
     build_plugin_gui(bld, 'ams.lv2', 'advenv_gui', ['src/advenv_gui.cpp'],
                      ['-DPLUGIN_CLASS=advenv_gui',
@@ -261,8 +255,7 @@ def build(bld):
                      ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                      ['src/dial.cpp', 'src/labeleddial.cpp', 'src/advenv_gui_scope.cpp', 'src/my_box.cpp'])
 
-
-
+########################################################################
 
     plugins = '''
     2
@@ -291,8 +284,7 @@ def build(bld):
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
 
-
-
+########################################################################
 
     plugins = '''
     4
@@ -321,4 +313,23 @@ def build(bld):
                         ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
                         ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp', 'src/dynamicwaves_scope.cpp'])
 
+       build_plugin(bld, 'ams.lv2', 'vcorgan_%s' % i, ['src/vcorgan.cpp'],
+                    ['-DPLUGIN_CLASS=vcorgan_%s' % i,
+                     '-std=c++11',
+                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                     '-DPLUGIN_URI_SUFFIX="vcorgan_%s"' % i,
+                     '-DPLUGIN_HEADER="src/vcorgan.hpp"'],
+                    ['-DOSC_COUNT=%s' % i],
+                    ['LV2', 'LVTK_PLUGIN'],
+                    ['src/synthdata.cpp'])
+
+#       build_plugin_gui(bld, 'ams.lv2', 'vcorgan_%s_gui' % i, ['src/vcorgan_gui.cpp'],
+#                        ['-DPLUGIN_CLASS=vcorgan_%s_gui' % i,
+#                         '-std=c++11',
+#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+#                         '-DPLUGIN_URI_SUFFIX="vcorgan_%s_gui"' % i,
+#                         '-DPLUGIN_HEADER="src/vcorgan_gui.hpp"'],
+#                        ['-DOSC_COUNT=%s' % i],
+#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
+#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
 

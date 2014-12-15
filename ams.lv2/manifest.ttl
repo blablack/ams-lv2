@@ -206,6 +206,21 @@
 	lv2:binary <vco3.so>  ;
 	rdfs:seeAlso <vco3.ttl> .
 
+<http://github.com/blablack/ams-lv2/vcorgan_4>
+	a lv2:Plugin ;
+	lv2:binary <vcorgan_4.so>  ;
+	rdfs:seeAlso <vcorgan_4.ttl> .
+
+<http://github.com/blablack/ams-lv2/vcorgan_6>
+	a lv2:Plugin ;
+	lv2:binary <vcorgan_6.so>  ;
+	rdfs:seeAlso <vcorgan_6.ttl> .
+
+<http://github.com/blablack/ams-lv2/vcorgan_8>
+	a lv2:Plugin ;
+	lv2:binary <vcorgan_8.so>  ;
+	rdfs:seeAlso <vcorgan_8.ttl> .
+
 <http://github.com/blablack/ams-lv2/vcpanning>
 	a lv2:Plugin ;
 	lv2:binary <vcpanning.so>  ;

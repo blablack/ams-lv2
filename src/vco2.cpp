@@ -29,8 +29,8 @@ void Vco2::run(uint32_t nframes)
 	float edge, dphi, phi1, phi_const, pw, d, dd, dsaw, half_wave, third_wave;
 	float freq_const, freq_tune, gain_linfm, pw_low, pw_high;
 
-	waveForm = floor(*p(p_waveForm));
-	octave = floor(*p(p_octave));
+	waveForm = (int)(*p(p_waveForm));
+	octave = (int)(*p(p_octave));
 
 	freq_const = wave_period / (float) m_rate * (float)*p(p_harmonic) / (float)*p(p_subharmonic);
 	freq_tune = 4.0313842f + octave + *p(p_tune);

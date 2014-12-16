@@ -58,10 +58,11 @@ void Vcf::run(uint32_t nframes)
 {
 	double t1, t2, fa, fb, f, q, pbis, iv_sin, iv_cos, iv_alpha, a0, a1, a2, b0, b1, b2;
 
-	if (vcfTypeUsed != (int)floor(*p(p_vcfType)))
+	int vcfType = (int)(*p(p_vcfType));
+	if (vcfTypeUsed != vcfType)
 	{
 		initBuf();
-		vcfTypeUsed = (int)floor(*p(p_vcfType));
+		vcfTypeUsed = vcfType;
 	}
 
 	switch (vcfTypeUsed)

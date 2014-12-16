@@ -1,5 +1,3 @@
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "lfo2_tempo.hpp"
@@ -37,7 +35,7 @@ void Lfo2Tempo::run(uint32_t nframes)
 	int l2, k, len, l2_out;
 	double ldsi, ldsa, ldt, ldr, ldsh, dt0, dsa;
 
-	waveForm = floor(*p(p_waveForm));
+	waveForm = (int)(*p(p_waveForm));
 
 	double p_multiplierValue = *p(p_tempoMultiplier);
 

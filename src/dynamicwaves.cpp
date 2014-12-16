@@ -92,7 +92,7 @@ void DynamicWaves::run(uint32_t nframes)
 		{*p(p_env1_releaseTime3), *p(p_env2_releaseTime3), *p(p_env3_releaseTime3), *p(p_env4_releaseTime3)}
 	};
 
-	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)floor(*p(p_vco1_waveForm)), (int)floor(*p(p_vco2_waveForm)), (int)floor(*p(p_vco3_waveForm)), (int)floor(*p(p_vco4_waveForm))};
+	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)(*p(p_vco1_waveForm)), (int)(*p(p_vco2_waveForm)), (int)(*p(p_vco3_waveForm)), (int)(*p(p_vco4_waveForm))};
 #elif OSC_COUNT == 6
 	float gain[MODULE_DYNAMICWAVES_OSC] = {*p(p_volume1), *p(p_volume2), *p(p_volume3), *p(p_volume4), *p(p_volume5), *p(p_volume6)};
 	float osc_octave[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_octave), *p(p_vco2_octave), *p(p_vco3_octave), *p(p_vco4_octave), *p(p_vco5_octave), *p(p_vco6_octave)};
@@ -124,7 +124,7 @@ void DynamicWaves::run(uint32_t nframes)
 		{*p(p_env1_releaseTime3), *p(p_env2_releaseTime3), *p(p_env3_releaseTime3), *p(p_env4_releaseTime3), *p(p_env5_releaseTime3), *p(p_env6_releaseTime3)}
 	};
 
-	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)floor(*p(p_vco1_waveForm)), (int)floor(*p(p_vco2_waveForm)), (int)floor(*p(p_vco3_waveForm)), (int)floor(*p(p_vco4_waveForm)), (int)floor(*p(p_vco5_waveForm)), (int)floor(*p(p_vco6_waveForm))};
+	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)(*p(p_vco1_waveForm)), (int)(*p(p_vco2_waveForm)), (int)(*p(p_vco3_waveForm)), (int)(*p(p_vco4_waveForm)), (int)(*p(p_vco5_waveForm)), (int)(*p(p_vco6_waveForm))};
 #elif OSC_COUNT == 8
 	float gain[MODULE_DYNAMICWAVES_OSC] = {*p(p_volume1), *p(p_volume2), *p(p_volume3), *p(p_volume4), *p(p_volume5), *p(p_volume6), *p(p_volume7), *p(p_volume8)};
 	float osc_octave[MODULE_DYNAMICWAVES_OSC] = {*p(p_vco1_octave), *p(p_vco2_octave), *p(p_vco3_octave), *p(p_vco4_octave), *p(p_vco5_octave), *p(p_vco6_octave), *p(p_vco7_octave), *p(p_vco8_octave)};
@@ -156,7 +156,7 @@ void DynamicWaves::run(uint32_t nframes)
 		{*p(p_env1_releaseTime3), *p(p_env2_releaseTime3), *p(p_env3_releaseTime3), *p(p_env4_releaseTime3), *p(p_env5_releaseTime3), *p(p_env6_releaseTime3), *p(p_env7_releaseTime3), *p(p_env8_releaseTime3)}
 	};
 
-	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)floor(*p(p_vco1_waveForm)), (int)floor(*p(p_vco2_waveForm)), (int)floor(*p(p_vco3_waveForm)), (int)floor(*p(p_vco4_waveForm)), (int)floor(*p(p_vco5_waveForm)), (int)floor(*p(p_vco6_waveForm)), (int)floor(*p(p_vco7_waveForm)), (int)floor(*p(p_vco8_waveForm))};
+	int waveForm[MODULE_DYNAMICWAVES_OSC] = {(int)(*p(p_vco1_waveForm)), (int)(*p(p_vco2_waveForm)), (int)(*p(p_vco3_waveForm)), (int)(*p(p_vco4_waveForm)), (int)(*p(p_vco5_waveForm)), (int)(*p(p_vco6_waveForm)), (int)(*p(p_vco7_waveForm)), (int)(*p(p_vco8_waveForm))};
 #endif
 
 

@@ -13,7 +13,7 @@ HzToVc::HzToVc(double rate): Plugin<HzToVc>(p_n_ports)
 
 void HzToVc::run(uint32_t nframes)
 {
-	float offset = floor(*p(p_octaveOffset)) + 5.0313842;
+	float offset = (int)(*p(p_octaveOffset)) + 5.0313842;
 
 	for (unsigned int l2 = 0; l2 < nframes; l2++)
 		p(p_output)[l2] = logf((p(p_input)[l2]) * m_eighth) * m_log2inv - offset;

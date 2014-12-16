@@ -1,5 +1,3 @@
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "vcpanning.hpp"
@@ -19,7 +17,7 @@ void VCPanning::run(uint32_t nframes)
 	len = nframes;
 	l2 = -1;
 
-	int p_panMode = floor(*p(p_panningMode));
+	int p_panMode = (int)(*p(p_panningMode));
 
 	do
 	{

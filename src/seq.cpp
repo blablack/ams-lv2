@@ -1,5 +1,3 @@
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "seq.hpp"
@@ -90,7 +88,7 @@ void Seq::nextStep()
 	int len;
 	int minuteFrames = m_rate * 60 + tickFramesRemain;
 
-	int bpm = floor(*p(p_bpm));
+	int bpm = (int)(*p(p_bpm));
 	tickFrames += minuteFrames / (bpm << 4);
 	tickFramesRemain = minuteFrames % (bpm << 4);
 
@@ -104,7 +102,7 @@ void Seq::nextStep()
 	else
 		triggerOut = false;
 
-	len = 4 - floor(*p(p_gateTime));
+	len = 4 - (int)(*p(p_gateTime));
 
 #if STEP_COUNT == 8
 	float pitch[STEP_COUNT] = {*p(p_pitch1), *p(p_pitch2), *p(p_pitch3), *p(p_pitch4), *p(p_pitch5), *p(p_pitch6), *p(p_pitch7), *p(p_pitch8)};

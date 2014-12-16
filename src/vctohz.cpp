@@ -15,8 +15,8 @@ void VcToHz::run(uint32_t nframes)
 	float offset;
 
 	float *inData = p(p_input);
-	convMode = floor(*p(p_conversionMode));
-	octave = floor(*p(p_octaveOffset));
+	convMode = (int)(*p(p_conversionMode));
+	octave = (int)(*p(p_octaveOffset));
 
 	offset = octave + 5.0313842;
 	if (convMode == 0)

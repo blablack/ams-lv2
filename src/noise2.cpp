@@ -24,7 +24,7 @@ Noise2::Noise2(double rate): Plugin<Noise2>(p_n_ports)
 
 void Noise2::run(uint32_t nframes)
 {
-	NoiseType = floor(*p(p_noiseType));
+	NoiseType = (int)(*p(p_noiseType));
 
 	switch (NoiseType)
 	{

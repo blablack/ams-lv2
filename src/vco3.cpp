@@ -29,9 +29,9 @@ void Vco3::run(uint32_t nframes)
 	float edge, dphi, phi1, phi_const, pw, d, dd, dsaw, half_wave, third_wave;
 	float freq_const, freq_tune, gain_linfm, pw_low, pw_high;
 
-	waveForm = floor(*p(p_waveForm));
-	octave = floor(*p(p_octave));
-	semitone = floor(*p(p_semitone));
+	waveForm = (int)(*p(p_waveForm));
+	octave = (int)(*p(p_octave));
+	semitone = (int)(*p(p_semitone));
 
 	freq_const = wave_period / (float) m_rate;
 	freq_tune = 4.0313842f + octave + *p(p_tune) + (float) semitone / 12.0f;

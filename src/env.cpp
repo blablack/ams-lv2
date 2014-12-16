@@ -1,11 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "env.hpp"
+#include "env_ttl.hpp"
+
+#define ENVELOPE_RESPONSE 256
 
 Env::Env(double rate): Plugin<Env>(p_n_ports)
 {
@@ -23,7 +21,6 @@ Env::Env(double rate): Plugin<Env>(p_n_ports)
 void Env::run(uint32_t nframes)
 {
 	int status;
-	unsigned int l2;
 
 	float tscale, de_attack, de_decay, de_release;
 	float a, dl, dc, h;
@@ -47,7 +44,7 @@ void Env::run(uint32_t nframes)
 	idlahdc = idlah + (int)dc;
 
 
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		if (!gate && (p(p_gate)[l2] > 0.5))
 		{

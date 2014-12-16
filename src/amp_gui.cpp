@@ -1,12 +1,16 @@
-#include <gtkmm-2.4/gtkmm.h>
-
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "amp_gui.hpp"
+#include "labeleddial.hpp"
+
 #include "amp.hpp"
-#include "dial.hpp"
+#include "amp_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "amp_gui.hpp"
 
 AmpGUI::AmpGUI(const std::string& URI)
 {
@@ -18,9 +22,9 @@ AmpGUI::AmpGUI(const std::string& URI)
 	m_dialGain = new LabeledDial("Gain", -10, 10, NORMAL, 0.05);
 	m_dialGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &AmpGUI::write_control), p_gain), mem_fun(*m_dialGain,  &LabeledDial::get_value)));
 
-    Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
+	Alignment* p_align = new Alignment(0.5, 0.5, 0, 0);
 
-    p_align->add(*m_dialGain);
+	p_align->add(*m_dialGain);
 	p_background->add(*p_align);
 	add(*p_background);
 

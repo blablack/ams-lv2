@@ -1,16 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "mooglpf.hpp"
+#include "mooglpf_ttl.hpp"
 
-using namespace lvtk;
-
-MoogLPF::MoogLPF(double rate) :
-		Plugin<MoogLPF>(p_n_ports)
+MoogLPF::MoogLPF(double rate): Plugin<MoogLPF>(p_n_ports)
 {
 	_c1 = _c2 = _c3 = _c4 = _c5 = _w = _r = 0;
 	m_rate = rate;

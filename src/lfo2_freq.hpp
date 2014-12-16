@@ -1,15 +1,16 @@
 #ifndef LFO2_FREQ_H
 #define LFO2_FREQ_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
-#include "lfo2_freq_ttl.hpp"
-
 using namespace lvtk;
 
 enum WaveFormType
 {
-	SINUS, TRIANGLE, SAWTOOTHUP, SAWTOOTHDOWN, RECTANGLE, SAMPLEANDHOLD
+	SINUS,
+	TRIANGLE,
+	SAWTOOTHUP,
+	SAWTOOTHDOWN,
+	RECTANGLE,
+	SAMPLEANDHOLD
 };
 
 class Lfo2Freq: public Plugin<Lfo2Freq>

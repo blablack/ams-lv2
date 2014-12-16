@@ -1,22 +1,12 @@
 #ifndef LABELEDDIAL_H
 #define LABELEDDIAL_H
 
-#include <gtkmm-2.4/gtkmm.h>
-
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/adjustment.h>
-
-#include <iostream>
-
 #include "dial.hpp"
-
-using namespace Gtk;
 
 class LabeledDial: public Gtk::EventBox
 {
 	public:
 		LabeledDial(const std::string TextLabel, double Min, double Max, DialType Type, double Step);
-		virtual ~LabeledDial();
 		bool Redraw();
 
 		void value_changed();

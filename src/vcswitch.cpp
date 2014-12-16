@@ -1,28 +1,22 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "vcswitch.hpp"
+#include "vcswitch_ttl.hpp"
 
-using namespace lvtk;
-
-VCSwitch::VCSwitch(double rate) :
-		Plugin<VCSwitch>(p_n_ports)
+VCSwitch::VCSwitch(double rate): Plugin<VCSwitch>(p_n_ports)
 {
 	switchlevel = 0.5;
 }
 
 void VCSwitch::run(uint32_t nframes)
 {
-	unsigned int l2;
 	float mix1, mix2;
 
 	switchlevel = *p(p_switchLevel);
 
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		if (p(p_cv)[l2] > switchlevel)
 		{

@@ -1,12 +1,17 @@
-#include <gtkmm-2.4/gtkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "stereomixer_4ch_gui.hpp"
-#include "stereomixer_4ch.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "stereomixer_4ch.hpp"
+#include "stereomixer_4ch_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "stereomixer_4ch_gui.hpp"
 
 StereoMixer4ChGUI::StereoMixer4ChGUI(const std::string& URI)
 {

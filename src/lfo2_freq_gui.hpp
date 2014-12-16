@@ -1,15 +1,6 @@
 #ifndef LFO2_FREQ_GUI_H
 #define LFO2_FREQ_GUI_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-#include <lvtk-1/lvtk/gtkui.hpp>
-
-#include "labeleddial.hpp"
-
-using namespace lvtk;
-using namespace sigc;
-using namespace Gtk;
-
 class Lfo2FreqGUI: public UI<Lfo2FreqGUI, GtkUI<true>>
 {
 	public:

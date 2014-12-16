@@ -1,12 +1,16 @@
-#include <gtkmm-2.4/gtkmm.h>
-
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "samplehold_gui.hpp"
+#include "labeleddial.hpp"
+
 #include "samplehold.hpp"
-#include "dial.hpp"
+#include "samplehold_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "samplehold_gui.hpp"
 
 SampleHoldGUI::SampleHoldGUI(const std::string& URI)
 {

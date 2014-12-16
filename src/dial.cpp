@@ -1,9 +1,7 @@
-#include <cairomm/context.h>
-#include <math.h>
+#include <gtkmm/drawingarea.h>
+#include <gtkmm/adjustment.h>
 
 #include "dial.hpp"
-
-using namespace std;
 
 Dial::Dial(double Min, double Max, DialType Type, double Step)
 {
@@ -43,10 +41,6 @@ Dial::Dial(double Min, double Max, DialType Type, double Step)
 		m_nbDigit = str.length() - 2;
 
 	m_rounder = (int)pow(10, m_nbDigit);
-}
-
-Dial::~Dial()
-{
 }
 
 Glib::SignalProxy0<void> Dial::signal_value_changed()
@@ -317,30 +311,30 @@ void Dial::ChangeValueUp()
 {
 	switch(m_type)
 	{
-	case NORMAL:
-		set_value(RoundValue(m_adj->get_value()+m_adj->get_step_increment()));
-		break;
-	case LOG:
-		set_value(RoundValue(m_adj->get_value()+CalculateLogStep()));
-		break;
-	case MULTIPLIER:
-		set_value(MultValue(m_adj->get_value()*2));
-		break;
+		case NORMAL:
+			set_value(RoundValue(m_adj->get_value()+m_adj->get_step_increment()));
+			break;
+		case LOG:
+			set_value(RoundValue(m_adj->get_value()+CalculateLogStep()));
+			break;
+		case MULTIPLIER:
+			set_value(MultValue(m_adj->get_value()*2));
+			break;
 	}
 }
 void Dial::ChangeValueDown()
 {
 	switch(m_type)
 	{
-	case NORMAL:
-		set_value(RoundValue(m_adj->get_value()-m_adj->get_step_increment()));
-		break;
-	case LOG:
-		set_value(RoundValue(m_adj->get_value()-CalculateLogStep()));
-		break;
-	case MULTIPLIER:
-		set_value(MultValue(m_adj->get_value()/2));
-		break;
+		case NORMAL:
+			set_value(RoundValue(m_adj->get_value()-m_adj->get_step_increment()));
+			break;
+		case LOG:
+			set_value(RoundValue(m_adj->get_value()-CalculateLogStep()));
+			break;
+		case MULTIPLIER:
+			set_value(MultValue(m_adj->get_value()/2));
+			break;
 	}
 }
 

@@ -1,14 +1,10 @@
 #ifndef SYNTHDATA_H
 #define SYNTHDATA_H
 
-#include <stdlib.h>
-
-#define EXP2_DEPTH 15
-#define EXP2_BUF_LEN (1<<EXP2_DEPTH)
-
-//#define WAVE_PERIOD             65536
 #define WAVE_PERIOD             262144
-#define EXP_TABLE_LEN           32768
+#define EXP_TABLE_LEN			32768
+#define EXP2_DEPTH				15
+#define EXP2_BUF_LEN			(1<<EXP2_DEPTH)
 
 class SynthData
 {
@@ -26,8 +22,6 @@ class SynthData
 		float exp_table(float x);
 		float exp2_table(float);
 };
-
-//extern SynthData *synthdata;
 
 #endif
 

@@ -1,24 +1,26 @@
 #ifndef VCF_H
 #define VCF_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
 #include "synthdata.hpp"
-
-#include "vcf_ttl.hpp"
 
 using namespace lvtk;
 
-#define MIN_FREQ                         20
-#define MAX_FREQ                      20000
-#define MAX_FREQ2                     22000
-
-enum vcfTypeEnum { VCF_LR, VCF_LPF, VCF_HPF, VCF_BPF_I, VCF_BPF_II, VCF_NF, VCF_MOOG1, VCF_MOOG2 };
+enum vcfTypeEnum
+{
+	VCF_LR,
+	VCF_LPF,
+	VCF_HPF,
+	VCF_BPF_I,
+	VCF_BPF_II,
+	VCF_NF,
+	VCF_MOOG1,
+	VCF_MOOG2
+};
 
 class Vcf : public Plugin<Vcf>
 {
 	private:
-        int vcfTypeUsed;
+		int vcfTypeUsed;
 
 		float dBgain;
 		float freq_const;

@@ -1,16 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
-#include <time.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "noise2.hpp"
+#include "noise2_ttl.hpp"
 
-Noise2::Noise2(double rate)
-: Plugin<Noise2>(p_n_ports)
-  {
+Noise2::Noise2(double rate): Plugin<Noise2>(p_n_ports)
+{
 	long t;
 
 	count = 0;
@@ -24,7 +20,7 @@ Noise2::Noise2(double rate)
 	}
 	t = time(NULL) % 1000000;
 	srand(abs(t - 10000 * (t % 100)));
-  }
+}
 
 void Noise2::run(uint32_t nframes)
 {
@@ -39,7 +35,7 @@ void Noise2::run(uint32_t nframes)
 				p(p_out)[l2] = rand() * randmax - 1.0f;
 			}
 		}
-		break;
+			break;
 		case RAND:
 		{
 			unsigned int random_rate = (unsigned int)(5000.0 * (double)*p(p_rate) + 100.0);
@@ -54,10 +50,10 @@ void Noise2::run(uint32_t nframes)
 				p(p_out)[l2] = r;
 			}
 		}
-		break;
+			break;
 		case PINK:
 		{
-            float white_noise;
+			float white_noise;
 			for (unsigned int l2 = 0; l2 < nframes; ++l2)
 			{
 				white_noise = rand() * randmax - 1.0f;
@@ -69,20 +65,20 @@ void Noise2::run(uint32_t nframes)
 				p(p_out)[l2] = buf[0] + buf[1] + buf[2] + white_noise * 0.1848f;
 			}
 		}
-		break;
+			break;
 		case PULSETRAIN:
 		{
-            float white_noise;
-            float px = 1.00 - (1.0 / pow (10, ((100-(double)*p(p_rate))/20)));
-            for (unsigned int l2 = 0; l2 < nframes; ++l2)
-            {
-                white_noise = (2 * rand() / ((float)RAND_MAX));
-                p(p_out)[l2] = -*p(p_level);
-                    if (white_noise > px)
-                        p(p_out)[l2] = *p(p_level);
-            }
+			float white_noise;
+			float px = 1.00 - (1.0 / pow (10, ((100-(double)*p(p_rate))/20)));
+			for (unsigned int l2 = 0; l2 < nframes; ++l2)
+			{
+				white_noise = (2 * rand() / ((float)RAND_MAX));
+				p(p_out)[l2] = -*p(p_level);
+				if (white_noise > px)
+					p(p_out)[l2] = *p(p_level);
+			}
 		}
-		break;
+			break;
 	}
 }
 

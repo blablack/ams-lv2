@@ -1,25 +1,18 @@
 #ifndef DYNAMICWAVES_H
 #define DYNAMICWAVES_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
 #include "synthdata.hpp"
 
 #if OSC_COUNT == 4
-	#include "dynamicwaves_4_ttl.hpp"
-	#undef MODULE_DYNAMICWAVES_OSC
-	#define MODULE_DYNAMICWAVES_OSC	4
+#undef MODULE_DYNAMICWAVES_OSC
+#define MODULE_DYNAMICWAVES_OSC	4
 #elif OSC_COUNT == 6
-	#include "dynamicwaves_6_ttl.hpp"
-	#undef MODULE_DYNAMICWAVES_OSC
-	#define MODULE_DYNAMICWAVES_OSC	6
+#undef MODULE_DYNAMICWAVES_OSC
+#define MODULE_DYNAMICWAVES_OSC	6
 #elif OSC_COUNT == 8
-	#include "dynamicwaves_8_ttl.hpp"
-	#undef MODULE_DYNAMICWAVES_OSC
-	#define MODULE_DYNAMICWAVES_OSC	8
+#undef MODULE_DYNAMICWAVES_OSC
+#define MODULE_DYNAMICWAVES_OSC	8
 #endif
-
-#define DYNAMICWAVES_ENVELOPE_RESPONSE		256
 
 using namespace lvtk;
 

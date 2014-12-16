@@ -1,13 +1,12 @@
+#include <gtkmm/drawingarea.h>
+
 #include "env_gui_scope.hpp"
-#include <cairomm/context.h>
+
+#define SUSTAIN_LEN 0.5
 
 EnvGUIScope::EnvGUIScope()
 {
 	set_size_request(80, 80);
-}
-
-EnvGUIScope::~EnvGUIScope()
-{
 }
 
 bool EnvGUIScope::on_expose_event(GdkEventExpose* event)

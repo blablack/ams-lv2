@@ -1,13 +1,12 @@
+#include <gtkmm/drawingarea.h>
+
 #include "advenv_gui_scope.hpp"
-#include <cairomm/context.h>
+
+#define SUSTAIN_LEN 0.5
 
 AdvEnvGUIScope::AdvEnvGUIScope()
 {
 	set_size_request(80, 80);
-}
-
-AdvEnvGUIScope::~AdvEnvGUIScope()
-{
 }
 
 bool AdvEnvGUIScope::on_expose_event(GdkEventExpose* event)

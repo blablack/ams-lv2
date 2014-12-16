@@ -1,16 +1,12 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
-#include <time.h>
+
+#include <lvtk-1/lvtk/plugin.hpp>
 
 #include "lfo2_freq.hpp"
+#include "lfo2_freq_ttl.hpp"
 
-using namespace lvtk;
-
-Lfo2Freq::Lfo2Freq(double rate)
-: Plugin<Lfo2Freq>(p_n_ports)
-  {
+Lfo2Freq::Lfo2Freq(double rate): Plugin<Lfo2Freq>(p_n_ports)
+{
 	long tm;
 
 	m_rate = rate;
@@ -34,7 +30,7 @@ Lfo2Freq::Lfo2Freq(double rate)
 
 	tm = time(NULL) % 1000000;
 	srand(abs(tm - 10000 * (tm % 100)));
-  }
+}
 
 void Lfo2Freq::run(uint32_t nframes)
 {
@@ -52,8 +48,8 @@ void Lfo2Freq::run(uint32_t nframes)
 		l2 += k;
 
 		wave_period = m_rate / (16.0 * *p(p_freq));
-        dsa = 2.0 / wave_period;
-        dt0 = 4.0 / wave_period;
+		dsa = 2.0 / wave_period;
+		dt0 = 4.0 / wave_period;
 
 		if (!trigger && (p(p_reset)[l2] > 0.5))
 		{
@@ -99,9 +95,9 @@ void Lfo2Freq::run(uint32_t nframes)
 		t += dt;
 
 		if (state == 1 || state == 2)
-            dt = -dt0;
-        else
-            dt = dt0;
+			dt = -dt0;
+		else
+			dt = dt0;
 
 		len -= k;
 		ldsi = (si - old_si) / (double)k;

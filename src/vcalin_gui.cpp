@@ -1,12 +1,17 @@
-#include <gtkmm-2.4/gtkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "vcalin_gui.hpp"
-#include "vcalin.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "vcalin.hpp"
+#include "vcalin_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "vcalin_gui.hpp"
 
 VcaLinGUI::VcaLinGUI(const std::string& URI)
 {

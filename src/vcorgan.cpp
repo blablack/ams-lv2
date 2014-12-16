@@ -1,14 +1,19 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "vcorgan.hpp"
+#if OSC_COUNT == 4
+#include "vcorgan_4_ttl.hpp"
+#elif OSC_COUNT == 6
+#include "vcorgan_6_ttl.hpp"
+#elif OSC_COUNT == 8
+#include "vcorgan_8_ttl.hpp"
+#endif
 
-VCOrgan::VCOrgan(double rate) :
-	Plugin<VCOrgan> (p_n_ports)
+#define VCORGAN_EXP_TABLE_LEN 32768
+
+VCOrgan::VCOrgan(double rate):	Plugin<VCOrgan> (p_n_ports)
 {
 	synthdata = new SynthData();
 
@@ -26,7 +31,6 @@ VCOrgan::VCOrgan(double rate) :
 void VCOrgan::run(uint32_t nframes)
 {
 	int l3;
-	unsigned int l2;
 	float dphi, phi1;
 	float freq_const[MODULE_VCORGAN_OSC], freq_tune[MODULE_VCORGAN_OSC];
 	float gain_linfm, current_gain;
@@ -81,7 +85,7 @@ void VCOrgan::run(uint32_t nframes)
 	{
 		if (phi0[l3] == 0)
 		{
-			for (l2 = 0; l2 < nframes; l2++)
+			for (unsigned int l2 = 0; l2 < nframes; l2++)
 			{
 				dphi = freq_const[l3] * (synthdata->exp2_table(freq_tune[l3] + freqData[l2] + *p(p_expFMGain) * expFMData[l2]) + gain_linfm * linFMData[l2]);
 				if (dphi > wave_period_2)
@@ -118,7 +122,7 @@ void VCOrgan::run(uint32_t nframes)
 		}
 		else
 		{
-			for (l2 = 0; l2 < nframes; l2++)
+			for (unsigned int l2 = 0; l2 < nframes; l2++)
 			{
 				dphi = freq_const[l3] * (synthdata->exp2_table(freq_tune[l3] + freqData[l2] + *p(p_expFMGain) * expFMData[l2]) + gain_linfm * linFMData[l2]);
 				if (dphi > wave_period_2)

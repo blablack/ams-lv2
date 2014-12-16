@@ -1,12 +1,17 @@
-#include <gtkmm-2.4/gtkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "vco2_gui.hpp"
-#include "vco2.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "vco2.hpp"
+#include "vco2_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "vco2_gui.hpp"
 
 Vco2GUI::Vco2GUI(const char* plugin_uri)
 {

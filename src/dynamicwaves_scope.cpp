@@ -1,13 +1,12 @@
+#include <gtkmm/drawingarea.h>
+
 #include "dynamicwaves_scope.hpp"
-#include <cairomm/context.h>
+
+#define SUSTAIN_LEN 0.5
 
 DynamicWavesScope::DynamicWavesScope(int ScopeCount)
 {
 	set_size_request(80, 80);
-}
-
-DynamicWavesScope::~DynamicWavesScope()
-{
 }
 
 bool DynamicWavesScope::on_expose_event(GdkEventExpose* event)

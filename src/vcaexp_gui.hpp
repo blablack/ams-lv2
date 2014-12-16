@@ -1,15 +1,6 @@
 #ifndef VCAEXP_GUI_H
 #define VCAEXP_GUI_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-#include <lvtk-1/lvtk/gtkui.hpp>
-
-#include "labeleddial.hpp"
-
-using namespace lvtk;
-using namespace sigc;
-using namespace Gtk;
-
 class VcaExpGUI: public UI<VcaExpGUI, GtkUI<true>>
 {
 	public:

@@ -1,22 +1,14 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "cvs.hpp"
+#include "cvs_ttl.hpp"
 
-Cvs::Cvs(double rate) :
-	Plugin<Cvs> (p_n_ports)
+Cvs::Cvs(double rate):	Plugin<Cvs>(p_n_ports)
 {
-
 }
 
 void Cvs::run(uint32_t nframes)
 {
-	unsigned int l2;
-
 	float cv1 = *p(p_cv1);
 	float cvFine1 = *p(p_cvFine1);
 
@@ -29,7 +21,7 @@ void Cvs::run(uint32_t nframes)
 	float cv4 = *p(p_cv4);
 	float cvFine4 = *p(p_cvFine4);
 
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		p(p_cvOut1)[l2] = cv1 + cvFine1;
 		p(p_cvOut2)[l2] = cv2 + cvFine2;

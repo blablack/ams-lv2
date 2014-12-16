@@ -1,10 +1,6 @@
 #ifndef SLEW_H
 #define SLEW_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
-#include "slew_ttl.hpp"
-
 using namespace lvtk;
 
 class Slew: public Plugin<Slew>

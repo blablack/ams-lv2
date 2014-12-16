@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include <time.h>
+#include <lvtk-1/lvtk/plugin.hpp>
 
 #include "stereomixer_4ch.hpp"
+#include "stereomixer_4ch_ttl.hpp"
 
-using namespace lvtk;
-
-StereoMixer4Ch::StereoMixer4Ch(double rate)
-	: Plugin<StereoMixer4Ch>(p_n_ports)
+StereoMixer4Ch::StereoMixer4Ch(double rate): Plugin<StereoMixer4Ch>(p_n_ports)
 {
-
 }
 
 void StereoMixer4Ch::run(uint32_t nframes)

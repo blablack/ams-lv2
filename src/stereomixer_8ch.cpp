@@ -1,17 +1,10 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-#include <time.h>
+#include <lvtk-1/lvtk/plugin.hpp>
 
 #include "stereomixer_8ch.hpp"
+#include "stereomixer_8ch_ttl.hpp"
 
-using namespace lvtk;
-
-StereoMixer8Ch::StereoMixer8Ch(double rate)
-	: Plugin<StereoMixer8Ch>(p_n_ports)
+StereoMixer8Ch::StereoMixer8Ch(double rate): Plugin<StereoMixer8Ch>(p_n_ports)
 {
-
 }
 
 void StereoMixer8Ch::run(uint32_t nframes)

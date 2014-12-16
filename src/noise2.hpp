@@ -1,15 +1,14 @@
 #ifndef NOISE2_H
 #define NOISE2_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
-#include "noise2_ttl.hpp"
-
 using namespace lvtk;
 
 enum Noises
 {
-	WHITE, RAND, PINK, PULSETRAIN
+	WHITE,
+	RAND,
+	PINK,
+	PULSETRAIN
 };
 
 class Noise2: public Plugin<Noise2>

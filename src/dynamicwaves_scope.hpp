@@ -1,15 +1,10 @@
 #ifndef DYNAMICWAVES_SCOPE_H
 #define DYNAMICWAVES_SCOPE_H
 
-#include <gtkmm/drawingarea.h>
-
-#define SUSTAIN_LEN                   0.5
-
 class DynamicWavesScope: public Gtk::DrawingArea
 {
 	public:
 		DynamicWavesScope(int ScopeCount);
-		virtual ~DynamicWavesScope();
 		bool Redraw();
 
 		float m_valueSustain[8];

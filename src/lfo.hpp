@@ -1,10 +1,6 @@
 #ifndef LFO_H
 #define LFO_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
-#include "lfo_ttl.hpp"
-
 using namespace lvtk;
 
 class Lfo: public Plugin<Lfo>

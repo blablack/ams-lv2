@@ -1,12 +1,17 @@
-#include <gtkmm-2.4/gtkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "mooglpf_gui.hpp"
-#include "mooglpf.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "mooglpf.hpp"
+#include "mooglpf_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "mooglpf_gui.hpp"
 
 MoogLPFGUI::MoogLPFGUI(const std::string& URI)
 {

@@ -1,14 +1,18 @@
-#include <gtkmm-2.4/gtkmm.h>
-#include <gdkmm-2.4/gdkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "advenv_gui.hpp"
-#include "advenv_gui_scope.hpp"
-#include "advenv.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "advenv.hpp"
+#include "advenv_gui_scope.hpp"
+#include "advenv_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "advenv_gui.hpp"
 
 AdvEnvGUI::AdvEnvGUI(const std::string& URI)
 {

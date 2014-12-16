@@ -1,15 +1,10 @@
 #ifndef ADVENV_GUI_SCOPE_H
 #define ADVENV_GUI_SCOPE_H
 
-#include <gtkmm/drawingarea.h>
-
-#define SUSTAIN_LEN                   0.5
-
 class AdvEnvGUIScope: public Gtk::DrawingArea
 {
 	public:
 		AdvEnvGUIScope();
-		virtual ~AdvEnvGUIScope();
 		bool Redraw();
 
 		float m_valueSustain;

@@ -1,14 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "advenv.hpp"
+#include "advenv_ttl.hpp"
 
-AdvEnv::AdvEnv(double rate):
-Plugin<AdvEnv>(p_n_ports)
+#define ADVENVELOPE_RESPONSE 256
+
+AdvEnv::AdvEnv(double rate): Plugin<AdvEnv>(p_n_ports)
 {
 	attack[0] = 0;
 	attack[1] = 0.05;
@@ -40,7 +37,6 @@ Plugin<AdvEnv>(p_n_ports)
 void AdvEnv::run(uint32_t nframes)
 {
 	int status;
-	unsigned int l2;
 	float tscale, de_a[4], de_d[3];
 	float t[8];
 
@@ -80,7 +76,7 @@ void AdvEnv::run(uint32_t nframes)
 	t[6] = t[5] + tscale * release[2];
 	t[7] = t[6] + tscale * release[4];
 
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		if (!gate && (gateData[l2] > 0.5)) {
 			gate = true;
@@ -130,22 +126,22 @@ void AdvEnv::run(uint32_t nframes)
 			if (noteOnOfs >= long(t[4])) status = 6;
 			switch (status)
 			{
-			case 0: e -= de;
-			break;
-			case 1: e = 0;
-			break;
-			case 2: e += de_a[0];
-			break;
-			case 3: e += de_a[1];
-			break;
-			case 4: e += de_a[2];
-			break;
-			case 5: e += de_a[3];
-			break;
-			case 6: e = sustain;
-			break;
-			default: e = 0;
-			break;
+				case 0: e -= de;
+					break;
+				case 1: e = 0;
+					break;
+				case 2: e += de_a[0];
+					break;
+				case 3: e += de_a[1];
+					break;
+				case 4: e += de_a[2];
+					break;
+				case 5: e += de_a[3];
+					break;
+				case 6: e = sustain;
+					break;
+				default: e = 0;
+					break;
 			}
 			if (e < 0) e = 0;
 			p(p_out)[l2] = e;
@@ -163,28 +159,26 @@ void AdvEnv::run(uint32_t nframes)
 				if (noteOffOfs >= long(t[7])) status = 4;
 				switch (status)
 				{
-				case 0: e = 0;
-				break;
-				case 1: e += de_release;
-				break;
-				case 2: e += de_d[1];
-				break;
-				case 3: e += de_d[2];
-				break;
-				case 4: e = 0;
-				break;
-				default: e = 0;
-				break;
+					case 0: e = 0;
+						break;
+					case 1: e += de_release;
+						break;
+					case 2: e += de_d[1];
+						break;
+					case 3: e += de_d[2];
+						break;
+					case 4: e = 0;
+						break;
+					default: e = 0;
+						break;
 				}
 				if (e < 0)
 				{
-					//              fprintf(stderr, "status: %d e[%d] < 0: %f\n", status, l1, e);
 					e = 0;
 				}
 				noteOffOfs++;
 				if (noteOffOfs >= int(t[7]))
 				{
-					//              fprintf(stderr, "noteOffOfs[%d] = %d >= t[7] = %f; e[%d] = %f\n", l1, noteOffOfs, t[7], l1, e);
 					noteActive = false;
 				}
 			}

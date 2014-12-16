@@ -1,14 +1,18 @@
-#include <gtkmm-2.4/gtkmm.h>
-#include <gdkmm-2.4/gdkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "percussiveenv_gui.hpp"
-#include "percussiveenv_gui_scope.hpp"
-#include "percussiveenv.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "percussiveenv.hpp"
+#include "percussiveenv_gui_scope.hpp"
+#include "percussiveenv_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "percussiveenv_gui.hpp"
 
 PercussiveEnvGUI::PercussiveEnvGUI(const std::string& URI)
 {

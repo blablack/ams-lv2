@@ -1,14 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "vco2.hpp"
+#include "vco2_ttl.hpp"
 
-Vco2::Vco2(double rate) :
-Plugin<Vco2> (p_n_ports)
+Vco2::Vco2(double rate): Plugin<Vco2> (p_n_ports)
 {
 	synthdata = new SynthData();
 
@@ -28,7 +25,6 @@ Plugin<Vco2> (p_n_ports)
 
 void Vco2::run(uint32_t nframes)
 {
-	unsigned int l2;
 	unsigned phint;
 	float edge, dphi, phi1, phi_const, pw, d, dd, dsaw, half_wave, third_wave;
 	float freq_const, freq_tune, gain_linfm, pw_low, pw_high;
@@ -50,7 +46,7 @@ void Vco2::run(uint32_t nframes)
 
 	if (*p(p_phi0))
 	{
-		for (l2 = 0; l2 < nframes; ++l2)
+		for (unsigned int l2 = 0; l2 < nframes; ++l2)
 		{
 			dphi = freq_const * (synthdata->exp2_table(freq_tune + p(p_freq)[l2] +  *p(p_expFMGain) * p(p_expFM)[l2]) + gain_linfm * p(p_linFM)[l2]);
 			if (dphi > wave_period_2)
@@ -173,7 +169,7 @@ void Vco2::run(uint32_t nframes)
 	}
 	else
 	{
-		for (l2 = 0; l2 < nframes; ++l2)
+		for (unsigned int l2 = 0; l2 < nframes; ++l2)
 		{
 			dphi = freq_const * (synthdata->exp2_table(freq_tune + p(p_freq)[l2] +  *p(p_expFMGain) * p(p_expFM)[l2]) + gain_linfm * p(p_linFM)[l2]);
 			if (dphi > wave_period_2)

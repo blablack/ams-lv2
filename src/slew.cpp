@@ -1,14 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "slew.hpp"
+#include "slew_ttl.hpp"
 
-Slew::Slew(double rate):
-Plugin<Slew>(p_n_ports)
+Slew::Slew(double rate): Plugin<Slew>(p_n_ports)
 {
 	lastData = 0;
 	m_rate = rate;
@@ -16,7 +11,6 @@ Plugin<Slew>(p_n_ports)
 
 void Slew::run(uint32_t nframes)
 {
-	unsigned int l2;
 	float ds, slewUp, slewDown;
 
 	inData = p(p_in);
@@ -38,7 +32,7 @@ void Slew::run(uint32_t nframes)
 		slewDown = -1.0 / (0.0001 * (float)m_rate);
 	}
 
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		ds = inData[l2] - lastData;
 		if (ds > 0)

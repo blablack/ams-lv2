@@ -1,28 +1,16 @@
 #ifndef DYNAMICWAVES_GUI_H
 #define DYNAMICWAVES_GUI_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-#include <lvtk-1/lvtk/gtkui.hpp>
-
-using namespace lvtk;
-using namespace sigc;
-using namespace Gtk;
-
 #if OSC_COUNT == 4
-	#undef MODULE_DYNAMICWAVES_OSC
-	#define MODULE_DYNAMICWAVES_OSC	4
+#undef MODULE_DYNAMICWAVES_OSC
+#define MODULE_DYNAMICWAVES_OSC	4
 #elif OSC_COUNT == 6
-	#undef MODULE_DYNAMICWAVES_OSC
-	#define MODULE_DYNAMICWAVES_OSC	6
+#undef MODULE_DYNAMICWAVES_OSC
+#define MODULE_DYNAMICWAVES_OSC	6
 #elif OSC_COUNT == 8
-	#undef MODULE_DYNAMICWAVES_OSC
-	#define MODULE_DYNAMICWAVES_OSC	8
+#undef MODULE_DYNAMICWAVES_OSC
+#define MODULE_DYNAMICWAVES_OSC	8
 #endif
-
-
-#include "dynamicwaves.hpp"
-#include "dynamicwaves_scope.hpp"
-#include "labeleddial.hpp"
 
 class DynamicWavesGUI: public UI<DynamicWavesGUI, GtkUI<true>>
 {

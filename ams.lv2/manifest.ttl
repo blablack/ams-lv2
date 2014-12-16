@@ -161,6 +161,31 @@
 	lv2:binary <samplehold.so>  ;
 	rdfs:seeAlso <samplehold.ttl> .
 
+<http://github.com/blablack/ams-lv2/seq_8>
+	a lv2:Plugin ;
+	lv2:binary <seq_8.so>  ;
+	rdfs:seeAlso <seq_8.ttl> .
+
+<http://github.com/blablack/ams-lv2/seq_12>
+	a lv2:Plugin ;
+	lv2:binary <seq_12.so>  ;
+	rdfs:seeAlso <seq_12.ttl> .
+
+<http://github.com/blablack/ams-lv2/seq_16>
+	a lv2:Plugin ;
+	lv2:binary <seq_16.so>  ;
+	rdfs:seeAlso <seq_16.ttl> .
+
+<http://github.com/blablack/ams-lv2/seq_24>
+	a lv2:Plugin ;
+	lv2:binary <seq_24.so>  ;
+	rdfs:seeAlso <seq_24.ttl> .
+
+<http://github.com/blablack/ams-lv2/seq_32>
+	a lv2:Plugin ;
+	lv2:binary <seq_32.so>  ;
+	rdfs:seeAlso <seq_32.ttl> .
+
 <http://github.com/blablack/ams-lv2/slew>
 	a lv2:Plugin ;
 	lv2:binary <slew.so>  ;

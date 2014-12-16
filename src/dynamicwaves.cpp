@@ -1,14 +1,20 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "dynamicwaves.hpp"
 
-DynamicWaves::DynamicWaves(double rate) :
-	Plugin<DynamicWaves> (p_n_ports)
+#if OSC_COUNT == 4
+#include "dynamicwaves_4_ttl.hpp"
+#elif OSC_COUNT == 6
+#include "dynamicwaves_6_ttl.hpp"
+#elif OSC_COUNT == 8
+#include "dynamicwaves_8_ttl.hpp"
+#endif
+
+#define DYNAMICWAVES_ENVELOPE_RESPONSE	256
+
+DynamicWaves::DynamicWaves(double rate): Plugin<DynamicWaves> (p_n_ports)
 {
 	synthdata = new SynthData();
 
@@ -38,7 +44,6 @@ DynamicWaves::DynamicWaves(double rate) :
 void DynamicWaves::run(uint32_t nframes)
 {
 	int l3, l4, status;
-	unsigned int l2;
 	float dphi, phi1;
 	float freq_const[MODULE_DYNAMICWAVES_OSC], freq_tune[MODULE_DYNAMICWAVES_OSC];
 	float gain_linfm, current_gain;
@@ -177,7 +182,7 @@ void DynamicWaves::run(uint32_t nframes)
 		t[7][l3] = t[6][l3] + tscale * release[4][l3];
 	}
 
-	for (l2 = 0; l2 < nframes; l2++) {
+	for (unsigned int l2 = 0; l2 < nframes; l2++) {
 		noteActive = !allEnvTerminated;
 		allEnvTerminated = true;
 		if (!retrigger && (retriggerData[l2] > 0.5)) {
@@ -330,7 +335,3 @@ void DynamicWaves::run(uint32_t nframes)
 #elif OSC_COUNT == 8
 	static int _ = DynamicWaves::register_class("http://github.com/blablack/ams-lv2/dynamicwaves_8");
 #endif
-
-
-
-

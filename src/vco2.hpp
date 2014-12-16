@@ -1,16 +1,19 @@
 #ifndef VCO2_H
 #define VCO2_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
 #include "synthdata.hpp"
-#include "vco2_ttl.hpp"
 
 using namespace lvtk;
 
 enum WaveFormType
 {
-	SINUS, TRIANGLE, SAWTOOTH, RECTANGLE, AWAVE_SAW1, AWAVE_SAW2, AWAVE_SAW3
+	SINUS,
+	TRIANGLE,
+	SAWTOOTH,
+	RECTANGLE,
+	AWAVE_SAW1,
+	AWAVE_SAW2,
+	AWAVE_SAW3
 };
 
 class Vco2: public Plugin<Vco2>

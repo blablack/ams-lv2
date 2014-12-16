@@ -1,15 +1,6 @@
 #ifndef VCTOHZ_GUI_H
 #define VCTOHZ_GUI_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-#include <lvtk-1/lvtk/gtkui.hpp>
-
-#include "labeleddial.hpp"
-
-using namespace lvtk;
-using namespace sigc;
-using namespace Gtk;
-
 class VCToHZGUI: public UI<VCToHZGUI, GtkUI<true>>
 {
 	public:

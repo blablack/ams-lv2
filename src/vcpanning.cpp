@@ -1,16 +1,11 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
-using namespace lvtk;
-
 #include "vcpanning.hpp"
+#include "vcpanning_ttl.hpp"
 
-VCPanning::VCPanning(double rate) :
-		Plugin<VCPanning>(p_n_ports)
+VCPanning::VCPanning(double rate): Plugin<VCPanning>(p_n_ports)
 {
 }
 

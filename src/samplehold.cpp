@@ -1,16 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "samplehold.hpp"
+#include "samplehold_ttl.hpp"
 
-using namespace lvtk;
-
-SampleHold::SampleHold(double rate) :
-		Plugin<SampleHold>(p_n_ports)
+SampleHold::SampleHold(double rate): Plugin<SampleHold>(p_n_ports)
 {
 	triggerLevel = 0.5;
 	gate = false;
@@ -18,11 +11,9 @@ SampleHold::SampleHold(double rate) :
 
 void SampleHold::run(uint32_t nframes)
 {
-	unsigned int l2;
-
 	triggerLevel = *p(p_triggerLevel);
 
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		if (!gate && (p(p_trigger)[l2] > triggerLevel))
 		{

@@ -1,9 +1,6 @@
 #ifndef STEREOMIXER_4CH_H
 #define STEREOMIXER_4CH_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-#include "stereomixer_4ch_ttl.hpp"
-
 using namespace lvtk;
 
 class StereoMixer4Ch : public Plugin<StereoMixer4Ch>

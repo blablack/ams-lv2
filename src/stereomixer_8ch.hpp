@@ -1,9 +1,6 @@
 #ifndef STEREOMIXER_8CH_H
 #define STEREOMIXER_8CH_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-#include "stereomixer_8ch_ttl.hpp"
-
 using namespace lvtk;
 
 class StereoMixer8Ch : public Plugin<StereoMixer8Ch>

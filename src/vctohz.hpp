@@ -1,10 +1,6 @@
 #ifndef VCTOHZ_H
 #define VCTOHZ_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
-#include "vctohz_ttl.hpp"
-
 using namespace lvtk;
 
 class VcToHz: public Plugin<VcToHz>

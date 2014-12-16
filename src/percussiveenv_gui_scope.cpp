@@ -1,13 +1,10 @@
+#include <gtkmm/drawingarea.h>
+
 #include "percussiveenv_gui_scope.hpp"
-#include <cairomm/context.h>
 
 PercussiveEnvGUIScope::PercussiveEnvGUIScope()
 {
 	set_size_request(40, 80);
-}
-
-PercussiveEnvGUIScope::~PercussiveEnvGUIScope()
-{
 }
 
 bool PercussiveEnvGUIScope::on_expose_event(GdkEventExpose* event)

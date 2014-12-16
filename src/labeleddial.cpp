@@ -1,10 +1,9 @@
-#include <cairomm/context.h>
-#include <cmath>
+#include <gtkmm-2.4/gtkmm.h>
 #include <iomanip>
 
 #include "labeleddial.hpp"
 
-using namespace std;
+using namespace Gtk;
 
 LabeledDial::LabeledDial(const std::string TextLabel, double Min, double Max, DialType Type, double Step)
 {
@@ -31,10 +30,6 @@ LabeledDial::LabeledDial(const std::string TextLabel, double Min, double Max, Di
 
     this->set_border_width(1);
     this->add(*p_mainWidget);
-}
-
-LabeledDial::~LabeledDial()
-{
 }
 
 Glib::SignalProxy0<void> LabeledDial::signal_value_changed()

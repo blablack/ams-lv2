@@ -1,20 +1,17 @@
 #ifndef DIAL_H
 #define DIAL_H
 
-#include <gtkmm/drawingarea.h>
-#include <gtkmm/adjustment.h>
-
-#include <iostream>
-
-using namespace Gtk;
-
-enum DialType { NORMAL, LOG, MULTIPLIER };
+enum DialType
+{
+	NORMAL,
+	LOG,
+	MULTIPLIER
+};
 
 class Dial: public Gtk::DrawingArea
 {
 	public:
 		Dial(double Min, double Max, DialType Type, double Step);
-		virtual ~Dial();
 		bool Redraw();
 
 		void value_changed();
@@ -43,7 +40,7 @@ class Dial: public Gtk::DrawingArea
 		DialType m_type;
 		int m_rounder;
 		int m_nbDigit;
-        int m_scrollStep;
+		int m_scrollStep;
 
 		double CalculateLogStep();
 		double RoundValue(double Value);

@@ -1,12 +1,16 @@
-#include <gtkmm-2.4/gtkmm.h>
-
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "ringmodulator_gui.hpp"
+#include "labeleddial.hpp"
+
 #include "ringmodulator.hpp"
-#include "dial.hpp"
+#include "ringmodulator_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "ringmodulator_gui.hpp"
 
 RingModulatorGUI::RingModulatorGUI(const std::string& URI)
 {

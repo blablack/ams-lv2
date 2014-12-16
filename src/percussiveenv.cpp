@@ -1,11 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "percussiveenv.hpp"
+#include "percussiveenv_ttl.hpp"
+
+#define ENVELOPE_RESPONSE  256
 
 PercussiveEnv::PercussiveEnv(double rate): Plugin<PercussiveEnv>(p_n_ports)
 {
@@ -20,7 +18,6 @@ PercussiveEnv::PercussiveEnv(double rate): Plugin<PercussiveEnv>(p_n_ports)
 void PercussiveEnv::run(uint32_t nframes)
 {
 	int status;
-	unsigned int l2;
 	float tscale, de_attack, de_decay;
 	float a, dl, dc, h;
 	int idl, idla, idlah, idlahdc;
@@ -42,7 +39,7 @@ void PercussiveEnv::run(uint32_t nframes)
 	}
 
 	idlahdc = idlah + (int) dc;
-	for (l2 = 0; l2 < nframes; l2++)
+	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		if (!trigger && (p(p_trigger)[l2] > 0.5))
 		{

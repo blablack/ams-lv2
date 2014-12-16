@@ -1,13 +1,25 @@
-#include <gtkmm-2.4/gtkmm.h>
-#include <gdkmm-2.4/gdkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "dynamicwaves_gui.hpp"
-#include "dynamicwaves_scope.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "dynamicwaves.hpp"
+#include "dynamicwaves_scope.hpp"
+
+#if OSC_COUNT == 4
+#include "dynamicwaves_4_ttl.hpp"
+#elif OSC_COUNT == 6
+#include "dynamicwaves_6_ttl.hpp"
+#elif OSC_COUNT == 8
+#include "dynamicwaves_8_ttl.hpp"
+#endif
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "dynamicwaves_gui.hpp"
 
 DynamicWavesGUI::DynamicWavesGUI(const std::string& URI)
 {

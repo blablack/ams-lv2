@@ -6,6 +6,7 @@
 
 #include "lfo_gui.hpp"
 #include "lfo.hpp"
+#include "lfo_ttl.hpp"
 #include "dial.hpp"
 #include "my_box.hpp"
 

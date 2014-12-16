@@ -1,13 +1,17 @@
-#include <gtkmm-2.4/gtkmm.h>
-
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "vctohz_gui.hpp"
-#include "vctohz.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "vctohz.hpp"
+#include "vctohz_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "vctohz_gui.hpp"
 
 VCToHZGUI::VCToHZGUI(const std::string& URI)
 {

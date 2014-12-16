@@ -1,16 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
 #include <math.h>
 
 #include <lvtk-1/lvtk/plugin.hpp>
 
-using namespace lvtk;
-
 #include "vcf.hpp"
+#include "vcf_ttl.hpp"
 
-Vcf::Vcf(double rate):
-Plugin<Vcf>(p_n_ports)
+#define MIN_FREQ                         20
+#define MAX_FREQ                      20000
+#define MAX_FREQ2                     22000
+
+
+Vcf::Vcf(double rate): Plugin<Vcf>(p_n_ports)
 {
 	synthdata = new SynthData();
 
@@ -58,11 +58,11 @@ void Vcf::run(uint32_t nframes)
 {
 	double t1, t2, fa, fb, f, q, pbis, iv_sin, iv_cos, iv_alpha, a0, a1, a2, b0, b1, b2;
 
-    if (vcfTypeUsed != (int)floor(*p(p_vcfType)))
-    {
-      initBuf();
-      vcfTypeUsed = (int)floor(*p(p_vcfType));
-    }
+	if (vcfTypeUsed != (int)floor(*p(p_vcfType)))
+	{
+		initBuf();
+		vcfTypeUsed = (int)floor(*p(p_vcfType));
+	}
 
 	switch (vcfTypeUsed)
 	{

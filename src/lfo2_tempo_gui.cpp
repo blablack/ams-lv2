@@ -1,13 +1,17 @@
-#include <gtkmm-2.4/gtkmm.h>
-
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "lfo2_tempo_gui.hpp"
-#include "lfo2_tempo.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "lfo2_tempo.hpp"
+#include "lfo2_tempo_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "lfo2_tempo_gui.hpp"
 
 Lfo2TempoGUI::Lfo2TempoGUI(const std::string& URI)
 {

@@ -1,11 +1,16 @@
-#include <gtkmm-2.4/gtkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "mixer_8ch_gui.hpp"
+#include "labeleddial.hpp"
+
 #include "mixer_8ch.hpp"
-#include "dial.hpp"
+#include "mixer_8ch_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "mixer_8ch_gui.hpp"
 
 Mixer8ChGUI::Mixer8ChGUI(const std::string& URI)
 {

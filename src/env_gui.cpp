@@ -1,14 +1,18 @@
-#include <gtkmm-2.4/gtkmm.h>
-#include <gdkmm-2.4/gdkmm.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "env_gui.hpp"
-#include "env_gui_scope.hpp"
-#include "env.hpp"
-#include "dial.hpp"
+#include "labeleddial.hpp"
 #include "my_box.hpp"
+
+#include "env.hpp"
+#include "env_gui_scope.hpp"
+#include "env_ttl.hpp"
+
+using namespace lvtk;
+using namespace sigc;
+using namespace Gtk;
+
+#include "env_gui.hpp"
 
 EnvGUI::EnvGUI(const std::string& URI)
 {

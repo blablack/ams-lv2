@@ -1,21 +1,16 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <math.h>
-
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "vcaexp.hpp"
+#include "vcaexp_ttl.hpp"
 
-VcaExp::VcaExp(double rate):
-Plugin<VcaExp>(p_n_ports)
+VcaExp::VcaExp(double rate): Plugin<VcaExp>(p_n_ports)
 {
 	synthdata = new SynthData();
 }
 
 void VcaExp::run(uint32_t nframes)
 {
-	float  v, g;
+	float v, g;
 
 	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{

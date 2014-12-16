@@ -1,12 +1,16 @@
-#include <math.h>
 #include <lvtk-1/lvtk/plugin.hpp>
 
 #include "ad.hpp"
 
-using namespace lvtk;
+#if OUT_COUNT == 2
+#include "ad_2_ttl.hpp"
+#elif OUT_COUNT == 4
+#include "ad_4_ttl.hpp"
+#elif OUT_COUNT == 6
+#include "ad_6_ttl.hpp"
+#endif
 
-Ad::Ad(double rate) :
-	Plugin<Ad> (p_n_ports)
+Ad::Ad(double rate): Plugin<Ad> (p_n_ports)
 {
 	for (int l1 = 0; l1 < MAX_ANALOGUE_DRIVER_OUT; l1++)
 	{
@@ -26,7 +30,6 @@ Ad::Ad(double rate) :
 void Ad::run(uint32_t nframes)
 {
 	int l3, l5;
-	uint32_t l2;
 	float dta, dra, rdt, rdr;
 	double qdt, qdr;
 
@@ -39,7 +42,7 @@ void Ad::run(uint32_t nframes)
 	for (l3 = 0; l3 < MAX_ANALOGUE_DRIVER_OUT; l3++)
 	{
 		int p_outIndex = p_cvOut1 + l3;
-		for (l2 = 0; l2 < nframes; l2++)
+		for (unsigned int l2 = 0; l2 < nframes; l2++)
 		{
 			p(p_outIndex)[l2] = p(p_cvIn)[l2] + dta * detune_a + dra * drift_a[l3];
 
@@ -93,7 +96,3 @@ static int _ = Ad::register_class("http://github.com/blablack/ams-lv2/ad_4");
 #elif OUT_COUNT == 6
 static int _ = Ad::register_class("http://github.com/blablack/ams-lv2/ad_6");
 #endif
-
-
-
-

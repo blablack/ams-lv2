@@ -323,13 +323,44 @@ def build(bld):
                     ['LV2', 'LVTK_PLUGIN'],
                     ['src/synthdata.cpp'])
 
-#       build_plugin_gui(bld, 'ams.lv2', 'vcorgan_%s_gui' % i, ['src/vcorgan_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=vcorgan_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="vcorgan_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/vcorgan_gui.hpp"'],
-#                        ['-DOSC_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
+       build_plugin_gui(bld, 'ams.lv2', 'vcorgan_%s_gui' % i, ['src/vcorgan_gui.cpp'],
+                        ['-DPLUGIN_CLASS=vcorgan_%s_gui' % i,
+                         '-std=c++11',
+                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                         '-DPLUGIN_URI_SUFFIX="vcorgan_%s_gui"' % i,
+                         '-DPLUGIN_HEADER="src/vcorgan_gui.hpp"'],
+                        ['-DOSC_COUNT=%s' % i],
+                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
+                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
+
+########################################################################
+
+    plugins = '''
+    8
+    12
+    16
+    24
+    32
+    '''.split()
+
+    for i in plugins:
+       build_plugin(bld, 'ams.lv2', 'seq_%s' % i, ['src/seq.cpp'],
+                    ['-DPLUGIN_CLASS=seq_%s' % i,
+                     '-std=c++11',
+                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                     '-DPLUGIN_URI_SUFFIX="seq_%s"' % i,
+                     '-DPLUGIN_HEADER="src/seq.hpp"'],
+                    ['-DSTEP_COUNT=%s' % i],
+                    ['LV2', 'LVTK_PLUGIN'],
+                    ['src/synthdata.cpp'])
+
+       build_plugin_gui(bld, 'ams.lv2', 'seq_%s_gui' % i, ['src/seq_gui.cpp'],
+                        ['-DPLUGIN_CLASS=seq_%s_gui' % i,
+                         '-std=c++11',
+                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                         '-DPLUGIN_URI_SUFFIX="seq_%s_gui"' % i,
+                         '-DPLUGIN_HEADER="src/seq_gui.hpp"'],
+                        ['-DSTEP_COUNT=%s' % i],
+                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
+                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
 

@@ -1,13 +1,7 @@
 #ifndef ADVENV_H
 #define ADVENV_H
 
-#include <lvtk-1/lvtk/plugin.hpp>
-
-#include "advenv_ttl.hpp"
-
 using namespace lvtk;
-
-#define ADVENVELOPE_RESPONSE               256
 
 class AdvEnv: public Plugin<AdvEnv>
 {

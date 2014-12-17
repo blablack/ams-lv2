@@ -37,19 +37,7 @@ Seq::Seq(double rate): Plugin<Seq>(p_n_ports)
 	tickFramesRemain = 0;
 	tick = 0;
 	seq_pos = 0;
-
-#if STEP_COUNT == 8
-	float pitch[STEP_COUNT]  = {*p(p_pitch1), *p(p_pitch2), *p(p_pitch3), *p(p_pitch4), *p(p_pitch5), *p(p_pitch6), *p(p_pitch7), *p(p_pitch8)};
-#elif STEP_COUNT == 12
-	float pitch[STEP_COUNT]  = {*p(p_pitch1), *p(p_pitch2), *p(p_pitch3), *p(p_pitch4), *p(p_pitch5), *p(p_pitch6), *p(p_pitch7), *p(p_pitch8), *p(p_pitch9), *p(p_pitch10), *p(p_pitch11), *p(p_pitch12)};
-#elif STEP_COUNT == 16
-	float pitch[STEP_COUNT]  = {*p(p_pitch1), *p(p_pitch2), *p(p_pitch3), *p(p_pitch4), *p(p_pitch5), *p(p_pitch6), *p(p_pitch7), *p(p_pitch8), *p(p_pitch9), *p(p_pitch10), *p(p_pitch11), *p(p_pitch12), *p(p_pitch13), *p(p_pitch14), *p(p_pitch15), *p(p_pitch16)};
-#elif STEP_COUNT == 24
-	float pitch[STEP_COUNT]  = {*p(p_pitch1), *p(p_pitch2), *p(p_pitch3), *p(p_pitch4), *p(p_pitch5), *p(p_pitch6), *p(p_pitch7), *p(p_pitch8), *p(p_pitch9), *p(p_pitch10), *p(p_pitch11), *p(p_pitch12), *p(p_pitch13), *p(p_pitch14), *p(p_pitch15), *p(p_pitch16), *p(p_pitch17), *p(p_pitch18), *p(p_pitch19), *p(p_pitch20), *p(p_pitch21), *p(p_pitch22), *p(p_pitch23), *p(p_pitch24)};
-#elif STEP_COUNT == 32
-	float pitch[STEP_COUNT]  = {*p(p_pitch1), *p(p_pitch2), *p(p_pitch3), *p(p_pitch4), *p(p_pitch5), *p(p_pitch6), *p(p_pitch7), *p(p_pitch8), *p(p_pitch9), *p(p_pitch10), *p(p_pitch11), *p(p_pitch12), *p(p_pitch13), *p(p_pitch14), *p(p_pitch15), *p(p_pitch16), *p(p_pitch17), *p(p_pitch18), *p(p_pitch19), *p(p_pitch20), *p(p_pitch21), *p(p_pitch22), *p(p_pitch23), *p(p_pitch24), *p(p_pitch25), *p(p_pitch26), *p(p_pitch27), *p(p_pitch28), *p(p_pitch29), *p(p_pitch30), *p(p_pitch31), *p(p_pitch32)};
-#endif
-
+	tickFrames = 0;
 }
 
 void Seq::run(uint32_t nframes)

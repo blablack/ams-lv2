@@ -142,6 +142,7 @@ def build(bld):
     stereomixer_4ch
     stereomixer_8ch
     vcalin
+    vcdelay
     vcpanning
     vcswitch
     vctohz
@@ -202,6 +203,7 @@ def build(bld):
     stereomixer_8ch_gui
     vcaexp_gui
     vcalin_gui
+    vcdelay_gui
     vcf_gui
     vco2_gui
     vco3_gui

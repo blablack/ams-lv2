@@ -163,6 +163,7 @@ def build(bld):
 
     plugins = '''
     vcaexp
+    vcdoubledecay
     vcf
     vco2
     vco3

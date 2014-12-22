@@ -226,6 +226,11 @@
 	lv2:binary <vcdelay.so>  ;
 	rdfs:seeAlso <vcdelay.ttl> .
 
+<http://github.com/blablack/ams-lv2/vcdoubledecay>
+	a lv2:Plugin ;
+	lv2:binary <vcdoubledecay.so>  ;
+	rdfs:seeAlso <vcdoubledecay.ttl> .
+
 <http://github.com/blablack/ams-lv2/vcf>
 	a lv2:Plugin ;
 	lv2:binary <vcf.so>  ;

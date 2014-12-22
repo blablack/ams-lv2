@@ -205,6 +205,7 @@ def build(bld):
     vcaexp_gui
     vcalin_gui
     vcdelay_gui
+    vcdoubledecay_gui
     vcf_gui
     vco2_gui
     vco3_gui

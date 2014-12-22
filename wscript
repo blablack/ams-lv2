@@ -132,6 +132,7 @@ def build(bld):
     mixer_4ch
     mixer_2ch
     mooglpf
+    multiphase_lfo
     noise2
     percussiveenv
     ringmodulator
@@ -191,6 +192,7 @@ def build(bld):
     mixer_4ch_gui
     mixer_8ch_gui
     mooglpf_gui
+    multiphase_lfo_gui
     noise2_gui
     ringmodulator_gui
     samplehold_gui

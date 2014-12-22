@@ -136,6 +136,11 @@
 	lv2:binary <mooglpf.so>  ;
 	rdfs:seeAlso <mooglpf.ttl> .
 
+<http://github.com/blablack/ams-lv2/multiphase_lfo>
+	a lv2:Plugin ;
+	lv2:binary <multiphase_lfo.so>  ;
+	rdfs:seeAlso <multiphase_lfo.ttl> .
+
 <http://github.com/blablack/ams-lv2/noise2>
 	a lv2:Plugin ;
 	lv2:binary <noise2.so>  ;

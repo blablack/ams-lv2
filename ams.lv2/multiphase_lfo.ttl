@@ -1,0 +1,193 @@
+@prefix doap: 	<http://usefulinc.com/ns/doap#> .
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .
+@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
+@prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
+
+<http://github.com/blablack/ams-lv2/multiphase_lfo/gui>
+  a guiext:GtkUI ;
+  guiext:binary <multiphase_lfo_gui.so> .
+
+<http://github.com/blablack/ams-lv2/multiphase_lfo>
+	a lv2:Plugin, lv2:OscillatorPlugin ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
+	doap:name "AMS Multiphase LFO" ;
+	doap:license <http://opensource.org/licenses/isc> ;
+	ll:pegName "p" ;
+	guiext:ui <http://github.com/blablack/ams-lv2/multiphase_lfo/gui> ;
+	lv2:optionalFeature lv2:hardRTCapable ;
+	lv2:port [
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 0 ; 
+		lv2:symbol "freq" ;
+		lv2:name "Freq (Hz)" ;
+		lv2:default 0.1 ;
+		lv2:minimum 0.01 ;
+		lv2:maximum 20.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 1 ; 
+		lv2:symbol "gainSaw" ;
+		lv2:name "Gain Saw" ;
+		lv2:default 1 ;
+		lv2:minimum 0.01 ;
+		lv2:maximum 5 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 2 ; 
+		lv2:symbol "gainTriangle" ;
+		lv2:name "Gain Triangle" ;
+		lv2:default 1 ;
+		lv2:minimum 0.01 ;
+		lv2:maximum 5 ;
+	] , 	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 3 ; 
+		lv2:symbol "sawMode" ;
+		lv2:name "Saw Mode" ;
+		lv2:default 0;
+		lv2:minimum 0;
+		lv2:maximum 2;
+		lv2:portProperty lv2:enumeration ;
+		lv2:scalePoint
+				[
+				rdfs:label "Saw Up" ;
+			    	rdf:value 0
+			] ,	[
+				rdfs:label "Saw Down" ;
+				rdf:value 1
+			] ,	[
+		  		rdfs:label "Saw Up (0..135) / Saw Down (180..315)" ;
+				rdf:value 2
+			]
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 4 ; 
+		lv2:symbol "sawOut_0" ;
+		lv2:name "Saw Out 0" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 5 ; 
+		lv2:symbol "sawOut_45" ;
+		lv2:name "Saw Out 45" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 6 ; 
+		lv2:symbol "sawOut_90" ;
+		lv2:name "Saw Out 90" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 7 ; 
+		lv2:symbol "sawOut_135" ;
+		lv2:name "Saw Out 135" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 8 ; 
+		lv2:symbol "sawOut_180" ;
+		lv2:name "Saw Out 180" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 9 ; 
+		lv2:symbol "sawOut_225" ;
+		lv2:name "Saw Out 225" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 10 ; 
+		lv2:symbol "sawOut_270" ;
+		lv2:name "Saw Out 270" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 11 ; 
+		lv2:symbol "sawOut_315" ;
+		lv2:name "Saw Out 315" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 12 ; 
+		lv2:symbol "triOut_0" ;
+		lv2:name "Tri Out 0" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 13 ; 
+		lv2:symbol "triOut_45" ;
+		lv2:name "Tri Out 45" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 14 ; 
+		lv2:symbol "triOut_90" ;
+		lv2:name "Tri Out 90" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 15 ; 
+		lv2:symbol "triOut_135" ;
+		lv2:name "Tri Out 135" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 16 ; 
+		lv2:symbol "triOut_180" ;
+		lv2:name "Tri Out 180" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 17 ; 
+		lv2:symbol "triOut_225" ;
+		lv2:name "Tri Out 225" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 18 ; 
+		lv2:symbol "triOut_270" ;
+		lv2:name "Tri Out 270" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 19 ; 
+		lv2:symbol "triOut_315" ;
+		lv2:name "Tri Out 315" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0 ;
+	        lv2:maximum 2.0 ;
+	] .

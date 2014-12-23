@@ -6,17 +6,17 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
 
-<http://github.com/blablack/ams-lv2/vcdoubledecay/gui>
+<http://github.com/blablack/ams-lv2/vcenv/gui>
   	a guiext:GtkUI ;
-  	guiext:binary <vcdoubledecay_gui.so> .
+  	guiext:binary <vcenv_gui.so> .
 
-<http://github.com/blablack/ams-lv2/vcdoubledecay>
-	a lv2:Plugin, lv2:DelayPlugin ;
+<http://github.com/blablack/ams-lv2/vcenv>
+	a lv2:Plugin, lv2:EnvelopePlugin ;
 	lv2:project <http://github.com/blablack/ams-lv2/> ;
-	doap:name "AMS VC Double Decay" ;
+	doap:name "AMS VC Envelope" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams-lv2/vcdoubledecay/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/vcenv/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port 
 		[
@@ -68,16 +68,8 @@
 		lv2:minimum 0.0 ;
 	        lv2:maximum 1.0 ;
 	] ,	[
-		a lv2:InputPort, lv2:CVPort ;
-		lv2:index 6 ; 
-		lv2:symbol "ratio" ;
-		lv2:name "Ratio" ;
-		lv2:default 0.0 ;
-		lv2:minimum 0.0 ;
-	        lv2:maximum 1.0 ;
-	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 7 ; 
+		lv2:index 6 ; 
 		lv2:symbol "attackOffset" ;
 		lv2:name "Attack Offset" ;
 		lv2:default 0.0 ;
@@ -85,7 +77,7 @@
 	        lv2:maximum 8.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 8 ; 
+		lv2:index 7 ; 
 		lv2:symbol "decayOffset" ;
 		lv2:name "Decay Offset" ;
 		lv2:default 0.0 ;
@@ -93,7 +85,7 @@
 	        lv2:maximum 8.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 9 ; 
+		lv2:index 8 ; 
 		lv2:symbol "sustainOffset" ;
 		lv2:name "Sustain Offset" ;
 		lv2:default 0.0 ;
@@ -101,15 +93,7 @@
 	        lv2:maximum 1.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 10 ; 
-		lv2:symbol "ratioOffset" ;
-		lv2:name "Ratio Offset" ;
-		lv2:default 0.5 ;
-		lv2:minimum 0.0 ;
-	        lv2:maximum 1.0 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 11 ; 
+		lv2:index 9 ; 
 		lv2:symbol "releaseOffset" ;
 		lv2:name "Release Offset" ;
 		lv2:default 0.0 ;
@@ -117,7 +101,7 @@
 	        lv2:maximum 8.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 12 ; 
+		lv2:index 10 ; 
 		lv2:symbol "attackGain" ;
 		lv2:name "Attack Gain" ;
 		lv2:default 1.0 ;
@@ -125,7 +109,7 @@
 	        lv2:maximum 8.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 13 ; 
+		lv2:index 11 ; 
 		lv2:symbol "decayGain" ;
 		lv2:name "Decay Gain" ;
 		lv2:default 1.0 ;
@@ -133,7 +117,7 @@
 	        lv2:maximum 8.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 14 ; 
+		lv2:index 12 ; 
 		lv2:symbol "sustainGain" ;
 		lv2:name "Sustain Gain" ;
 		lv2:default 1.0 ;
@@ -141,26 +125,55 @@
 	        lv2:maximum 1.0 ;
 	] ,	[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 15 ; 
-		lv2:symbol "ratioGain" ;
-		lv2:name "Ratio Gain" ;
-		lv2:default 1.0 ;
-		lv2:minimum 0.0 ;
-	        lv2:maximum 1.0 ;
-	] ,	[
-		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 16 ; 
+		lv2:index 13 ; 
 		lv2:symbol "releaseGain" ;
 		lv2:name "Release Gain" ;
 		lv2:default 1.0 ;
 		lv2:minimum -8.0 ;
 	        lv2:maximum 8.0 ;
 	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 14 ; 
+		lv2:symbol "timescale" ;
+		lv2:name "Time Scale" ;
+		lv2:default 1;
+		lv2:minimum 0;
+		lv2:maximum 2;
+		lv2:portProperty lv2:enumeration ;
+		lv2:scalePoint
+				[
+			    	rdfs:label "0.1 s" ;
+				rdf:value 0
+			] ,	[
+				rdfs:label "1.0 s" ;
+				rdf:value 1
+			] ,	[
+		  		rdfs:label "10.0 s" ;
+				rdf:value 2
+			]
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 15 ; 
+		lv2:symbol "decayreleasemode" ;
+		lv2:name "Decay/Release Mode" ;
+		lv2:default 1;
+		lv2:minimum 0;
+		lv2:maximum 1;
+		lv2:portProperty lv2:enumeration ;
+		lv2:scalePoint
+				[
+			    	rdfs:label "Linear" ;
+				rdf:value 0
+			] ,	[
+				rdfs:label "Exponential" ;
+				rdf:value 1
+			] 
+	] ,	[
 		a lv2:OutputPort, lv2:CVPort ;
-		lv2:index 17 ; 
-		lv2:symbol "output" ;
-		lv2:name "Output" ;
+		lv2:index 16 ; 
+		lv2:symbol "out" ;
+		lv2:name "Out" ;
 		lv2:default 0.0 ;
 		lv2:minimum 0.0 ;
-	        lv2:maximum 1.0 ;
+        	lv2:maximum 1.0 ;
 	] .

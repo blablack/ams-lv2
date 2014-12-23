@@ -231,6 +231,11 @@
 	lv2:binary <vcdoubledecay.so>  ;
 	rdfs:seeAlso <vcdoubledecay.ttl> .
 
+<http://github.com/blablack/ams-lv2/vcenv>
+	a lv2:Plugin ;
+	lv2:binary <vcenv.so>  ;
+	rdfs:seeAlso <vcenv.ttl> .
+
 <http://github.com/blablack/ams-lv2/vcf>
 	a lv2:Plugin ;
 	lv2:binary <vcf.so>  ;

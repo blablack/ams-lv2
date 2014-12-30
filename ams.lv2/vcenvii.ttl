@@ -1,0 +1,142 @@
+@prefix doap: 	<http://usefulinc.com/ns/doap#> .
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .
+@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
+@prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
+
+<http://github.com/blablack/ams-lv2/vcenvii/gui>
+  	a guiext:GtkUI ;
+  	guiext:binary <vcenvii_gui.so> .
+
+<http://github.com/blablack/ams-lv2/vcenvii>
+	a lv2:Plugin, lv2:EnvelopePlugin ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
+	doap:name "AMS VC Envelope II" ;
+	doap:license <http://opensource.org/licenses/isc> ;
+	ll:pegName "p" ;
+	guiext:ui <http://github.com/blablack/ams-lv2/vcenvii/gui> ;
+	lv2:optionalFeature lv2:hardRTCapable ;
+	lv2:port 
+		[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 0 ; 
+		lv2:symbol "gate" ;
+		lv2:name "Gate" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 1 ; 
+		lv2:symbol "retrigger" ;
+		lv2:name "Retrigger" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 2 ; 
+		lv2:symbol "attack" ;
+		lv2:name "Attack" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 3 ; 
+		lv2:symbol "decay" ;
+		lv2:name "Decay" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 4 ; 
+		lv2:symbol "sustain" ;
+		lv2:name "Sustain" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 5 ; 
+		lv2:symbol "release" ;
+		lv2:name "Release" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 6 ; 
+		lv2:symbol "attackOffset" ;
+		lv2:name "Attack Offset" ;
+		lv2:default 0.0 ;
+		lv2:minimum -8.0 ;
+	        lv2:maximum 8.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 7 ; 
+		lv2:symbol "decayOffset" ;
+		lv2:name "Decay Offset" ;
+		lv2:default 0.0 ;
+		lv2:minimum -8.0 ;
+	        lv2:maximum 8.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 8 ; 
+		lv2:symbol "sustainOffset" ;
+		lv2:name "Sustain Offset" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 9 ; 
+		lv2:symbol "releaseOffset" ;
+		lv2:name "Release Offset" ;
+		lv2:default 0.0 ;
+		lv2:minimum -8.0 ;
+	        lv2:maximum 8.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 10 ; 
+		lv2:symbol "attackGain" ;
+		lv2:name "Attack Gain" ;
+		lv2:default 1.0 ;
+		lv2:minimum -8.0 ;
+	        lv2:maximum 8.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 11 ; 
+		lv2:symbol "decayGain" ;
+		lv2:name "Decay Gain" ;
+		lv2:default 1.0 ;
+		lv2:minimum -8.0 ;
+	        lv2:maximum 8.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 12 ; 
+		lv2:symbol "sustainGain" ;
+		lv2:name "Sustain Gain" ;
+		lv2:default 1.0 ;
+		lv2:minimum 0.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 13 ; 
+		lv2:symbol "releaseGain" ;
+		lv2:name "Release Gain" ;
+		lv2:default 1.0 ;
+		lv2:minimum -8.0 ;
+	        lv2:maximum 8.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 14 ; 
+		lv2:symbol "out" ;
+		lv2:name "Out" ;
+		lv2:default 0.0 ;
+		lv2:minimum 0.0 ;
+        	lv2:maximum 1.0 ;
+	] .

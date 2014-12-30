@@ -165,6 +165,7 @@ def build(bld):
     plugins = '''
     vcaexp
     vcdoubledecay
+    vcenvii
     vcf
     vco2
     vco3
@@ -208,6 +209,7 @@ def build(bld):
     vcdelay_gui
     vcdoubledecay_gui
     vcenv_gui
+    vcenvii_gui
     vcf_gui
     vco2_gui
     vco3_gui

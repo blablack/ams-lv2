@@ -236,6 +236,11 @@
 	lv2:binary <vcenv.so>  ;
 	rdfs:seeAlso <vcenv.ttl> .
 
+<http://github.com/blablack/ams-lv2/vcenvii>
+	a lv2:Plugin ;
+	lv2:binary <vcenvii.so>  ;
+	rdfs:seeAlso <vcenvii.ttl> .
+
 <http://github.com/blablack/ams-lv2/vcf>
 	a lv2:Plugin ;
 	lv2:binary <vcf.so>  ;

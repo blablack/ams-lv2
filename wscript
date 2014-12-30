@@ -118,6 +118,7 @@ def build(bld):
     advenv
     amp
     amplitude
+    analogmemory
     controltocv
     cvs
     cvtocontrol
@@ -186,6 +187,7 @@ def build(bld):
 
     plugins_gui = '''
     amp_gui
+    analogmemory_gui
     cvs_gui
     delay_gui
     hztovc_gui

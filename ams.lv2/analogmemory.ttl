@@ -1,0 +1,107 @@
+@prefix doap: 	<http://usefulinc.com/ns/doap#> .
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .
+@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
+@prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
+
+<http://github.com/blablack/ams-lv2/analogmemory/gui>
+  	a guiext:GtkUI ;
+  	guiext:binary <analogmemory_gui.so> .
+
+<http://github.com/blablack/ams-lv2/analogmemory>
+	a lv2:Plugin, lv2:DelayPlugin ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
+	doap:name "AMS Analog Memory" ;
+	doap:license <http://opensource.org/licenses/isc> ;
+	ll:pegName "p" ;
+	guiext:ui <http://github.com/blablack/ams-lv2/analogmemory/gui> ;
+	lv2:optionalFeature lv2:hardRTCapable ;
+	lv2:port 
+		[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 0 ; 
+		lv2:symbol "input_cv" ;
+		lv2:name "Input CV" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 1 ; 
+		lv2:symbol "write_addr" ;
+		lv2:name "Write Address" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 2 ; 
+		lv2:symbol "write_ena" ;
+		lv2:name "Write Enabled" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 3 ; 
+		lv2:symbol "read_addr" ;
+		lv2:name "Read Address" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 
+	] , 	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 4 ; 
+		lv2:symbol "write_addressing_mode" ;
+		lv2:name "Write Addressing Mode" ;
+		lv2:default 1;
+		lv2:minimum 0;
+		lv2:maximum 5;
+		lv2:portProperty lv2:enumeration ;
+		lv2:scalePoint
+				[
+			    	rdfs:label "Direct (no fill)" ;
+			    	rdf:value 0
+			] ,	[
+				rdfs:label "Linear up only, no fill" ;
+				rdf:value 1
+			] ,	[
+		  		rdfs:label "Linear up only, fill" ;
+				rdf:value 2
+			] , 	[
+		  		rdfs:label "Linear down only, no fill" ;
+				rdf:value 3
+			] ,	[
+		  		rdfs:label "Linear down only, fill" ;
+				rdf:value 4
+			] ,	[
+		  		rdfs:label "Reflected" ;
+				rdf:value 5
+			]
+	] , 	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 5 ; 
+		lv2:symbol "n" ;
+		lv2:name "N (for 2^N memory cells)" ;
+		lv2:default 20 ;
+		lv2:minimum 1 ;
+		lv2:maximum 20 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 6 ; 
+		lv2:symbol "write_tresh" ;
+		lv2:name "Write Threshold" ;
+		lv2:default -0.1 ;
+		lv2:minimum -1 ;
+		lv2:maximum 1 ;
+	]  ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 7 ; 
+		lv2:symbol "out_cv" ;
+		lv2:name "Out CV" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] .

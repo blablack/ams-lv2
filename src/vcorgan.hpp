@@ -28,6 +28,10 @@ enum waveFormType
 
 class VCOrgan: public Plugin<VCOrgan>
 {
+	public:
+		VCOrgan(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		double m_rate;
 		float wave_period, wave_period_2;
@@ -39,10 +43,6 @@ class VCOrgan: public Plugin<VCOrgan>
 		float *linFMData;
 
 		SynthData *synthdata;
-
-	public:
-		VCOrgan(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

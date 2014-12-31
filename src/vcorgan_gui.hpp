@@ -48,10 +48,6 @@ class VCOrganGUI: public UI<VCOrganGUI, GtkUI<true>>
 		p_port_enum volume[MODULE_DYNAMICWAVES_OSC] = {p_volume1, p_volume2, p_volume3, p_volume4, p_volume5, p_volume6, p_volume7, p_volume8};
 #endif
 
-		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
-		void get_waveform();
-
-	protected:
 		// MAIN //
 		LabeledDial* m_octave;
 		LabeledDial* m_tune;
@@ -62,7 +58,6 @@ class VCOrganGUI: public UI<VCOrganGUI, GtkUI<true>>
 		LabeledDial* m_mixer[MODULE_DYNAMICWAVES_OSC];
 
 		// OSC //
-
 		Gtk::ComboBoxText* m_comboWaveForm[MODULE_DYNAMICWAVES_OSC];
 
 		LabeledDial* m_scaleOctave[MODULE_DYNAMICWAVES_OSC];
@@ -71,6 +66,10 @@ class VCOrganGUI: public UI<VCOrganGUI, GtkUI<true>>
 		LabeledDial* m_scaleSubharmonic[MODULE_DYNAMICWAVES_OSC];
 
 		LabeledDial* m_scalePhi0[MODULE_DYNAMICWAVES_OSC];
+
+		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
+		void get_waveform();
+
 };
 
 #endif

@@ -5,13 +5,13 @@ using namespace lvtk;
 
 class VcToHz: public Plugin<VcToHz>
 {
-	private:
-		int convMode, octave;
-		double m_rate;
-
 	public:
 		VcToHz(double rate);
 		void run(uint32_t nframes);
+
+	private:
+		int convMode, octave;
+		double m_rate;
 };
 
 #endif

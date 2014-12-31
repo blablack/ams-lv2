@@ -7,7 +7,7 @@ class Lfo2FreqGUI: public UI<Lfo2FreqGUI, GtkUI<true>>
 		Lfo2FreqGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		Gtk::ComboBoxText* m_comboWaveForm;
 		LabeledDial* m_dialTempo;
 		LabeledDial* m_dialPhi0;

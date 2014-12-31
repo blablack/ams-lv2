@@ -5,6 +5,10 @@ using namespace lvtk;
 
 class Lfo: public Plugin<Lfo>
 {
+	public:
+		Lfo(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		double si, old_si;
 		double sa, old_sa;
@@ -16,10 +20,6 @@ class Lfo: public Plugin<Lfo>
 		bool trigger;
 
 		double m_rate;
-
-	public:
-		Lfo(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

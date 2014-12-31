@@ -5,6 +5,7 @@ class AdvEnvGUIScope: public Gtk::DrawingArea
 {
 	public:
 		AdvEnvGUIScope();
+
 		bool Redraw();
 
 		float m_valueSustain;
@@ -26,7 +27,6 @@ class AdvEnvGUIScope: public Gtk::DrawingArea
 		float m_valueReleaseLevel1;
 		float m_valueReleaseLevel2;
 
-	protected:
 		virtual bool on_expose_event(GdkEventExpose* event);
 };
 

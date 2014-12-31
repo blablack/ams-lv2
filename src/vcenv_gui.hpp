@@ -7,7 +7,7 @@ class VCEnvGUI: public UI<VCEnvGUI, GtkUI<true>>
 		VCEnvGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		LabeledDial* m_dialAttackOffset;
 		LabeledDial* m_dialDecayOffset;
 		LabeledDial* m_dialSustainOffset;
@@ -21,7 +21,6 @@ class VCEnvGUI: public UI<VCEnvGUI, GtkUI<true>>
 		Gtk::ComboBoxText* m_comboTimescale;
 		Gtk::ComboBoxText* m_comboDecayReleaseMode;
 
-	private:
 		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
 };
 

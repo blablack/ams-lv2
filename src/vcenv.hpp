@@ -15,9 +15,6 @@ class VCEnv: public Plugin<VCEnv>
 		float e, old_e;
 		int state;
 		bool noteActive, gate, retrigger;
-
-		//float a0, d0, s0, r0, aGain, dGain, sGain, rGain;
-		//int timeScale, decayReleaseMode;
 };
 
 #endif

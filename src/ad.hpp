@@ -18,16 +18,16 @@ using namespace lvtk;
 
 class Ad: public Plugin<Ad>
 {
+	public:
+		Ad(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		float detune_a, detune_c;
 		float drift_a[MAX_ANALOGUE_DRIVER_OUT], drift_c[MAX_ANALOGUE_DRIVER_OUT];
 		int detuneCount, driftCount;
 		double m_rate;
 		SynthData *synthdata;
-
-	public:
-		Ad(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

@@ -9,6 +9,8 @@
 class SynthData
 {
 	public:
+		SynthData();
+
 		float wave_sine[WAVE_PERIOD];
 		float wave_saw[WAVE_PERIOD];
 		float wave_saw2[WAVE_PERIOD];
@@ -16,8 +18,6 @@ class SynthData
 		float wave_tri[WAVE_PERIOD];
 		float exp_data[EXP_TABLE_LEN];
 		float exp2_data[EXP2_BUF_LEN];
-
-		SynthData();
 
 		float exp_table(float x);
 		float exp2_table(float);

@@ -30,7 +30,6 @@ class AdvEnvGUI: public UI<AdvEnvGUI, GtkUI<true>>
 
 		AdvEnvGUIScope* m_envScope;
 
-	protected:
 		LabeledDial* m_scaleTimeScale;
 		LabeledDial* m_scaleSustain;
 		LabeledDial* m_scaleDelay;

@@ -124,6 +124,7 @@ def build(bld):
     cvtocontrol
     delay
     env
+    hysteresis
     hztovc
     inv
     lfo2_tempo
@@ -187,28 +188,46 @@ def build(bld):
 
     plugins_gui = '''
     amp_gui
-    analogmemory_gui
-    cvs_gui
     delay_gui
+    hysteresis_gui
     hztovc_gui
-    lfo2_freq_gui
-    lfo2_tempo_gui
-    lfo_gui
     mixer_2ch_gui
     mixer_4ch_gui
     mixer_8ch_gui
-    mooglpf_gui
-    multiphase_lfo_gui
-    noise2_gui
     ringmodulator_gui
     samplehold_gui
     slew_gui
+    vcdelay_gui
+    vcswitch_gui
+    '''.split()
+
+    for i in plugins_gui:
+       build_plugin_gui(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
+                        ['-DPLUGIN_CLASS=%s' % i,
+                         '-std=c++11',
+                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                         '-DPLUGIN_URI_SUFFIX="%s"' % i,
+                         '-DPLUGIN_HEADER="src/%s.hpp"' % i],
+                        [],
+                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
+                        ['src/dial.cpp', 'src/labeleddial.cpp'])
+
+########################################################################
+
+    plugins_gui = '''
+    analogmemory_gui
+    cvs_gui
+    lfo2_freq_gui
+    lfo2_tempo_gui
+    lfo_gui
+    mooglpf_gui
+    multiphase_lfo_gui
+    noise2_gui
     stereomixer_2ch_gui
     stereomixer_4ch_gui
     stereomixer_8ch_gui
     vcaexp_gui
     vcalin_gui
-    vcdelay_gui
     vcdoubledecay_gui
     vcenv_gui
     vcenvii_gui
@@ -216,7 +235,6 @@ def build(bld):
     vco2_gui
     vco3_gui
     vcpanning_gui
-    vcswitch_gui
     vctohz_gui
     '''.split()
 

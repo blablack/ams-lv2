@@ -96,6 +96,11 @@
 	lv2:binary <env.so>  ;
 	rdfs:seeAlso <env.ttl> .
 
+<http://github.com/blablack/ams-lv2/hysteresis>
+	a lv2:Plugin ;
+	lv2:binary <hysteresis.so>  ;
+	rdfs:seeAlso <hysteresis.ttl> .
+
 <http://github.com/blablack/ams-lv2/hztovc>
 	a lv2:Plugin ;
 	lv2:binary <hztovc.so>  ;

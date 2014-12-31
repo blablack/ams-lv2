@@ -7,7 +7,7 @@ class RingModulatorGUI: public UI<RingModulatorGUI, GtkUI<true>>
 		RingModulatorGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		LabeledDial* m_dialGain;
 };
 

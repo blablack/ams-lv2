@@ -19,6 +19,10 @@ enum vcfTypeEnum
 
 class Vcf : public Plugin<Vcf>
 {
+	public:
+		Vcf(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		int vcfTypeUsed;
 
@@ -40,10 +44,6 @@ class Vcf : public Plugin<Vcf>
 		SynthData *synthdata;
 
 		void initBuf();
-
-	public:
-		Vcf(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

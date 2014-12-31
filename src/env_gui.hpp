@@ -11,7 +11,6 @@ class EnvGUI: public UI<EnvGUI, GtkUI<true>>
 		float m_attackValue, m_decayValue, m_sustainValue, m_releaseValue, m_delayValue, m_holdValue;
 		EnvGUIScope* m_envScope;
 
-	protected:
 		LabeledDial* m_scaleAttack;
 		LabeledDial* m_scaleDecay;
 		LabeledDial* m_scaleSustain;

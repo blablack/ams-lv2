@@ -20,7 +20,6 @@ class DynamicWavesGUI: public UI<DynamicWavesGUI, GtkUI<true>>
 
 	private:
 
-		//float m_valueTimeScale;
 		float m_valueSustain[MODULE_DYNAMICWAVES_OSC];
 		float m_valueDelay[MODULE_DYNAMICWAVES_OSC];
 
@@ -140,10 +139,6 @@ class DynamicWavesGUI: public UI<DynamicWavesGUI, GtkUI<true>>
 
 		DynamicWavesScope* m_envScope[MODULE_DYNAMICWAVES_OSC+1];
 
-		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
-		void get_waveform();
-
-	protected:
 		// MAIN //
 		LabeledDial* m_octave;
 		LabeledDial* m_tune;
@@ -186,6 +181,10 @@ class DynamicWavesGUI: public UI<DynamicWavesGUI, GtkUI<true>>
 
 		LabeledDial* m_scaleReleaseLevel1[MODULE_DYNAMICWAVES_OSC];
 		LabeledDial* m_scaleReleaseLevel2[MODULE_DYNAMICWAVES_OSC];
+
+		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
+		void get_waveform();
+
 };
 
 #endif

@@ -1,8 +1,8 @@
 #include <lvtk-1/lvtk/plugin.hpp>
 #include <lvtk-1/lvtk/gtkui.hpp>
 
-#include "my_box.hpp"
 #include "labeleddial.hpp"
+#include "my_box.hpp"
 
 #include "vcf.hpp"
 #include "vcf_ttl.hpp"

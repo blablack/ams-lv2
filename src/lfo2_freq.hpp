@@ -15,6 +15,10 @@ enum WaveFormType
 
 class Lfo2Freq: public Plugin<Lfo2Freq>
 {
+	public:
+		Lfo2Freq(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		double si, old_si;
 		double sa, old_sa;
@@ -28,10 +32,6 @@ class Lfo2Freq: public Plugin<Lfo2Freq>
 		int waveForm;
 
 		double m_rate;
-
-	public:
-		Lfo2Freq(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

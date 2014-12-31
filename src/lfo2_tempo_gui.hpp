@@ -7,7 +7,7 @@ class Lfo2TempoGUI: public UI<Lfo2TempoGUI, GtkUI<true>>
 		Lfo2TempoGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		Gtk::ComboBoxText* m_comboWaveForm;
 		LabeledDial* m_dialTempo;
 		LabeledDial* m_dialTempoMultiplier;

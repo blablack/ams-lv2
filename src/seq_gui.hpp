@@ -47,11 +47,6 @@ class SeqGUI: public UI<SeqGUI, GtkUI<true>>
 		p_port_enum index_velocities[MODULE_STEP_COUNT] = {p_velocity1, p_velocity2, p_velocity3, p_velocity4, p_velocity5, p_velocity6, p_velocity7, p_velocity8, p_velocity9, p_velocity10, p_velocity11, p_velocity12, p_velocity13, p_velocity14, p_velocity15, p_velocity16, p_velocity17, p_velocity18, p_velocity19, p_velocity20, p_velocity21, p_velocity22, p_velocity23, p_velocity24, p_velocity25, p_velocity26, p_velocity27, p_velocity28, p_velocity29, p_velocity30, p_velocity31, p_velocity32};
 #endif
 
-		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
-		CheckButton* CreateCheck(const std::string TextLabel, int PortNum);
-		void get_waveform();
-
-	protected:
 		LabeledDial* m_pitchOffset;
 		LabeledDial* m_bpm;
 		ComboBoxText* m_comboGateTime;
@@ -59,6 +54,10 @@ class SeqGUI: public UI<SeqGUI, GtkUI<true>>
 		LabeledDial* m_pitches[MODULE_STEP_COUNT];
 		CheckButton* m_gates[MODULE_STEP_COUNT];
 		LabeledDial* m_velocities[MODULE_STEP_COUNT];
+
+		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
+		CheckButton* CreateCheck(const std::string TextLabel, int PortNum);
+		void get_waveform();
 };
 
 #endif

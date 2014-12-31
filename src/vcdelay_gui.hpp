@@ -7,7 +7,7 @@ class VCDelayGUI: public UI<VCDelayGUI, GtkUI<true>>
 		VCDelayGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		LabeledDial* m_dialDelay;
 		LabeledDial* m_dialVMod;
 };

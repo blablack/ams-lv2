@@ -5,6 +5,10 @@ using namespace lvtk;
 
 class Env: public Plugin<Env>
 {
+	public:
+		Env(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		float e_noteOff, de;
 		double m_rate;
@@ -12,10 +16,6 @@ class Env: public Plugin<Env>
 		float e;
 		bool gate, retrigger;
 		int noteOnOfs;
-
-	public:
-		Env(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

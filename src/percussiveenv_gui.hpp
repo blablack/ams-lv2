@@ -11,7 +11,6 @@ class PercussiveEnvGUI: public UI<PercussiveEnvGUI, GtkUI<true>>
 		float m_attackValue, m_decayValue, m_delayValue, m_holdValue;
 		PercussiveEnvGUIScope* m_envScope;
 
-	protected:
 		LabeledDial* m_scaleAttack;
 		LabeledDial* m_scaleDecay;
 		LabeledDial* m_scaleDelay;

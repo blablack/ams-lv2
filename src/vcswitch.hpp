@@ -5,11 +5,12 @@ using namespace lvtk;
 
 class VCSwitch: public Plugin<VCSwitch>
 {
-	private:
-		float switchlevel;
 	public:
 		VCSwitch(double rate);
 		void run(uint32_t nframes);
+
+	private:
+		float switchlevel;
 };
 
 #endif

@@ -7,7 +7,7 @@ class Vco2GUI: public UI<Vco2GUI, GtkUI<true>>
 		Vco2GUI(const char* plugin_uri);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		Gtk::ComboBoxText* m_comboWaveForm;
 
 		LabeledDial* m_scaleOctave;
@@ -21,7 +21,6 @@ class Vco2GUI: public UI<Vco2GUI, GtkUI<true>>
 		LabeledDial* m_scaleExpFMGain;
 		LabeledDial* m_scaleLinFMGain;
 
-	private:
 		void get_waveform();
 		void deactive_gui_parts();
 };

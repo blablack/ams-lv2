@@ -7,7 +7,7 @@ class StereoMixer4ChGUI: public UI<StereoMixer4ChGUI, GtkUI<true>>
 		StereoMixer4ChGUI(const std::string& URI);
 		void port_event(uint32_t port, uint32_t buffer_size, uint32_t format, const void* buffer);
 
-	protected:
+	private:
 		LabeledDial* m_dialMasterVolume;
 
 		CheckButton* m_checkMute1;
@@ -30,7 +30,6 @@ class StereoMixer4ChGUI: public UI<StereoMixer4ChGUI, GtkUI<true>>
 		LabeledDial* m_dialVolume4;
 		LabeledDial* m_dialPan4;
 
-	private:
 		LabeledDial* CreateDial(const std::string TextLabel, double Value, double Min, double Max, DialType Type, double Step);
 		CheckButton* CreateCheck(const std::string TextLabel, int PortNum);
 };

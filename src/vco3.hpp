@@ -18,6 +18,10 @@ enum WaveFormType
 
 class Vco3: public Plugin<Vco3>
 {
+	public:
+		Vco3(double rate);
+		void run(uint32_t nframes);
+
 	private:
 		float wave_period;
 		float phi;
@@ -28,10 +32,6 @@ class Vco3: public Plugin<Vco3>
 		double m_rate;
 
 		SynthData *synthdata;
-
-	public:
-		Vco3(double rate);
-		void run(uint32_t nframes);
 };
 
 #endif

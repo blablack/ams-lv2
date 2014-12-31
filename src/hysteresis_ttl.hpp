@@ -23,9 +23,7 @@ enum p_port_enum {
   p_center,
   p_overlap,
   p_lowSlope,
-  p_lowOffset,
   p_highSlope,
-  p_highOffset,
   p_out,
   p_n_ports
 };
@@ -35,9 +33,7 @@ static const peg_data_t p_ports[] = {
   { -2, 2, 0, 0, 0, 0 }, 
   { 0, 4, 0, 0, 0, 0 }, 
   { -5, 5, 0, 0, 0, 0 }, 
-  { -5, 5, -1, 0, 0, 0 }, 
   { -5, 5, 0, 0, 0, 0 }, 
-  { -5, 5, 1, 0, 0, 0 }, 
   { -1, 1, 0, 0, 0, 0 }, 
 };
 

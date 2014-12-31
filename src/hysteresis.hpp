@@ -8,6 +8,9 @@ class Hysteresis: public Plugin<Hysteresis>
 	public:
 		Hysteresis(double rate);
 		void run(uint32_t nframes);
+
+	private:
+		float currentsegment;
 };
 
 #endif

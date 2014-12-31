@@ -119,6 +119,7 @@ def build(bld):
     amp
     amplitude
     analogmemory
+    bitgrinder
     controltocv
     cvs
     cvtocontrol
@@ -188,6 +189,7 @@ def build(bld):
 
     plugins_gui = '''
     amp_gui
+    bitgrinder_gui
     delay_gui
     hysteresis_gui
     hztovc_gui

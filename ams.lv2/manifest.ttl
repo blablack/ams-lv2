@@ -56,6 +56,11 @@
 	lv2:binary <analogmemory.so>  ;
 	rdfs:seeAlso <analogmemory.ttl> .
 
+<http://github.com/blablack/ams-lv2/bitgrinder>
+	a lv2:Plugin ;
+	lv2:binary <bitgrinder.so>  ;
+	rdfs:seeAlso <bitgrinder.ttl> .
+
 <http://github.com/blablack/ams-lv2/controltocv>
 	a lv2:Plugin ;
 	lv2:binary <controltocv.so>  ;

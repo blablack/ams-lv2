@@ -11,9 +11,9 @@ class HysteresisGUI: public UI<HysteresisGUI, GtkUI<true>>
 		LabeledDial* m_dialCenter;
 		LabeledDial* m_dialOverlap;
 		LabeledDial* m_dialLowSlope;
-		LabeledDial* m_dialLowOffset;
+		//LabeledDial* m_dialLowOffset;
 		LabeledDial* m_dialHighSlope;
-		LabeledDial* m_dialHighOffset;
+		//LabeledDial* m_dialHighOffset;
 
 		LabeledDial* CreateDial(const std::string TextLabel, p_port_enum PortIndex, DialType Type, double Step);
 };

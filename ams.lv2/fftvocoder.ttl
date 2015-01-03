@@ -1,0 +1,204 @@
+@prefix doap: 	<http://usefulinc.com/ns/doap#> .
+@prefix foaf: 	<http://xmlns.com/foaf/0.1/> .
+@prefix lv2: 	<http://lv2plug.in/ns/lv2core#> .
+@prefix rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 	<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
+@prefix guiext: <http://lv2plug.in/ns/extensions/ui#> .
+
+<http://github.com/blablack/ams-lv2/fftvocoder/gui>
+  a guiext:GtkUI ;
+  guiext:binary <fftvocoder_gui.so> .
+
+<http://github.com/blablack/ams-lv2/fftvocoder>
+	a lv2:Plugin, lv2:SpectralPlugin ;
+	lv2:project <http://github.com/blablack/ams-lv2/> ;
+	doap:name "AMS FFT Vocoder" ;
+	doap:license <http://opensource.org/licenses/isc> ;
+	ll:pegName "p" ;
+	guiext:ui <http://github.com/blablack/ams-lv2/fftvocoder/gui> ;
+	lv2:optionalFeature lv2:hardRTCapable ;
+	lv2:port 
+		[
+		a lv2:InputPort, lv2:AudioPort ;
+		lv2:index 0 ; 
+		lv2:symbol "modulator" ;
+		lv2:name "Modulator" ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 1 ; 
+		lv2:symbol "pitchshift" ;
+		lv2:name "Pitch Shift" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:InputPort, lv2:CVPort ;
+		lv2:index 2 ; 
+		lv2:symbol "freqshift" ;
+		lv2:name "Freq Shift" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:CVPort ;
+		lv2:index 3 ; 
+		lv2:symbol "channels" ;
+		lv2:name "Channels" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+        	lv2:maximum 1.0 ;
+	] , 	[
+	  	a lv2:InputPort, lv2:AudioPort ;
+		lv2:index 4 ; 
+		lv2:symbol "carrier" ;
+		lv2:name "Carrier" ;
+	] , 	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 5 ; 
+		lv2:symbol "bins_channel" ;
+		lv2:name "Bins/Channel" ;
+		lv2:default 16 ;
+		lv2:minimum 1 ;
+		lv2:maximum 999 ;
+	] , 	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 6 ; 
+		lv2:symbol "vcbins_channels" ;
+		lv2:name "VC Bins/Channels" ;
+		lv2:default 0 ;
+		lv2:minimum -100 ;
+		lv2:maximum 100 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 7 ; 
+		lv2:symbol "attacktime" ;
+		lv2:name "Attack Time" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 1 ;
+	] , 	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 8 ; 
+		lv2:symbol "releasetime" ;
+		lv2:name "Release Time" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 1 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 9 ; 
+		lv2:symbol "pitchshift_octaves" ;
+		lv2:name "Pitch Shift (octaves)" ;
+		lv2:default 0 ;
+		lv2:minimum -3 ;
+		lv2:maximum 3 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 10 ; 
+		lv2:symbol "vcpitchshift" ;
+		lv2:name "VC Pitch Shift" ;
+		lv2:default 0 ;
+		lv2:minimum -5 ;
+		lv2:maximum 5 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 11 ; 
+		lv2:symbol "freq_bode_shift" ;
+		lv2:name "Frequency (Bode) Shift" ;
+		lv2:default 0 ;
+		lv2:minimum -999 ;
+		lv2:maximum 999 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 12 ; 
+		lv2:symbol "vcfreqshift" ;
+		lv2:name "VC Freq Shift" ;
+		lv2:default 0 ;
+		lv2:minimum -500 ;
+		lv2:maximum 500 ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 13 ; 
+		lv2:symbol "phaseshift" ;
+		lv2:name "Phase Shift" ;
+		lv2:default 0 ;
+		lv2:minimum -6.28 ;
+		lv2:maximum 6.28 ;
+	] , 	[
+		a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 14 ; 
+		lv2:symbol "fftwindowfunction" ;
+		lv2:name "FFT Window Function" ;
+		lv2:default 0;
+		lv2:minimum 0;
+		lv2:maximum 5;
+		lv2:portProperty lv2:enumeration ;
+		lv2:scalePoint
+				[
+		    		rdfs:label "Rectangular" ;
+			   	rdf:value 0 ;
+			] ,	[
+				rdfs:label "Trapezoidal" ;
+				rdf:value 1 ;
+			] ,	[
+		  		rdfs:label "Hann (Cosine)" ;
+				rdf:value 2 ;
+			] , 	[
+		  		rdfs:label "Hamming (Cosine)" ;
+				rdf:value 3 ;
+			] ,	[
+		  		rdfs:label "Tukey (flattop cosine)" ;
+				rdf:value 4 ;
+			] ,	[
+		  		rdfs:label "Blackman-Nutall (minimum spill)" ;
+				rdf:value 5 ;
+			]
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 15 ; 
+		lv2:symbol "dynamicsplicing" ;
+		lv2:name "Dynamic Splicing" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 1 ;
+        	lv2:portProperty lv2:toggled ;
+	] ,	[
+	  	a lv2:InputPort, lv2:ControlPort ;
+		lv2:index 16 ; 
+		lv2:symbol "rthetamodulator" ;
+		lv2:name "R-Theta Modulator" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 1 ;
+        	lv2:portProperty lv2:toggled ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 17 ; 
+		lv2:symbol "alteredmod" ;
+		lv2:name "Altered Mod" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:AudioPort ;
+		lv2:index 18 ; 
+		lv2:symbol "vocoderout" ;
+		lv2:name "Vocoder Out" ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 19 ; 
+		lv2:symbol "modulatorfft" ;
+		lv2:name "Modulator FFT" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] ,	[
+		a lv2:OutputPort, lv2:CVPort ;
+		lv2:index 20 ; 
+		lv2:symbol "mod1stH" ;
+		lv2:name "Mod 1st H" ;
+		lv2:default 0.0 ;
+		lv2:minimum -1.0 ;
+	        lv2:maximum 1.0 ;
+	] .

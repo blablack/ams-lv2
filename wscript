@@ -25,13 +25,14 @@ def configure(conf):
 
     conf.load('compiler_cxx')
 
-    autowaf.check_pkg(conf, 'gtkmm-2.4',  uselib_store='GTKMM',atleast_version='2.24.0')
-    autowaf.check_pkg(conf, 'gtk+-2.0', uselib_store='GTK2', atleast_version='2.24.0')
-    autowaf.check_pkg(conf, 'cairo', uselib_store='CAIRO', atleast_version='1.0.0')
-    autowaf.check_pkg(conf, 'lv2', uselib_store='LV2', atleast_version='1.2.0')
-    autowaf.check_pkg(conf, 'lvtk-plugin-1', uselib_store='LVTK_PLUGIN', atleast_version='1.1.1')
-    autowaf.check_pkg(conf, 'lvtk-ui-1', uselib_store='LVTK_UI', atleast_version='1.1.1')
-    autowaf.check_pkg(conf, 'lvtk-gtkui-1', uselib_store='LVTK_GTKGUI', atleast_version='1.1.1')
+    autowaf.check_pkg(conf, 'gtkmm-2.4',  uselib_store='GTKMM',atleast_version='2.24.0', mandatory=True)
+    autowaf.check_pkg(conf, 'gtk+-2.0', uselib_store='GTK2', atleast_version='2.24.0', mandatory=True)
+    autowaf.check_pkg(conf, 'cairo', uselib_store='CAIRO', atleast_version='1.10.0', mandatory=True)
+    autowaf.check_pkg(conf, 'lv2', uselib_store='LV2', atleast_version='1.10.0', mandatory=True)
+    autowaf.check_pkg(conf, 'lvtk-plugin-1', uselib_store='LVTK_PLUGIN', atleast_version='1.2.0', mandatory=True)
+    autowaf.check_pkg(conf, 'lvtk-ui-1', uselib_store='LVTK_UI', atleast_version='1.2.0', mandatory=True)
+    autowaf.check_pkg(conf, 'lvtk-gtkui-1', uselib_store='LVTK_GTKGUI', atleast_version='1.2.0', mandatory=True)
+    autowaf.check_pkg(conf, 'fftw3', uselib_store='FFTW3', atleast_version='3.3.3', mandatory=True)
 
     check = 'Extended Initializer Lists'
     conf.check_cxx(msg         = check,
@@ -165,6 +166,18 @@ def build(bld):
 
 ########################################################################
 
+    build_plugin(bld, 'ams.lv2', 'fftvocoder', ['src/fftvocoder.cpp'],
+                 ['-DPLUGIN_CLASS=fftvocoder',
+                  '-std=c99',
+                  '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
+                  '-DPLUGIN_URI_SUFFIX="fftvocoder"',
+                  '-DPLUGIN_HEADER="src/fftvocoder.hpp"'],
+                 [],
+                 ['LV2', 'LVTK_PLUGIN', 'FFTW3'],
+                 [])
+
+########################################################################
+
     plugins = '''
     vcaexp
     vcdoubledecay
@@ -219,6 +232,7 @@ def build(bld):
     plugins_gui = '''
     analogmemory_gui
     cvs_gui
+    fftvocoder_gui
     lfo2_freq_gui
     lfo2_tempo_gui
     lfo_gui

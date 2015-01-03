@@ -101,6 +101,11 @@
 	lv2:binary <env.so>  ;
 	rdfs:seeAlso <env.ttl> .
 
+<http://github.com/blablack/ams-lv2/fftvocoder>
+	a lv2:Plugin ;
+	lv2:binary <fftvocoder.so>  ;
+	rdfs:seeAlso <fftvocoder.ttl> .
+
 <http://github.com/blablack/ams-lv2/hysteresis>
 	a lv2:Plugin ;
 	lv2:binary <hysteresis.so>  ;

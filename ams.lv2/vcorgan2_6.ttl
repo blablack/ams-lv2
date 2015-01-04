@@ -8,64 +8,64 @@
 @prefix ll: 	<http://ll-plugins.nongnu.org/lv2/namespace#> .
 @prefix param:  <http://lv2plug.in/ns/ext/parameters#> .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6/gui>
+<http://github.com/blablack/ams-lv2/vcorgan2_6/gui>
   a guiext:GtkUI ;
-  guiext:binary <vcorgan_6_gui.so> .
+  guiext:binary <vcorgan2_6_gui.so> .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#inputs>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#inputs>
     a param:OscillatorControls ;
     lv2:name "Inputs" ;
     lv2:symbol "grpInputs" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#master_controls>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#master_controls>
     a param:OscillatorControls ;
     lv2:name "Master Controls" ;
     lv2:symbol "grpMasterControls" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#mixer>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#mixer>
     a param:OscillatorControls ;
     lv2:name "Mixer" ;
     lv2:symbol "grpMixer" .
 
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco1>
     a param:OscillatorControls ;
     lv2:name "VCO 1" ;
     lv2:symbol "grpVCO1" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco2>
     a param:OscillatorControls ;
     lv2:name "VCO 2" ;
     lv2:symbol "grpVCO2" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco3>
     a param:OscillatorControls ;
     lv2:name "VCO 3" ;
     lv2:symbol "grpVCO3" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco4>
     a param:OscillatorControls ;
     lv2:name "VCO 4" ;
     lv2:symbol "grpVCO4" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco5>
     a param:OscillatorControls ;
     lv2:name "VCO 5" ;
     lv2:symbol "grpVCO5" .
 
-<http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6>
+<http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco6>
     a param:OscillatorControls ;
     lv2:name "VCO 6" ;
     lv2:symbol "grpVCO6" .
 
 
-<http://github.com/blablack/ams-lv2/vcorgan_6>
+<http://github.com/blablack/ams-lv2/vcorgan2_6>
 	a lv2:Plugin , lv2:OscillatorPlugin ;
 	lv2:project <http://github.com/blablack/ams-lv2/> ;
-	doap:name "AMS VC Organ - 6 Osc" ;
+	doap:name "AMS VC Organ 2 - 6 Osc" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
-	guiext:ui <http://github.com/blablack/ams-lv2/vcorgan_6/gui> ;
+	guiext:ui <http://github.com/blablack/ams-lv2/vcorgan2_6/gui> ;
 	lv2:optionalFeature lv2:hardRTCapable ;
 	lv2:port
 		[
@@ -76,7 +76,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
 	        lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#inputs> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#inputs> ;
 	] ,	[
 		a lv2:CVPort, lv2:InputPort ;
 		lv2:index 1 ; 
@@ -85,7 +85,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
 	        lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#inputs> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#inputs> ;
 	] ,	[
 		a lv2:CVPort, lv2:InputPort ;
 		lv2:index 2 ; 
@@ -94,7 +94,7 @@
 		lv2:default 0.0 ;
 		lv2:minimum -1.0 ;
         	lv2:maximum 1.0 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#inputs> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#inputs> ;
 	] , 	
 
 
@@ -107,7 +107,7 @@
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#master_controls> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#master_controls> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 4 ; 
@@ -116,7 +116,7 @@
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#master_controls> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#master_controls> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 5 ; 
@@ -125,7 +125,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 10 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#master_controls> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#master_controls> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 6 ; 
@@ -134,7 +134,7 @@
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 10 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#master_controls> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#master_controls> ;
 	] , 
 
 
@@ -147,7 +147,7 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#mixer> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#mixer> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 8 ; 
@@ -156,7 +156,7 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#mixer> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#mixer> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 9 ; 
@@ -165,7 +165,7 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#mixer> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#mixer> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 10 ; 
@@ -174,7 +174,7 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#mixer> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#mixer> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 11 ; 
@@ -183,7 +183,7 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#mixer> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#mixer> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 12 ; 
@@ -192,7 +192,7 @@
 		lv2:default 1 ;
 		lv2:minimum 0 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#mixer> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#mixer> ;
 	] ,
 
 
@@ -223,7 +223,7 @@
 		  		rdfs:label "Saw 2" ;
 				rdf:value 4
 			] ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco1> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 14 ; 
@@ -232,7 +232,7 @@
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco1> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 15 ; 
@@ -241,41 +241,32 @@
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco1> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
 		lv2:index 16 ; 
-		lv2:symbol "vco1_harmonic" ;
-		lv2:name "VCO 1 - Harmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1> ;
-	] , 	[
-	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 17 ; 
-		lv2:symbol "vco1_subharmonic" ;
-		lv2:name "VCO 1 - Subharmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1> ;
+		lv2:symbol "vco1_semitone" ;
+		lv2:name "VCO 1 - Semitone" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 12 ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco1> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 18 ; 
+		lv2:index 17 ; 
 		lv2:symbol "vco1_phi0" ;
 		lv2:name "VCO 1 - Phi0" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco1> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco1> ;
 	] ,	
 
 
 
 		[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 19 ; 
+		lv2:index 18 ; 
 		lv2:symbol "vco2_waveForm" ;
 		lv2:name "VCO 2 - Wave Form" ;
 		lv2:default 0;
@@ -299,59 +290,50 @@
 		  		rdfs:label "Saw 2" ;
 				rdf:value 4
 			] ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco2> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 20 ; 
+		lv2:index 19 ; 
 		lv2:symbol "vco2_octave" ;
 		lv2:name "VCO 2 - Octave" ;
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco2> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 21 ; 
+		lv2:index 20 ; 
 		lv2:symbol "vco2_tune" ;
 		lv2:name "VCO 2 - Tune" ;
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco2> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 22 ; 
-		lv2:symbol "vco2_harmonic" ;
-		lv2:name "VCO 2 - Harmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2> ;
-	] , 	[
-	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 23 ; 
-		lv2:symbol "vco2_subharmonic" ;
-		lv2:name "VCO 2- Subharmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2> ;
+		lv2:index 21 ; 
+		lv2:symbol "vco2_semitone" ;
+		lv2:name "VCO 2 - Semitone" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 12 ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco2> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 24 ; 
+		lv2:index 22 ; 
 		lv2:symbol "vco2_phi0" ;
 		lv2:name "VCO 2 - Phi0" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco2> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco2> ;
 	] ,	
 
 
 
 		[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 25 ; 
+		lv2:index 23 ; 
 		lv2:symbol "vco3_waveForm" ;
 		lv2:name "VCO 3 - Wave Form" ;
 		lv2:default 0;
@@ -375,59 +357,50 @@
 		  		rdfs:label "Saw 2" ;
 				rdf:value 4
 			] ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco3> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 26 ; 
+		lv2:index 24 ; 
 		lv2:symbol "vco3_octave" ;
 		lv2:name "VCO 3 - Octave" ;
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco3> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 27 ; 
+		lv2:index 25 ; 
 		lv2:symbol "vco3_tune" ;
 		lv2:name "VCO 3 - Tune" ;
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco3> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 28 ; 
-		lv2:symbol "vco3_harmonic" ;
-		lv2:name "VCO 3 - Harmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3> ;
-	] , 	[
-	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 29 ; 
-		lv2:symbol "vco3_subharmonic" ;
-		lv2:name "VCO 3 - Subharmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3> ;
+		lv2:index 26 ; 
+		lv2:symbol "vco3_semitone" ;
+		lv2:name "VCO 3 - Semitone" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 12 ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco3> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 30 ; 
+		lv2:index 27 ; 
 		lv2:symbol "vco3_phi0" ;
 		lv2:name "VCO 3 - Phi0" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco3> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco3> ;
 	] ,	
 
 
 
 		[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 31 ; 
+		lv2:index 28 ; 
 		lv2:symbol "vco4_waveForm" ;
 		lv2:name "VCO 4 - Wave Form" ;
 		lv2:default 0;
@@ -451,59 +424,50 @@
 		  		rdfs:label "Saw 2" ;
 				rdf:value 4
 			] ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco4> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 32 ; 
+		lv2:index 29 ; 
 		lv2:symbol "vco4_octave" ;
 		lv2:name "VCO 4 - Octave" ;
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco4> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 33 ; 
+		lv2:index 30 ; 
 		lv2:symbol "vco4_tune" ;
 		lv2:name "VCO 4 - Tune" ;
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco4> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 34 ; 
-		lv2:symbol "vco4_harmonic" ;
-		lv2:name "VCO 4 - Harmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4> ;
-	] , 	[
-	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 35 ; 
-		lv2:symbol "vco4_subharmonic" ;
-		lv2:name "VCO 4 - Subharmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4> ;
+		lv2:index 31 ; 
+		lv2:symbol "vco4_semitone" ;
+		lv2:name "VCO 4 - Semitone" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 12 ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco4> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 36 ; 
+		lv2:index 32 ; 
 		lv2:symbol "vco4_phi0" ;
 		lv2:name "VCO 4 - Phi0" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco4> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco4> ;
 	] ,	
 
 
 
 		[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 37 ; 
+		lv2:index 33 ; 
 		lv2:symbol "vco5_waveForm" ;
 		lv2:name "VCO 5 - Wave Form" ;
 		lv2:default 0;
@@ -527,59 +491,50 @@
 		  		rdfs:label "Saw 2" ;
 				rdf:value 4
 			] ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco5> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 38 ; 
+		lv2:index 34 ; 
 		lv2:symbol "vco5_octave" ;
 		lv2:name "VCO 5 - Octave" ;
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco5> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 39 ; 
+		lv2:index 35 ; 
 		lv2:symbol "vco5_tune" ;
 		lv2:name "VCO 5 - Tune" ;
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco5> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 40 ; 
-		lv2:symbol "vco5_harmonic" ;
-		lv2:name "VCO 5 - Harmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5> ;
-	] , 	[
-	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 41 ; 
-		lv2:symbol "vco5_subharmonic" ;
-		lv2:name "VCO 5 - Subharmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5> ;
+		lv2:index 36 ; 
+		lv2:symbol "vco5_semitone" ;
+		lv2:name "VCO 5 - Semitone" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 12 ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco5> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 42 ; 
+		lv2:index 37 ; 
 		lv2:symbol "vco5_phi0" ;
 		lv2:name "VCO 5 - Phi0" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco5> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco5> ;
 	] ,	
 
 
 
 		[
 		a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 43 ; 
+		lv2:index 38 ; 
 		lv2:symbol "vco6_waveForm" ;
 		lv2:name "VCO 6 - Wave Form" ;
 		lv2:default 0;
@@ -603,58 +558,49 @@
 		  		rdfs:label "Saw 2" ;
 				rdf:value 4
 			] ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco6> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 44 ; 
+		lv2:index 39 ; 
 		lv2:symbol "vco6_octave" ;
 		lv2:name "VCO 6 - Octave" ;
 		lv2:default 3 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco6> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 45 ; 
+		lv2:index 40 ; 
 		lv2:symbol "vco6_tune" ;
 		lv2:name "VCO 6 - Tune" ;
 		lv2:default 0 ;
 		lv2:minimum -1 ;
 		lv2:maximum 1 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco6> ;
 	] , 	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 46 ; 
-		lv2:symbol "vco6_harmonic" ;
-		lv2:name "VCO 6 - Harmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6> ;
-	] , 	[
-	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 47 ; 
-		lv2:symbol "vco6_subharmonic" ;
-		lv2:name "VCO 6 - Subharmonic" ;
-		lv2:default 1 ;
-		lv2:minimum 1 ;
-		lv2:maximum 16 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6> ;
+		lv2:index 41 ; 
+		lv2:symbol "vco6_semitone" ;
+		lv2:name "VCO 6 - Semitone" ;
+		lv2:default 0 ;
+		lv2:minimum 0 ;
+		lv2:maximum 12 ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco6> ;
 	] ,	[
 	  	a lv2:InputPort, lv2:ControlPort ;
-		lv2:index 48 ; 
+		lv2:index 42 ; 
 		lv2:symbol "vco6_phi0" ;
 		lv2:name "VCO 6 - Phi0" ;
 		lv2:default 0 ;
 		lv2:minimum 0 ;
 		lv2:maximum 6.283 ;
-		pg:group <http://github.com/blablack/ams-lv2/vcorgan_6#group_vco6> ;
+		pg:group <http://github.com/blablack/ams-lv2/vcorgan2_6#group_vco6> ;
 	] ,
 
 
 		[
 		a lv2:AudioPort , lv2:OutputPort ;
-		lv2:index 49 ; 
+		lv2:index 43 ; 
 		lv2:symbol "out" ;
 		lv2:name "Out"
 	] .

@@ -73,7 +73,7 @@
 <http://github.com/blablack/ams-lv2/vcorgan_8>
 	a lv2:Plugin , lv2:OscillatorPlugin ;
 	lv2:project <http://github.com/blablack/ams-lv2/> ;
-	doap:name "AMS VC Organ 8 Osc" ;
+	doap:name "AMS VC Organ - 8 Osc" ;
 	doap:license <http://opensource.org/licenses/isc> ;
 	ll:pegName "p" ;
 	guiext:ui <http://github.com/blablack/ams-lv2/vcorgan_8/gui> ;

@@ -96,6 +96,21 @@
 	lv2:binary <dynamicwaves_8.so>  ;
 	rdfs:seeAlso <dynamicwaves_8.ttl> .
 
+<http://github.com/blablack/ams-lv2/dynamicwaves2_4>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves2_4.so>  ;
+	rdfs:seeAlso <dynamicwaves2_4.ttl> .
+
+<http://github.com/blablack/ams-lv2/dynamicwaves2_6>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves2_6.so>  ;
+	rdfs:seeAlso <dynamicwaves2_6.ttl> .
+
+<http://github.com/blablack/ams-lv2/dynamicwaves2_8>
+	a lv2:Plugin ;
+	lv2:binary <dynamicwaves2_8.so>  ;
+	rdfs:seeAlso <dynamicwaves2_8.ttl> .
+
 <http://github.com/blablack/ams-lv2/env>
 	a lv2:Plugin ;
 	lv2:binary <env.so>  ;
@@ -290,6 +305,21 @@
 	a lv2:Plugin ;
 	lv2:binary <vcorgan_8.so>  ;
 	rdfs:seeAlso <vcorgan_8.ttl> .
+
+<http://github.com/blablack/ams-lv2/vcorgan2_4>
+	a lv2:Plugin ;
+	lv2:binary <vcorgan2_4.so>  ;
+	rdfs:seeAlso <vcorgan2_4.ttl> .
+
+<http://github.com/blablack/ams-lv2/vcorgan2_6>
+	a lv2:Plugin ;
+	lv2:binary <vcorgan2_6.so>  ;
+	rdfs:seeAlso <vcorgan2_6.ttl> .
+
+<http://github.com/blablack/ams-lv2/vcorgan2_8>
+	a lv2:Plugin ;
+	lv2:binary <vcorgan2_8.so>  ;
+	rdfs:seeAlso <vcorgan2_8.ttl> .
 
 <http://github.com/blablack/ams-lv2/vcpanning>
 	a lv2:Plugin ;

@@ -71,6 +71,7 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     obj.target       = os.path.join(bundle, name)
     if cxxflags != []:
         obj.cxxflags = cxxflags
+    obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
     if cppflags != []:
         obj.cppflags = cppflags
     if libs != []:
@@ -93,6 +94,7 @@ def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[
     obj.target       = os.path.join(bundle, name)
     if cxxflags != []:
         obj.cxxflags = cxxflags
+    obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
     if cppflags != []:
         obj.cppflags = cppflags
     if libs != []:
@@ -168,7 +170,6 @@ def build(bld):
 
     build_plugin(bld, 'ams.lv2', 'fftvocoder', ['src/fftvocoder.cpp'],
                  ['-DPLUGIN_CLASS=fftvocoder',
-                  '-std=c99',
                   '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
                   '-DPLUGIN_URI_SUFFIX="fftvocoder"',
                   '-DPLUGIN_HEADER="src/fftvocoder.hpp"'],

@@ -47,10 +47,6 @@ VcfGUI::VcfGUI(const std::string& URI)
 	m_scaleInputGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_inputGain), mem_fun(*m_scaleInputGain,  &LabeledDial::get_value)));
 	p_gainFrame->pack_start(*m_scaleInputGain);
 
-	m_scaleOutputGain = new LabeledDial("Output", 0, 10, LOG, 0.0001);
-	m_scaleOutputGain->signal_value_changed().connect(compose(bind<0>(mem_fun(*this, &VcfGUI::write_control), p_outputGain), mem_fun(*m_scaleOutputGain,  &LabeledDial::get_value)));
-	p_gainFrame->pack_start(*m_scaleOutputGain);
-
 	p_mainWidget->pack_start(*p_gainFrame);
 
 
@@ -103,9 +99,6 @@ void VcfGUI::port_event(uint32_t port, uint32_t buffer_size, uint32_t format, co
 			break;
 		case p_inputGain:
 			m_scaleInputGain->set_value(*static_cast<const float*> (buffer));
-			break;
-		case p_outputGain:
-			m_scaleOutputGain->set_value(*static_cast<const float*> (buffer));
 			break;
 		case p_freq:
 			m_scaleFrequency->set_value(*static_cast<const float*> (buffer));

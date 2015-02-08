@@ -12,9 +12,6 @@ FFTVocoder::FFTVocoder(double rate): Plugin<FFTVocoder>(p_n_ports)
 
 FFTVocoder::~FFTVocoder()
 {
-	free(modbuf);
-	free(carrbuf);
-
 	free (modbuf);
 	free (carrbuf);
 	free (window);

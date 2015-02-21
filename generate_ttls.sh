@@ -19,6 +19,7 @@ done
 
 for i in ams.lv2/*.ttl 
 do 
+	echo $i
 	newfile=${i/.ttl/} 
 	ttl2c $i "${newfile}_ttl.hpp" 
 done 

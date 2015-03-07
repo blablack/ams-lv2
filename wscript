@@ -7,7 +7,7 @@ from waflib.extras import autowaf as autowaf
 
 # Variables for 'waf dist'
 APPNAME = 'ams-lv2'
-VERSION = '1.1.0'
+VERSION = '1.1.1'
 
 # Mandatory variables
 top = '.'
@@ -128,6 +128,7 @@ def build(bld):
     cvtocontrol
     delay
     env
+    haas
     hysteresis
     hztovc
     inv
@@ -205,6 +206,7 @@ def build(bld):
     amp_gui
     bitgrinder_gui
     delay_gui
+    haas_gui
     hysteresis_gui
     hztovc_gui
     mixer_2ch_gui

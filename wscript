@@ -17,6 +17,7 @@ out = 'build'
 def options(opt):
     autowaf.set_options(opt)
     opt.load('compiler_cxx')
+    opt.load('lv2')
 
 
 def configure(conf):
@@ -24,6 +25,7 @@ def configure(conf):
     autowaf.display_header('ams-lv2 Configuration')
 
     conf.load('compiler_cxx')
+    conf.load('lv2')
 
     autowaf.check_pkg(conf, 'gtkmm-2.4',  uselib_store='GTKMM',atleast_version='2.24.0', mandatory=True)
     autowaf.check_pkg(conf, 'gtk+-2.0', uselib_store='GTK2', atleast_version='2.24.0', mandatory=True)

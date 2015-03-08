@@ -36,7 +36,7 @@
 		lv2:symbol "delay" ;
 		lv2:name "Delay" ;
 		lv2:default 20 ;
-		lv2:minimum 1 ;
+		lv2:minimum 5 ;
 		lv2:maximum 40 ;
 		units:unit units:ms ;
 	] ,	[

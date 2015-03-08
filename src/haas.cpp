@@ -8,7 +8,7 @@
 Haas::Haas(double rate): Plugin<Haas> (p_n_ports)
 {
 	m_rate = rate;
-	m_buffer_size = m_rate / 1000 * 40;
+	m_buffer_size = m_rate / 1000 * 50;
 
 	buf_l = (float *) malloc(m_buffer_size * sizeof(float));
 	buf_r = (float *) malloc(m_buffer_size * sizeof(float));
@@ -28,10 +28,16 @@ void Haas::run(uint32_t nframes)
 {
 	int ofs, delay_frames;
 
-	m_dry = *p(p_dry_wet) / 100;
-	m_wet = 1 - m_dry;
+	m_wet = *p(p_dry_wet) / 100;
+	m_dry = 1 - m_wet;
 
-	delay_frames = m_rate / 1000 * *p(p_delay);
+	int p_delay = *p(p_delay);
+	if (p_delay<5)
+		p_delay = 5;
+	else if (p_delay>40)
+		p_delay = 40;
+
+	delay_frames = m_rate / 1000 * p_delay;
 	for (unsigned int l2 = 0; l2 < nframes; l2++)
 	{
 		buf_l[read_ofs] = p(p_input_l)[l2];

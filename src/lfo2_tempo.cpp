@@ -1,4 +1,4 @@
-#include <lvtk-1/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
 
 #include "lfo2_tempo.hpp"
 #include "lfo2_tempo_ttl.hpp"

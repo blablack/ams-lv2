@@ -1,4 +1,4 @@
-#include <lvtk-1/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
 
 #include "cvtocontrol.hpp"
 #include "cvtocontrol_ttl.hpp"

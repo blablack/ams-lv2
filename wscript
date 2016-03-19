@@ -7,7 +7,7 @@ from waflib.extras import autowaf as autowaf
 
 # Variables for 'waf dist'
 APPNAME = 'ams-lv2'
-VERSION = '1.1.2'
+VERSION = '1.1.3'
 
 # Mandatory variables
 top = '.'
@@ -110,11 +110,6 @@ def build(bld):
         tgt = task.outputs[0].abspath()
         return shutil.copy(src, tgt)
 
-    #for i in bld.path.ant_glob('ams.lv2/*.ttl'):
-    #    bld(rule   = do_copy,
-    #        source = i,
-    #        target = bld.path.get_bld().make_node('ams.lv2/%s' % i),
-    #        install_path = '${LV2DIR}/ams.lv2')
     for i in bld.path.ant_glob('ams.lv2/*.ttl'):
         bld(features     = 'subst',
             is_copy      = True,

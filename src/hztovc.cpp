@@ -14,9 +14,12 @@ HzToVc::HzToVc(double rate): Plugin<HzToVc>(p_n_ports)
 void HzToVc::run(uint32_t nframes)
 {
 	float offset = (int)(*p(p_octaveOffset)) + 5.0313842;
+	float freq = (int)(*p(p_input));
+	if (freq < 1 )
+		freq = 1;
 
 	for (unsigned int l2 = 0; l2 < nframes; l2++)
-		p(p_output)[l2] = logf((p(p_input)[l2]) * m_eighth) * m_log2inv - offset;
+		p(p_output)[l2] = logf(freq * m_eighth) * m_log2inv - offset;
 }
 
 static int _ = HzToVc::register_class("http://github.com/blablack/ams-lv2/hztovc");

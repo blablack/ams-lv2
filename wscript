@@ -110,10 +110,16 @@ def build(bld):
         tgt = task.outputs[0].abspath()
         return shutil.copy(src, tgt)
 
+    #for i in bld.path.ant_glob('ams.lv2/*.ttl'):
+    #    bld(rule   = do_copy,
+    #        source = i,
+    #        target = bld.path.get_bld().make_node('ams.lv2/%s' % i),
+    #        install_path = '${LV2DIR}/ams.lv2')
     for i in bld.path.ant_glob('ams.lv2/*.ttl'):
-        bld(rule   = do_copy,
-            source = i,
-            target = bld.path.get_bld().make_node('ams.lv2/%s' % i),
+        bld(features     = 'subst',
+            is_copy      = True,
+            source       = i,
+            target       = bld.path.get_bld().make_node('ams.lv2/%s' % i),
             install_path = '${LV2DIR}/ams.lv2')
 
 ########################################################################

@@ -28,6 +28,7 @@ class Vco3: public Plugin<Vco3>
 		float wave_period_2, wave_period_3, Pi2Times, PKonst;
 		int waveForm;
 		int semitone, octave;
+		float oldSyncValue;
 
 		double m_rate;
 

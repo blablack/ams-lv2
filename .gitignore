@@ -6,7 +6,7 @@ debug_ingen.sh
 debug_jalv.sh
 ams-lv2.config
 ams-lv2.creator
-ams-lv2.creator.user
+ams-lv2.creator.user*
 ams-lv2.files
 ams-lv2.includes
 

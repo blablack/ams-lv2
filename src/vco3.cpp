@@ -20,6 +20,8 @@ Vco3::Vco3(double rate): Plugin<Vco3> (p_n_ports)
 	phi = 0;
 	waveForm = SINUS;
 
+	oldSyncValue = 0.0;
+
 	m_rate = rate;
 }
 
@@ -49,6 +51,10 @@ void Vco3::run(uint32_t nframes)
 	{
 		for (unsigned int l2 = 0; l2 < nframes; ++l2)
 		{
+			if( (p(p_sync)[l2] <= 0.0 && oldSyncValue > 0.0) || (p(p_sync)[l2] >= 0.0 && oldSyncValue < 0.0) )
+				phi = 0;
+			oldSyncValue = p(p_sync)[l2];
+
 			dphi = freq_const * (synthdata->exp2_table(freq_tune + p(p_freq)[l2] +  *p(p_expFMGain) * p(p_expFM)[l2]) + gain_linfm * p(p_linFM)[l2]);
 			if (dphi > wave_period_2)
 				dphi = wave_period_2;
@@ -172,6 +178,10 @@ void Vco3::run(uint32_t nframes)
 	{
 		for (unsigned int l2 = 0; l2 < nframes; ++l2)
 		{
+			if( (p(p_sync)[l2] <= 0.0 && oldSyncValue > 0.0) || (p(p_sync)[l2] >= 0.0 && oldSyncValue < 0.0) )
+				phi = 0;
+			oldSyncValue = p(p_sync)[l2];
+
 			dphi = freq_const * (synthdata->exp2_table(freq_tune + p(p_freq)[l2] +  *p(p_expFMGain) * p(p_expFM)[l2]) + gain_linfm * p(p_linFM)[l2]);
 			if (dphi > wave_period_2)
 				dphi = wave_period_2;

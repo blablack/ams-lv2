@@ -23,6 +23,7 @@ enum p_port_enum {
   p_expFM,
   p_linFM,
   p_pwPort,
+  p_sync,
   p_waveForm,
   p_octave,
   p_tune,
@@ -38,6 +39,7 @@ enum p_port_enum {
 };
 
 static const peg_data_t p_ports[] = {
+  { -1, 1, 0, 0, 0, 0 }, 
   { -1, 1, 0, 0, 0, 0 }, 
   { -1, 1, 0, 0, 0, 0 }, 
   { -1, 1, 0, 0, 0, 0 }, 

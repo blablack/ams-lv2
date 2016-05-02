@@ -51,7 +51,7 @@ void Vco3::run(uint32_t nframes)
 	{
 		for (unsigned int l2 = 0; l2 < nframes; ++l2)
 		{
-			if( (p(p_sync)[l2] <= 0.0 && oldSyncValue > 0.0) || (p(p_sync)[l2] >= 0.0 && oldSyncValue < 0.0) )
+			if( p(p_sync)[l2] >= 0.0 && oldSyncValue < 0.0 )
 				phi = 0;
 			oldSyncValue = p(p_sync)[l2];
 
@@ -178,7 +178,7 @@ void Vco3::run(uint32_t nframes)
 	{
 		for (unsigned int l2 = 0; l2 < nframes; ++l2)
 		{
-			if( (p(p_sync)[l2] <= 0.0 && oldSyncValue > 0.0) || (p(p_sync)[l2] >= 0.0 && oldSyncValue < 0.0) )
+			if( p(p_sync)[l2] >= 0.0 && oldSyncValue < 0.0 )
 				phi = 0;
 			oldSyncValue = p(p_sync)[l2];
 

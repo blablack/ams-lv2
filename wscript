@@ -1,13 +1,15 @@
 #!/usr/bin/env python
+import sys
 import os
 import subprocess
 import shutil
 from waflib import Logs
-from waflib.extras import autowaf as autowaf
+sys.path.insert(0, "tools/waf")
+import autowaf
 
 # Variables for 'waf dist'
 APPNAME = 'ams-lv2'
-VERSION = '1.1.4'
+VERSION = '1.1.5'
 
 # Mandatory variables
 top = '.'
@@ -151,6 +153,7 @@ def build(bld):
     stereomixer_2ch
     stereomixer_4ch
     stereomixer_8ch
+    transport
     vcalin
     vcdelay
     vcenv

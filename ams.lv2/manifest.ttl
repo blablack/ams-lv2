@@ -251,6 +251,11 @@
 	lv2:binary <stereomixer_8ch.so>  ;
 	rdfs:seeAlso <stereomixer_8ch.ttl> .
 
+<http://github.com/blablack/ams-lv2/transport>
+	a lv2:Plugin ;
+	lv2:binary <transport.so>  ;
+	rdfs:seeAlso <transport.ttl> .
+
 <http://github.com/blablack/ams-lv2/vcaexp>
 	a lv2:Plugin ;
 	lv2:binary <vcaexp.so>  ;

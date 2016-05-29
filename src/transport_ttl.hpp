@@ -19,7 +19,7 @@ typedef struct {
 static const char p_uri[] = "http://github.com/blablack/ams-lv2/transport";
 
 enum p_port_enum {
-  p_control,
+  p_time,
   p_play,
   p_n_ports
 };

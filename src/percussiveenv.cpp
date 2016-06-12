@@ -23,7 +23,6 @@ void PercussiveEnv::run(uint32_t nframes)
 	int idl, idla, idlah, idlahdc;
 
 	tscale = *p(p_timeScale) * (float) m_rate;
-
 	de_attack = (*p(p_attack) > 0) ? 1.0 / (*p(p_attack) * tscale) : 0;
 	de_decay = (*p(p_decay) > 0) ? 1.0 / (*p(p_decay) * tscale) : 0;
 	a = tscale * *p(p_attack);
@@ -45,9 +44,13 @@ void PercussiveEnv::run(uint32_t nframes)
 		{
 			trigger = true;
 			triggered = true;
-			noteOnOfs = 0;
+			//noteOnOfs = 0;
+			if (e > 0)
+				noteOnOfs = (de_attack > 0) ? (int)(e / de_attack) : 0;
+			else
+				noteOnOfs = 0;
 		}
-		else	if (trigger && (p(p_trigger)[l2] < 0.5))
+		else if (trigger && (p(p_trigger)[l2] < 0.5))
 		{
 			trigger = false;
 		}

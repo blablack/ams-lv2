@@ -7,6 +7,21 @@ FFTVocoder::FFTVocoder(double rate): Plugin<FFTVocoder>(p_n_ports)
 {
 	whichwin = 0;
 
+	modbuf = 0;
+	carrbuf = 0;
+	window = 0;
+	modmap = 0;
+	armodmap = 0;
+
+	carrinforward = 0;
+	carrinbackward = 0;
+	carroutforward = 0;
+	carroutbackward = 0;
+	modinforward = 0;
+	modinbackward = 0;
+	modoutforward = 0;
+	modoutbackward = 0;
+
 	p_firstRound = true;
 }
 
@@ -17,6 +32,15 @@ FFTVocoder::~FFTVocoder()
 	free (window);
 	free (modmap);
 	free (armodmap);
+
+	fftw_free(carrinforward);
+	fftw_free(carrinbackward);
+	fftw_free(carroutforward);
+	fftw_free(carroutbackward);
+	fftw_free(modinforward);
+	fftw_free(modinbackward);
+	fftw_free(modoutforward);
+	fftw_free(modoutbackward);
 }
 
 void FFTVocoder::run(uint32_t nframes)
@@ -324,14 +348,14 @@ void FFTVocoder::initial(uint32_t nframes)
 	armodmap = (float *) malloc (sizeof (float) * fftsize);
 
 	//  FFTW setup stuff
-	carrinforward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	carrinbackward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	carroutforward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	carroutbackward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	modinforward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	modinbackward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	modoutforward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
-	modoutbackward = (fftw_complex *) fftw_malloc (sizeof (fftw_complex) * fftsize);
+	carrinforward = fftw_alloc_complex (fftsize);
+	carrinbackward = fftw_alloc_complex (fftsize);
+	carroutforward = fftw_alloc_complex (fftsize);
+	carroutbackward = fftw_alloc_complex (fftsize);
+	modinforward = fftw_alloc_complex (fftsize);
+	modinbackward = fftw_alloc_complex (fftsize);
+	modoutforward = fftw_alloc_complex (fftsize);
+	modoutbackward = fftw_alloc_complex (fftsize);
 
 	fftw_set_timelimit (0.1);
 

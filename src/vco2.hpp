@@ -31,7 +31,7 @@ class Vco2: public Plugin<Vco2>
 
 		double m_rate;
 
-		SynthData *synthdata;
+		const SynthData *synthdata;
 };
 
 #endif

@@ -5,7 +5,7 @@
 
 VcaExp::VcaExp(double rate): Plugin<VcaExp>(p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 }
 
 void VcaExp::run(uint32_t nframes)

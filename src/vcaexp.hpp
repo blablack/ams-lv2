@@ -12,7 +12,7 @@ class VcaExp: public Plugin<VcaExp>
 		void run(uint32_t nframes);
 
 	private:
-		SynthData *synthdata;
+		const SynthData *synthdata;
 };
 
 #endif

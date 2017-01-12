@@ -11,7 +11,7 @@
 
 Vcf::Vcf(double rate): Plugin<Vcf>(p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 
 	vcfTypeUsed = -1;
 

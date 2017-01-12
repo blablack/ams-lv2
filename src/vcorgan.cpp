@@ -15,7 +15,7 @@
 
 VCOrgan::VCOrgan(double rate):	Plugin<VCOrgan> (p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 
 	wave_period = (float) WAVE_PERIOD;
 	wave_period_2 = wave_period / 2.0;

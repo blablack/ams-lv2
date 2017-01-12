@@ -7,7 +7,7 @@
 
 VCDoubleDecay::VCDoubleDecay(double rate): Plugin<VCDoubleDecay> (p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 
 	e = 0;
 	e2 = 0;

@@ -8,9 +8,10 @@
 
 class SynthData
 {
-	public:
+	protected:
 		SynthData();
 
+	public:
 		float wave_sine[WAVE_PERIOD];
 		float wave_saw[WAVE_PERIOD];
 		float wave_saw2[WAVE_PERIOD];
@@ -19,8 +20,13 @@ class SynthData
 		float exp_data[EXP_TABLE_LEN];
 		float exp2_data[EXP2_BUF_LEN];
 
-		float exp_table(float x);
-		float exp2_table(float);
+		float exp_table(float x) const;
+		float exp2_table(float) const;
+
+		static const SynthData &instance() { return single_instance_; }
+
+	private:
+		static SynthData single_instance_;
 };
 
 #endif

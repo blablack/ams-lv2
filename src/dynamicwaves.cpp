@@ -16,7 +16,7 @@
 
 DynamicWaves::DynamicWaves(double rate): Plugin<DynamicWaves> (p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 
 	wave_period = (float) WAVE_PERIOD;
 	wave_period_2 = wave_period / 2.0;

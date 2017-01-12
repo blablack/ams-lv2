@@ -13,6 +13,11 @@ FFTVocoder::FFTVocoder(double rate): Plugin<FFTVocoder>(p_n_ports)
 	modmap = 0;
 	armodmap = 0;
 
+	planmodforward = 0;
+	planmodbackward = 0;
+	plancarrforward = 0;
+	plancarrbackward = 0;
+
 	carrinforward = 0;
 	carrinbackward = 0;
 	carroutforward = 0;
@@ -32,6 +37,11 @@ FFTVocoder::~FFTVocoder()
 	free (window);
 	free (modmap);
 	free (armodmap);
+
+	fftw_destroy_plan (planmodforward);
+	fftw_destroy_plan (planmodbackward);
+	fftw_destroy_plan (plancarrforward);
+	fftw_destroy_plan (plancarrbackward);
 
 	fftw_free(carrinforward);
 	fftw_free(carrinbackward);

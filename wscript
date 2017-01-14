@@ -9,7 +9,7 @@ import autowaf
 
 # Variables for 'waf dist'
 APPNAME = 'ams-lv2'
-VERSION = '1.2.0'
+VERSION = '1.2.1'
 
 # Mandatory variables
 top = '.'

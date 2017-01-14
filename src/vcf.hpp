@@ -35,7 +35,7 @@ class Vcf : public Plugin<Vcf>
 		float freq_tune, gain_linfm, qr, moog_f, revMoog, moog2times;
 		double b_noise;
 
-		SynthData *synthdata;
+		const SynthData *synthdata;
 
 		void initBuf();
 };

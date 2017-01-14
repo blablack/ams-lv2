@@ -12,7 +12,7 @@ class VCDoubleDecay: public Plugin<VCDoubleDecay>
 		void run(uint32_t nframes);
 
 	private:
-		SynthData *synthdata;
+		const SynthData *synthdata;
 
 		float e, e2, old_e, old_e2, s, old_s;
 		int state;

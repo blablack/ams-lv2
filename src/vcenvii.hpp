@@ -12,7 +12,7 @@ class VCEnvII: public Plugin<VCEnvII>
 		void run(uint32_t nframes);
 
 	private:
-		SynthData *synthdata;
+		const SynthData *synthdata;
 
 		double m_rate;
 

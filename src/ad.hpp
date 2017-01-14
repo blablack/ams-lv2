@@ -27,7 +27,7 @@ class Ad: public Plugin<Ad>
 		float drift_a[MAX_ANALOGUE_DRIVER_OUT], drift_c[MAX_ANALOGUE_DRIVER_OUT];
 		int detuneCount, driftCount;
 		double m_rate;
-		SynthData *synthdata;
+		const SynthData *synthdata;
 };
 
 #endif

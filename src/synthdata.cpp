@@ -91,7 +91,7 @@ SynthData::SynthData()
 		wave_tri[l1] = -1.0 + (float) (l1 - (WAVE_PERIOD >> 1) - (WAVE_PERIOD >> 2)) * dy;
 }
 
-float SynthData::exp_table(float x)
+float SynthData::exp_table(float x) const
 {
 	int index;
 
@@ -103,7 +103,7 @@ float SynthData::exp_table(float x)
 	return (exp_data[index]);
 }
 
-float SynthData::exp2_table(float f)
+float SynthData::exp2_table(float f) const
 {
 	if (f < -16)
 		return 0;
@@ -128,3 +128,4 @@ float SynthData::exp2_table(float f)
 	return uexp2.f;
 }
 
+SynthData SynthData::single_instance_;

@@ -42,7 +42,7 @@ class VCOrgan2: public Plugin<VCOrgan2>
 		float *expFMData;
 		float *linFMData;
 
-		SynthData *synthdata;
+		const SynthData *synthdata;
 };
 
 #endif

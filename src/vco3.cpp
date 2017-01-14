@@ -7,7 +7,7 @@
 
 Vco3::Vco3(double rate): Plugin<Vco3> (p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 
 	wave_period = (float) WAVE_PERIOD;
 	wave_period_2 = wave_period * 0.5f;

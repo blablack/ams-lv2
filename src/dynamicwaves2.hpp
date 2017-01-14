@@ -48,7 +48,7 @@ class DynamicWaves2: public Plugin<DynamicWaves2>
 		float *expFMData;
 		float *linFMData;
 
-		SynthData *synthdata;
+		const SynthData *synthdata;
 };
 
 #endif

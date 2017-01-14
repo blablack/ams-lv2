@@ -7,7 +7,7 @@
 
 VCEnvII::VCEnvII(double rate): Plugin<VCEnvII> (p_n_ports)
 {
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 
 	m_rate = rate;
 

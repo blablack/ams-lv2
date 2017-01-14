@@ -24,7 +24,7 @@ Ad::Ad(double rate): Plugin<Ad> (p_n_ports)
 	driftCount = 0;
 
 	m_rate = rate;
-	synthdata = new SynthData();
+	synthdata = &SynthData::instance();
 }
 
 void Ad::run(uint32_t nframes)

@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include <lvtk-1/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
 
 #include "vcswitch.hpp"
 #include "vcswitch_ttl.hpp"

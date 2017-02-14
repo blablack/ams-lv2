@@ -1,5 +1,5 @@
-#include <lvtk-1/lvtk/plugin.hpp>
-#include <lvtk-1/lvtk/gtkui.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/gtkui.hpp>
 
 #include "labeleddial.hpp"
 #include "my_box.hpp"

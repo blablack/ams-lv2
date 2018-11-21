@@ -17,7 +17,7 @@ do
 	echo -e "${newFile::-2}" > $i
 done
 
-for i in ams.lv2/*.ttl 
+for i in mod-ams.lv2/*.ttl 
 do 
 	echo $i
 	newfile=${i/.ttl/} 
@@ -25,6 +25,6 @@ do
 done 
 
 # manifest header does not make sense
-rm -rf ams.lv2/manifest_ttl.hpp 
+rm -rf mod-ams.lv2/manifest_ttl.hpp 
 
-mv ams.lv2/*_ttl.hpp src/	
+mv mod-ams.lv2/*_ttl.hpp src/	

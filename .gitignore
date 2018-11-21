@@ -1,14 +1,14 @@
 # Files
 .lock-waf*
-ams-lv2.cbp
-ams-lv2.layout
+mod-ams-lv2.cbp
+mod-ams-lv2.layout
 debug_ingen.sh
 debug_jalv.sh
-ams-lv2.config
-ams-lv2.creator
-ams-lv2.creator.user*
-ams-lv2.files
-ams-lv2.includes
+mod-ams-lv2.config
+mod-ams-lv2.creator
+mod-ams-lv2.creator.user*
+mod-ams-lv2.files
+mod-ams-lv2.includes
 *.pyc
 
 

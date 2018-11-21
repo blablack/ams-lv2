@@ -8,7 +8,7 @@ sys.path.insert(0, "tools/waf")
 import autowaf
 
 # Variables for 'waf dist'
-APPNAME = 'ams-lv2'
+APPNAME = 'mod-ams-lv2'
 VERSION = '1.2.1'
 
 # Mandatory variables
@@ -24,7 +24,7 @@ def options(opt):
 
 def configure(conf):
     autowaf.configure(conf)
-    autowaf.display_header('ams-lv2 Configuration')
+    autowaf.display_header('mod-ams-lv2 Configuration')
 
     conf.load('compiler_cxx')
     conf.load('lv2')
@@ -112,12 +112,12 @@ def build(bld):
         tgt = task.outputs[0].abspath()
         return shutil.copy(src, tgt)
 
-    for i in bld.path.ant_glob('ams.lv2/*.ttl'):
+    for i in bld.path.ant_glob('mod-ams.lv2/*.ttl'):
         bld(features     = 'subst',
             is_copy      = True,
             source       = i,
-            target       = 'ams.lv2/%s' % i.name,
-            install_path = '${LV2DIR}/ams.lv2')
+            target       = 'mod-ams.lv2/%s' % i.name,
+            install_path = '${LV2DIR}/mod-ams.lv2')
 
 ########################################################################
 
@@ -128,7 +128,7 @@ def build(bld):
     '''.split()
 
     for i in plugins:
-        build_plugin(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
+        build_plugin(bld, 'mod-ams.lv2', i, ['src/%s.cpp' % i],
                      ['-DPLUGIN_CLASS=%s' % i,
                       '-std=c++11',
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
@@ -147,7 +147,7 @@ def build(bld):
     '''.split()
 
     for i in plugins:
-        build_plugin(bld, 'ams.lv2', i, ['src/%s.cpp' % i],
+        build_plugin(bld, 'mod-ams.lv2', i, ['src/%s.cpp' % i],
                      ['-DPLUGIN_CLASS=%s' % i,
                       '-std=c++11',
                       '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',

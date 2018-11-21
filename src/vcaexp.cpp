@@ -6,6 +6,7 @@
 VcaExp::VcaExp(double rate): Plugin<VcaExp>(p_n_ports)
 {
 	synthdata = &SynthData::instance();
+	kjasdh
 }
 
 void VcaExp::run(uint32_t nframes)

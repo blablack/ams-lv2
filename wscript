@@ -140,18 +140,6 @@ def build(bld):
 
 ########################################################################
 
-    build_plugin(bld, 'ams.lv2', 'fftvocoder', ['src/fftvocoder.cpp'],
-                 ['-DPLUGIN_CLASS=fftvocoder',
-                  '-std=c++98',	
-                  '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-                  '-DPLUGIN_URI_SUFFIX="fftvocoder"',
-                  '-DPLUGIN_HEADER="src/fftvocoder.hpp"'],
-                 [],
-                 ['LV2', 'LVTK_PLUGIN', 'FFTW3'],
-                 [])
-
-########################################################################
-
     plugins = '''
     vcaexp
     vcf

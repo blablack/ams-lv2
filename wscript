@@ -29,13 +29,9 @@ def configure(conf):
     conf.load('compiler_cxx')
     conf.load('lv2')
 
-    #autowaf.check_pkg(conf, 'gtkmm-2.4',  uselib_store='GTKMM',atleast_version='2.24.0', mandatory=True)
-    #autowaf.check_pkg(conf, 'gtk+-2.0', uselib_store='GTK2', atleast_version='2.24.0', mandatory=True)
     autowaf.check_pkg(conf, 'cairo', uselib_store='CAIRO', atleast_version='1.10.0', mandatory=True)
     autowaf.check_pkg(conf, 'lv2', uselib_store='LV2', atleast_version='1.10.0', mandatory=True)
     autowaf.check_pkg(conf, 'lvtk-plugin-1', uselib_store='LVTK_PLUGIN', atleast_version='1.2.0')
-    #autowaf.check_pkg(conf, 'lvtk-ui-1', uselib_store='LVTK_UI', atleast_version='1.2.0')
-    #autowaf.check_pkg(conf, 'lvtk-gtkui-1', uselib_store='LVTK_GTKGUI', atleast_version='1.2.0')
     autowaf.check_pkg(conf, 'fftw3', uselib_store='FFTW3', atleast_version='3.3.3', mandatory=True)
 
     check = 'Extended Initializer Lists'
@@ -85,7 +81,6 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     # Install data file
     data_file = '%s.ttl' % name
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
-    #bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, 'modgui/test.html'))
 
 def build_ui(bld, bundle):
     
@@ -100,27 +95,6 @@ def build_ui(bld, bundle):
           
             gui_file = 'modgui/%s' % joinedPath
             bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, gui_file))
-    
-
-
-
-def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], add_source=[]):
-    penv = bld.env.derive()
-    penv['cxxshlib_PATTERN'] = bld.env['pluginlib_PATTERN']
-    obj              = bld(features = 'cxx cxxshlib')
-    obj.env          = penv
-    obj.source       = source + ados.path.join(bundle, 'modgui/d_source')
-    obj.includes     = ['.', './src']
-    obj.name         = name
-    obj.target       = os.path.join(bundle, name)
-    if cxxflags != []:
-        obj.cxxflags = cxxflags
-    obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
-    if cppflags != []:
-        obj.cppflags = cppflags
-    if libs != []:
-        obj.uselib = libs
-    obj.install_path = '${LV2DIR}/' + bundle
 
 
 def build(bld):
@@ -178,151 +152,3 @@ def build(bld):
 ########################################################################
     build_ui(bld, 'mod-ams.lv2')
 ########################################################################
-#
-#    plugins = '''
-#    2
-#    4
-#    6
-#    '''.split()
-#
-#    for i in plugins:
-#       build_plugin(bld, 'ams.lv2', "ad_%s" % i, ['src/ad.cpp'],
-#                    ['-DPLUGIN_CLASS=ad_%s' % i,
-#                     '-std=c++11',
-#                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                     '-DPLUGIN_URI_SUFFIX="ad_%s"' % i,
-#                     '-DPLUGIN_HEADER="src/ad.hpp"'],
-#                    ['-DOUT_COUNT=%s' % i],
-#                    ['LV2', 'LVTK_PLUGIN'],
-#                    ['src/synthdata.cpp'])
-#
-#       build_plugin_gui(bld, 'ams.lv2', "ad_%s_gui" % i, ['src/ad_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=ad_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="ad_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/ad_gui.hpp"'],
-#                        ['-DOUT_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
-#
-########################################################################
-
-#    plugins = '''
-#    4
-#    6
-#    8
-#    '''.split()
-#
-#    for i in plugins:
-#       build_plugin(bld, 'ams.lv2', 'dynamicwaves_%s' % i, ['src/dynamicwaves.cpp'],
-#                    ['-DPLUGIN_CLASS=dynamicwaves_%s' % i,
-#                     '-std=c++11',
-#                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                     '-DPLUGIN_URI_SUFFIX="dynamicwaves_%s"' % i,
-#                     '-DPLUGIN_HEADER="src/dynamicwaves.hpp"'],
-#                    ['-DOSC_COUNT=%s' % i],
-#                    ['LV2', 'LVTK_PLUGIN'],
-#                    ['src/synthdata.cpp'])
-#
-#       build_plugin_gui(bld, 'ams.lv2', 'dynamicwaves_%s_gui' % i, ['src/dynamicwaves_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=dynamicwaves_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="dynamicwaves_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/dynamicwaves_gui.hpp"'],
-#                        ['-DOSC_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp', 'src/dynamicwaves_scope.cpp'])
-#
-#       build_plugin(bld, 'ams.lv2', 'vcorgan_%s' % i, ['src/vcorgan.cpp'],
-#                    ['-DPLUGIN_CLASS=vcorgan_%s' % i,
-#                     '-std=c++11',
-#                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                     '-DPLUGIN_URI_SUFFIX="vcorgan_%s"' % i,
-#                     '-DPLUGIN_HEADER="src/vcorgan.hpp"'],
-#                    ['-DOSC_COUNT=%s' % i],
-#                    ['LV2', 'LVTK_PLUGIN'],
-#                    ['src/synthdata.cpp'])
-#
-#       build_plugin_gui(bld, 'ams.lv2', 'vcorgan_%s_gui' % i, ['src/vcorgan_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=vcorgan_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="vcorgan_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/vcorgan_gui.hpp"'],
-#                        ['-DOSC_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
-#
-#       build_plugin(bld, 'ams.lv2', 'dynamicwaves2_%s' % i, ['src/dynamicwaves2.cpp'],
-#                    ['-DPLUGIN_CLASS=dynamicwaves2_%s' % i,
-#                     '-std=c++11',
-#                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                     '-DPLUGIN_URI_SUFFIX="dynamicwaves2_%s"' % i,
-#                     '-DPLUGIN_HEADER="src/dynamicwaves2.hpp"'],
-#                    ['-DOSC_COUNT=%s' % i],
-#                    ['LV2', 'LVTK_PLUGIN'],
-#                    ['src/synthdata.cpp'])
-#
-#       build_plugin_gui(bld, 'ams.lv2', 'dynamicwaves2_%s_gui' % i, ['src/dynamicwaves2_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=dynamicwaves2_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="dynamicwaves2_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/dynamicwaves2_gui.hpp"'],
-#                        ['-DOSC_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp', 'src/dynamicwaves_scope.cpp'])
-#
-#       build_plugin(bld, 'ams.lv2', 'vcorgan2_%s' % i, ['src/vcorgan2.cpp'],
-#                    ['-DPLUGIN_CLASS=vcorgan2_%s' % i,
-#                     '-std=c++11',
-#                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                     '-DPLUGIN_URI_SUFFIX="vcorgan2_%s"' % i,
-#                     '-DPLUGIN_HEADER="src/vcorgan2.hpp"'],
-#                    ['-DOSC_COUNT=%s' % i],
-#                    ['LV2', 'LVTK_PLUGIN'],
-#                    ['src/synthdata.cpp'])
-#
-#       build_plugin_gui(bld, 'ams.lv2', 'vcorgan2_%s_gui' % i, ['src/vcorgan2_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=vcorgan2_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="vcorgan2_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/vcorgan2_gui.hpp"'],
-#                        ['-DOSC_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
-#
-#########################################################################
-#
-#    plugins = '''
-#    8
-#    12
-#    16
-#    24
-#    32
-#    '''.split()
-#
-#    for i in plugins:
-#       build_plugin(bld, 'ams.lv2', 'seq_%s' % i, ['src/seq.cpp'],
-#                    ['-DPLUGIN_CLASS=seq_%s' % i,
-#                     '-std=c++11',
-#                     '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                     '-DPLUGIN_URI_SUFFIX="seq_%s"' % i,
-#                     '-DPLUGIN_HEADER="src/seq.hpp"'],
-#                    ['-DSTEP_COUNT=%s' % i],
-#                    ['LV2', 'LVTK_PLUGIN'],
-#                    ['src/synthdata.cpp'])
-#
-#       build_plugin_gui(bld, 'ams.lv2', 'seq_%s_gui' % i, ['src/seq_gui.cpp'],
-#                        ['-DPLUGIN_CLASS=seq_%s_gui' % i,
-#                         '-std=c++11',
-#                         '-DURI_PREFIX=\"http://github.com/blablack/ams-lv2/\"',
-#                         '-DPLUGIN_URI_SUFFIX="seq_%s_gui"' % i,
-#                         '-DPLUGIN_HEADER="src/seq_gui.hpp"'],
-#                        ['-DSTEP_COUNT=%s' % i],
-#                        ['LV2', 'LVTK_PLUGIN', 'LVTK_GTKGUI', 'GTKMM', 'GTK2', 'CAIRO'],
-#                        ['src/dial.cpp', 'src/labeleddial.cpp', 'src/my_box.cpp'])
-#

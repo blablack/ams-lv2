@@ -92,9 +92,9 @@ def build_ui(bld, bundle):
             sPath = path.replace(bundlePath, '')
             totalPath = os.path.join(sPath, filename)
             joinedPath = ''.join(totalPath.split('/',1))
-          
+
             gui_file = 'modgui/%s' % joinedPath
-            bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, gui_file))
+            bld.install_files('${LV2DIR}/' + bundle + '/modgui' + sPath , os.path.join(bundle, gui_file))
 
 
 def build(bld):

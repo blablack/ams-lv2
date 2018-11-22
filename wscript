@@ -118,7 +118,7 @@ def build(bld):
         bld(features     = 'subst',
             is_copy      = True,
             source       = i,
-            target       = 'mod-ams.lv2/%s' % i.name,
+            target       = 'mod-ams.lv2/%s' % i.name, 'mod-ams.lv2/modgui/*',
             install_path = '${LV2DIR}/mod-ams.lv2')
 
 ########################################################################

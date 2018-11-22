@@ -87,7 +87,7 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
     
     #install modgui
-    bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, modgui))
+    bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, 'modgui'))
 
 def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], add_source=[]):
     penv = bld.env.derive()

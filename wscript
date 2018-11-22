@@ -85,7 +85,7 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     # Install data file
     data_file = '%s.ttl' % name
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
-    bld.install_files('${LV2DIR}/' + bundle + 'modgui', os.path.join(bundle, 'modgui/test.html'))
+    bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, 'modgui/test.html'))
 
 def build_ui(bld, bundle, name, source):
     

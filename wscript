@@ -85,20 +85,31 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     # Install data file
     data_file = '%s.ttl' % name
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
-    bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, 'modgui/test.html'))
+    #bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, 'modgui/test.html'))
 
-def build_ui(bld, bundle, name, source):
+def build_ui(bld, bundle):
     
-    # install gui dir 
-    gui_dir = 'modgui/%s.*' % name 
-    bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, gui_dir))
+    bundlePath = os.path.join(bundle, 'modgui')
+
+    for path, subdirs, files in os.walk(r'%s' % bundlePath):
+        for filename in files:
+
+        sPath = path.replace(bundlePath, '')
+        totalPath = os.path.join(sPath, filename)
+        joinedPath = ''.join(totalPath.split('/',1))
+          
+        gui_file = 'modgui/%s' % joinedPath
+        bld.install_files('${LV2DIR}/' + bundle + '/modgui', os.path.join(bundle, gui_file))
+    
+
+
 
 def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], add_source=[]):
     penv = bld.env.derive()
     penv['cxxshlib_PATTERN'] = bld.env['pluginlib_PATTERN']
     obj              = bld(features = 'cxx cxxshlib')
     obj.env          = penv
-    obj.source       = source + add_source
+    obj.source       = source + ados.path.join(bundle, 'modgui/d_source')
     obj.includes     = ['.', './src']
     obj.name         = name
     obj.target       = os.path.join(bundle, name)
@@ -165,7 +176,7 @@ def build(bld):
                      ['src/synthdata.cpp'])
 
 ########################################################################
-
+    build_ui(bld, 'mod-ams.lv2')
 ########################################################################
 #
 #    plugins = '''

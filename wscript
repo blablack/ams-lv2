@@ -87,7 +87,9 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
     
     #install modgui
-    bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, 'modgui'))
+    #bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, 'modgui'))
+    bld.install_files('${LV2DIR}/' + bundle, bld.path.ant_glob('/modui/**'), cwd=bld.path.find_dir('modui/'), relative_trick=True)
+
 
 def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], add_source=[]):
     penv = bld.env.derive()
@@ -118,7 +120,7 @@ def build(bld):
         bld(features     = 'subst',
             is_copy      = True,
             source       = i,
-            target       = 'mod-ams.lv2/%s' % i.name, 'mod-ams.lv2/modgui/*',
+            target       = 'mod-ams.lv2/%s' % i.name,
             install_path = '${LV2DIR}/mod-ams.lv2')
 
 ########################################################################

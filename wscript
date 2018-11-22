@@ -87,7 +87,7 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, data_file))
     bld.install_files('${LV2DIR}/' + bundle, os.path.join(bundle, 'modgui/test.html'))
 
-def build_ui(bld, bundle, name, source)
+def build_ui(bld, bundle, name, source):
     
     # install gui dir 
     gui_dir = 'modgui/%s.*' % name 

@@ -16,3 +16,5 @@ mod-ams-lv2.includes
 .waf*
 build
 tools/waf/__pycache__/
+
+.DS_Store

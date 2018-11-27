@@ -26,15 +26,17 @@
 	lv2:binary <lfo2_freq.so>  ;
 	rdfs:seeAlso <lfo2_freq.ttl> ; <modgui.ttl> .
 
-<http://github.com/blablack/ams-lv2/vcaexp>
-	a lv2:Plugin ;
-	lv2:binary <vcaexp.so>  ;
-	rdfs:seeAlso <vcaexp.ttl> ; <modgui.ttl> .
+	<http://github.com/blablack/ams-lv2/vcaexp>
+		a lv2:Plugin ;
+		lv2:binary <vcaexp.so>  ;
+		rdfs:seeAlso <vcaexp.ttl> ,
+								 <AMS_VCA_Exp.modgui/modgui.ttl> .
 
-<http://github.com/blablack/ams-lv2/vcalin>
-	a lv2:Plugin ;
-	lv2:binary <vcalin.so>  ;
-	rdfs:seeAlso <vcalin.ttl> ; <modgui.ttl> .
+	<http://github.com/blablack/ams-lv2/vcalin>
+		a lv2:Plugin ;
+		lv2:binary <vcalin.so>  ;
+		rdfs:seeAlso <vcalin.ttl> ,
+								 <AMS_VCA_Lin.modgui/modgui.ttl> .
 
 <http://github.com/blablack/ams-lv2/vcf>
 	a lv2:Plugin ;

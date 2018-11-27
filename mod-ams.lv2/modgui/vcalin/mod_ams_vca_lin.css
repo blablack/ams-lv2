@@ -1,0 +1,120 @@
+/* Container */
+
+.vca-lin{{{cns}}} {
+  background-image: url(/resources/mod_ams_vca_lin_bg.png{{{ns}}});
+  position: absolute;
+  width: 227px;
+  height: 501px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group {
+  position: relative;
+  z-index: 30;
+}
+
+/* Inputs */
+
+.vca-lin{{{cns}}} .mod-pedal-input .mod-input.vca-input-audio-1 {
+  bottom: 6px;
+}
+
+.vca-lin{{{cns}}} .mod-pedal-input .mod-input.vca-input-audio-2 {
+  top: 18px;
+}
+
+.vca-lin{{{cns}}} .mod-pedal-input .mod-input.vca-input-cv-1 {
+  top: 50px;
+}
+
+.vca-lin{{{cns}}} .mod-pedal-input .mod-input.vca-input-cv-2 {
+  top: 96px;
+}
+
+/* Outputs */
+
+.vca-lin{{{cns}}} .mod-pedal-output .mod-output.vca-output {
+  top: 38px;
+}
+
+/* Switch / Light */
+
+.vca-lin{{{cns}}} .vca-switch {
+  position: absolute;
+  background-image: url(/resources/ams_vca_lin_sprite_sheets/switch_key.png{{{ns}}});
+  background-repeat: no-repeat;
+  background-size: auto 45px 37px;
+  cursor: pointer;
+  height: 37px;
+  width: 22.5px;
+  top: 24px;
+  right: 55px;
+  z-index: 30;
+}
+
+.vca-lin{{{cns}}} .vca-switch.off {
+  background-position: left center;
+}
+
+.vca-lin{{{cns}}} .vca-switch.on {
+  background-position: right center;
+}
+
+.vca-lin{{{cns}}} .vca-light {
+  position: absolute;
+  background-image: url(/resources/ams_vca_lin_sprite_sheets/lights_on_off.png{{{ns}}});
+  background-size: auto 27px;
+  height: 27px;
+  width: 27px;
+  top: 28px;
+  right: 20px;
+}
+
+.vca-lin{{{cns}}} .vca-light.off {
+  background-position: right center;
+}
+
+.vca-lin{{{cns}}} .vca-light.on {
+  background-position: left center;
+}
+
+/* Knobs */
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob {
+  position: absolute;
+  height: 49px;
+  width: 49px;
+  background-image: url(/resources/ams_vca_lin_sprite_sheets/medium_knob_70_frames.png{{{ns}}});
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob.vca-medium-knob-left {
+  left: 23px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob.vca-medium-knob-center {
+  left: 90px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob.vca-medium-knob-in1 {
+  top: 104px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob.vca-medium-knob-in2 {
+  top: 195px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob.vca-medium-knob-gain1 {
+  top: 296px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-medium-knob.vca-medium-knob-gain2 {
+  top: 414px;
+}
+
+.vca-lin{{{cns}}} .mod-control-group .vca-big-knob {
+  position: absolute;
+  height: 83px;
+  width: 83px;
+  background-image: url(/resources/ams_vca_lin_sprite_sheets/big_knob_70_frames.png{{{ns}}});
+  top: 131px;
+  right: 20px;
+}

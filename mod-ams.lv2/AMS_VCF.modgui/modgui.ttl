@@ -1,0 +1,47 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://github.com/blablack/ams-lv2/vcf>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/mod_ams_vcf.html> ;
+        modgui:stylesheet <modgui/mod_ams_vcf.css> ;
+        modgui:screenshot <modgui/mod_ams_vcf_ss.png> ;
+        modgui:thumbnail <modgui/mod_ams_vcf_tn.png> ;
+
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "vcfType" ;
+            lv2:name "VCF Type" ;
+        ] ,
+        [
+            lv2:index 1 ;
+            lv2:symbol "inputGain" ;
+            lv2:name "Input Gain" ;
+        ] ,
+        [
+            lv2:index 2 ;
+            lv2:symbol "freq" ;
+            lv2:name "Frequency" ;
+        ] ,
+        [
+            lv2:index 3 ;
+            lv2:symbol "expFMGain" ;
+            lv2:name "Exp. FM Gain" ;
+        ] ,
+        [
+            lv2:index 4 ;
+            lv2:symbol "linFMGain" ;
+            lv2:name "Lin. FM Gain" ;
+        ] ,
+        [
+            lv2:index 5 ;
+            lv2:symbol "resonance" ;
+            lv2:name "Resonance" ;
+        ] ,
+        [
+            lv2:index 6 ;
+            lv2:symbol "resonanceGain" ;
+            lv2:name "Resonance Gain" ;
+        ] ;
+    ] .

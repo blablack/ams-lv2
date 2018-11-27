@@ -1,0 +1,71 @@
+<div class="mod-pedal vcf{{{cns}}}">
+  <div mod-role="drag-handle" class="mod-drag-handle"></div>
+  <div class="mod-control-group">
+    <div class="mod-control-subgroup mod-control-in">
+      {{#controls.1}}
+      <div class="mod-knob" title="{{comment}}">
+          <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+      </div>
+      {{/controls.1}}
+      {{#controls.0}}
+      <div class="mod-knob" title="{{comment}}">
+          <div class="mod-knob-image big-knob-8" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+      </div>
+      {{/controls.0}}
+    </div>
+    <div class="mod-control-subgroup mod-control-freq">
+      <div class="mod-control-freq-gains">
+        {{#controls.3}}
+        <div class="mod-knob" title="{{comment}}">
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+        </div>
+        {{/controls.3}}
+        {{#controls.4}}
+        <div class="mod-knob mod-knob-lin-fm" title="{{comment}}">
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+        </div>
+        {{/controls.4}}
+      </div>
+      {{#controls.2}}
+      <div class="mod-knob" title="{{comment}}">
+          <div class="mod-knob-image big-knob-70" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+      </div>
+      {{/controls.2}}
+    </div>
+    <div class="mod-control-subgroup mod-control-res">
+      {{#controls.6}}
+      <div class="mod-knob" title="{{comment}}">
+          <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+      </div>
+      {{/controls.6}}
+      {{#controls.5}}
+      <div class="mod-knob" title="{{comment}}">
+          <div class="mod-knob-image mod-knob-image-res" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+      </div>
+      {{/controls.5}}
+    </div>
+  </div>
+
+  <div class="mod-switch" mod-role="bypass"></div>
+  <div class="mod-light" mod-role="bypass-light"></div>
+
+  <div class="mod-pedal-input">
+      {{#effect.ports.audio.input}}
+      <div class="mod-input" title="{{name}}" mod-role="input-audio-port" mod-port-symbol="{{symbol}}">
+          <div class="mod-pedal-input-image"></div>
+      </div>
+      {{/effect.ports.audio.input}}
+      {{#effect.ports.cv.input}}
+      <div class="mod-input mod-input-{{symbol}}" title="{{name}}" mod-role="input-cv-port" mod-port-symbol="{{symbol}}">
+          <div class="mod-pedal-input-image"></div>
+      </div>
+      {{/effect.ports.cv.input}}
+  </div>
+  <div class="mod-pedal-output">
+      {{#effect.ports.audio.output}}
+      <div class="mod-output" title="{{name}}" mod-role="output-audio-port" mod-port-symbol="{{symbol}}">
+          <div class="mod-pedal-output-image"></div>
+      </div>
+      {{/effect.ports.audio.output}}
+  </div>
+</div>

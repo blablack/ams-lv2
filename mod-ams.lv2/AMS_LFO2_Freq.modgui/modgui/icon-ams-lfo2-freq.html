@@ -1,0 +1,36 @@
+<div class="mod-pedal ams-lfo2-freq{{{cns}}}">
+    <div mod-role="drag-handle" class="mod-drag-handle"></div>
+    <div class="mod-light on" mod-role="bypass-light"></div>
+    <div class="mod-control-group">
+        {{#controls.1}}
+        <div class="mod-knob big-knob70" title="{{comment}}">
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+        </div>
+        {{/controls.1}}
+        {{#controls.0}}
+        <div class="mod-knob big-knob6" title="{{comment}}">
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+        </div>
+        {{/controls.0}}
+        {{#controls.2}}
+        <div class="mod-knob medium-knob" title="{{comment}}">
+            <div class="mod-knob-image" mod-role="input-control-port" mod-port-symbol="{{symbol}}"></div>
+        </div>
+        {{/controls.2}}
+    </div>
+    <div class="mod-switch" mod-role="bypass"></div>
+    <div class="mod-pedal-input">
+        {{#effect.ports.cv.input}}
+        <div class="mod-input mod-input-disconnected" title="{{name}}" mod-role="input-cv-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-input-image"></div>
+        </div>
+        {{/effect.ports.cv.input}}
+    </div>
+    <div class="mod-pedal-output">
+        {{#effect.ports.cv.output}}
+        <div class="mod-output mod-output-disconnected" title="{{name}}" mod-role="output-cv-port" mod-port-symbol="{{symbol}}">
+            <div class="mod-pedal-output-image"></div>
+        </div>
+        {{/effect.ports.cv.output}}
+    </div>
+</div>

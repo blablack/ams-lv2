@@ -24,7 +24,7 @@
 <http://github.com/blablack/ams-lv2/lfo2_freq>
 	a lv2:Plugin ;
 	lv2:binary <lfo2_freq.so>  ;
-	rdfs:seeAlso <lfo2_freq.ttl> .
+	rdfs:seeAlso <lfo2_freq.ttl> , <AMS_LFO2_Freq.modgui/modgui.ttl> .
 
 	<http://github.com/blablack/ams-lv2/vcaexp>
 		a lv2:Plugin ;

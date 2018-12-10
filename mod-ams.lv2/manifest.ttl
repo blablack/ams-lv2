@@ -19,7 +19,7 @@
 <http://github.com/blablack/ams-lv2/env>
 	a lv2:Plugin ;
 	lv2:binary <env.so>  ;
-	rdfs:seeAlso <env.ttl> .
+	rdfs:seeAlso <env.ttl> , <AMS_Env.modgui/modgui.ttl> .
 
 <http://github.com/blablack/ams-lv2/lfo2_freq>
 	a lv2:Plugin ;

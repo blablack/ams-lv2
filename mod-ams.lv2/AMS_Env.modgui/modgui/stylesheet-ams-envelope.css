@@ -1,0 +1,125 @@
+/* = CONTAINER
+================================================ */
+.ams-env{{{cns}}} {
+    background-image: url(/resources/ams_envelope_bg.png{{{ns}}});
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 501px;
+    position: absolute;
+    width: 227px;
+}
+
+/* PORTS
+================================================ */
+
+.ams-env{{{cns}}} .mod-pedal-input,
+.ams-env{{{cns}}} .mod-pedal-output {
+    top: 334px;
+}
+
+
+.ams-env{{{cns}}} .mod-pedal-input .mod-input:nth-child(2),
+.ams-env{{{cns}}} .mod-pedal-output .mod-output:nth-child(2) {
+    top: 7px;
+}
+/* Switch / Light */
+
+.ams-env{{{cns}}} .mod-switch {
+  position: absolute;
+  background-image: url(/resources/ams_envelope_sprite_sheets/switch_key.png{{{ns}}});
+  background-repeat: no-repeat;
+  background-size: auto 45px 37px;
+  cursor: pointer;
+  height: 37px;
+  width: 22.5px;
+  top: 24px;
+  right: 55px;
+  z-index: 30;
+}
+
+.ams-env{{{cns}}} .mod-switch.off {
+  background-position: left center;
+}
+
+.ams-env{{{cns}}} .mod-switch.on {
+  background-position: right center;
+}
+
+.ams-env{{{cns}}} .mod-light {
+  position: absolute;
+  background-image: url(/resources/ams_envelope_sprite_sheets/lights_on_off.png{{{ns}}});
+  background-size: auto 27px;
+  height: 27px;
+  width: 27px;
+  top: 28px;
+  right: 20px;
+}
+
+.ams-env{{{cns}}} .mod-light.off {
+  background-position: right center;
+}
+
+.ams-env{{{cns}}} .mod-light.on {
+  background-position: left center;
+}
+
+
+/* = CONTROLS
+================================================ */
+.ams-env{{{cns}}} .mod-control-group {
+    position: relative;
+    z-index: 30;
+    margin-top: 90px;
+}
+
+.ams-env{{{cns}}} .mod-knob {
+    position: absolute;
+    bottom: 44px;
+    z-index: 30;
+    left: 73px;
+}
+
+/* ONE KNOB */
+.ams-env{{{cns}}} .mod-knob .mod-knob-image {
+    background-image: url(/resources/ams_envelope_sprite_sheets/big_knob_100_frames.png{{{ns}}});
+    background-repeat: no-repeat;
+    height: 83px;
+    width: 83px;
+    margin: 0 auto;
+}
+
+/* FADERS */
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader {
+    position: absolute;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader:nth-child(1) {
+    left: 4px;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader:nth-child(2) {
+    left: 40px;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader:nth-child(3) {
+    left: 76px;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader:nth-child(4) {
+    left: 112px;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader:nth-child(5) {
+    left: 149px;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader:nth-child(6) {
+    left: 184px;
+}
+
+.ams-env{{{cns}}} .mod-control-group .mod-faders .mod-fader .mod-knob-image {
+    background-image: url(/resources/ams_envelope_sprite_sheets/fader_70_frames.png{{{ns}}});
+    background-repeat: no-repeat;
+    height: 110px;
+    width: 40px;
+}

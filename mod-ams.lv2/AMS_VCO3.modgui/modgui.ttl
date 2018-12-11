@@ -1,0 +1,55 @@
+@prefix modgui: <http://moddevices.com/ns/modgui#> .
+@prefix lv2:    <http://lv2plug.in/ns/lv2core#> .
+
+<http://github.com/blablack/ams-lv2/vco3>
+    modgui:gui [
+        modgui:resourcesDirectory <modgui> ;
+        modgui:iconTemplate <modgui/icon-ams-vco3.html> ;
+        modgui:stylesheet <modgui/stylesheet-ams-vco3.css> ;
+        modgui:screenshot <modgui/ams_vco3_ss.png> ;
+        modgui:thumbnail <modgui/ams_vco3_tn.png> ;
+        modgui:javascript <modgui/ams-vco3.js> ;
+        modgui:brand "Aurelien L" ;
+        modgui:label "AMS VCO3" ;
+        modgui:port [
+            lv2:index 0 ;
+            lv2:symbol "waveForm" ;
+            lv2:name "Wave Form" ;
+        ] , [
+            lv2:index 1 ;
+            lv2:symbol "octave" ;
+            lv2:name "Octave" ;
+        ] , [
+            lv2:index 2 ;
+            lv2:symbol "tune" ;
+            lv2:name "Tune" ;
+        ] , [
+            lv2:index 3 ;
+            lv2:symbol "semitone" ;
+            lv2:name "Semitone" ;
+        ] , [
+            lv2:index 4 ;
+            lv2:symbol "pw0" ;
+            lv2:name "PW0" ;
+        ] , [
+            lv2:index 5 ;
+            lv2:symbol "pwGain" ;
+            lv2:name "PW Gain" ;
+        ] , [
+            lv2:index 6 ;
+            lv2:symbol "edge" ;
+            lv2:name "Edge" ;
+        ] , [
+            lv2:index 7 ;
+            lv2:symbol "phi0" ;
+            lv2:name "Phi0" ;
+        ] , [
+            lv2:index 8 ;
+            lv2:symbol "expFMGain" ;
+            lv2:name "Exp FM Gain" ;
+        ] , [
+            lv2:index 9 ;
+            lv2:symbol "linFMGain" ;
+            lv2:name "Lin FM Gain" ;
+        ] ;
+    ] .

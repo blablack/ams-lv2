@@ -1,0 +1,189 @@
+/* = CONTAINER
+================================================ */
+.ams-vco3{{{cns}}} {
+  background-image: url(/resources/ams_vco3_bg.png{{{ns}}});
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 501px;
+  position: absolute;
+  width: 299px;
+}
+
+/* PORTS
+================================================ */
+
+.ams-vco3{{{cns}}} .mod-pedal-input {
+  top: 46px;
+}
+
+.ams-vco3{{{cns}}} .mod-pedal-input .mod-input:nth-child(2) {
+  top: 30px;
+}
+
+.ams-vco3{{{cns}}} .mod-pedal-input .mod-input:nth-child(3) {
+  top: 60px;
+}
+
+.ams-vco3{{{cns}}} .mod-pedal-input .mod-input:nth-child(4) {
+  top: 108px;
+}
+
+.ams-vco3{{{cns}}} .mod-pedal-input .mod-input:nth-child(5) {
+  top: 110px;
+}
+
+.ams-vco3{{{cns}}} .mod-pedal-output {
+  top: 221px;
+}
+
+/* Switch / Light */
+
+.ams-vco3{{{cns}}} .mod-switch {
+  position: absolute;
+  background-image: url(/resources/ams_vco3_sprites/switch_key.png{{{ns}}});
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 37px;
+  width: 22.5px;
+  top: 24px;
+  left: 150px;
+  z-index: 30;
+}
+
+.ams-vco3{{{cns}}} .mod-switch.off {
+  background-position: left center;
+}
+
+.ams-vco3{{{cns}}} .mod-switch.on {
+  background-position: right center;
+}
+
+.ams-vco3{{{cns}}} .mod-light {
+  position: absolute;
+  background-image: url(/resources/ams_vco3_sprites/lights_on_off.png{{{ns}}}) !important;
+  background-size: auto 27px;
+  height: 27px;
+  width: 27px;
+  top: 28px;
+  right: 70px;
+}
+
+.ams-vco3{{{cns}}} .mod-light.off {
+  background-position: right center;
+}
+
+.ams-vco3{{{cns}}} .mod-light.on {
+  background-position: left center;
+}
+
+
+/* = KNOBS
+================================================ */
+.ams-vco3{{{cns}}} .mod-control-group {
+  margin: 20px;
+  position: relative;
+  z-index: 30;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob {
+  position: absolute;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-waveForm .mod-knob-image,
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-octave .mod-knob-image {
+  background-image: url(/resources/ams_vco3_sprites/big_knob_7_frames.png{{{ns}}});
+  background-size: auto 83px;
+  height: 83px;
+  width: 83px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-expFMGain .mod-knob-image,
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-tune .mod-knob-image,
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-linFMGain .mod-knob-image,
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-pwGain .mod-knob-image {
+  background-image: url(/resources/ams_vco3_sprites/medium_knob_70_frames.png{{{ns}}});
+  background-size: auto 49px;
+  height: 49px;
+  width: 49px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-semitone .mod-knob-image {
+  background-image: url(/resources/ams_vco3_sprites/medium_knob_13_frames.png{{{ns}}});
+  background-size: auto 49px;
+  height: 49px;
+  width: 49px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-phi0 .mod-knob-image,
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-edge .mod-knob-image,
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-pw0 .mod-knob-image {
+  background-image: url(/resources/ams_vco3_sprites/small_knob_70_frames.png{{{ns}}});
+  background-size: auto 21px;
+  height: 21px;
+  width: 21px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-waveForm {
+  top: 68px;
+  right: 24px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-octave {
+  top: 228px;
+  right: 24px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-expFMGain {
+  left: 20px;
+  top: 105px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-linFMGain {
+  left: 20px;
+  top: 205px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-pwGain {
+  left: -2px;
+  top: 300px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-semitone {
+  top: 389px;
+  right: 82px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-tune {
+  top: 389px;
+  right: 1px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-phi0 {
+  top: 418px;
+  left: 35px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-pw0 {
+  left: 69px;
+  top: 292px;
+}
+
+.ams-vco3{{{cns}}} .mod-control-group .mod-knob.ams-vco3-edge {
+  left: 69px;
+  top: 349px;
+}
+
+/* = LED LINE
+================================================ */
+.ams-vco3{{{cns}}} #led-line {
+  position: absolute;
+  background-image: url(/resources/ams_vco3_sprites/led_line.png{{{ns}}});
+  background-repeat: no-repeat;
+  background-position: right center;
+  height: 275px;
+  width: 72px;
+  top: 73px;
+  left: 128px;
+}

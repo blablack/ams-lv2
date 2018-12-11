@@ -44,4 +44,4 @@
 <http://github.com/blablack/ams-lv2/vco3>
 	a lv2:Plugin ;
 	lv2:binary <vco3.so>  ;
-	rdfs:seeAlso <vco3.ttl> , <modgui.ttl> .
+	rdfs:seeAlso <vco3.ttl> , <AMS_VCO3.modgui/modgui.ttl> .

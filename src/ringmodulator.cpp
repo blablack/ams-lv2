@@ -1,4 +1,4 @@
-#include <lvtk-1/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
 
 #include "ringmodulator.hpp"
 #include "ringmodulator_ttl.hpp"

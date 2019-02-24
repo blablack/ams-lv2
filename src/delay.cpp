@@ -1,4 +1,4 @@
-#include <lvtk-1/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
 
 #include "delay.hpp"
 #include "delay_ttl.hpp"

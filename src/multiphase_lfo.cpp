@@ -1,6 +1,6 @@
 #include <math.h>
 
-#include <lvtk-1/lvtk/plugin.hpp>
+#include <lvtk-2/lvtk/plugin.hpp>
 
 #include "multiphase_lfo.hpp"
 #include "multiphase_lfo_ttl.hpp"

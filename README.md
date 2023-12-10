@@ -1,3 +1,9 @@
+🚨 This project is archived and no longer maintained. 🚨
+
+Thank you for your past support. Feel free to explore the existing codebase and documentation. For any questions, consider checking the existing issues, but note that responses may be delayed.
+
+If you find this project useful and wish to continue its development, please fork it with proper attribution and adherence to the license.
+
 ams-lv2
 =======
 

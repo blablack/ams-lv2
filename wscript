@@ -3,6 +3,7 @@ import sys
 import os
 import subprocess
 import shutil
+import platform
 from waflib import Logs
 sys.path.insert(0, "tools/waf")
 import autowaf
@@ -14,6 +15,8 @@ VERSION = '1.2.2'
 # Mandatory variables
 top = '.'
 out = 'build'
+
+ARCHITECTURE_SUPPORT_SSE = ['i386', 'i686', 'x86_64']
 
 
 def options(opt):
@@ -75,7 +78,8 @@ def build_plugin(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[], a
     obj.target       = os.path.join(bundle, name)
     if cxxflags != []:
         obj.cxxflags = cxxflags
-    obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
+    if platform.machine() in ARCHITECTURE_SUPPORT_SSE:
+        obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
     if cppflags != []:
         obj.cppflags = cppflags
     if libs != []:
@@ -98,7 +102,8 @@ def build_plugin_gui(bld, bundle, name, source, cxxflags=[], cppflags=[], libs=[
     obj.target       = os.path.join(bundle, name)
     if cxxflags != []:
         obj.cxxflags = cxxflags
-    obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
+    if platform.machine() in ARCHITECTURE_SUPPORT_SSE:
+        obj.cxxflags = obj.cxxflags + ['-msse', '-mfpmath=sse', '-ffast-math']
     if cppflags != []:
         obj.cppflags = cppflags
     if libs != []:
